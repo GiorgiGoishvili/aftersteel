@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bc3jbkl8wu8v4"]
+
+[ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="1_7j6f0"]
+[ext_resource type="Script" uid="uid://c211mfciclfus" path="res://scenes/intro_black.gd" id="1_ulea4"]
+
+[node name="IntroBlack" type="Control" unique_id=1624162040]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ulea4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=431812166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="IntroText" type="Label" parent="." unique_id=616246514]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("1_7j6f0")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

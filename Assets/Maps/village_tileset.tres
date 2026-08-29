@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" format=3 uid="uid://dud4t23018448"]
+
+[ext_resource type="Texture2D" uid="uid://clisemr2kav0k" path="res://Assets/Maps/village_ground_tiles.png" id="1_qhd22"]
+[ext_resource type="Texture2D" uid="uid://mhytiwtv5nhk" path="res://Assets/Maps/village_path_edges.png" id="2_lkumq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkumq"]
+texture = ExtResource("1_qhd22")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oopf2"]
+texture = ExtResource("2_lkumq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_lkumq")
+sources/1 = SubResource("TileSetAtlasSource_oopf2")

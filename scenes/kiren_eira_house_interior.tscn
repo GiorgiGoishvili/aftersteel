@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://c6vt3tn88mm7r"]
+
+[ext_resource type="Script" uid="uid://jc1vnn50ah16" path="res://scenes/kiren_eira_house_interior.gd" id="1_8vh8b"]
+[ext_resource type="Texture2D" uid="uid://dw5biswlsx8dc" path="res://Assets/Maps/EiraKirenHouseInterior.png" id="1_brfgp"]
+[ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="2_h1tp0"]
+[ext_resource type="Script" uid="uid://bpba3f31of1vg" path="res://scenes/exit_to_village.gd" id="3_hsoma"]
+[ext_resource type="Script" uid="uid://hqg7fptndcmp" path="res://scenes/go_to_bedroom.gd" id="4_uji4n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brfgp"]
+resource_local_to_scene = true
+size = Vector2(32, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1tp0"]
+size = Vector2(31, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsoma"]
+size = Vector2(223, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uji4n"]
+size = Vector2(13.5, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vh8b"]
+size = Vector2(111, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stvlk"]
+size = Vector2(120, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmwop"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah2p6"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gn45"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7ui1"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7wjv"]
+size = Vector2(33, 20.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4l8m"]
+size = Vector2(46, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw3sh"]
+size = Vector2(38, 28.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qe0d"]
+size = Vector2(32, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hf4yh"]
+size = Vector2(14, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fw4r"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rxjd"]
+size = Vector2(26, 31.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlaxs"]
+size = Vector2(21, 50)
+
+[node name="KirenEiraHouseInterior" type="Node2D" unique_id=593038013]
+script = ExtResource("1_8vh8b")
+
+[node name="Interior" type="Sprite2D" parent="." unique_id=304844164]
+position = Vector2(310, 147)
+texture = ExtResource("1_brfgp")
+centered = false
+
+[node name="Collisions" type="StaticBody2D" parent="." unique_id=398276376]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Collisions" unique_id=764432223]
+position = Vector2(326, 259)
+shape = SubResource("RectangleShape2D_brfgp")
+
+[node name="RightWall" type="CollisionShape2D" parent="Collisions" unique_id=2059403717]
+position = Vector2(614.5, 259)
+shape = SubResource("RectangleShape2D_h1tp0")
+
+[node name="TopWall" type="CollisionShape2D" parent="Collisions" unique_id=1777592569]
+position = Vector2(487.5, 163)
+shape = SubResource("RectangleShape2D_hsoma")
+
+[node name="TopWallLeftCorner" type="CollisionShape2D" parent="Collisions" unique_id=2064042083]
+position = Vector2(348.25, 163)
+shape = SubResource("RectangleShape2D_uji4n")
+
+[node name="BelowRightCorner" type="CollisionShape2D" parent="Collisions" unique_id=898937608]
+position = Vector2(543.5, 354.5)
+shape = SubResource("RectangleShape2D_8vh8b")
+
+[node name="BelowLeftCorner" type="CollisionShape2D" parent="Collisions" unique_id=2115178559]
+position = Vector2(402, 355)
+shape = SubResource("RectangleShape2D_stvlk")
+
+[node name="SmallCouch1" type="CollisionShape2D" parent="Collisions" unique_id=307281042]
+position = Vector2(405, 298)
+shape = SubResource("RectangleShape2D_bmwop")
+
+[node name="SmallCouch2" type="CollisionShape2D" parent="Collisions" unique_id=1397993776]
+position = Vector2(405, 243)
+shape = SubResource("RectangleShape2D_bmwop")
+
+[node name="SmallCouch3" type="CollisionShape2D" parent="Collisions" unique_id=1076603296]
+position = Vector2(436, 270)
+shape = SubResource("RectangleShape2D_ah2p6")
+
+[node name="SmallCouch4" type="CollisionShape2D" parent="Collisions" unique_id=1399714741]
+position = Vector2(374, 271)
+shape = SubResource("RectangleShape2D_3gn45")
+
+[node name="Table1" type="CollisionShape2D" parent="Collisions" unique_id=351959091]
+position = Vector2(405, 270)
+shape = SubResource("RectangleShape2D_c7ui1")
+
+[node name="Campfire" type="CollisionShape2D" parent="Collisions" unique_id=2096498642]
+position = Vector2(570.5, 179.625)
+shape = SubResource("RectangleShape2D_g7wjv")
+
+[node name="Barrels" type="CollisionShape2D" parent="Collisions" unique_id=1624794251]
+position = Vector2(572, 324.5)
+shape = SubResource("RectangleShape2D_w4l8m")
+
+[node name="Table2" type="CollisionShape2D" parent="Collisions" unique_id=820782348]
+position = Vector2(541, 212.875)
+shape = SubResource("RectangleShape2D_uw3sh")
+
+[node name="Table3" type="CollisionShape2D" parent="Collisions" unique_id=1623475427]
+position = Vector2(582, 268)
+shape = SubResource("RectangleShape2D_2qe0d")
+
+[node name="Table4" type="CollisionShape2D" parent="Collisions" unique_id=1697653469]
+position = Vector2(571, 214.5)
+shape = SubResource("RectangleShape2D_hf4yh")
+
+[node name="Table5" type="CollisionShape2D" parent="Collisions" unique_id=913869157]
+position = Vector2(512, 216.5)
+shape = SubResource("RectangleShape2D_8fw4r")
+
+[node name="Player" parent="Collisions" unique_id=1129717900 instance=ExtResource("2_h1tp0")]
+position = Vector2(473, 253)
+
+[node name="ExitToVillage" type="Area2D" parent="." unique_id=687375009]
+script = ExtResource("3_hsoma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToVillage" unique_id=180145270]
+position = Vector2(475, 355.25)
+shape = SubResource("RectangleShape2D_0rxjd")
+
+[node name="GoToBedroom" type="Area2D" parent="." unique_id=1443981112]
+script = ExtResource("4_uji4n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToBedroom" unique_id=1898935715]
+position = Vector2(365.5, 172)
+shape = SubResource("RectangleShape2D_xlaxs")
+
+[node name="SpawnFromVillage" type="Marker2D" parent="." unique_id=1910569426]
+position = Vector2(475, 316)
+
+[node name="SpawnFromBedroom" type="Marker2D" parent="." unique_id=1098584389]
+position = Vector2(366, 212)
+
+[connection signal="body_entered" from="ExitToVillage" to="ExitToVillage" method="_on_exit_to_village_body_entered"]
+[connection signal="body_entered" from="GoToBedroom" to="GoToBedroom" method="_on_go_to_bedroom_body_entered"]
