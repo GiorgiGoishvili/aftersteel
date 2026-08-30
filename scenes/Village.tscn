@@ -4,6 +4,8 @@
 [ext_resource type="TileSet" uid="uid://dud4t23018448" path="res://Assets/Maps/village_tileset.tres" id="2_ravw6"]
 [ext_resource type="Texture2D" uid="uid://6ea0mfpt6oej" path="res://Assets/Buildings/Kiren_Eira_House_Exterior.png" id="3_3bmxx"]
 [ext_resource type="Script" uid="uid://cos7sdfvvars5" path="res://scenes/enter_house.gd" id="4_0glln"]
+[ext_resource type="Script" path="res://scenes/village.gd" id="5_village"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="6_inter"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glln"]
 size = Vector2(119, 96)
@@ -17,7 +19,11 @@ size = Vector2(49, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7brqn"]
 size = Vector2(21, 57)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wood"]
+size = Vector2(48, 32)
+
 [node name="Village" type="Node2D" unique_id=248133000]
+script = ExtResource("5_village")
 
 [node name="Player" parent="." unique_id=1129717900 instance=ExtResource("1_as1ji")]
 position = Vector2(344, 331)
@@ -41,6 +47,18 @@ tile_set = ExtResource("2_ravw6")
 [node name="NPCs" type="Node2D" parent="." unique_id=610925968]
 
 [node name="Triggers" type="Node2D" parent="." unique_id=1709033585]
+
+[node name="Woodpile" type="Node2D" parent="."]
+position = Vector2(378, 292)
+
+[node name="Sprite" type="Sprite2D" parent="Woodpile"]
+
+[node name="Interact" type="Area2D" parent="Woodpile"]
+script = ExtResource("6_inter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Woodpile/Interact"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_wood")
 
 [node name="KirenEiraHouse" type="Sprite2D" parent="." unique_id=1445966858]
 position = Vector2(337, 196)
@@ -68,3 +86,4 @@ position = Vector2(-0.5, 61.5)
 shape = SubResource("RectangleShape2D_7brqn")
 
 [connection signal="body_entered" from="KirenEiraHouse/EnterHouse" to="KirenEiraHouse/EnterHouse" method="_on_enter_house_body_entered"]
+[connection signal="interacted" from="Woodpile/Interact" to="." method="_on_woodpile_interacted"]

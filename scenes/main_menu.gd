@@ -11,6 +11,8 @@ var credits_speed := 0.10
 
 
 func _ready():
+	Music.play("menu")
+
 	# Start menu animations
 	menu_intro.play("menu_intro")
 	rain.play("rain_start")

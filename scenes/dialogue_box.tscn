@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_dlg"]
+[ext_resource type="Texture2D" uid="uid://bjr6687h0jmtb" path="res://Assets/UI/KirenDialogueBox.png" id="2_dlg"]
+[ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="3_dlg"]
+
+[node name="Dialogue" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_dlg")
+
+[node name="Box" type="TextureRect" parent="."]
+offset_left = 420.0
+offset_top = 655.0
+offset_right = 1570.0
+offset_bottom = 1030.0
+mouse_filter = 2
+texture = ExtResource("2_dlg")
+
+[node name="Portrait" type="TextureRect" parent="Box"]
+visible = false
+layout_mode = 0
+offset_left = -300.0
+offset_top = 12.0
+offset_right = 50.0
+offset_bottom = 362.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpeakerName" type="Label" parent="Box"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 92.0
+offset_right = 1022.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("3_dlg")
+theme_override_font_sizes/font_size = 24
+clip_text = true
+
+[node name="DialogueText" type="Label" parent="Box"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 138.0
+offset_right = 1022.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("3_dlg")
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 3
+clip_text = true
+
+[node name="ContinueHint" type="Label" parent="Box"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 284.0
+offset_right = 1022.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.55)
+theme_override_fonts/font = ExtResource("3_dlg")
+theme_override_font_sizes/font_size = 18
+text = "[E] Continue"
+horizontal_alignment = 2
+clip_text = true

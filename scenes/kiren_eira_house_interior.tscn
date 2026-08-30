@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="2_h1tp0"]
 [ext_resource type="Script" uid="uid://bpba3f31of1vg" path="res://scenes/exit_to_village.gd" id="3_hsoma"]
 [ext_resource type="Script" uid="uid://hqg7fptndcmp" path="res://scenes/go_to_bedroom.gd" id="4_uji4n"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="9_inter"]
+[ext_resource type="Texture2D" uid="uid://dbk5x2oeq8us6" path="res://Assets/Characters/Eira/EiraCalmCharacterFacingForward.png" id="10_eira"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brfgp"]
 resource_local_to_scene = true
@@ -60,6 +62,12 @@ size = Vector2(26, 31.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlaxs"]
 size = Vector2(21, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eira"]
+size = Vector2(40, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fire"]
+size = Vector2(36, 26)
 
 [node name="KirenEiraHouseInterior" type="Node2D" unique_id=593038013]
 script = ExtResource("1_8vh8b")
@@ -156,6 +164,25 @@ script = ExtResource("4_uji4n")
 position = Vector2(365.5, 172)
 shape = SubResource("RectangleShape2D_xlaxs")
 
+[node name="EiraSprite" type="Sprite2D" parent="."]
+position = Vector2(528, 176)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("10_eira")
+
+[node name="EiraTalk" type="Area2D" parent="."]
+script = ExtResource("9_inter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EiraTalk"]
+position = Vector2(524, 192)
+shape = SubResource("RectangleShape2D_eira")
+
+[node name="Fireplace" type="Area2D" parent="."]
+script = ExtResource("9_inter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fireplace"]
+position = Vector2(576, 198)
+shape = SubResource("RectangleShape2D_fire")
+
 [node name="SpawnFromVillage" type="Marker2D" parent="." unique_id=1910569426]
 position = Vector2(475, 316)
 
@@ -164,3 +191,5 @@ position = Vector2(366, 212)
 
 [connection signal="body_entered" from="ExitToVillage" to="ExitToVillage" method="_on_exit_to_village_body_entered"]
 [connection signal="body_entered" from="GoToBedroom" to="GoToBedroom" method="_on_go_to_bedroom_body_entered"]
+[connection signal="interacted" from="EiraTalk" to="." method="_on_eira_interacted"]
+[connection signal="interacted" from="Fireplace" to="." method="_on_fireplace_interacted"]

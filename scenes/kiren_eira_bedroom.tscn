@@ -4,11 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbxq16nmmu8oh" path="res://Assets/Maps/EiraKirenBedroom.png" id="1_x6x66"]
 [ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="2_8onb8"]
 [ext_resource type="Script" uid="uid://dd2cscbjsevy6" path="res://scenes/go_to_living_room.gd" id="3_8onb8"]
-[ext_resource type="Texture2D" uid="uid://bebgukweqc24r" path="res://Assets/UI/KirenDetailedFaces.png" id="4_taklk"]
-[ext_resource type="Script" uid="uid://bcpm3j6y458t8" path="res://scenes/hud.gd" id="4_vg1qa"]
-[ext_resource type="Texture2D" uid="uid://bjr6687h0jmtb" path="res://Assets/UI/KirenDialogueBox.png" id="5_rq5s3"]
-[ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="6_vg1qa"]
-[ext_resource type="Texture2D" uid="uid://8oppgx0wwnnv" path="res://Assets/UI/EiraDetailedFaces.png" id="6_wexkp"]
+[ext_resource type="Script" uid="uid://5hyooaad85s6" path="res://scripts/interactable.gd" id="4_chest"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_taklk"]
 size = Vector2(31, 127)
@@ -36,6 +32,9 @@ size = Vector2(20, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jm5tg"]
 size = Vector2(20, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chest"]
+size = Vector2(48, 53)
 
 [node name="KirenEiraBedroom" type="Node2D" unique_id=956687417]
 script = ExtResource("1_qhqac")
@@ -89,54 +88,15 @@ script = ExtResource("3_8onb8")
 position = Vector2(542, 396.5)
 shape = SubResource("RectangleShape2D_jm5tg")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=758387627]
+[node name="Chest" type="Area2D" parent="." unique_id=664870860]
+script = ExtResource("4_chest")
 
-[node name="HUD" type="Control" parent="UI" unique_id=557676499]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_vg1qa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest" unique_id=81945185]
+position = Vector2(739, 451)
+shape = SubResource("RectangleShape2D_chest")
 
-[node name="DialogueBox" type="TextureRect" parent="UI/HUD" unique_id=1819249493]
-layout_mode = 0
-offset_left = 420.0
-offset_top = 730.0
-offset_right = 1570.0
-offset_bottom = 1030.0
-mouse_filter = 2
-texture = ExtResource("5_rq5s3")
-
-[node name="EiraPortrait" type="TextureRect" parent="UI/HUD/DialogueBox" unique_id=975544470]
-layout_mode = 0
-offset_left = -300.0
-offset_top = -25.0
-offset_right = 50.0
-offset_bottom = 325.0
-mouse_filter = 2
-texture = ExtResource("6_wexkp")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DialogueText" type="Label" parent="UI/HUD/DialogueBox" unique_id=2071854454]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 80.0
-offset_right = 1140.0
-offset_bottom = 270.0
-theme_override_fonts/font = ExtResource("6_vg1qa")
-theme_override_font_sizes/font_size = 32
-text = "KIRIN! HOW LONG ARE YOU GONNA BE ASLEEP FOR?!"
-autowrap_mode = 3
-
-[node name="KirenPortrait" type="TextureRect" parent="UI/HUD" unique_id=486449476]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 400.0
-mouse_filter = 2
-texture = ExtResource("4_taklk")
+[node name="BlockedExitReturn" type="Marker2D" parent="." unique_id=1551029526]
+position = Vector2(542, 426)
 
 [node name="SpawnFromIntro" type="Marker2D" parent="." unique_id=1549119991]
 position = Vector2(703, 421)
@@ -144,3 +104,4 @@ position = Vector2(703, 421)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1057632759]
 
 [connection signal="body_entered" from="GoToLivingRoom" to="GoToLivingRoom" method="_on_go_to_living_room_body_entered"]
+[connection signal="interacted" from="Chest" to="." method="_on_chest_interacted"]

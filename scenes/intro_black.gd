@@ -5,17 +5,23 @@ extends Control
 
 var lines = [
 	"A MAN CAN SPEND HIS WHOLE LIFE CHASING STRENGTH...",
-	"ONLY TO DISCOVER THAT STRENGTH COULD NOT SAVE WHAT HE LOVED.",
+	"ONLY TO DISCOVER THAT STRENGTH COULD NOT SAVE WHAT HE HAD LOVED.",
 	"STEEL REMEMBERS EVERY BLOW THAT SHAPED IT.",
 	"SO DOES A MAN."
 ]
 
 var typing := false
 
-const TYPE_SPEED := 0.025
-const HOLD_TIME := 1.4
+const TYPE_SPEED := 0.060
+const HOLD_TIME := 1.9
 const FADE_TIME := 0.45
-const SLEEP_SCREEN_TIME := 2.0
+const SLEEP_SCREEN_TIME := 6.0
+
+# Audio timing. The menu track fades out while the black screen appears,
+# then the intro track fades down during the pause before the bedroom.
+const MUSIC_FADE_OUT_TIME := 1.2
+const MUSIC_FADE_IN_TIME := 2.0
+const INTRO_MUSIC_FADE_OUT_TIME := 3.0
 
 
 func _ready():
@@ -24,6 +30,8 @@ func _ready():
 
 	if sleep_zzz != null:
 		sleep_zzz.hide()
+
+	Music.fade_to("intro", MUSIC_FADE_OUT_TIME, MUSIC_FADE_IN_TIME)
 
 	run_intro()
 
@@ -37,6 +45,9 @@ func run_intro():
 
 	# Philosophical text is finished
 	intro_text.hide()
+
+	# Let the track fall away across the black pause instead of cutting it.
+	Music.fade_out(INTRO_MUSIC_FADE_OUT_TIME)
 
 	# White ZZZ animation on the SAME black screen
 	if sleep_zzz != null:

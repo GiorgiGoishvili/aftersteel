@@ -6,6 +6,13 @@ extends CharacterBody2D
 
 
 func _physics_process(_delta):
+	# Dialogue / cutscenes hold this lock. Stand still and idle while it is on.
+	if GameState.input_locked:
+		velocity = Vector2.ZERO
+		sprite.stop()
+		sprite.frame = 0
+		return
+
 	var direction = Input.get_vector(
 		"move_left",
 		"move_right",
