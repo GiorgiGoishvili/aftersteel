@@ -50,6 +50,24 @@ const FIREWOOD_BUNDLE := {
 	"icon": "res://Assets/Materials/Log1.png",
 }
 
+const HEALING_HERB := {
+	"id": "healing_herb",
+	"name": "Healing Herb",
+	"description": "Bitter, but it closes a wound. Restores 30 health.",
+	"key_item": false,
+	"use": "heal",
+	"power": 30,
+	"icon": "res://Assets/GameUI/Icons.png",
+}
+
+const STEEL_FRAGMENT := {
+	"id": "steel_fragment",
+	"name": "Steel Fragment",
+	"description": "A fragment of worked steel. Valuable to the right hands.",
+	"key_item": false,
+	"icon": "res://Assets/GameUI/Icons.png",
+}
+
 # TEMPORARY. Only exists so the barrel/container system has something
 # harmless to hand out during testing. Delete once real consumables exist.
 const TEST_RATION := {
@@ -149,6 +167,8 @@ const ALL := {
 	"family_amulet_decoy": FAMILY_AMULET_DECOY,
 	"firewood_bundle": FIREWOOD_BUNDLE,
 	"test_ration": TEST_RATION,
+	"healing_herb": HEALING_HERB,
+	"steel_fragment": STEEL_FRAGMENT,
 	"short_sword": SHORT_SWORD,
 	"long_sword": LONG_SWORD,
 	"gray_short_sword": GRAY_SHORT_SWORD,

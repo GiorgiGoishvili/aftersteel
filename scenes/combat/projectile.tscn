@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/projectile.gd" id="pr"]
+
+[sub_resource type="CircleShape2D" id="Hit"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="G"]
+colors = PackedColorArray(0.65, 0.95, 0.55, 1, 0.2, 0.5, 0.25, 0)
+
+[sub_resource type="GradientTexture2D" id="Tex"]
+gradient = SubResource("G")
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("pr")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("Tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Hit")

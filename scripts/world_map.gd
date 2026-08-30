@@ -17,6 +17,14 @@ func _set_spawn() -> void:
 	if player == null:
 		return
 
+	# Coming back from a fight: stand a little clear of the encounter so
+	# walking out of the battle does not walk straight back into it.
+	if GameState.battle_return_position != Vector2.ZERO:
+		player.global_position = GameState.battle_return_position + Vector2(0, 40)
+		GameState.battle_return_position = Vector2.ZERO
+		GameState.next_spawn = ""
+		return
+
 	if GameState.next_spawn != "":
 		var marker := find_child(GameState.next_spawn, true, false)
 

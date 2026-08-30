@@ -6,6 +6,7 @@ extends Node
 signal objective_changed(text: String)
 signal tutorial_changed(text: String)
 signal inventory_changed
+signal player_health_changed(current: int, maximum: int)
 
 
 # --- Scene transitions -------------------------------------------------
@@ -76,6 +77,28 @@ var equipment := {
 	"feet": "",
 }
 
+## Kiren's combat stats. Survives leaving the battle scene so damage
+## taken in a fight still matters afterwards.
+var player_stats := {
+	"max_hp": 100,
+	"current_hp": 100,
+	"attack_damage": 20,
+}
+
+## Which encounter the battle scene should run, and where to put Kiren
+## back afterwards. Empty means "no battle queued".
+var battle_enemy_id := ""
+var battle_encounter_id := ""
+var battle_return_scene := ""
+var battle_return_position := Vector2.ZERO
+
+## Encounters already won this session, so a cleared fight stays cleared.
+var completed_encounters := {}
+
+## Demo convenience: Kiren starts with a couple of herbs so healing can
+## be tested without hunting for a pickup first.
+var _starting_kit_given := false
+
 ## Ids of containers already searched, used as a set. Lives here rather
 ## than in the scene so a barrel stays empty after a scene change.
 var opened_containers := {}
@@ -99,13 +122,108 @@ func set_tutorial(text: String) -> void:
 	tutorial_changed.emit(text)
 
 
-func add_item(item: Dictionary) -> void:
-	if has_item(item.get("id", "")):
-		return
+## Adds an item, stacking onto an existing entry. Entries carry a "count"
+## so the inventory screen can show quantities; has_item()/remove_item()
+## keep the same meaning they always had.
+func add_item(item: Dictionary, amount := 1) -> void:
+	var id: String = item.get("id", "")
+
+	for entry in inventory:
+		if entry.get("id", "") == id:
+			entry["count"] = int(entry.get("count", 1)) + amount
+			inventory_changed.emit()
+			return
 
 	# Copied so the constants in items.gd can never be modified by accident.
-	inventory.append(item.duplicate(true))
+	var fresh: Dictionary = item.duplicate(true)
+	fresh["count"] = amount
+	inventory.append(fresh)
 	inventory_changed.emit()
+
+
+func grant_starting_kit() -> void:
+	if _starting_kit_given:
+		return
+
+	_starting_kit_given = true
+	add_item(Items.HEALING_HERB, 2)
+
+
+func reset_player_hp() -> void:
+	player_stats["current_hp"] = player_stats["max_hp"]
+	player_health_changed.emit(get_player_hp(), get_player_max_hp())
+
+
+func get_player_hp() -> int:
+	return int(player_stats["current_hp"])
+
+
+func get_player_max_hp() -> int:
+	return int(player_stats["max_hp"])
+
+
+func set_player_hp(value: int) -> void:
+	player_stats["current_hp"] = clampi(value, 0, get_player_max_hp())
+	player_health_changed.emit(get_player_hp(), get_player_max_hp())
+
+
+func damage_player(amount: int) -> void:
+	set_player_hp(get_player_hp() - amount)
+
+
+## Returns how much was actually restored, so callers can tell whether
+## the item was worth consuming.
+func heal_player(amount: int) -> int:
+	var before := get_player_hp()
+	set_player_hp(before + amount)
+	return get_player_hp() - before
+
+
+func is_encounter_cleared(id: String) -> bool:
+	return completed_encounters.has(id)
+
+
+func mark_encounter_cleared(id: String) -> void:
+	if id != "":
+		completed_encounters[id] = true
+
+
+## The three fights that make up the playable demo.
+const DEMO_ENCOUNTERS := ["Map1Encounter01", "Map2Encounter02", "Map3Encounter01"]
+
+
+func demo_encounters_cleared() -> bool:
+	for id in DEMO_ENCOUNTERS:
+		if not is_encounter_cleared(id):
+			return false
+	return true
+
+
+## Wipes the run so returning to the menu starts a fresh playthrough.
+func reset_run() -> void:
+	story_flags["intro_chest_gate_active"] = false
+	story_flags["bedroom_chest_checked"] = false
+	story_flags["mom_letter_read"] = false
+	story_flags["interaction_tutorial_completed"] = false
+	story_flags["eira_firewood_quest_started"] = false
+	story_flags["eira_firewood_quest_completed"] = false
+	completed_encounters.clear()
+	opened_containers.clear()
+	inventory.clear()
+	_starting_kit_given = false
+	objective = ""
+	tutorial_hint = ""
+	next_spawn = ""
+	input_locked = false
+	reset_player_hp()
+	clear_battle_context()
+
+
+func clear_battle_context() -> void:
+	battle_enemy_id = ""
+	battle_encounter_id = ""
+	battle_return_scene = ""
+	battle_return_position = Vector2.ZERO
 
 
 func is_container_opened(id: String) -> bool:
@@ -116,12 +234,25 @@ func mark_container_opened(id: String) -> void:
 	opened_containers[id] = true
 
 
-func remove_item(id: String) -> void:
+func remove_item(id: String, amount := 1) -> void:
 	for i in inventory.size():
 		if inventory[i].get("id", "") == id:
-			inventory.remove_at(i)
+			var left: int = int(inventory[i].get("count", 1)) - amount
+
+			if left > 0:
+				inventory[i]["count"] = left
+			else:
+				inventory.remove_at(i)
+
 			inventory_changed.emit()
 			return
+
+
+func get_item_count(id: String) -> int:
+	for entry in inventory:
+		if entry.get("id", "") == id:
+			return int(entry.get("count", 1))
+	return 0
 
 
 func has_item(id: String) -> bool:

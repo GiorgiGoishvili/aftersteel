@@ -3,6 +3,12 @@
 [ext_resource type="Script" path="res://scripts/objective_hud.gd" id="1_obj"]
 [ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="2_obj"]
 
+[sub_resource type="StyleBoxFlat" id="HpBg"]
+bg_color = Color(0.09, 0.08, 0.07, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="HpFill"]
+bg_color = Color(0.72, 0.24, 0.22, 1)
+
 [node name="ObjectiveHUD" type="CanvasLayer"]
 layer = 90
 script = ExtResource("1_obj")
@@ -26,3 +32,22 @@ offset_bottom = 140.0
 theme_override_colors/font_color = Color(0.75, 0.75, 0.72, 0.6)
 theme_override_fonts/font = ExtResource("2_obj")
 theme_override_font_sizes/font_size = 24
+
+[node name="HealthBox" type="VBoxContainer" parent="."]
+offset_left = 48.0
+offset_top = 156.0
+offset_right = 420.0
+offset_bottom = 246.0
+theme_override_constants/separation = 4
+
+[node name="HealthText" type="Label" parent="HealthBox"]
+theme_override_colors/font_color = Color(0.88, 0.84, 0.78, 0.9)
+theme_override_fonts/font = ExtResource("2_obj")
+theme_override_font_sizes/font_size = 26
+text = "KIREN"
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBox"]
+custom_minimum_size = Vector2(300, 24)
+theme_override_styles/background = SubResource("HpBg")
+theme_override_styles/fill = SubResource("HpFill")
+show_percentage = false

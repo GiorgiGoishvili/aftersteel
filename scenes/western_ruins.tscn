@@ -629,8 +629,8 @@ shape = SubResource("PropBody")
 position = Vector2(430, 172)
 script = ExtResource("ep")
 encounter_id = "Map3Encounter01"
-enemy_id = "skeleton"
-enabled = false
+enemy_id = "gollux"
+enabled = true
 one_time = true
 
 [node name="Map3Encounter02" type="Marker2D" parent="Encounters"]

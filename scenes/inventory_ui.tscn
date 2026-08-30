@@ -1,0 +1,91 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="iu"]
+[ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="ft"]
+
+[sub_resource type="StyleBoxFlat" id="Dim"]
+bg_color = Color(0, 0, 0, 0.62)
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.13, 0.1, 0.08, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.45, 0.33, 0.2, 1)
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("iu")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="Panel" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("Dim")
+
+[node name="Panel" type="Panel" parent="Root"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 170.0
+offset_right = 1490.0
+offset_bottom = 910.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Title" type="Label" parent="Root/Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 28.0
+offset_right = 700.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.95, 0.87, 0.68, 1)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 40
+text = "INVENTORY"
+
+[node name="Health" type="Label" parent="Root/Panel"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 32.0
+offset_right = 1020.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.85, 0.45, 0.4, 1)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 2
+
+[node name="List" type="VBoxContainer" parent="Root/Panel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 110.0
+offset_right = 1010.0
+offset_bottom = 500.0
+theme_override_constants/separation = 10
+
+[node name="Description" type="Label" parent="Root/Panel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 540.0
+offset_right = 1010.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0.78, 0.74, 0.66, 1)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 26
+autowrap_mode = 3
+
+[node name="Hint" type="Label" parent="Root/Panel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 656.0
+offset_right = 1010.0
+offset_bottom = 706.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.55)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 24
+text = "W/S SELECT    E USE    I / ESC CLOSE"

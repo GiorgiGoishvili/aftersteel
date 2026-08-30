@@ -1,0 +1,168 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/battle.gd" id="bt"]
+[ext_resource type="Script" path="res://scripts/combat/battle_kiren.gd" id="bk"]
+[ext_resource type="Script" path="res://scripts/combat/battle_enemy.gd" id="be"]
+[ext_resource type="Texture2D" uid="uid://clisemr2kav0k" path="res://Assets/Maps/village_ground_tiles.png" id="gt"]
+[ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="ft"]
+
+[sub_resource type="RectangleShape2D" id="Hurt"]
+size = Vector2(18, 28)
+
+[sub_resource type="RectangleShape2D" id="Swing"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="EnemyHurt"]
+size = Vector2(18, 28)
+
+[sub_resource type="RectangleShape2D" id="EnemySwing"]
+size = Vector2(22, 22)
+
+[sub_resource type="StyleBoxFlat" id="BarBg"]
+bg_color = Color(0.09, 0.08, 0.07, 0.85)
+
+[sub_resource type="StyleBoxFlat" id="BarKiren"]
+bg_color = Color(0.72, 0.24, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="BarEnemy"]
+bg_color = Color(0.62, 0.62, 0.66, 1)
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("bt")
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(160, 110)
+texture = ExtResource("gt")
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 128)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(6, 6)
+
+[node name="Arena" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Kiren" type="Node2D" parent="Arena"]
+position = Vector2(105, 120)
+script = ExtResource("bk")
+
+[node name="Hurtbox" type="Area2D" parent="Arena/Kiren"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Kiren/Hurtbox"]
+position = Vector2(0, -15)
+shape = SubResource("Hurt")
+
+[node name="AttackHitbox" type="Area2D" parent="Arena/Kiren"]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Kiren/AttackHitbox"]
+position = Vector2(20, -15)
+shape = SubResource("Swing")
+
+[node name="Enemy" type="Node2D" parent="Arena"]
+position = Vector2(215, 120)
+script = ExtResource("be")
+
+[node name="Hurtbox" type="Area2D" parent="Arena/Enemy"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Enemy/Hurtbox"]
+position = Vector2(0, -15)
+shape = SubResource("EnemyHurt")
+
+[node name="AttackHitbox" type="Area2D" parent="Arena/Enemy"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Enemy/AttackHitbox"]
+position = Vector2(-18, -15)
+shape = SubResource("EnemySwing")
+
+[node name="BattleUI" type="CanvasLayer" parent="."]
+
+[node name="KirenPanel" type="Control" parent="BattleUI"]
+layout_mode = 3
+offset_left = 60.0
+offset_top = 40.0
+offset_right = 660.0
+offset_bottom = 130.0
+
+[node name="Text" type="Label" parent="BattleUI/KirenPanel"]
+offset_right = 600.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 30
+
+[node name="Bar" type="ProgressBar" parent="BattleUI/KirenPanel"]
+offset_top = 48.0
+offset_right = 600.0
+offset_bottom = 78.0
+theme_override_styles/background = SubResource("BarBg")
+theme_override_styles/fill = SubResource("BarKiren")
+show_percentage = false
+
+[node name="EnemyPanel" type="Control" parent="BattleUI"]
+layout_mode = 3
+offset_left = 1260.0
+offset_top = 40.0
+offset_right = 1860.0
+offset_bottom = 130.0
+
+[node name="Text" type="Label" parent="BattleUI/EnemyPanel"]
+offset_right = 600.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 2
+
+[node name="Bar" type="ProgressBar" parent="BattleUI/EnemyPanel"]
+offset_top = 48.0
+offset_right = 600.0
+offset_bottom = 78.0
+theme_override_styles/background = SubResource("BarBg")
+theme_override_styles/fill = SubResource("BarEnemy")
+show_percentage = false
+
+[node name="Hint" type="Label" parent="BattleUI"]
+offset_left = 60.0
+offset_top = 990.0
+offset_right = 700.0
+offset_bottom = 1036.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 28
+
+[node name="Result" type="Label" parent="BattleUI"]
+offset_left = 660.0
+offset_top = 430.0
+offset_right = 1260.0
+offset_bottom = 520.0
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+
+[node name="Reward" type="Label" parent="BattleUI"]
+offset_left = 660.0
+offset_top = 530.0
+offset_right = 1260.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0.95, 0.88, 0.6, 1)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="BattleUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0)
+mouse_filter = 2

@@ -68,6 +68,7 @@ func _set_spawn():
 
 		# Hold the bedroom door shut until Kiren has read the letter.
 		# go_to_living_room.gd checks this flag.
+		GameState.grant_starting_kit()
 		GameState.set_flag("intro_chest_gate_active", true)
 		GameState.set_objective(OBJECTIVE_CHEST)
 

@@ -679,7 +679,7 @@ position = Vector2(700, 330)
 script = ExtResource("ep")
 encounter_id = "Map2Encounter02"
 enemy_id = "witch_doctor"
-enabled = false
+enabled = true
 one_time = true
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
