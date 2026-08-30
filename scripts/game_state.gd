@@ -66,6 +66,20 @@ var tutorial_hint := ""
 ## A future inventory menu just reads this array.
 var inventory: Array[Dictionary] = []
 
+## What Kiren currently has equipped, as item ids. Data only for now -
+## nothing reads these yet, and equipping does not change his sprite.
+var equipment := {
+	"weapon": "",
+	"head": "",
+	"body": "",
+	"legs": "",
+	"feet": "",
+}
+
+## Ids of containers already searched, used as a set. Lives here rather
+## than in the scene so a barrel stays empty after a scene change.
+var opened_containers := {}
+
 
 func set_flag(flag: String, value := true) -> void:
 	story_flags[flag] = value
@@ -92,6 +106,14 @@ func add_item(item: Dictionary) -> void:
 	# Copied so the constants in items.gd can never be modified by accident.
 	inventory.append(item.duplicate(true))
 	inventory_changed.emit()
+
+
+func is_container_opened(id: String) -> bool:
+	return opened_containers.has(id)
+
+
+func mark_container_opened(id: String) -> void:
+	opened_containers[id] = true
 
 
 func remove_item(id: String) -> void:
