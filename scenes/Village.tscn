@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://do4qpnprn3dch" path="res://Assets/Trees/Moss_tree3.png" id="v_Moss_tree3"]
 [ext_resource type="Texture2D" uid="uid://b13gefw4bdte8" path="res://Assets/Trees/Tree2.png" id="v_Tree2"]
 [ext_resource type="Texture2D" uid="uid://b7vj7dbshpwce" path="res://Assets/Trees/Tree3.png" id="v_Tree3"]
+[ext_resource type="Script" path="res://scripts/map_exit.gd" id="mx_west"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glln"]
 size = Vector2(119, 96)
@@ -71,6 +72,15 @@ size = Vector2(600, 16)
 
 [sub_resource type="RectangleShape2D" id="BoundV"]
 size = Vector2(16, 320)
+
+[sub_resource type="RectangleShape2D" id="BoundVUp"]
+size = Vector2(16, 190)
+
+[sub_resource type="RectangleShape2D" id="BoundVDown"]
+size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="WestGate"]
+size = Vector2(20, 36)
 
 [node name="Village" type="Node2D" unique_id=248133000]
 script = ExtResource("5_village")
@@ -295,7 +305,7 @@ position = Vector2(0, 10)
 shape = SubResource("Trunk18")
 
 [node name="Tree10_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(20, 366)
+position = Vector2(20, 396)
 centered = false
 offset = Vector2(-29, -48)
 texture = ExtResource("v_Tree2")
@@ -640,13 +650,31 @@ shape = SubResource("BoundH")
 position = Vector2(260, 474)
 shape = SubResource("BoundH")
 
-[node name="Left" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(0, 321)
-shape = SubResource("BoundV")
+[node name="LeftUpper" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(0, 255)
+shape = SubResource("BoundVUp")
+
+[node name="LeftLower" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(0, 434)
+shape = SubResource("BoundVDown")
 
 [node name="Right" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(520, 321)
 shape = SubResource("BoundV")
+
+[node name="Triggers2" type="Node2D" parent="."]
+
+[node name="ToWesternOutskirts" type="Area2D" parent="Triggers2"]
+script = ExtResource("mx_west")
+target_scene = "res://scenes/western_outskirts.tscn"
+spawn_name = "SpawnFromEast"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers2/ToWesternOutskirts"]
+position = Vector2(-4, 368)
+shape = SubResource("WestGate")
+
+[node name="SpawnFromWest" type="Marker2D" parent="."]
+position = Vector2(52, 368)
 
 [connection signal="body_entered" from="KirenEiraHouse/EnterHouse" to="KirenEiraHouse/EnterHouse" method="_on_enter_house_body_entered"]
 [connection signal="interacted" from="Props/Woodpile/Interact" to="." method="_on_woodpile_interacted"]

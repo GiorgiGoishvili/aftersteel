@@ -8,6 +8,24 @@ const OBJECTIVE_FIREPLACE := "Put the firewood by the fireplace."
 func _ready() -> void:
 	Music.fade_to("casual")
 	_refresh_woodpile()
+	call_deferred("_set_spawn")
+
+
+# Returning from the western route: next_spawn carries the NAME of a marker
+# in this scene. Anything else (or nothing) leaves Kiren where the scene
+# already puts him, which is what the house exit relies on.
+func _set_spawn() -> void:
+	if GameState.next_spawn == "":
+		return
+
+	var marker := find_child(GameState.next_spawn, true, false)
+
+	if marker != null:
+		var player := find_child("Player", true, false)
+		if player != null:
+			player.global_position = marker.global_position
+
+	GameState.next_spawn = ""
 
 
 # The logs are the wood Kiren carries in, so once he has taken them the

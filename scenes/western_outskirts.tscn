@@ -1,0 +1,635 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="p"]
+[ext_resource type="TileSet" uid="uid://dud4t23018448" path="res://Assets/Maps/village_tileset.tres" id="ts"]
+[ext_resource type="Script" path="res://scripts/world_map.gd" id="ms"]
+[ext_resource type="Script" path="res://scripts/map_exit.gd" id="mx"]
+[ext_resource type="Script" path="res://scripts/encounter_point.gd" id="ep"]
+[ext_resource type="Texture2D" uid="uid://dlk0dtxkqatgl" path="res://Assets/Bushes/Bush_orange_flowers1.png" id="t_Bush_orange_flowers1"]
+[ext_resource type="Texture2D" uid="uid://bh8hlcjfgu0u0" path="res://Assets/Bushes/Bush_pink_flowers1.png" id="t_Bush_pink_flowers1"]
+[ext_resource type="Texture2D" uid="uid://dqiqklocybd3t" path="res://Assets/Bushes/Bush_simple1_1.png" id="t_Bush_simple1_1"]
+[ext_resource type="Texture2D" uid="uid://b6sfybr8ew4ck" path="res://Assets/Bushes/Bush_simple1_2.png" id="t_Bush_simple1_2"]
+[ext_resource type="Texture2D" uid="uid://wlhhxt27djjj" path="res://Assets/Bushes/Bush_simple2_1.png" id="t_Bush_simple2_1"]
+[ext_resource type="Texture2D" uid="uid://bkahdlxr6lctq" path="res://Assets/Bushes/Fern1_2.png" id="t_Fern1_2"]
+[ext_resource type="Texture2D" uid="uid://3ytghmvo6ae3" path="res://Assets/Trees/Flower_tree1.png" id="t_Flower_tree1"]
+[ext_resource type="Texture2D" uid="uid://cxtpvepggu5tl" path="res://Assets/Trees/Fruit_tree2.png" id="t_Fruit_tree2"]
+[ext_resource type="Texture2D" uid="uid://h63u8radgf8l" path="res://Assets/Trees/Fruit_tree3.png" id="t_Fruit_tree3"]
+[ext_resource type="Texture2D" uid="uid://do4qpnprn3dch" path="res://Assets/Trees/Moss_tree3.png" id="t_Moss_tree3"]
+[ext_resource type="Texture2D" uid="uid://b13gefw4bdte8" path="res://Assets/Trees/Tree2.png" id="t_Tree2"]
+[ext_resource type="Texture2D" uid="uid://b7vj7dbshpwce" path="res://Assets/Trees/Tree3.png" id="t_Tree3"]
+
+[sub_resource type="RectangleShape2D" id="Trunk11"]
+size = Vector2(11, 8)
+
+[sub_resource type="RectangleShape2D" id="Trunk15"]
+size = Vector2(15, 8)
+
+[sub_resource type="RectangleShape2D" id="Trunk19"]
+size = Vector2(19, 8)
+
+[sub_resource type="RectangleShape2D" id="Trunk9"]
+size = Vector2(9, 8)
+
+[sub_resource type="RectangleShape2D" id="Trunk16"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="Trunk13"]
+size = Vector2(13, 8)
+
+[sub_resource type="RectangleShape2D" id="W_Top"]
+size = Vector2(960, 32)
+
+[sub_resource type="RectangleShape2D" id="W_Bottom"]
+size = Vector2(960, 32)
+
+[sub_resource type="RectangleShape2D" id="W_LeftUp"]
+size = Vector2(24, 224)
+
+[sub_resource type="RectangleShape2D" id="W_LeftDown"]
+size = Vector2(24, 128)
+
+[sub_resource type="RectangleShape2D" id="W_RightUp"]
+size = Vector2(24, 224)
+
+[sub_resource type="RectangleShape2D" id="W_RightDown"]
+size = Vector2(24, 128)
+
+[sub_resource type="RectangleShape2D" id="X_ToVillage"]
+size = Vector2(20, 40)
+
+[sub_resource type="RectangleShape2D" id="X_ToWesternWoods"]
+size = Vector2(20, 40)
+
+[node name="WesternOutskirts" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("ms")
+
+[node name="Player" parent="." instance=ExtResource("p")]
+position = Vector2(852, 272)
+
+[node name="Ground" type="TileMapLayer" parent="."]
+z_index = -10
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAABAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAABAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAABAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAABAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAABAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAABAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAABAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAVAAEAAAABAAAAAAAWAAEAAAAAAAAAAAAXAAEAAAAAAAAAAAAYAAEAAAAAAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAABAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAABAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAABAAAAAAANAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAARAAIAAAABAAAAAAASAAIAAAAAAAAAAAATAAIAAAAAAAAAAAAUAAIAAAAAAAAAAAAVAAIAAAAAAAAAAAAWAAIAAAABAAAAAAAXAAIAAAAAAAAAAAAYAAIAAAAAAAAAAAAZAAIAAAAAAAAAAAAaAAIAAAAAAAAAAAAbAAIAAAABAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAABAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAABAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAABAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAABAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAABAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAABAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAABAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAABAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAAAAUAAAABAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAABAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAABAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAUAAUAAAABAAAAAAAVAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAYAAUAAAAAAAAAAAAZAAUAAAABAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAABAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAABAAAAAAAMAAYAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAABAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAABAAAAAAAbAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAABAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAABAAAAAAAIAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAcAAAABAAAAAAAXAAcAAAAAAAAAAAAYAAcAAAAAAAAAAAAZAAcAAAAAAAAAAAAaAAcAAAAAAAAAAAAbAAcAAAABAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAABAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAABAAAAAAATAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAABAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAABAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAABAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAkAAAABAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAABAAAAAAAZAAkAAAAAAAAAAAAaAAkAAAAAAAAAAAAbAAkAAAAAAAAAAAAAAAoAAAABAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAABAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAABAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAABAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAABAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAABAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAABAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAABAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAABAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAABAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAABAAAAAAAWAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAABAAAAAAAbAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAABAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAABAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAABAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAABAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAABAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAABAAAAAAAAAA0AAAAAAAAAAAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAADAA0AAAABAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAABAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAABAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAABAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAABAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAAaAA0AAAAAAAAAAAAbAA0AAAAAAAAAAAA=")
+tile_set = ExtResource("ts")
+
+[node name="Paths" type="TileMapLayer" parent="."]
+z_index = -5
+tile_map_data = PackedByteArray("AAAAAAgAAAAAAAEAAAABAAgAAAAAAAEAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAKAAcAAAAAAAEAAAALAAcAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAYAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAUAAAAAAAEAAAAOAAYAAAAAAAEAAAAOAAcAAAAAAAEAAAAPAAUAAAAAAAEAAAAPAAYAAAAAAAEAAAAPAAcAAAAAAAEAAAAQAAYAAAAAAAEAAAAQAAcAAAAAAAEAAAARAAcAAAAAAAEAAAASAAcAAAAAAAEAAAATAAcAAAAAAAEAAAAUAAcAAAAAAAEAAAAUAAgAAAAAAAEAAAAVAAgAAAAAAAEAAAAWAAgAAAAAAAEAAAAXAAgAAAAAAAEAAAAYAAgAAAAAAAEAAAAZAAgAAAAAAAEAAAAaAAgAAAAAAAEAAAAbAAgAAAAAAAEAAAA=")
+tile_set = ExtResource("ts")
+
+[node name="Vegetation" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree00_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(60, 78)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree00_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree00_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree01_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(140, 66)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree01_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree01_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree02_Fruit_tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(226, 74)
+centered = false
+offset = Vector2(-63, -79)
+texture = ExtResource("t_Fruit_tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree02_Fruit_tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree02_Fruit_tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk19")
+
+[node name="Tree03_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(310, 62)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree03_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree03_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree04_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(398, 76)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree04_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree04_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree05_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(486, 64)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree05_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree05_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree06_Fruit_tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(566, 74)
+centered = false
+offset = Vector2(-32, -34)
+texture = ExtResource("t_Fruit_tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree06_Fruit_tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree06_Fruit_tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk9")
+
+[node name="Tree07_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(650, 66)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree07_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree07_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree08_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(738, 76)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree08_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree08_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree09_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(822, 64)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree09_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree09_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree10_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(52, 392)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree10_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree10_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree11_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(150, 402)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree11_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree11_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree12_Moss_tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(250, 392)
+centered = false
+offset = Vector2(-33, -36)
+texture = ExtResource("t_Moss_tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree12_Moss_tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree12_Moss_tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk16")
+
+[node name="Tree13_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(352, 404)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree13_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree13_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree14_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(452, 392)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree14_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree14_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree15_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(556, 402)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree15_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree15_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree16_Moss_tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(660, 392)
+centered = false
+offset = Vector2(-33, -36)
+texture = ExtResource("t_Moss_tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree16_Moss_tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree16_Moss_tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk16")
+
+[node name="Tree17_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(762, 404)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree17_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree17_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree18_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(858, 392)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree18_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree18_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree19_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(40, 136)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree19_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree19_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree20_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(36, 196)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree20_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree20_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree21_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(44, 316)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree21_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree21_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree22_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(38, 358)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree22_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree22_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree23_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(862, 136)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree23_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree23_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree24_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(866, 200)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree24_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree24_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree25_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(858, 322)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree25_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree25_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree26_Tree2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(864, 364)
+centered = false
+offset = Vector2(-29, -48)
+texture = ExtResource("t_Tree2")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree26_Tree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree26_Tree2/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk11")
+
+[node name="Tree27_Fruit_tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(700, 186)
+centered = false
+offset = Vector2(-32, -34)
+texture = ExtResource("t_Fruit_tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree27_Fruit_tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree27_Fruit_tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk9")
+
+[node name="Tree28_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(470, 166)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree28_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree28_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree29_Moss_tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(180, 176)
+centered = false
+offset = Vector2(-33, -36)
+texture = ExtResource("t_Moss_tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree29_Moss_tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree29_Moss_tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk16")
+
+[node name="Tree30_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(600, 336)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree30_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree30_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree31_Fruit_tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(300, 338)
+centered = false
+offset = Vector2(-32, -34)
+texture = ExtResource("t_Fruit_tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree31_Fruit_tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree31_Fruit_tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk9")
+
+[node name="Tree32_Tree3" type="Sprite2D" parent="Vegetation"]
+position = Vector2(760, 316)
+centered = false
+offset = Vector2(-32, -37)
+texture = ExtResource("t_Tree3")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree32_Tree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree32_Tree3/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree33_Flower_tree1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(470, 136)
+centered = false
+offset = Vector2(-64, -83)
+texture = ExtResource("t_Flower_tree1")
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree33_Flower_tree1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree33_Flower_tree1/Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk13")
+
+[node name="Bush34_Bush_simple1_1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(120, 286)
+centered = false
+offset = Vector2(-15, -14)
+texture = ExtResource("t_Bush_simple1_1")
+
+[node name="Bush35_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(520, 200)
+centered = false
+offset = Vector2(-32, -31)
+texture = ExtResource("t_Bush_pink_flowers1")
+
+[node name="Bush36_Bush_simple2_1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(640, 286)
+centered = false
+offset = Vector2(-16, -16)
+texture = ExtResource("t_Bush_simple2_1")
+
+[node name="Bush37_Fern1_2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(240, 306)
+centered = false
+offset = Vector2(-16, -12)
+texture = ExtResource("t_Fern1_2")
+
+[node name="Bush38_Bush_orange_flowers1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(408, 316)
+centered = false
+offset = Vector2(-31, -34)
+texture = ExtResource("t_Bush_orange_flowers1")
+
+[node name="Bush39_Bush_simple1_2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(706, 306)
+centered = false
+offset = Vector2(-16, -11)
+texture = ExtResource("t_Bush_simple1_2")
+
+[node name="Bush40_Bush_simple1_1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(806, 286)
+centered = false
+offset = Vector2(-15, -14)
+texture = ExtResource("t_Bush_simple1_1")
+
+[node name="Bush41_Fern1_2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(90, 326)
+centered = false
+offset = Vector2(-16, -12)
+texture = ExtResource("t_Fern1_2")
+
+[node name="Bush42_Bush_simple2_1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(340, 186)
+centered = false
+offset = Vector2(-16, -16)
+texture = ExtResource("t_Bush_simple2_1")
+
+[node name="Bush43_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(436, 136)
+centered = false
+offset = Vector2(-32, -31)
+texture = ExtResource("t_Bush_pink_flowers1")
+
+[node name="Bush44_Bush_simple1_2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(530, 326)
+centered = false
+offset = Vector2(-16, -11)
+texture = ExtResource("t_Bush_simple1_2")
+
+[node name="Bush45_Fern1_2" type="Sprite2D" parent="Vegetation"]
+position = Vector2(672, 166)
+centered = false
+offset = Vector2(-16, -12)
+texture = ExtResource("t_Fern1_2")
+
+[node name="Bush46_Bush_simple1_1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(210, 226)
+centered = false
+offset = Vector2(-15, -14)
+texture = ExtResource("t_Bush_simple1_1")
+
+[node name="Bush47_Bush_orange_flowers1" type="Sprite2D" parent="Vegetation"]
+position = Vector2(790, 206)
+centered = false
+offset = Vector2(-31, -34)
+texture = ExtResource("t_Bush_orange_flowers1")
+
+[node name="Encounters" type="Node2D" parent="."]
+
+[node name="Map1Encounter01" type="Marker2D" parent="Encounters"]
+position = Vector2(690, 360)
+script = ExtResource("ep")
+encounter_id = "Map1Encounter01"
+enemy_id = "skeleton"
+enabled = false
+one_time = true
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(448, 16)
+shape = SubResource("W_Top")
+
+[node name="Bottom" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(448, 440)
+shape = SubResource("W_Bottom")
+
+[node name="LeftUp" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(4, 128)
+shape = SubResource("W_LeftUp")
+
+[node name="LeftDown" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(4, 376)
+shape = SubResource("W_LeftDown")
+
+[node name="RightUp" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(892, 128)
+shape = SubResource("W_RightUp")
+
+[node name="RightDown" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(892, 376)
+shape = SubResource("W_RightDown")
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="ToVillage" type="Area2D" parent="Triggers"]
+script = ExtResource("mx")
+target_scene = "res://scenes/Village.tscn"
+spawn_name = "SpawnFromWest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToVillage"]
+position = Vector2(890, 272)
+shape = SubResource("X_ToVillage")
+
+[node name="ToWesternWoods" type="Area2D" parent="Triggers"]
+script = ExtResource("mx")
+target_scene = "res://scenes/western_woods.tscn"
+spawn_name = "SpawnFromEast"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToWesternWoods"]
+position = Vector2(6, 272)
+shape = SubResource("X_ToWesternWoods")
+
+[node name="SpawnFromEast" type="Marker2D" parent="."]
+position = Vector2(852, 272)
+
+[node name="SpawnFromWest" type="Marker2D" parent="."]
+position = Vector2(44, 272)
