@@ -219,15 +219,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _leave() -> void:
 	var target_scene := GameState.battle_return_scene
 
-	# Finishing the third demo fight summons the closing duel.
-	if GameState.demo_encounters_cleared():
-		GameState.battle_enemy_id = "demon_eira"
-		GameState.battle_encounter_id = "demon_eira"
-		GameState.battle_return_scene = ""
-		GameState.battle_return_position = Vector2.ZERO
-		get_tree().call_deferred("reload_current_scene")
-		return
-
 	# battle_return_position is deliberately NOT cleared here - the map
 	# being returned to consumes it to stand Kiren beside the encounter,
 	# and clears it itself.

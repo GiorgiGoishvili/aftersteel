@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://d3xeh81l5n48r" path="res://Assets/Bushes/Fern1_3.png" id="1_tuft"]
+
+[node name="GrassTuft" type="Node2D"]
+editor_description = "Decorative grass tuft, instanced by every overworld map under its GrassTufts node. The Sprite child is PLACEHOLDER art (Fern1_3). To animate all tufts at once, replace Sprite with an AnimatedSprite2D here - the maps only store positions."
+
+[node name="Sprite" type="Sprite2D" parent="."]
+offset = Vector2(0, -6)
+texture = ExtResource("1_tuft")

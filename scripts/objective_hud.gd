@@ -15,8 +15,7 @@ const GAMEPLAY_SCENES := [
 	"KirenEiraHouseInterior",
 	"Village",
 	"WesternOutskirts",
-	"WesternWoods",
-	"WesternRuins",
+	"WesternRiver",
 ]
 
 @onready var label: Label = $ObjectiveText

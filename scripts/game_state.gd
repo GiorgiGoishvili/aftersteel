@@ -188,17 +188,6 @@ func mark_encounter_cleared(id: String) -> void:
 		completed_encounters[id] = true
 
 
-## The three fights that make up the playable demo.
-const DEMO_ENCOUNTERS := ["Map1Encounter01", "Map2Encounter02", "Map3Encounter01"]
-
-
-func demo_encounters_cleared() -> bool:
-	for id in DEMO_ENCOUNTERS:
-		if not is_encounter_cleared(id):
-			return false
-	return true
-
-
 ## Wipes the run so returning to the menu starts a fresh playthrough.
 func reset_run() -> void:
 	story_flags["intro_chest_gate_active"] = false
