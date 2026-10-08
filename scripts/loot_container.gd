@@ -17,10 +17,18 @@ extends Interactable
 ## Item ids from items.gd, handed over in order.
 @export var item_ids: Array[String] = []
 
+## For something lying loose on the ground rather than a container: once
+## taken, the whole pickup (this area's parent) is gone for the rest of
+## the run, including on later visits.
+@export var remove_when_taken := false
+
 
 func _ready() -> void:
 	super()
 	interacted.connect(_on_interacted)
+
+	if remove_when_taken and GameState.is_container_opened(container_id):
+		get_parent().queue_free()
 
 
 func _on_interacted() -> void:
@@ -52,3 +60,6 @@ func _on_interacted() -> void:
 		lines.append({ "text": "Nothing inside." })
 
 	Dialogue.start(lines)
+
+	if remove_when_taken:
+		get_parent().queue_free()

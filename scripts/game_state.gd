@@ -6,6 +6,7 @@ extends Node
 signal objective_changed(text: String)
 signal tutorial_changed(text: String)
 signal inventory_changed
+signal equipment_changed
 signal player_health_changed(current: int, maximum: int)
 
 
@@ -67,8 +68,9 @@ var tutorial_hint := ""
 ## A future inventory menu just reads this array.
 var inventory: Array[Dictionary] = []
 
-## What Kiren currently has equipped, as item ids. Data only for now -
-## nothing reads these yet, and equipping does not change his sprite.
+## What Kiren currently has equipped, as item ids. An item stays in the
+## inventory while equipped. Only "weapon" changes anything so far: with a
+## sword equipped the overworld Kiren uses his sword animations.
 var equipment := {
 	"weapon": "",
 	"head": "",
@@ -149,6 +151,40 @@ func grant_starting_kit() -> void:
 	add_item(Items.HEALING_HERB, 2)
 
 
+## Equips an item Kiren is carrying into its slot ("weapon" for weapons,
+## the item's own "slot" for armour).
+func equip(id: String) -> void:
+	var item := Items.by_id(id)
+
+	if item.is_empty() or not has_item(id):
+		return
+
+	var slot: String = "weapon" if item.get("type", "") == "weapon" else str(item.get("slot", ""))
+
+	if not equipment.has(slot):
+		return
+
+	equipment[slot] = id
+	equipment_changed.emit()
+
+
+func unequip(slot: String) -> void:
+	if equipment.get(slot, "") == "":
+		return
+
+	equipment[slot] = ""
+	equipment_changed.emit()
+
+
+func is_equipped(id: String) -> bool:
+	return id != "" and equipment.values().has(id)
+
+
+## Every weapon in the game is a sword, so this is "is the sword out".
+func has_weapon_equipped() -> bool:
+	return equipment.get("weapon", "") != ""
+
+
 func reset_player_hp() -> void:
 	player_stats["current_hp"] = player_stats["max_hp"]
 	player_health_changed.emit(get_player_hp(), get_player_max_hp())
@@ -199,6 +235,8 @@ func reset_run() -> void:
 	completed_encounters.clear()
 	opened_containers.clear()
 	inventory.clear()
+	for slot in equipment:
+		equipment[slot] = ""
 	_starting_kit_given = false
 	objective = ""
 	tutorial_hint = ""
@@ -232,6 +270,11 @@ func remove_item(id: String, amount := 1) -> void:
 				inventory[i]["count"] = left
 			else:
 				inventory.remove_at(i)
+
+				# Can't keep wearing something that's no longer carried.
+				for slot in equipment:
+					if equipment[slot] == id:
+						unequip(slot)
 
 			inventory_changed.emit()
 			return

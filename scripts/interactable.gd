@@ -27,6 +27,10 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
+	# E also swings Kiren's sword; player.gd checks this group so that
+	# examining or talking always wins when something is in reach.
+	add_to_group("interactables")
+
 
 func is_player_in_range() -> bool:
 	return _player_in_range

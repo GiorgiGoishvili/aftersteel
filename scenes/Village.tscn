@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://do4qpnprn3dch" path="res://Assets/Trees/Moss_tree3.png" id="v_Moss_tree3"]
 [ext_resource type="Texture2D" uid="uid://b13gefw4bdte8" path="res://Assets/Trees/Tree2.png" id="v_Tree2"]
 [ext_resource type="Texture2D" uid="uid://b7vj7dbshpwce" path="res://Assets/Trees/Tree3.png" id="v_Tree3"]
+[ext_resource type="Texture2D" uid="uid://dq1n7070eslmh" path="res://Assets/Weapons/GrayShortSword.png" id="w_gray_short_sword"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wood"]
 size = Vector2(56, 64)
@@ -95,6 +96,9 @@ size = Vector2(16, 96)
 
 [sub_resource type="RectangleShape2D" id="WestGate"]
 size = Vector2(24, 72)
+
+[sub_resource type="RectangleShape2D" id="SwordPickupArea"]
+size = Vector2(28, 24)
 
 [node name="Village" type="Node2D" unique_id=248133000]
 y_sort_enabled = true
@@ -181,6 +185,23 @@ texture = ExtResource("8_log2")
 [node name="LogC" type="Sprite2D" parent="Props/GroveLogs" unique_id=1828564293]
 position = Vector2(0, 10)
 texture = ExtResource("7_log1")
+
+[node name="SwordPickup" type="Node2D" parent="Props"]
+z_index = -1
+position = Vector2(120, 338)
+
+[node name="Sprite" type="Sprite2D" parent="Props/SwordPickup"]
+texture = ExtResource("w_gray_short_sword")
+
+[node name="Interact" type="Area2D" parent="Props/SwordPickup"]
+script = ExtResource("10_loot")
+container_id = "village_road_sword"
+item_ids = Array[String](["gray_short_sword"])
+remove_when_taken = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/SwordPickup/Interact"]
+position = Vector2(0, 2)
+shape = SubResource("SwordPickupArea")
 
 [node name="NPCs" type="Node2D" parent="." unique_id=610925968]
 

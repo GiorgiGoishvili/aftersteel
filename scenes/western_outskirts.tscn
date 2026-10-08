@@ -4,7 +4,6 @@
 [ext_resource type="TileSet" uid="uid://dud4t23018448" path="res://Assets/Maps/village_tileset.tres" id="ts"]
 [ext_resource type="Script" path="res://scripts/world_map.gd" id="ms"]
 [ext_resource type="Script" path="res://scripts/map_exit.gd" id="mx"]
-[ext_resource type="Script" path="res://scripts/encounter_point.gd" id="ep"]
 [ext_resource type="Texture2D" uid="uid://dlk0dtxkqatgl" path="res://Assets/Bushes/Bush_orange_flowers1.png" id="t_Bush_orange_flowers1"]
 [ext_resource type="Texture2D" uid="uid://bh8hlcjfgu0u0" path="res://Assets/Bushes/Bush_pink_flowers1.png" id="t_Bush_pink_flowers1"]
 [ext_resource type="Texture2D" uid="uid://dqiqklocybd3t" path="res://Assets/Bushes/Bush_simple1_1.png" id="t_Bush_simple1_1"]
@@ -23,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dewl40abr1atb" path="res://Assets/Bushes/Bush_blue_flowers2.png" id="t_Bush_blue_flowers2"]
 [ext_resource type="Texture2D" uid="uid://bmg46fnrxo7le" path="res://Assets/Bushes/Bush_simple2_3.png" id="t_Bush_simple2_3"]
 [ext_resource type="PackedScene" path="res://scenes/props/grass_tuft.tscn" id="gt_tuft"]
+[ext_resource type="Script" path="res://scripts/enemies/red_slime_spawner.gd" id="rs"]
 
 [sub_resource type="RectangleShape2D" id="Trunk11"]
 size = Vector2(11, 8)
@@ -591,30 +591,20 @@ texture = ExtResource("t_Bush_orange_flowers1")
 
 [node name="Map1Slime01" type="Marker2D" parent="Encounters"]
 position = Vector2(608, 222)
-script = ExtResource("ep")
-editor_description = "Slime encounter location. Dormant until in-exploration combat exists."
-encounter_id = "Map1Slime01"
-enemy_id = "slime"
-enabled = false
-one_time = true
+editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 
 [node name="Map1Slime02" type="Marker2D" parent="Encounters"]
 position = Vector2(240, 150)
-script = ExtResource("ep")
-editor_description = "Slime encounter location. Dormant until in-exploration combat exists."
-encounter_id = "Map1Slime02"
-enemy_id = "slime"
-enabled = false
-one_time = true
+editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 
 [node name="Map1Slime03" type="Marker2D" parent="Encounters"]
 position = Vector2(288, 262)
-script = ExtResource("ep")
-editor_description = "Slime encounter location. Dormant until in-exploration combat exists."
-encounter_id = "Map1Slime03"
-enemy_id = "slime"
-enabled = false
-one_time = true
+editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
+
+[node name="RedSlimeSpawner" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("rs")
+spawn_points = Array[NodePath]([NodePath("../Encounters/Map1Slime01"), NodePath("../Encounters/Map1Slime02"), NodePath("../Encounters/Map1Slime03")])
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 

@@ -20,7 +20,8 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name != "Player":
+	# Slimes and other bodies brush exits too; only Kiren may leave a map.
+	if not body.is_in_group("player"):
 		return
 
 	if target_scene == "":

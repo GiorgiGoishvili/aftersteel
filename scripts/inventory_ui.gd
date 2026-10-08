@@ -2,8 +2,8 @@ extends CanvasLayer
 
 ## Kiren's pack. Opens with I, closes with I or Esc.
 ##
-## Deliberately small: a list, a description, and one usable item type.
-## No drag and drop, no slots, no sorting, no weight.
+## Deliberately small: a list, a description, healing items to use and
+## weapons to equip. No drag and drop, no slots, no sorting, no weight.
 ##
 ## Dialogue outranks it - the screen refuses to open while someone is
 ## talking, so the two can never fight over E.
@@ -82,6 +82,8 @@ func _refresh() -> void:
 		var row := Label.new()
 		var mark := ">" if i == _selected else " "
 		row.text = "%s %-22s x%d" % [mark, item.get("name", "?"), int(item.get("count", 1))]
+		if GameState.is_equipped(str(item.get("id", ""))):
+			row.text += "   EQUIPPED"
 		row.add_theme_font_override("font", title.get_theme_font("font"))
 		row.add_theme_font_size_override("font_size", 28)
 		row.add_theme_color_override("font_color",
@@ -129,6 +131,20 @@ func _use() -> void:
 		return
 
 	var item: Dictionary = _rows[_selected]
+
+	# Weapons toggle in and out of the weapon slot; the item stays here.
+	if item.get("type", "") == "weapon":
+		var id := str(item["id"])
+
+		if GameState.is_equipped(id):
+			GameState.unequip("weapon")
+			hint.text = "Unequipped: %s" % item["name"]
+		else:
+			GameState.equip(id)
+			hint.text = "Equipped: %s" % item["name"]
+
+		_refresh()
+		return
 
 	if item.get("use", "") != "heal":
 		hint.text = "Nothing happens."

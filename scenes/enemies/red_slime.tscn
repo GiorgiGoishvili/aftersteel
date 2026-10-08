@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/red_slime.gd" id="1_slime"]
+[ext_resource type="SpriteFrames" path="res://Assets/Enemies/Slimes/Red/RedSlimeSpriteFrames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="Body"]
+size = Vector2(16, 6)
+
+[sub_resource type="RectangleShape2D" id="Hurt"]
+size = Vector2(20, 16)
+
+[sub_resource type="RectangleShape2D" id="StrikeVertical"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="StrikeSide"]
+size = Vector2(18, 16)
+
+[node name="RedSlime" type="CharacterBody2D" groups=["enemies"]]
+motion_mode = 1
+script = ExtResource("1_slime")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"FIdle"
+autoplay = "FIdle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("Body")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 8)
+shape = SubResource("Hurt")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="F" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(0, 16)
+shape = SubResource("StrikeVertical")
+disabled = true
+
+[node name="B" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(0, -4)
+shape = SubResource("StrikeVertical")
+disabled = true
+
+[node name="L" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-14, 10)
+shape = SubResource("StrikeSide")
+disabled = true
+
+[node name="R" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(14, 10)
+shape = SubResource("StrikeSide")
+disabled = true
