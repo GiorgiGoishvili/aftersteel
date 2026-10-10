@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="1_base"]
+[ext_resource type="SpriteFrames" path="res://Assets/Characters/Welf/Animations/WelfSpriteFrames.tres" id="2_frames"]
+
+[node name="Welf" instance=ExtResource("1_base")]
+speaker = "WELF"
+first_lines = Array[String](["Here. It's yours now.", "Keep the edge clean."])
+repeat_lines = Array[String](["Bring it back if it chips."])
+gift_item_id = "gray_short_sword"
+gift_id = "welf_sword"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_frames")
+animation = &"FIdle"
+autoplay = "FIdle"

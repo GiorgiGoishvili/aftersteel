@@ -60,6 +60,17 @@ const HEALING_HERB := {
 	"icon": "res://Assets/GameUI/Icons.png",
 }
 
+# Iroh's gift. Heals through the same inventory "use" as the herb.
+const HEALTH_POTION := {
+	"id": "health_potion",
+	"name": "Health Potion",
+	"description": "A small corked bottle. Restores 40 health.",
+	"key_item": false,
+	"use": "heal",
+	"power": 40,
+	"icon": "res://Assets/GameUI/Icons.png",
+}
+
 const STEEL_FRAGMENT := {
 	"id": "steel_fragment",
 	"name": "Steel Fragment",
@@ -168,6 +179,7 @@ const ALL := {
 	"firewood_bundle": FIREWOOD_BUNDLE,
 	"test_ration": TEST_RATION,
 	"healing_herb": HEALING_HERB,
+	"health_potion": HEALTH_POTION,
 	"steel_fragment": STEEL_FRAGMENT,
 	"short_sword": SHORT_SWORD,
 	"long_sword": LONG_SWORD,

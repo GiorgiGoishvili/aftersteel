@@ -105,6 +105,10 @@ var _starting_kit_given := false
 ## than in the scene so a barrel stays empty after a scene change.
 var opened_containers := {}
 
+## Ids of NPC gifts already handed over, used as a set, so talking again
+## or coming back to the map never gives the same thing twice.
+var received_gifts := {}
+
 
 func set_flag(flag: String, value := true) -> void:
 	story_flags[flag] = value
@@ -234,6 +238,7 @@ func reset_run() -> void:
 	story_flags["eira_firewood_quest_completed"] = false
 	completed_encounters.clear()
 	opened_containers.clear()
+	received_gifts.clear()
 	inventory.clear()
 	for slot in equipment:
 		equipment[slot] = ""
@@ -251,6 +256,14 @@ func clear_battle_context() -> void:
 	battle_encounter_id = ""
 	battle_return_scene = ""
 	battle_return_position = Vector2.ZERO
+
+
+func has_received_gift(id: String) -> bool:
+	return received_gifts.has(id)
+
+
+func mark_gift_received(id: String) -> void:
+	received_gifts[id] = true
 
 
 func is_container_opened(id: String) -> bool:

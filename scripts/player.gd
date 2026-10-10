@@ -90,11 +90,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if GameState.input_locked or _one_shot != "" or _defeated or not GameState.has_weapon_equipped():
 		return
 
-	# E is both attack and examine/talk: with anything in reach, that press
-	# belongs to the interaction. J and the mouse only ever attack.
-	if _is_interact_key(event) and _interactable_in_reach():
-		return
-
 	_swing_hits.clear()
 	_aim_sword(facing)
 	_start_one_shot(facing + "SAttack")
@@ -211,15 +206,3 @@ func _facing_for(direction: Vector2) -> String:
 		return "R" if direction.x > 0 else "L"
 
 	return "F" if direction.y > 0 else "B"
-
-
-func _is_interact_key(event: InputEvent) -> bool:
-	return event is InputEventKey and (event.keycode == KEY_E or event.physical_keycode == KEY_E)
-
-
-func _interactable_in_reach() -> bool:
-	for node in get_tree().get_nodes_in_group("interactables"):
-		if node.enabled and node.is_player_in_range():
-			return true
-
-	return false

@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="2_inter"]
+
+[sub_resource type="RectangleShape2D" id="Feet"]
+size = Vector2(14, 6)
+
+[sub_resource type="RectangleShape2D" id="TalkReach"]
+size = Vector2(40, 44)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_npc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Body" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 12)
+shape = SubResource("Feet")
+
+[node name="Talk" type="Area2D" parent="."]
+script = ExtResource("2_inter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Talk"]
+position = Vector2(0, 22)
+shape = SubResource("TalkReach")

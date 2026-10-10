@@ -1,28 +1,26 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://cxa4xlh3ifuaw"]
 
+[ext_resource type="PackedScene" path="res://scenes/props/grass_tuft.tscn" id="gt_tuft"]
+[ext_resource type="Script" uid="uid://cp68hee8bf6vx" path="res://scripts/world_map.gd" id="ms"]
+[ext_resource type="Script" uid="uid://b272ep0ve02nq" path="res://scripts/map_exit.gd" id="mx"]
 [ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="p"]
+[ext_resource type="Script" uid="uid://b274a076vabub" path="res://scripts/enemies/red_slime_spawner.gd" id="rs"]
 [ext_resource type="TileSet" uid="uid://dud4t23018448" path="res://Assets/Maps/village_tileset.tres" id="ts"]
-[ext_resource type="Script" path="res://scripts/world_map.gd" id="ms"]
-[ext_resource type="Script" path="res://scripts/map_exit.gd" id="mx"]
+[ext_resource type="Texture2D" uid="uid://dewl40abr1atb" path="res://Assets/Bushes/Bush_blue_flowers2.png" id="t_Bush_blue_flowers2"]
 [ext_resource type="Texture2D" uid="uid://dlk0dtxkqatgl" path="res://Assets/Bushes/Bush_orange_flowers1.png" id="t_Bush_orange_flowers1"]
 [ext_resource type="Texture2D" uid="uid://bh8hlcjfgu0u0" path="res://Assets/Bushes/Bush_pink_flowers1.png" id="t_Bush_pink_flowers1"]
 [ext_resource type="Texture2D" uid="uid://dqiqklocybd3t" path="res://Assets/Bushes/Bush_simple1_1.png" id="t_Bush_simple1_1"]
 [ext_resource type="Texture2D" uid="uid://b6sfybr8ew4ck" path="res://Assets/Bushes/Bush_simple1_2.png" id="t_Bush_simple1_2"]
+[ext_resource type="Texture2D" uid="uid://b52hcfpy3jd77" path="res://Assets/Bushes/Bush_simple1_3.png" id="t_Bush_simple1_3"]
 [ext_resource type="Texture2D" uid="uid://wlhhxt27djjj" path="res://Assets/Bushes/Bush_simple2_1.png" id="t_Bush_simple2_1"]
+[ext_resource type="Texture2D" uid="uid://bmg46fnrxo7le" path="res://Assets/Bushes/Bush_simple2_3.png" id="t_Bush_simple2_3"]
 [ext_resource type="Texture2D" uid="uid://bkahdlxr6lctq" path="res://Assets/Bushes/Fern1_2.png" id="t_Fern1_2"]
-[ext_resource type="Texture2D" uid="uid://3ytghmvo6ae3" path="res://Assets/Trees/Flower_tree1.png" id="t_Flower_tree1"]
-[ext_resource type="Texture2D" uid="uid://cxtpvepggu5tl" path="res://Assets/Trees/Fruit_tree2.png" id="t_Fruit_tree2"]
+[ext_resource type="Texture2D" uid="uid://d3g5b0yhntsic" path="res://Assets/Bushes/Fern2_2.png" id="t_Fern2_2"]
 [ext_resource type="Texture2D" uid="uid://h63u8radgf8l" path="res://Assets/Trees/Fruit_tree3.png" id="t_Fruit_tree3"]
+[ext_resource type="Texture2D" uid="uid://c6prd1o3nj2ck" path="res://Assets/Trees/Moss_tree2.png" id="t_Moss_tree2"]
 [ext_resource type="Texture2D" uid="uid://do4qpnprn3dch" path="res://Assets/Trees/Moss_tree3.png" id="t_Moss_tree3"]
 [ext_resource type="Texture2D" uid="uid://b13gefw4bdte8" path="res://Assets/Trees/Tree2.png" id="t_Tree2"]
 [ext_resource type="Texture2D" uid="uid://b7vj7dbshpwce" path="res://Assets/Trees/Tree3.png" id="t_Tree3"]
-[ext_resource type="Texture2D" uid="uid://c6prd1o3nj2ck" path="res://Assets/Trees/Moss_tree2.png" id="t_Moss_tree2"]
-[ext_resource type="Texture2D" uid="uid://d3g5b0yhntsic" path="res://Assets/Bushes/Fern2_2.png" id="t_Fern2_2"]
-[ext_resource type="Texture2D" uid="uid://b52hcfpy3jd77" path="res://Assets/Bushes/Bush_simple1_3.png" id="t_Bush_simple1_3"]
-[ext_resource type="Texture2D" uid="uid://dewl40abr1atb" path="res://Assets/Bushes/Bush_blue_flowers2.png" id="t_Bush_blue_flowers2"]
-[ext_resource type="Texture2D" uid="uid://bmg46fnrxo7le" path="res://Assets/Bushes/Bush_simple2_3.png" id="t_Bush_simple2_3"]
-[ext_resource type="PackedScene" path="res://scenes/props/grass_tuft.tscn" id="gt_tuft"]
-[ext_resource type="Script" path="res://scripts/enemies/red_slime_spawner.gd" id="rs"]
 
 [sub_resource type="RectangleShape2D" id="Trunk11"]
 size = Vector2(11, 8)
@@ -30,22 +28,13 @@ size = Vector2(11, 8)
 [sub_resource type="RectangleShape2D" id="Trunk15"]
 size = Vector2(15, 8)
 
-[sub_resource type="RectangleShape2D" id="Trunk19"]
-size = Vector2(19, 8)
-
 [sub_resource type="RectangleShape2D" id="Trunk9"]
 size = Vector2(9, 8)
 
 [sub_resource type="RectangleShape2D" id="Trunk16"]
 size = Vector2(16, 8)
 
-[sub_resource type="RectangleShape2D" id="Trunk13"]
-size = Vector2(13, 8)
-
 [sub_resource type="RectangleShape2D" id="W_Top"]
-size = Vector2(960, 32)
-
-[sub_resource type="RectangleShape2D" id="W_Bottom"]
 size = Vector2(960, 32)
 
 [sub_resource type="RectangleShape2D" id="W_LeftUp"]
@@ -56,9 +45,6 @@ size = Vector2(24, 224)
 
 [sub_resource type="RectangleShape2D" id="W_RightDown"]
 size = Vector2(24, 128)
-
-[sub_resource type="RectangleShape2D" id="X_ToVillage"]
-size = Vector2(24, 80)
 
 [sub_resource type="RectangleShape2D" id="W_BottomWest"]
 size = Vector2(432, 32)
@@ -72,1953 +58,1932 @@ size = Vector2(16, 112)
 [sub_resource type="RectangleShape2D" id="W_SouthBackstop"]
 size = Vector2(112, 16)
 
+[sub_resource type="RectangleShape2D" id="X_ToVillage"]
+size = Vector2(24, 80)
+
 [sub_resource type="RectangleShape2D" id="X_ToWesternRiver"]
 size = Vector2(80, 24)
 
-[node name="WesternOutskirts" type="Node2D"]
+[node name="WesternOutskirts" type="Node2D" unique_id=1638907786]
 y_sort_enabled = true
 script = ExtResource("ms")
 
-[node name="Player" parent="." instance=ExtResource("p")]
+[node name="Player" parent="." unique_id=467048085 instance=ExtResource("p")]
 position = Vector2(852, 272)
 
-[node name="Ground" type="TileMapLayer" parent="."]
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1865077083]
 z_index = -10
 tile_map_data = PackedByteArray("AAD8//3/AAAAAAAAAAD9//3/AAABAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAABAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAP3/AAABAAAAAAAIAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAKAP3/AAAAAAAAAAALAP3/AAAAAAAAAAAMAP3/AAABAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AAABAAAAAAASAP3/AAAAAAAAAAATAP3/AAAAAAAAAAAUAP3/AAAAAAAAAAAVAP3/AAAAAAAAAAAWAP3/AAABAAAAAAAXAP3/AAAAAAAAAAAYAP3/AAAAAAAAAAAZAP3/AAAAAAAAAAAaAP3/AAAAAAAAAAAbAP3/AAABAAAAAAAcAP3/AAAAAAAAAAAdAP3/AAAAAAAAAAAeAP3/AAAAAAAAAAAfAP3/AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAABAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAABAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AAABAAAAAAAJAP7/AAAAAAAAAAAKAP7/AAAAAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAAAAAAAAANAP7/AAABAAAAAAAOAP7/AAAAAAAAAAAPAP7/AAAAAAAAAAAQAP7/AAAAAAAAAAARAP7/AAAAAAAAAAASAP7/AAABAAAAAAATAP7/AAAAAAAAAAAUAP7/AAAAAAAAAAAVAP7/AAAAAAAAAAAWAP7/AAAAAAAAAAAXAP7/AAABAAAAAAAYAP7/AAAAAAAAAAAZAP7/AAAAAAAAAAAaAP7/AAAAAAAAAAAbAP7/AAAAAAAAAAAcAP7/AAABAAAAAAAdAP7/AAAAAAAAAAAeAP7/AAAAAAAAAAAfAP7/AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAABAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAABAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAABAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAABAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAABAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAABAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAABAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAABAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAABAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAABAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAABAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAABAAAAAAAfAAAAAAAAAAAAAAD8/wEAAAABAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAABAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAABAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAVAAEAAAABAAAAAAAWAAEAAAAAAAAAAAAXAAEAAAAAAAAAAAAYAAEAAAAAAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAAAAAAAAAAcAAEAAAAAAAAAAAAdAAEAAAAAAAAAAAAeAAEAAAAAAAAAAAAfAAEAAAABAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAABAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAABAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAABAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAABAAAAAAANAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAARAAIAAAABAAAAAAASAAIAAAAAAAAAAAATAAIAAAAAAAAAAAAUAAIAAAAAAAAAAAAVAAIAAAAAAAAAAAAWAAIAAAABAAAAAAAXAAIAAAAAAAAAAAAYAAIAAAAAAAAAAAAZAAIAAAAAAAAAAAAaAAIAAAAAAAAAAAAbAAIAAAABAAAAAAAcAAIAAAAAAAAAAAAdAAIAAAAAAAAAAAAeAAIAAAAAAAAAAAAfAAIAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAABAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAABAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAABAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAABAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAABAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAABAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAABAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAABAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAABAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAABAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAABAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAdAAQAAAABAAAAAAAeAAQAAAAAAAAAAAAfAAQAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAABAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAABAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAABAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAABAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAUAAUAAAABAAAAAAAVAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAYAAUAAAAAAAAAAAAZAAUAAAABAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAAAAAAAAAdAAUAAAAAAAAAAAAeAAUAAAABAAAAAAAfAAUAAAAAAAAAAAD8/wYAAAABAAAAAAD9/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAABAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAABAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAABAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAABAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAABAAAAAAAbAAYAAAAAAAAAAAAcAAYAAAAAAAAAAAAdAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAABAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAABAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAABAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAABAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAABAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAcAAAABAAAAAAASAAcAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAcAAAABAAAAAAAXAAcAAAAAAAAAAAAYAAcAAAAAAAAAAAAZAAcAAAAAAAAAAAAaAAcAAAAAAAAAAAAbAAcAAAABAAAAAAAcAAcAAAAAAAAAAAAdAAcAAAAAAAAAAAAeAAcAAAAAAAAAAAAfAAcAAAAAAAAAAAD8/wgAAAAAAAAAAAD9/wgAAAAAAAAAAAD+/wgAAAABAAAAAAD//wgAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAABAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAABAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAABAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAABAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAXAAgAAAABAAAAAAAYAAgAAAAAAAAAAAAZAAgAAAAAAAAAAAAaAAgAAAAAAAAAAAAbAAgAAAAAAAAAAAAcAAgAAAABAAAAAAAdAAgAAAAAAAAAAAAeAAgAAAAAAAAAAAAfAAgAAAAAAAAAAAD8/wkAAAAAAAAAAAD9/wkAAAAAAAAAAAD+/wkAAAAAAAAAAAD//wkAAAABAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAABAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAABAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAABAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAkAAAABAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAABAAAAAAAZAAkAAAAAAAAAAAAaAAkAAAAAAAAAAAAbAAkAAAAAAAAAAAAcAAkAAAAAAAAAAAAdAAkAAAABAAAAAAAeAAkAAAAAAAAAAAAfAAkAAAAAAAAAAAD8/woAAAAAAAAAAAD9/woAAAAAAAAAAAD+/woAAAAAAAAAAAD//woAAAAAAAAAAAAAAAoAAAABAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAABAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAABAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAABAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAABAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAABAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAAdAAoAAAAAAAAAAAAeAAoAAAABAAAAAAAfAAoAAAAAAAAAAAD8/wsAAAABAAAAAAD9/wsAAAAAAAAAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAABAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAABAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAABAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAABAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAABAAAAAAAWAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAABAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAdAAsAAAAAAAAAAAAeAAsAAAAAAAAAAAAfAAsAAAABAAAAAAD8/wwAAAAAAAAAAAD9/wwAAAABAAAAAAD+/wwAAAAAAAAAAAD//wwAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAABAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAABAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAABAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAABAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAABAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAABAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAD8/w0AAAAAAAAAAAD9/w0AAAAAAAAAAAD+/w0AAAABAAAAAAD//w0AAAAAAAAAAAAAAA0AAAAAAAAAAAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAADAA0AAAABAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAABAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAABAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAABAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAABAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAAaAA0AAAAAAAAAAAAbAA0AAAAAAAAAAAAcAA0AAAABAAAAAAAdAA0AAAAAAAAAAAAeAA0AAAAAAAAAAAAfAA0AAAAAAAAAAAD8/w4AAAAAAAAAAAD9/w4AAAAAAAAAAAD+/w4AAAAAAAAAAAD//w4AAAABAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAABAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAABAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA4AAAABAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAABAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAABAAAAAAAZAA4AAAAAAAAAAAAaAA4AAAAAAAAAAAAbAA4AAAAAAAAAAAAcAA4AAAAAAAAAAAAdAA4AAAABAAAAAAAeAA4AAAAAAAAAAAAfAA4AAAAAAAAAAAD8/w8AAAAAAAAAAAD9/w8AAAAAAAAAAAD+/w8AAAAAAAAAAAD//w8AAAAAAAAAAAAAAA8AAAABAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAABAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAABAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAABAAAAAAAQAA8AAAAAAAAAAAARAA8AAAAAAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAABAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAABAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAABAAAAAAAfAA8AAAAAAAAAAAD8/xAAAAABAAAAAAD9/xAAAAAAAAAAAAD+/xAAAAAAAAAAAAD//xAAAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAABAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAABAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAABAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAABAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAABAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAABAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAAAAAAAAAAfABAAAAABAAAAAAA=")
 tile_set = ExtResource("ts")
 
-[node name="Paths" type="TileMapLayer" parent="."]
+[node name="Paths" type="TileMapLayer" parent="." unique_id=237955514]
 z_index = -5
 tile_map_data = PackedByteArray("AAANAAcAAQAAAAAAAAAOAAcAAQAAAAAAAAAPAAcAAQAAAAAAAAAQAAcAAQAAAAAAAAARAAcAAQAAAAAAAAASAAcAAQAAAAAAAAATAAcAAQAAAAAAAAAUAAcAAQAAAAAAAAAVAAcAAQAAAAAAAAAWAAcAAQAAAAAAAAAXAAcAAQAAAAAAAAAYAAcAAQAAAAAAAAAZAAcAAQAAAAAAAAAaAAcAAQAAAAAAAAAbAAcAAQAAAAAAAAAcAAcAAQAAAAAAAAAdAAcAAQAAAAAAAAAeAAcAAQAAAAAAAAAfAAcAAQAAAAAAAAAMAAgAAQACAAAAAAANAAgAAAABAAEAAAAOAAgAAAAAAAEAAAAPAAgAAAAAAAEAAAAQAAgAAAAAAAEAAAARAAgAAAACAAEAAAASAAgAAAABAAEAAAATAAgAAAAAAAEAAAAUAAgAAAAAAAEAAAAVAAgAAAACAAEAAAAWAAgAAAABAAEAAAAXAAgAAAAAAAEAAAAYAAgAAAAAAAEAAAAZAAgAAAAAAAEAAAAaAAgAAAACAAEAAAAbAAgAAAABAAEAAAAcAAgAAAAAAAEAAAAdAAgAAAAAAAEAAAAeAAgAAAACAAEAAAAfAAgAAAABAAEAAAAMAAkAAQACAAAAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAQADAAAAAAAQAAkAAQADAAAAAAARAAkAAQADAAAAAAASAAkAAQADAAAAAAATAAkAAQADAAAAAAAUAAkAAQADAAAAAAAVAAkAAQADAAAAAAAWAAkAAQADAAAAAAAXAAkAAQADAAAAAAAYAAkAAQADAAAAAAAZAAkAAQADAAAAAAAaAAkAAQADAAAAAAAbAAkAAQADAAAAAAAcAAkAAQADAAAAAAAdAAkAAQADAAAAAAAeAAkAAQADAAAAAAAfAAkAAQADAAAAAAAMAAoAAQACAAAAAAANAAoAAAABAAEAAAAOAAoAAQABAAAAAAAMAAsAAQACAAAAAAANAAsAAAAAAAEAAAAOAAsAAQABAAAAAAAMAAwAAQACAAAAAAANAAwAAAAAAAEAAAAOAAwAAQABAAAAAAAMAA0AAQACAAAAAAANAA0AAAACAAEAAAAOAA0AAQABAAAAAAAMAA4AAQACAAAAAAANAA4AAAAAAAEAAAAOAA4AAQABAAAAAAAMAA8AAQACAAAAAAANAA8AAAACAAEAAAAOAA8AAQABAAAAAAAMABAAAQACAAAAAAANABAAAAAAAAEAAAAOABAAAQABAAAAAAA=")
 tile_set = ExtResource("ts")
 
-[node name="Vegetation" type="Node2D" parent="."]
+[node name="Vegetation" type="Node2D" parent="." unique_id=208376822]
 y_sort_enabled = true
 
-[node name="Tree00_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree00_Tree2" type="Sprite2D" parent="Vegetation" unique_id=21916080]
 position = Vector2(60, 78)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree00_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree00_Tree2" unique_id=1952744943]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree00_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree00_Tree2/Body" unique_id=1576280457]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree01_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree01_Tree3" type="Sprite2D" parent="Vegetation" unique_id=2004148475]
 position = Vector2(140, 66)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree01_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree01_Tree3" unique_id=17272241]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree01_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree01_Tree3/Body" unique_id=1999062456]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree02_Fruit_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(226, 74)
-centered = false
-offset = Vector2(-63, -79)
-texture = ExtResource("t_Fruit_tree2")
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree02_Fruit_tree2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree02_Fruit_tree2/Body"]
-position = Vector2(0, 10)
-shape = SubResource("Trunk19")
-
-[node name="Tree03_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree03_Tree2" type="Sprite2D" parent="Vegetation" unique_id=944122072]
 position = Vector2(310, 62)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree03_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree03_Tree2" unique_id=492171868]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree03_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree03_Tree2/Body" unique_id=496689586]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree04_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree04_Tree3" type="Sprite2D" parent="Vegetation" unique_id=2055575552]
 position = Vector2(398, 76)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree04_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree04_Tree3" unique_id=762640413]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree04_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree04_Tree3/Body" unique_id=2034379426]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree05_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree05_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1504138210]
 position = Vector2(486, 64)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree05_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree05_Tree2" unique_id=313512272]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree05_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree05_Tree2/Body" unique_id=460165765]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree06_Fruit_tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree06_Fruit_tree3" type="Sprite2D" parent="Vegetation" unique_id=440096307]
 position = Vector2(566, 74)
+texture = ExtResource("t_Fruit_tree3")
 centered = false
 offset = Vector2(-32, -34)
-texture = ExtResource("t_Fruit_tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree06_Fruit_tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree06_Fruit_tree3" unique_id=1839566555]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree06_Fruit_tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree06_Fruit_tree3/Body" unique_id=406364005]
 position = Vector2(0, 10)
 shape = SubResource("Trunk9")
 
-[node name="Tree07_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree07_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1489973645]
 position = Vector2(650, 66)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree07_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree07_Tree3" unique_id=1626452016]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree07_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree07_Tree3/Body" unique_id=312601515]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree08_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree08_Tree2" type="Sprite2D" parent="Vegetation" unique_id=787269930]
 position = Vector2(738, 76)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree08_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree08_Tree2" unique_id=1520002226]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree08_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree08_Tree2/Body" unique_id=1003580707]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree09_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree09_Tree3" type="Sprite2D" parent="Vegetation" unique_id=683714418]
 position = Vector2(822, 64)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree09_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree09_Tree3" unique_id=566097180]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree09_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree09_Tree3/Body" unique_id=2006306714]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree10_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree10_Tree2" type="Sprite2D" parent="Vegetation" unique_id=929837931]
 position = Vector2(52, 392)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree10_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree10_Tree2" unique_id=1903041462]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree10_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree10_Tree2/Body" unique_id=1604289033]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree11_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree11_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1512975229]
 position = Vector2(150, 402)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree11_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree11_Tree3" unique_id=1732554733]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree11_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree11_Tree3/Body" unique_id=90530757]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree12_Moss_tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree12_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1163909395]
 position = Vector2(250, 392)
+texture = ExtResource("t_Moss_tree3")
 centered = false
 offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree12_Moss_tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree12_Moss_tree3" unique_id=1477260412]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree12_Moss_tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree12_Moss_tree3/Body" unique_id=397129962]
 position = Vector2(0, 10)
 shape = SubResource("Trunk16")
 
-[node name="Tree13_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree13_Tree2" type="Sprite2D" parent="Vegetation" unique_id=92383291]
 position = Vector2(352, 404)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree13_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree13_Tree2" unique_id=337669386]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree13_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree13_Tree2/Body" unique_id=1484143290]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree14_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree14_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1827479737]
 position = Vector2(500, 396)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree14_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree14_Tree3" unique_id=814920005]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree14_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree14_Tree3/Body" unique_id=1875197245]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree15_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree15_Tree2" type="Sprite2D" parent="Vegetation" unique_id=616451140]
 position = Vector2(556, 402)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree15_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree15_Tree2" unique_id=384555185]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree15_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree15_Tree2/Body" unique_id=814119724]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree16_Moss_tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree16_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=866573764]
 position = Vector2(660, 392)
+texture = ExtResource("t_Moss_tree3")
 centered = false
 offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree16_Moss_tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree16_Moss_tree3" unique_id=1515048132]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree16_Moss_tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree16_Moss_tree3/Body" unique_id=967082183]
 position = Vector2(0, 10)
 shape = SubResource("Trunk16")
 
-[node name="Tree17_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree17_Tree3" type="Sprite2D" parent="Vegetation" unique_id=181590946]
 position = Vector2(762, 404)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree17_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree17_Tree3" unique_id=1868120906]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree17_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree17_Tree3/Body" unique_id=1697313165]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree18_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree18_Tree2" type="Sprite2D" parent="Vegetation" unique_id=839787785]
 position = Vector2(858, 392)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree18_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree18_Tree2" unique_id=1417167061]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree18_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree18_Tree2/Body" unique_id=462085661]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree19_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree19_Tree3" type="Sprite2D" parent="Vegetation" unique_id=2039987472]
 position = Vector2(40, 136)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree19_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree19_Tree3" unique_id=136854292]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree19_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree19_Tree3/Body" unique_id=607809342]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree20_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree20_Tree2" type="Sprite2D" parent="Vegetation" unique_id=650858384]
 position = Vector2(36, 196)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree20_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree20_Tree2" unique_id=429483038]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree20_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree20_Tree2/Body" unique_id=1618982505]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree21_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree21_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1380776271]
 position = Vector2(44, 316)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree21_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree21_Tree3" unique_id=865757552]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree21_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree21_Tree3/Body" unique_id=1602221773]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree22_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree22_Tree2" type="Sprite2D" parent="Vegetation" unique_id=406818248]
 position = Vector2(38, 358)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree22_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree22_Tree2" unique_id=1979616712]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree22_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree22_Tree2/Body" unique_id=1129967517]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree23_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree23_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1081826819]
 position = Vector2(862, 136)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree23_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree23_Tree3" unique_id=1005492533]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree23_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree23_Tree3/Body" unique_id=2110811023]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree24_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree24_Tree2" type="Sprite2D" parent="Vegetation" unique_id=922605211]
 position = Vector2(866, 200)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree24_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree24_Tree2" unique_id=998430442]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree24_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree24_Tree2/Body" unique_id=1393756986]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree25_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree25_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1259180316]
 position = Vector2(858, 322)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree25_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree25_Tree3" unique_id=1276107101]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree25_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree25_Tree3/Body" unique_id=367962485]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree26_Tree2" type="Sprite2D" parent="Vegetation"]
+[node name="Tree26_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1057303819]
 position = Vector2(864, 364)
+texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree26_Tree2"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree26_Tree2" unique_id=208932961]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree26_Tree2/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree26_Tree2/Body" unique_id=52289053]
 position = Vector2(0, 10)
 shape = SubResource("Trunk11")
 
-[node name="Tree27_Fruit_tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree27_Fruit_tree3" type="Sprite2D" parent="Vegetation" unique_id=498573345]
 position = Vector2(700, 186)
+texture = ExtResource("t_Fruit_tree3")
 centered = false
 offset = Vector2(-32, -34)
-texture = ExtResource("t_Fruit_tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree27_Fruit_tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree27_Fruit_tree3" unique_id=484872345]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree27_Fruit_tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree27_Fruit_tree3/Body" unique_id=681546384]
 position = Vector2(0, 10)
 shape = SubResource("Trunk9")
 
-[node name="Tree28_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree28_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1495057640]
 position = Vector2(470, 166)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree28_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree28_Tree3" unique_id=1829216758]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree28_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree28_Tree3/Body" unique_id=984786814]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree29_Moss_tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree29_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=890846425]
 position = Vector2(180, 176)
+texture = ExtResource("t_Moss_tree3")
 centered = false
 offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree29_Moss_tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree29_Moss_tree3" unique_id=2079821071]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree29_Moss_tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree29_Moss_tree3/Body" unique_id=1482453327]
 position = Vector2(0, 10)
 shape = SubResource("Trunk16")
 
-[node name="Tree30_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree30_Tree3" type="Sprite2D" parent="Vegetation" unique_id=2001269388]
 position = Vector2(600, 336)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree30_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree30_Tree3" unique_id=1479896702]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree30_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree30_Tree3/Body" unique_id=1382930632]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree31_Fruit_tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree31_Fruit_tree3" type="Sprite2D" parent="Vegetation" unique_id=1206936817]
 position = Vector2(300, 338)
+texture = ExtResource("t_Fruit_tree3")
 centered = false
 offset = Vector2(-32, -34)
-texture = ExtResource("t_Fruit_tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree31_Fruit_tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree31_Fruit_tree3" unique_id=689736953]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree31_Fruit_tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree31_Fruit_tree3/Body" unique_id=108506601]
 position = Vector2(0, 10)
 shape = SubResource("Trunk9")
 
-[node name="Tree32_Tree3" type="Sprite2D" parent="Vegetation"]
+[node name="Tree32_Tree3" type="Sprite2D" parent="Vegetation" unique_id=483021287]
 position = Vector2(760, 316)
+texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
 
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree32_Tree3"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree32_Tree3" unique_id=1312827374]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree32_Tree3/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree32_Tree3/Body" unique_id=1952567860]
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Tree33_Flower_tree1" type="Sprite2D" parent="Vegetation"]
-position = Vector2(470, 136)
-centered = false
-offset = Vector2(-64, -83)
-texture = ExtResource("t_Flower_tree1")
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree33_Flower_tree1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree33_Flower_tree1/Body"]
-position = Vector2(0, 10)
-shape = SubResource("Trunk13")
-
-[node name="Bush34_Bush_simple1_1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush34_Bush_simple1_1" type="Sprite2D" parent="Vegetation" unique_id=2083558518]
 position = Vector2(120, 286)
+texture = ExtResource("t_Bush_simple1_1")
 centered = false
 offset = Vector2(-15, -14)
-texture = ExtResource("t_Bush_simple1_1")
 
-[node name="Bush35_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush35_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation" unique_id=1671468391]
 position = Vector2(520, 200)
+texture = ExtResource("t_Bush_pink_flowers1")
 centered = false
 offset = Vector2(-32, -31)
-texture = ExtResource("t_Bush_pink_flowers1")
 
-[node name="Bush36_Bush_simple2_1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush36_Bush_simple2_1" type="Sprite2D" parent="Vegetation" unique_id=981149105]
 position = Vector2(640, 330)
+texture = ExtResource("t_Bush_simple2_1")
 centered = false
 offset = Vector2(-16, -16)
-texture = ExtResource("t_Bush_simple2_1")
 
-[node name="Bush37_Fern1_2" type="Sprite2D" parent="Vegetation"]
+[node name="Bush37_Fern1_2" type="Sprite2D" parent="Vegetation" unique_id=1054548484]
 position = Vector2(240, 306)
+texture = ExtResource("t_Fern1_2")
 centered = false
 offset = Vector2(-16, -12)
-texture = ExtResource("t_Fern1_2")
 
-[node name="Bush38_Bush_orange_flowers1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush38_Bush_orange_flowers1" type="Sprite2D" parent="Vegetation" unique_id=1512249586]
 position = Vector2(360, 330)
+texture = ExtResource("t_Bush_orange_flowers1")
 centered = false
 offset = Vector2(-31, -34)
-texture = ExtResource("t_Bush_orange_flowers1")
 
-[node name="Bush39_Bush_simple1_2" type="Sprite2D" parent="Vegetation"]
+[node name="Bush39_Bush_simple1_2" type="Sprite2D" parent="Vegetation" unique_id=2128867926]
 position = Vector2(706, 336)
+texture = ExtResource("t_Bush_simple1_2")
 centered = false
 offset = Vector2(-16, -11)
-texture = ExtResource("t_Bush_simple1_2")
 
-[node name="Bush40_Bush_simple1_1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush40_Bush_simple1_1" type="Sprite2D" parent="Vegetation" unique_id=1131092394]
 position = Vector2(806, 330)
+texture = ExtResource("t_Bush_simple1_1")
 centered = false
 offset = Vector2(-15, -14)
-texture = ExtResource("t_Bush_simple1_1")
 
-[node name="Bush41_Fern1_2" type="Sprite2D" parent="Vegetation"]
+[node name="Bush41_Fern1_2" type="Sprite2D" parent="Vegetation" unique_id=1606641665]
 position = Vector2(90, 326)
+texture = ExtResource("t_Fern1_2")
 centered = false
 offset = Vector2(-16, -12)
-texture = ExtResource("t_Fern1_2")
 
-[node name="Bush42_Bush_simple2_1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush42_Bush_simple2_1" type="Sprite2D" parent="Vegetation" unique_id=1676514497]
 position = Vector2(340, 186)
+texture = ExtResource("t_Bush_simple2_1")
 centered = false
 offset = Vector2(-16, -16)
-texture = ExtResource("t_Bush_simple2_1")
 
-[node name="Bush43_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush43_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation" unique_id=771474313]
 position = Vector2(436, 136)
+texture = ExtResource("t_Bush_pink_flowers1")
 centered = false
 offset = Vector2(-32, -31)
-texture = ExtResource("t_Bush_pink_flowers1")
 
-[node name="Bush44_Bush_simple1_2" type="Sprite2D" parent="Vegetation"]
+[node name="Bush44_Bush_simple1_2" type="Sprite2D" parent="Vegetation" unique_id=1749832808]
 position = Vector2(530, 326)
+texture = ExtResource("t_Bush_simple1_2")
 centered = false
 offset = Vector2(-16, -11)
-texture = ExtResource("t_Bush_simple1_2")
 
-[node name="Bush45_Fern1_2" type="Sprite2D" parent="Vegetation"]
+[node name="Bush45_Fern1_2" type="Sprite2D" parent="Vegetation" unique_id=669415604]
 position = Vector2(672, 166)
+texture = ExtResource("t_Fern1_2")
 centered = false
 offset = Vector2(-16, -12)
-texture = ExtResource("t_Fern1_2")
 
-[node name="Bush46_Bush_simple1_1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush46_Bush_simple1_1" type="Sprite2D" parent="Vegetation" unique_id=779415307]
 position = Vector2(210, 226)
+texture = ExtResource("t_Bush_simple1_1")
 centered = false
 offset = Vector2(-15, -14)
-texture = ExtResource("t_Bush_simple1_1")
 
-[node name="Bush47_Bush_orange_flowers1" type="Sprite2D" parent="Vegetation"]
+[node name="Bush47_Bush_orange_flowers1" type="Sprite2D" parent="Vegetation" unique_id=306843584]
 position = Vector2(790, 206)
+texture = ExtResource("t_Bush_orange_flowers1")
 centered = false
 offset = Vector2(-31, -34)
-texture = ExtResource("t_Bush_orange_flowers1")
 
-[node name="Encounters" type="Node2D" parent="."]
+[node name="Tree34_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1842356400]
+position = Vector2(372, 404)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
 
-[node name="Map1Slime01" type="Marker2D" parent="Encounters"]
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree34_Tree3" unique_id=1447903791]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree34_Tree3/Body" unique_id=303301220]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree35_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1922033523]
+position = Vector2(496, 340)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree35_Moss_tree3" unique_id=1022094373]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree35_Moss_tree3/Body" unique_id=1910572795]
+position = Vector2(0, 10)
+shape = SubResource("Trunk16")
+
+[node name="Tree36_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1956766746]
+position = Vector2(40, 256)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Body" type="StaticBody2D" parent="Vegetation/Tree36_Tree3" unique_id=964432976]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree36_Tree3/Body" unique_id=1343597627]
+position = Vector2(0, 10)
+shape = SubResource("Trunk15")
+
+[node name="Tree37_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1470181201]
+position = Vector2(-110, 28)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree38_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1082558390]
+position = Vector2(-60, 28)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree39_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1210124850]
+position = Vector2(-10, 28)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree40_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=96451083]
+position = Vector2(40, 28)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree41_Tree3" type="Sprite2D" parent="Vegetation" unique_id=2055728321]
+position = Vector2(90, 28)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree42_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1960374923]
+position = Vector2(140, 28)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree43_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1960950857]
+position = Vector2(190, 28)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree44_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=509251463]
+position = Vector2(240, 28)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree45_Tree3" type="Sprite2D" parent="Vegetation" unique_id=387632431]
+position = Vector2(290, 28)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree46_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1351240326]
+position = Vector2(340, 28)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree47_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1593832776]
+position = Vector2(390, 28)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree48_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1650272074]
+position = Vector2(440, 28)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree49_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1575852139]
+position = Vector2(490, 28)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree50_Tree2" type="Sprite2D" parent="Vegetation" unique_id=454062112]
+position = Vector2(540, 28)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree51_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=792687127]
+position = Vector2(590, 28)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree52_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=467897680]
+position = Vector2(640, 28)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree53_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1272868129]
+position = Vector2(690, 28)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree54_Tree2" type="Sprite2D" parent="Vegetation" unique_id=314625185]
+position = Vector2(740, 28)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree55_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=253966732]
+position = Vector2(790, 28)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree56_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1279768450]
+position = Vector2(840, 28)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree57_Tree3" type="Sprite2D" parent="Vegetation" unique_id=692817284]
+position = Vector2(890, 28)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree58_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1698472158]
+position = Vector2(940, 28)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree59_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=629161512]
+position = Vector2(990, 28)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree60_Tree2" type="Sprite2D" parent="Vegetation" unique_id=927701338]
+position = Vector2(-88, -12)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree61_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=704416793]
+position = Vector2(-38, -12)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree62_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=670201644]
+position = Vector2(12, -12)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree63_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1120310949]
+position = Vector2(62, -12)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree64_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1861445625]
+position = Vector2(112, -12)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree65_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=490026992]
+position = Vector2(162, -12)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree66_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=693524048]
+position = Vector2(212, -12)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree67_Tree3" type="Sprite2D" parent="Vegetation" unique_id=624302731]
+position = Vector2(262, -12)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree68_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1441154371]
+position = Vector2(312, -12)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree69_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1377909775]
+position = Vector2(362, -12)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree70_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1336211157]
+position = Vector2(412, -12)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree71_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1401140246]
+position = Vector2(462, -12)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree72_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1061041579]
+position = Vector2(512, -12)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree73_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1253605966]
+position = Vector2(562, -12)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree74_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=625819097]
+position = Vector2(612, -12)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree75_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1572113663]
+position = Vector2(662, -12)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree76_Tree2" type="Sprite2D" parent="Vegetation" unique_id=482406473]
+position = Vector2(712, -12)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree77_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1479909531]
+position = Vector2(762, -12)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree78_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1906958109]
+position = Vector2(812, -12)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree79_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1232673367]
+position = Vector2(862, -12)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree80_Tree2" type="Sprite2D" parent="Vegetation" unique_id=83335133]
+position = Vector2(912, -12)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree81_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=611199810]
+position = Vector2(962, -12)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree82_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=833537643]
+position = Vector2(1012, -12)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree83_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1492494838]
+position = Vector2(-66, -52)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree84_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1721637478]
+position = Vector2(-16, -52)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree85_Tree3" type="Sprite2D" parent="Vegetation" unique_id=867130068]
+position = Vector2(34, -52)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree86_Tree2" type="Sprite2D" parent="Vegetation" unique_id=2009754164]
+position = Vector2(84, -52)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree87_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=829209913]
+position = Vector2(134, -52)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree88_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=396917742]
+position = Vector2(184, -52)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree89_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1438234516]
+position = Vector2(234, -52)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree90_Tree2" type="Sprite2D" parent="Vegetation" unique_id=440465056]
+position = Vector2(284, -52)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree91_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=685888647]
+position = Vector2(334, -52)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree92_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=63288952]
+position = Vector2(384, -52)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree93_Tree3" type="Sprite2D" parent="Vegetation" unique_id=414760012]
+position = Vector2(434, -52)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree94_Tree2" type="Sprite2D" parent="Vegetation" unique_id=693908499]
+position = Vector2(484, -52)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree95_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1882371247]
+position = Vector2(534, -52)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree96_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=157060862]
+position = Vector2(584, -52)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree97_Tree3" type="Sprite2D" parent="Vegetation" unique_id=255588011]
+position = Vector2(634, -52)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree98_Tree2" type="Sprite2D" parent="Vegetation" unique_id=632209324]
+position = Vector2(684, -52)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree99_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1414450818]
+position = Vector2(734, -52)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree100_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=546775244]
+position = Vector2(784, -52)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree101_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1229292276]
+position = Vector2(834, -52)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree102_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1885709275]
+position = Vector2(884, -52)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree103_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=580911062]
+position = Vector2(934, -52)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree104_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=889264482]
+position = Vector2(984, -52)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree105_Tree2" type="Sprite2D" parent="Vegetation" unique_id=183193688]
+position = Vector2(-110, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree106_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=263179460]
+position = Vector2(-60, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree107_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1128487404]
+position = Vector2(-10, 444)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree108_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1992513503]
+position = Vector2(40, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree109_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1610056347]
+position = Vector2(90, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree110_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1059245033]
+position = Vector2(140, 444)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree111_Tree2" type="Sprite2D" parent="Vegetation" unique_id=445452270]
+position = Vector2(190, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree112_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1986590089]
+position = Vector2(240, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree113_Tree3" type="Sprite2D" parent="Vegetation" unique_id=619111697]
+position = Vector2(290, 444)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree114_Tree2" type="Sprite2D" parent="Vegetation" unique_id=232524025]
+position = Vector2(340, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree115_Tree2" type="Sprite2D" parent="Vegetation" unique_id=469949373]
+position = Vector2(490, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree116_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=870407207]
+position = Vector2(540, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree117_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1618815526]
+position = Vector2(590, 444)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree118_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1245611375]
+position = Vector2(640, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree119_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=963638048]
+position = Vector2(690, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree120_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1674570740]
+position = Vector2(740, 444)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree121_Tree2" type="Sprite2D" parent="Vegetation" unique_id=425107685]
+position = Vector2(790, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree122_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1913512502]
+position = Vector2(840, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree123_Tree3" type="Sprite2D" parent="Vegetation" unique_id=879476580]
+position = Vector2(890, 444)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree124_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1635177571]
+position = Vector2(940, 444)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree125_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1307554542]
+position = Vector2(990, 444)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree126_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=629431769]
+position = Vector2(-86, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree127_Tree3" type="Sprite2D" parent="Vegetation" unique_id=701925187]
+position = Vector2(-36, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree128_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1870201130]
+position = Vector2(14, 486)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree129_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1861354973]
+position = Vector2(64, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree130_Tree3" type="Sprite2D" parent="Vegetation" unique_id=470012801]
+position = Vector2(114, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree131_Tree2" type="Sprite2D" parent="Vegetation" unique_id=300739789]
+position = Vector2(164, 486)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree132_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=41018145]
+position = Vector2(214, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree133_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1529144912]
+position = Vector2(264, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree134_Tree2" type="Sprite2D" parent="Vegetation" unique_id=487348454]
+position = Vector2(314, 486)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree135_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=126680333]
+position = Vector2(364, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree136_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1244904033]
+position = Vector2(514, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree137_Tree3" type="Sprite2D" parent="Vegetation" unique_id=809776599]
+position = Vector2(564, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree138_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1465565336]
+position = Vector2(614, 486)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree139_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=293148836]
+position = Vector2(664, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree140_Tree3" type="Sprite2D" parent="Vegetation" unique_id=114641302]
+position = Vector2(714, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree141_Tree2" type="Sprite2D" parent="Vegetation" unique_id=124652681]
+position = Vector2(764, 486)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree142_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=255519027]
+position = Vector2(814, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree143_Tree3" type="Sprite2D" parent="Vegetation" unique_id=317527715]
+position = Vector2(864, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree144_Tree2" type="Sprite2D" parent="Vegetation" unique_id=778265664]
+position = Vector2(914, 486)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree145_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=2095365430]
+position = Vector2(964, 486)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree146_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1763419416]
+position = Vector2(1014, 486)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree147_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1408550645]
+position = Vector2(-62, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree148_Tree2" type="Sprite2D" parent="Vegetation" unique_id=632199887]
+position = Vector2(-12, 528)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree149_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=229917258]
+position = Vector2(38, 528)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree150_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1749379485]
+position = Vector2(88, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree151_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1173966390]
+position = Vector2(138, 528)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree152_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1464327358]
+position = Vector2(188, 528)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree153_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1254495818]
+position = Vector2(238, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree154_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1664035195]
+position = Vector2(288, 528)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree155_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1278064686]
+position = Vector2(338, 528)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree156_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1769195400]
+position = Vector2(538, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree157_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1110629088]
+position = Vector2(588, 528)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree158_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1753543875]
+position = Vector2(638, 528)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree159_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1895705634]
+position = Vector2(688, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree160_Tree2" type="Sprite2D" parent="Vegetation" unique_id=169511570]
+position = Vector2(738, 528)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree161_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1793788890]
+position = Vector2(788, 528)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree162_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1255506606]
+position = Vector2(838, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree163_Tree2" type="Sprite2D" parent="Vegetation" unique_id=136282382]
+position = Vector2(888, 528)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree164_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=961600049]
+position = Vector2(938, 528)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree165_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1660909106]
+position = Vector2(988, 528)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree166_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1991200188]
+position = Vector2(-16, 70)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree167_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1555464592]
+position = Vector2(-16, 114)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree168_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=26782681]
+position = Vector2(-16, 158)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree169_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1486007252]
+position = Vector2(-16, 202)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree170_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1977066847]
+position = Vector2(-16, 246)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree171_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=538608795]
+position = Vector2(-16, 290)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree172_Tree3" type="Sprite2D" parent="Vegetation" unique_id=993900430]
+position = Vector2(-16, 334)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree173_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1447290633]
+position = Vector2(-16, 378)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree174_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=2088650099]
+position = Vector2(-16, 422)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree175_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1357260108]
+position = Vector2(-62, 88)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree176_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1453621931]
+position = Vector2(-62, 132)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree177_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1908612925]
+position = Vector2(-62, 176)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree178_Tree2" type="Sprite2D" parent="Vegetation" unique_id=2051774617]
+position = Vector2(-62, 220)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree179_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=751984045]
+position = Vector2(-62, 264)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree180_Tree3" type="Sprite2D" parent="Vegetation" unique_id=32829391]
+position = Vector2(-62, 308)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree181_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1885013547]
+position = Vector2(-62, 352)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree182_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1508226671]
+position = Vector2(-62, 396)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree183_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=550342088]
+position = Vector2(-108, 106)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree184_Tree3" type="Sprite2D" parent="Vegetation" unique_id=2092717511]
+position = Vector2(-108, 150)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree185_Tree2" type="Sprite2D" parent="Vegetation" unique_id=2026387910]
+position = Vector2(-108, 194)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree186_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1275491601]
+position = Vector2(-108, 238)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree187_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1588283]
+position = Vector2(-108, 282)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree188_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1070736094]
+position = Vector2(-108, 326)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree189_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=136723421]
+position = Vector2(-108, 370)
+texture = ExtResource("t_Moss_tree2")
+centered = false
+offset = Vector2(-32, -46)
+
+[node name="Tree190_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1505994568]
+position = Vector2(-108, 414)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree191_Tree2" type="Sprite2D" parent="Vegetation" unique_id=558059174]
+position = Vector2(918, 70)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree192_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1471055944]
+position = Vector2(918, 114)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree193_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1845583387]
+position = Vector2(918, 158)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree194_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1515378074]
+position = Vector2(918, 202)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree195_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1014382245]
+position = Vector2(918, 334)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree196_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=2101470026]
+position = Vector2(918, 378)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree197_Tree3" type="Sprite2D" parent="Vegetation" unique_id=546869937]
+position = Vector2(918, 422)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree198_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=1120823025]
+position = Vector2(964, 88)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree199_Tree3" type="Sprite2D" parent="Vegetation" unique_id=882447305]
+position = Vector2(964, 132)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree200_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1276473363]
+position = Vector2(964, 176)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree201_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=596117102]
+position = Vector2(964, 352)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree202_Tree3" type="Sprite2D" parent="Vegetation" unique_id=860951281]
+position = Vector2(964, 396)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree203_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1413653062]
+position = Vector2(1010, 106)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree204_Tree2" type="Sprite2D" parent="Vegetation" unique_id=251175687]
+position = Vector2(1010, 150)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Tree205_Moss_tree3" type="Sprite2D" parent="Vegetation" unique_id=2042498427]
+position = Vector2(1010, 194)
+texture = ExtResource("t_Moss_tree3")
+centered = false
+offset = Vector2(-33, -36)
+
+[node name="Tree206_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1206108863]
+position = Vector2(1010, 370)
+texture = ExtResource("t_Tree3")
+centered = false
+offset = Vector2(-32, -37)
+
+[node name="Tree207_Tree2" type="Sprite2D" parent="Vegetation" unique_id=2077214099]
+position = Vector2(1010, 414)
+texture = ExtResource("t_Tree2")
+centered = false
+offset = Vector2(-29, -48)
+
+[node name="Bush48_Fern2_2" type="Sprite2D" parent="Vegetation" unique_id=1684214327]
+position = Vector2(470, 320)
+texture = ExtResource("t_Fern2_2")
+centered = false
+offset = Vector2(-16, -14)
+
+[node name="Bush49_Bush_simple1_3" type="Sprite2D" parent="Vegetation" unique_id=798703695]
+position = Vector2(392, 366)
+texture = ExtResource("t_Bush_simple1_3")
+centered = false
+offset = Vector2(-8, 1)
+
+[node name="Bush50_Fern1_2" type="Sprite2D" parent="Vegetation" unique_id=75737473]
+position = Vector2(468, 420)
+texture = ExtResource("t_Fern1_2")
+centered = false
+offset = Vector2(-16, -12)
+
+[node name="Bush51_Bush_blue_flowers2" type="Sprite2D" parent="Vegetation" unique_id=1862659845]
+position = Vector2(336, 120)
+texture = ExtResource("t_Bush_blue_flowers2")
+centered = false
+offset = Vector2(-16, -16)
+
+[node name="Bush52_Fern2_2" type="Sprite2D" parent="Vegetation" unique_id=1515801421]
+position = Vector2(120, 210)
+texture = ExtResource("t_Fern2_2")
+centered = false
+offset = Vector2(-16, -14)
+
+[node name="Bush53_Bush_simple1_3" type="Sprite2D" parent="Vegetation" unique_id=1226190427]
+position = Vector2(560, 230)
+texture = ExtResource("t_Bush_simple1_3")
+centered = false
+offset = Vector2(-8, 1)
+
+[node name="Bush54_Bush_simple2_3" type="Sprite2D" parent="Vegetation" unique_id=1188574508]
+position = Vector2(80, 240)
+texture = ExtResource("t_Bush_simple2_3")
+centered = false
+offset = Vector2(-9, 0)
+
+[node name="Bush55_Fern1_2" type="Sprite2D" parent="Vegetation" unique_id=1967454582]
+position = Vector2(760, 230)
+texture = ExtResource("t_Fern1_2")
+centered = false
+offset = Vector2(-16, -12)
+
+[node name="Encounters" type="Node2D" parent="." unique_id=1964799128]
+
+[node name="Map1Slime01" type="Marker2D" parent="Encounters" unique_id=542833644]
+editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 position = Vector2(608, 222)
-editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 
-[node name="Map1Slime02" type="Marker2D" parent="Encounters"]
+[node name="Map1Slime02" type="Marker2D" parent="Encounters" unique_id=98321626]
+editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 position = Vector2(240, 150)
-editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 
-[node name="Map1Slime03" type="Marker2D" parent="Encounters"]
+[node name="Map1Slime03" type="Marker2D" parent="Encounters" unique_id=652236341]
+editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 position = Vector2(288, 262)
-editor_description = "Red slime spawn point. RedSlimeSpawner keeps one slime alive here and respawns it 5 s after it dies."
 
-[node name="RedSlimeSpawner" type="Node2D" parent="."]
+[node name="RedSlimeSpawner" type="Node2D" parent="." unique_id=307093087]
 y_sort_enabled = true
 script = ExtResource("rs")
 spawn_points = Array[NodePath]([NodePath("../Encounters/Map1Slime01"), NodePath("../Encounters/Map1Slime02"), NodePath("../Encounters/Map1Slime03")])
 
-[node name="Boundaries" type="StaticBody2D" parent="."]
+[node name="Boundaries" type="StaticBody2D" parent="." unique_id=469799281]
 
-[node name="Top" type="CollisionShape2D" parent="Boundaries"]
+[node name="Top" type="CollisionShape2D" parent="Boundaries" unique_id=1351875516]
 position = Vector2(448, 16)
 shape = SubResource("W_Top")
 
-[node name="LeftUp" type="CollisionShape2D" parent="Boundaries"]
+[node name="LeftUp" type="CollisionShape2D" parent="Boundaries" unique_id=34976249]
 position = Vector2(4, 228)
 shape = SubResource("W_LeftUp")
 
-[node name="RightUp" type="CollisionShape2D" parent="Boundaries"]
+[node name="RightUp" type="CollisionShape2D" parent="Boundaries" unique_id=730277584]
 position = Vector2(892, 128)
 shape = SubResource("W_RightUp")
 
-[node name="RightDown" type="CollisionShape2D" parent="Boundaries"]
+[node name="RightDown" type="CollisionShape2D" parent="Boundaries" unique_id=1515827644]
 position = Vector2(892, 376)
 shape = SubResource("W_RightDown")
 
-[node name="BottomWest" type="CollisionShape2D" parent="Boundaries"]
+[node name="BottomWest" type="CollisionShape2D" parent="Boundaries" unique_id=929262149]
 position = Vector2(184, 440)
 shape = SubResource("W_BottomWest")
 
-[node name="BottomEast" type="CollisionShape2D" parent="Boundaries"]
+[node name="BottomEast" type="CollisionShape2D" parent="Boundaries" unique_id=435028532]
 position = Vector2(696, 440)
 shape = SubResource("W_BottomEast")
 
-[node name="EastBackstop" type="CollisionShape2D" parent="Boundaries"]
+[node name="EastBackstop" type="CollisionShape2D" parent="Boundaries" unique_id=711054461]
 position = Vector2(920, 272)
 shape = SubResource("W_EastBackstop")
 
-[node name="SouthBackstop" type="CollisionShape2D" parent="Boundaries"]
+[node name="SouthBackstop" type="CollisionShape2D" parent="Boundaries" unique_id=1820678903]
 position = Vector2(432, 470)
 shape = SubResource("W_SouthBackstop")
 
-[node name="Triggers" type="Node2D" parent="."]
+[node name="Triggers" type="Node2D" parent="." unique_id=1131958339]
 
-[node name="ToVillage" type="Area2D" parent="Triggers"]
+[node name="ToVillage" type="Area2D" parent="Triggers" unique_id=1322397004]
 script = ExtResource("mx")
 target_scene = "res://scenes/Village.tscn"
 spawn_name = "SpawnFromWest"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToVillage"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToVillage" unique_id=296871796]
 position = Vector2(890, 272)
 shape = SubResource("X_ToVillage")
 
-[node name="ToWesternRiver" type="Area2D" parent="Triggers"]
+[node name="ToWesternRiver" type="Area2D" parent="Triggers" unique_id=1886945965]
 script = ExtResource("mx")
 target_scene = "res://scenes/western_river.tscn"
 spawn_name = "SpawnFromNorth"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToWesternRiver"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToWesternRiver" unique_id=89934854]
 position = Vector2(432, 436)
 shape = SubResource("X_ToWesternRiver")
 
-[node name="SpawnFromEast" type="Marker2D" parent="."]
+[node name="SpawnFromEast" type="Marker2D" parent="." unique_id=1502038935]
 position = Vector2(852, 272)
 
-[node name="SpawnFromSouth" type="Marker2D" parent="."]
+[node name="SpawnFromSouth" type="Marker2D" parent="." unique_id=1783185207]
 position = Vector2(432, 392)
 
-[node name="Tree34_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(372, 404)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree34_Tree3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree34_Tree3/Body"]
-position = Vector2(0, 10)
-shape = SubResource("Trunk15")
-
-[node name="Tree35_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(496, 340)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree35_Moss_tree3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree35_Moss_tree3/Body"]
-position = Vector2(0, 10)
-shape = SubResource("Trunk16")
-
-[node name="Tree36_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(40, 256)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree36_Tree3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree36_Tree3/Body"]
-position = Vector2(0, 10)
-shape = SubResource("Trunk15")
-
-[node name="Tree37_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-110, 28)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree38_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-60, 28)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree39_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-10, 28)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree40_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(40, 28)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree41_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(90, 28)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree42_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(140, 28)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree43_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(190, 28)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree44_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(240, 28)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree45_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(290, 28)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree46_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(340, 28)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree47_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(390, 28)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree48_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(440, 28)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree49_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(490, 28)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree50_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(540, 28)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree51_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(590, 28)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree52_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(640, 28)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree53_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(690, 28)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree54_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(740, 28)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree55_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(790, 28)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree56_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(840, 28)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree57_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(890, 28)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree58_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(940, 28)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree59_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(990, 28)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree60_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-88, -12)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree61_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-38, -12)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree62_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(12, -12)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree63_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(62, -12)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree64_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(112, -12)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree65_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(162, -12)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree66_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(212, -12)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree67_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(262, -12)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree68_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(312, -12)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree69_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(362, -12)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree70_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(412, -12)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree71_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(462, -12)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree72_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(512, -12)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree73_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(562, -12)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree74_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(612, -12)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree75_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(662, -12)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree76_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(712, -12)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree77_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(762, -12)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree78_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(812, -12)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree79_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(862, -12)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree80_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(912, -12)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree81_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(962, -12)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree82_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1012, -12)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree83_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-66, -52)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree84_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, -52)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree85_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(34, -52)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree86_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(84, -52)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree87_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(134, -52)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree88_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(184, -52)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree89_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(234, -52)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree90_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(284, -52)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree91_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(334, -52)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree92_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(384, -52)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree93_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(434, -52)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree94_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(484, -52)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree95_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(534, -52)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree96_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(584, -52)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree97_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(634, -52)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree98_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(684, -52)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree99_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(734, -52)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree100_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(784, -52)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree101_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(834, -52)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree102_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(884, -52)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree103_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(934, -52)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree104_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(984, -52)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree105_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-110, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree106_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-60, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree107_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-10, 444)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree108_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(40, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree109_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(90, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree110_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(140, 444)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree111_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(190, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree112_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(240, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree113_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(290, 444)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree114_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(340, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree115_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(490, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree116_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(540, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree117_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(590, 444)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree118_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(640, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree119_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(690, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree120_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(740, 444)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree121_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(790, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree122_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(840, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree123_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(890, 444)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree124_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(940, 444)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree125_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(990, 444)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree126_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-86, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree127_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-36, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree128_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(14, 486)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree129_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(64, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree130_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(114, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree131_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(164, 486)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree132_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(214, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree133_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(264, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree134_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(314, 486)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree135_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(364, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree136_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(514, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree137_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(564, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree138_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(614, 486)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree139_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(664, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree140_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(714, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree141_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(764, 486)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree142_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(814, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree143_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(864, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree144_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(914, 486)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree145_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(964, 486)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree146_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1014, 486)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree147_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree148_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-12, 528)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree149_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(38, 528)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree150_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(88, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree151_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(138, 528)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree152_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(188, 528)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree153_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(238, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree154_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(288, 528)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree155_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(338, 528)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree156_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(538, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree157_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(588, 528)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree158_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(638, 528)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree159_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(688, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree160_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(738, 528)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree161_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(788, 528)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree162_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(838, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree163_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(888, 528)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree164_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(938, 528)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree165_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(988, 528)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree166_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 70)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree167_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 114)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree168_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 158)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree169_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 202)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree170_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 246)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree171_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 290)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree172_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 334)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree173_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 378)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree174_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-16, 422)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree175_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 88)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree176_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 132)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree177_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 176)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree178_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 220)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree179_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 264)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree180_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 308)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree181_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 352)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree182_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-62, 396)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree183_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 106)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree184_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 150)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree185_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 194)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree186_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 238)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree187_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 282)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree188_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 326)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree189_Moss_tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 370)
-centered = false
-offset = Vector2(-32, -46)
-texture = ExtResource("t_Moss_tree2")
-
-[node name="Tree190_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(-108, 414)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree191_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 70)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree192_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 114)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree193_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 158)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree194_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 202)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree195_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 334)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree196_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 378)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree197_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(918, 422)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree198_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(964, 88)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree199_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(964, 132)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree200_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(964, 176)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree201_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(964, 352)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree202_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(964, 396)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree203_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1010, 106)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree204_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1010, 150)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Tree205_Moss_tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1010, 194)
-centered = false
-offset = Vector2(-33, -36)
-texture = ExtResource("t_Moss_tree3")
-
-[node name="Tree206_Tree3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1010, 370)
-centered = false
-offset = Vector2(-32, -37)
-texture = ExtResource("t_Tree3")
-
-[node name="Tree207_Tree2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(1010, 414)
-centered = false
-offset = Vector2(-29, -48)
-texture = ExtResource("t_Tree2")
-
-[node name="Bush48_Fern2_2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(470, 320)
-centered = false
-offset = Vector2(-16, -14)
-texture = ExtResource("t_Fern2_2")
-
-[node name="Bush49_Bush_simple1_3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(392, 366)
-centered = false
-offset = Vector2(-8, 1)
-texture = ExtResource("t_Bush_simple1_3")
-
-[node name="Bush50_Fern1_2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(468, 420)
-centered = false
-offset = Vector2(-16, -12)
-texture = ExtResource("t_Fern1_2")
-
-[node name="Bush51_Bush_blue_flowers2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(336, 120)
-centered = false
-offset = Vector2(-16, -16)
-texture = ExtResource("t_Bush_blue_flowers2")
-
-[node name="Bush52_Fern2_2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(120, 210)
-centered = false
-offset = Vector2(-16, -14)
-texture = ExtResource("t_Fern2_2")
-
-[node name="Bush53_Bush_simple1_3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(560, 230)
-centered = false
-offset = Vector2(-8, 1)
-texture = ExtResource("t_Bush_simple1_3")
-
-[node name="Bush54_Bush_simple2_3" type="Sprite2D" parent="Vegetation"]
-position = Vector2(80, 240)
-centered = false
-offset = Vector2(-9, 0)
-texture = ExtResource("t_Bush_simple2_3")
-
-[node name="Bush55_Fern1_2" type="Sprite2D" parent="Vegetation"]
-position = Vector2(760, 230)
-centered = false
-offset = Vector2(-16, -12)
-texture = ExtResource("t_Fern1_2")
-
-[node name="GrassTufts" type="Node2D" parent="."]
+[node name="GrassTufts" type="Node2D" parent="." unique_id=704543530]
 z_index = -1
 
-[node name="Tuft000" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft000" parent="GrassTufts" unique_id=602566414 instance=ExtResource("gt_tuft")]
 position = Vector2(192, 254)
 
-[node name="Tuft001" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft001" parent="GrassTufts" unique_id=976714892 instance=ExtResource("gt_tuft")]
 position = Vector2(674, 184)
 scale = Vector2(-1, 1)
 
-[node name="Tuft002" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft002" parent="GrassTufts" unique_id=935196143 instance=ExtResource("gt_tuft")]
 position = Vector2(245, 283)
 
-[node name="Tuft003" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft003" parent="GrassTufts" unique_id=1564573128 instance=ExtResource("gt_tuft")]
 position = Vector2(548, 133)
 
-[node name="Tuft004" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft004" parent="GrassTufts" unique_id=2146464957 instance=ExtResource("gt_tuft")]
 position = Vector2(265, 41)
 scale = Vector2(-1, 1)
 
-[node name="Tuft005" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft005" parent="GrassTufts" unique_id=1115006479 instance=ExtResource("gt_tuft")]
 position = Vector2(94, 114)
 
-[node name="Tuft006" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft006" parent="GrassTufts" unique_id=1526054566 instance=ExtResource("gt_tuft")]
 position = Vector2(734, 61)
 scale = Vector2(-1, 1)
 
-[node name="Tuft007" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft007" parent="GrassTufts" unique_id=1950886436 instance=ExtResource("gt_tuft")]
 position = Vector2(58, 208)
 
-[node name="Tuft008" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft008" parent="GrassTufts" unique_id=1191196311 instance=ExtResource("gt_tuft")]
 position = Vector2(734, 99)
 
-[node name="Tuft009" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft009" parent="GrassTufts" unique_id=658326481 instance=ExtResource("gt_tuft")]
 position = Vector2(401, 51)
 scale = Vector2(-1, 1)
 
-[node name="Tuft010" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft010" parent="GrassTufts" unique_id=1702592495 instance=ExtResource("gt_tuft")]
 position = Vector2(861, 85)
 scale = Vector2(-1, 1)
 
-[node name="Tuft011" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft011" parent="GrassTufts" unique_id=787646070 instance=ExtResource("gt_tuft")]
 position = Vector2(188, 322)
 
-[node name="Tuft012" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft012" parent="GrassTufts" unique_id=1573315360 instance=ExtResource("gt_tuft")]
 position = Vector2(178, 135)
 
-[node name="Tuft013" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft013" parent="GrassTufts" unique_id=1749831430 instance=ExtResource("gt_tuft")]
 position = Vector2(505, 160)
 scale = Vector2(-1, 1)
 
-[node name="Tuft014" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft014" parent="GrassTufts" unique_id=894671446 instance=ExtResource("gt_tuft")]
 position = Vector2(713, 376)
 
-[node name="Tuft015" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft015" parent="GrassTufts" unique_id=137804337 instance=ExtResource("gt_tuft")]
 position = Vector2(805, 337)
 
-[node name="Tuft016" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft016" parent="GrassTufts" unique_id=2016862508 instance=ExtResource("gt_tuft")]
 position = Vector2(229, 214)
 
-[node name="Tuft017" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft017" parent="GrassTufts" unique_id=326249287 instance=ExtResource("gt_tuft")]
 position = Vector2(322, 226)
 
-[node name="Tuft018" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft018" parent="GrassTufts" unique_id=1615244225 instance=ExtResource("gt_tuft")]
 position = Vector2(349, 288)
 scale = Vector2(-1, 1)
 
-[node name="Tuft019" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft019" parent="GrassTufts" unique_id=880866870 instance=ExtResource("gt_tuft")]
 position = Vector2(51, 87)
 scale = Vector2(-1, 1)
 
-[node name="Tuft020" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft020" parent="GrassTufts" unique_id=604172414 instance=ExtResource("gt_tuft")]
 position = Vector2(26, 291)
 scale = Vector2(-1, 1)
 
-[node name="Tuft021" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft021" parent="GrassTufts" unique_id=262074214 instance=ExtResource("gt_tuft")]
 position = Vector2(251, 332)
 
-[node name="Tuft022" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft022" parent="GrassTufts" unique_id=1452170335 instance=ExtResource("gt_tuft")]
 position = Vector2(593, 358)
 scale = Vector2(-1, 1)
 
-[node name="Tuft023" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft023" parent="GrassTufts" unique_id=1227962017 instance=ExtResource("gt_tuft")]
 position = Vector2(709, 127)
 
-[node name="Tuft024" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft024" parent="GrassTufts" unique_id=1031252139 instance=ExtResource("gt_tuft")]
 position = Vector2(364, 217)
 
-[node name="Tuft025" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft025" parent="GrassTufts" unique_id=1726124022 instance=ExtResource("gt_tuft")]
 position = Vector2(337, 165)
 scale = Vector2(-1, 1)
 
-[node name="Tuft026" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft026" parent="GrassTufts" unique_id=121032186 instance=ExtResource("gt_tuft")]
 position = Vector2(407, 121)
 
-[node name="Tuft027" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft027" parent="GrassTufts" unique_id=1563293661 instance=ExtResource("gt_tuft")]
 position = Vector2(697, 163)
 scale = Vector2(-1, 1)
 
-[node name="Tuft028" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft028" parent="GrassTufts" unique_id=165718067 instance=ExtResource("gt_tuft")]
 position = Vector2(191, 419)
 
-[node name="Tuft029" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft029" parent="GrassTufts" unique_id=1498268206 instance=ExtResource("gt_tuft")]
 position = Vector2(378, 291)
 
-[node name="Tuft030" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft030" parent="GrassTufts" unique_id=1567452610 instance=ExtResource("gt_tuft")]
 position = Vector2(275, 123)
 
-[node name="Tuft031" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft031" parent="GrassTufts" unique_id=1753920149 instance=ExtResource("gt_tuft")]
 position = Vector2(816, 419)
 scale = Vector2(-1, 1)
 
-[node name="Tuft032" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft032" parent="GrassTufts" unique_id=1885369331 instance=ExtResource("gt_tuft")]
 position = Vector2(318, 66)
 
-[node name="Tuft033" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft033" parent="GrassTufts" unique_id=1089504605 instance=ExtResource("gt_tuft")]
 position = Vector2(698, 188)
 scale = Vector2(-1, 1)
 
-[node name="Tuft034" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft034" parent="GrassTufts" unique_id=668192392 instance=ExtResource("gt_tuft")]
 position = Vector2(427, 75)
 
-[node name="Tuft035" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft035" parent="GrassTufts" unique_id=2099648713 instance=ExtResource("gt_tuft")]
 position = Vector2(684, 114)
 
-[node name="Tuft036" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft036" parent="GrassTufts" unique_id=1275016642 instance=ExtResource("gt_tuft")]
 position = Vector2(787, 412)
 scale = Vector2(-1, 1)
 
-[node name="Tuft037" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft037" parent="GrassTufts" unique_id=1558501324 instance=ExtResource("gt_tuft")]
 position = Vector2(52, 148)
 
-[node name="Tuft038" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft038" parent="GrassTufts" unique_id=1637075861 instance=ExtResource("gt_tuft")]
 position = Vector2(520, 337)
 
-[node name="Tuft039" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft039" parent="GrassTufts" unique_id=1235989954 instance=ExtResource("gt_tuft")]
 position = Vector2(512, 197)
 scale = Vector2(-1, 1)
 
-[node name="Tuft040" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft040" parent="GrassTufts" unique_id=1921993476 instance=ExtResource("gt_tuft")]
 position = Vector2(626, 181)
 scale = Vector2(-1, 1)
 
-[node name="Tuft041" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft041" parent="GrassTufts" unique_id=656346301 instance=ExtResource("gt_tuft")]
 position = Vector2(762, 45)
 scale = Vector2(-1, 1)
 
-[node name="Tuft042" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft042" parent="GrassTufts" unique_id=200282145 instance=ExtResource("gt_tuft")]
 position = Vector2(152, 406)
 scale = Vector2(-1, 1)
 
-[node name="Tuft043" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft043" parent="GrassTufts" unique_id=1587761200 instance=ExtResource("gt_tuft")]
 position = Vector2(287, 389)
 scale = Vector2(-1, 1)
 
-[node name="Tuft044" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft044" parent="GrassTufts" unique_id=544722857 instance=ExtResource("gt_tuft")]
 position = Vector2(855, 110)
 scale = Vector2(-1, 1)
 
-[node name="Tuft045" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft045" parent="GrassTufts" unique_id=242723632 instance=ExtResource("gt_tuft")]
 position = Vector2(121, 243)
 scale = Vector2(-1, 1)
 
-[node name="Tuft046" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft046" parent="GrassTufts" unique_id=225673832 instance=ExtResource("gt_tuft")]
 position = Vector2(49, 368)
 scale = Vector2(-1, 1)
 
-[node name="Tuft047" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft047" parent="GrassTufts" unique_id=867175520 instance=ExtResource("gt_tuft")]
 position = Vector2(168, 76)
 
-[node name="Tuft048" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft048" parent="GrassTufts" unique_id=210678939 instance=ExtResource("gt_tuft")]
 position = Vector2(153, 195)
 
-[node name="Tuft049" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft049" parent="GrassTufts" unique_id=1217829585 instance=ExtResource("gt_tuft")]
 position = Vector2(356, 242)
 scale = Vector2(-1, 1)
 
-[node name="Tuft050" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft050" parent="GrassTufts" unique_id=1030734001 instance=ExtResource("gt_tuft")]
 position = Vector2(248, 358)
 scale = Vector2(-1, 1)
 
-[node name="Tuft051" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft051" parent="GrassTufts" unique_id=536485922 instance=ExtResource("gt_tuft")]
 position = Vector2(212, 233)
 scale = Vector2(-1, 1)
 
-[node name="Tuft052" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft052" parent="GrassTufts" unique_id=218686400 instance=ExtResource("gt_tuft")]
 position = Vector2(799, 63)
 
-[node name="Tuft053" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft053" parent="GrassTufts" unique_id=1771479784 instance=ExtResource("gt_tuft")]
 position = Vector2(540, 69)
 
-[node name="Tuft054" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft054" parent="GrassTufts" unique_id=2063258492 instance=ExtResource("gt_tuft")]
 position = Vector2(32, 238)
 scale = Vector2(-1, 1)
 
-[node name="Tuft055" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft055" parent="GrassTufts" unique_id=1847715771 instance=ExtResource("gt_tuft")]
 position = Vector2(89, 243)
 
-[node name="Tuft056" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft056" parent="GrassTufts" unique_id=304355965 instance=ExtResource("gt_tuft")]
 position = Vector2(737, 349)
 scale = Vector2(-1, 1)
 
-[node name="Tuft057" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft057" parent="GrassTufts" unique_id=232985829 instance=ExtResource("gt_tuft")]
 position = Vector2(66, 165)
 scale = Vector2(-1, 1)
 
-[node name="Tuft058" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft058" parent="GrassTufts" unique_id=1827971705 instance=ExtResource("gt_tuft")]
 position = Vector2(340, 411)
 
-[node name="Tuft059" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft059" parent="GrassTufts" unique_id=902893618 instance=ExtResource("gt_tuft")]
 position = Vector2(326, 297)
 
-[node name="Tuft060" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft060" parent="GrassTufts" unique_id=350773411 instance=ExtResource("gt_tuft")]
 position = Vector2(124, 319)
 
-[node name="Tuft061" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft061" parent="GrassTufts" unique_id=428575661 instance=ExtResource("gt_tuft")]
 position = Vector2(544, 344)
 
-[node name="Tuft062" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft062" parent="GrassTufts" unique_id=188205964 instance=ExtResource("gt_tuft")]
 position = Vector2(553, 198)
 scale = Vector2(-1, 1)
 
-[node name="Tuft063" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft063" parent="GrassTufts" unique_id=575813712 instance=ExtResource("gt_tuft")]
 position = Vector2(218, 72)
 
-[node name="Tuft064" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft064" parent="GrassTufts" unique_id=1256808356 instance=ExtResource("gt_tuft")]
 position = Vector2(357, 143)
 scale = Vector2(-1, 1)
 
-[node name="Tuft065" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft065" parent="GrassTufts" unique_id=579585927 instance=ExtResource("gt_tuft")]
 position = Vector2(349, 376)
 
-[node name="Tuft066" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft066" parent="GrassTufts" unique_id=2092596367 instance=ExtResource("gt_tuft")]
 position = Vector2(134, 78)
 
-[node name="Tuft067" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft067" parent="GrassTufts" unique_id=445939313 instance=ExtResource("gt_tuft")]
 position = Vector2(684, 401)
 scale = Vector2(-1, 1)
 
-[node name="Tuft068" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft068" parent="GrassTufts" unique_id=1150297841 instance=ExtResource("gt_tuft")]
 position = Vector2(96, 155)
 scale = Vector2(-1, 1)
 
-[node name="Tuft069" parent="GrassTufts" instance=ExtResource("gt_tuft")]
+[node name="Tuft069" parent="GrassTufts" unique_id=1164149487 instance=ExtResource("gt_tuft")]
 position = Vector2(694, 83)
 scale = Vector2(-1, 1)

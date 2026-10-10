@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bpba3f31of1vg" path="res://scenes/exit_to_village.gd" id="3_hsoma"]
 [ext_resource type="Script" uid="uid://hqg7fptndcmp" path="res://scenes/go_to_bedroom.gd" id="4_uji4n"]
 [ext_resource type="Script" uid="uid://5hyooaad85s6" path="res://scripts/interactable.gd" id="9_inter"]
-[ext_resource type="Texture2D" uid="uid://dbk5x2oeq8us6" path="res://Assets/Characters/Eira/EiraCalmCharacterFacingForward.png" id="10_eira"]
+[ext_resource type="SpriteFrames" uid="uid://hohobs5afisw" path="res://Assets/Characters/Eira/Animations/EiraSpriteFrames.tres" id="11_eira_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brfgp"]
 resource_local_to_scene = true
@@ -164,10 +164,11 @@ script = ExtResource("4_uji4n")
 position = Vector2(365.5, 172)
 shape = SubResource("RectangleShape2D_xlaxs")
 
-[node name="EiraSprite" type="Sprite2D" parent="." unique_id=904421409]
+[node name="EiraSprite" type="AnimatedSprite2D" parent="." unique_id=904421409]
 position = Vector2(528, 176)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("10_eira")
+sprite_frames = ExtResource("11_eira_frames")
+animation = &"FIdle"
+autoplay = "FIdle"
 
 [node name="EiraTalk" type="Area2D" parent="." unique_id=1946256042]
 script = ExtResource("9_inter")
