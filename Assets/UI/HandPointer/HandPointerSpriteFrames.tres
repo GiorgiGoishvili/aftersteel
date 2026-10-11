@@ -1,46 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b34fsufxiexfb"]
 
 [ext_resource type="Texture2D" uid="uid://b2bqujwjrqpgy" path="res://Assets/UI/HandPointer/Exports/Fingerpointingdirectionsanimation.png" id="pointer"]
-
-[sub_resource type="AtlasTexture" id="FPoint_0"]
-atlas = ExtResource("pointer")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_1"]
-atlas = ExtResource("pointer")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_2"]
-atlas = ExtResource("pointer")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_3"]
-atlas = ExtResource("pointer")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_4"]
-atlas = ExtResource("pointer")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_5"]
-atlas = ExtResource("pointer")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_6"]
-atlas = ExtResource("pointer")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_7"]
-atlas = ExtResource("pointer")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_8"]
-atlas = ExtResource("pointer")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FPoint_9"]
-atlas = ExtResource("pointer")
-region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="BPoint_0"]
 atlas = ExtResource("pointer")
@@ -81,6 +41,46 @@ region = Rect2(576, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="BPoint_9"]
 atlas = ExtResource("pointer")
 region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_0"]
+atlas = ExtResource("pointer")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_1"]
+atlas = ExtResource("pointer")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_2"]
+atlas = ExtResource("pointer")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_3"]
+atlas = ExtResource("pointer")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_4"]
+atlas = ExtResource("pointer")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_5"]
+atlas = ExtResource("pointer")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_6"]
+atlas = ExtResource("pointer")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_7"]
+atlas = ExtResource("pointer")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_8"]
+atlas = ExtResource("pointer")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_9"]
+atlas = ExtResource("pointer")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LPoint_0"]
 atlas = ExtResource("pointer")
@@ -166,41 +166,6 @@ region = Rect2(1248, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("FPoint_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_5")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_6")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_7")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_8")
-}, {
-"duration": 1.0,
-"texture": SubResource("FPoint_9")
-}],
-"loop": true,
-"name": &"FPoint",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("BPoint_0")
 }, {
 "duration": 1.0,
@@ -232,6 +197,41 @@ animations = [{
 }],
 "loop": true,
 "name": &"BPoint",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("FPoint_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_9")
+}],
+"loop": true,
+"name": &"FPoint",
 "speed": 10.0
 }, {
 "frames": [{

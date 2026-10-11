@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bid56ppnohhb0"]
 
 [ext_resource type="Texture2D" uid="uid://iftihrjfmhtp" path="res://Assets/Characters/Kiren/Animations/Exports/KirenIdles.png" id="idles"]
+[ext_resource type="Texture2D" uid="uid://c5injuc05v3w0" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/Kiren2ndAttack.png" id="sword_attack2"]
+[ext_resource type="Texture2D" uid="uid://djynrcsqcd4co" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/Kiren3rdAttack.png" id="sword_attack3"]
 [ext_resource type="Texture2D" uid="uid://c3euy1f2aqa75" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenSwordAttacks.png" id="sword_attacks"]
 [ext_resource type="Texture2D" uid="uid://cjm6egnfuutlr" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenIdle.png" id="sword_idle"]
 [ext_resource type="Texture2D" uid="uid://cri8ky8hidemi" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenRunning.png" id="sword_running"]
 [ext_resource type="Texture2D" uid="uid://d0m17hlivabk4" path="res://Assets/Characters/Kiren/Animations/Exports/KirenWalking.png" id="walking"]
-[ext_resource type="Texture2D" uid="uid://c5injuc05v3w0" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/Kiren2ndAttack.png" id="sword_attack2"]
-[ext_resource type="Texture2D" uid="uid://djynrcsqcd4co" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/Kiren3rdAttack.png" id="sword_attack3"]
 
 [sub_resource type="AtlasTexture" id="BIdle_0"]
 atlas = ExtResource("idles")
@@ -119,6 +119,78 @@ region = Rect2(896, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="LSAttack_7"]
 atlas = ExtResource("sword_attacks")
 region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_0"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_1"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_2"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_3"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_4"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_5"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_6"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_7"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_8"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_0"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_1"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_2"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_3"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_4"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_5"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_6"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_7"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_8"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(1088, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="RSIdle_0"]
 atlas = ExtResource("sword_idle")
@@ -252,6 +324,78 @@ region = Rect2(384, 0, 64, 64)
 atlas = ExtResource("sword_attacks")
 region = Rect2(448, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="RSAttack2_0"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_1"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_2"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_3"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_4"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_5"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_6"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_7"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_8"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(1088, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_0"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_1"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_2"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_3"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_4"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_5"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_6"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_7"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_8"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(512, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="RSWalk_0"]
 atlas = ExtResource("sword_running")
 region = Rect2(0, 0, 32, 32)
@@ -303,150 +447,6 @@ region = Rect2(448, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="RWalk_3"]
 atlas = ExtResource("walking")
 region = Rect2(480, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_0"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_1"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_2"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(704, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_3"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(768, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_4"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(832, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_5"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(896, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_6"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(960, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_7"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(1024, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack2_8"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(1088, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_0"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_1"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_2"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_3"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_4"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_5"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_6"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_7"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack2_8"]
-atlas = ExtResource("sword_attack2")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_0"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_1"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_2"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_3"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_4"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_5"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_6"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_7"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="RSAttack3_8"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_0"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_1"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_2"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(704, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_3"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(768, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_4"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(832, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_5"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(896, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_6"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(960, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_7"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(1024, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="LSAttack3_8"]
-atlas = ExtResource("sword_attack3")
-region = Rect2(1088, 0, 64, 64)
 
 [resource]
 animations = [{
@@ -562,6 +562,70 @@ animations = [{
 }],
 "loop": false,
 "name": &"LSAttack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("LSAttack2_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_8")
+}],
+"loop": false,
+"name": &"LSAttack2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("LSAttack3_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_8")
+}],
+"loop": false,
+"name": &"LSAttack3",
 "speed": 10.0
 }, {
 "frames": [{
@@ -697,6 +761,70 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("RSAttack2_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_8")
+}],
+"loop": false,
+"name": &"RSAttack2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("RSAttack3_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_8")
+}],
+"loop": false,
+"name": &"RSAttack3",
+"speed": 10.0
+}, {
+"frames": [{
 "duration": 6.0,
 "texture": SubResource("RSAttack_0")
 }],
@@ -781,132 +909,4 @@ animations = [{
 "loop": true,
 "name": &"RWalk",
 "speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("RSAttack2_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_5")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_6")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_7")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack2_8")
-}],
-"loop": false,
-"name": &"RSAttack2",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("LSAttack2_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_5")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_6")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_7")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack2_8")
-}],
-"loop": false,
-"name": &"LSAttack2",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("RSAttack3_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_5")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_6")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_7")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSAttack3_8")
-}],
-"loop": false,
-"name": &"RSAttack3",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("LSAttack3_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_5")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_6")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_7")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSAttack3_8")
-}],
-"loop": false,
-"name": &"LSAttack3",
-"speed": 10.0
 }]

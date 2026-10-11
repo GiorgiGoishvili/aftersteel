@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w5f4y34yjc1y"
-path="res://.godot/imported/Character_Move_Boots.png-d3211d243653d22d542472d60a0d1eee.ctex"
+uid="uid://48xy2dyvjh01"
+path="res://.godot/imported/AftersteelHealthBar.png-2303a495cc06bce3f0e8012b2d36179c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/WeaponAnimations/Character_Move_Boots.png"
-dest_files=["res://.godot/imported/Character_Move_Boots.png-d3211d243653d22d542472d60a0d1eee.ctex"]
+source_file="res://Assets/UI/HealthBar/Exports/AftersteelHealthBar.png"
+dest_files=["res://.godot/imported/AftersteelHealthBar.png-2303a495cc06bce3f0e8012b2d36179c.ctex"]
 
 [params]
 

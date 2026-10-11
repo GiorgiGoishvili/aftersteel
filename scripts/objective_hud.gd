@@ -18,10 +18,32 @@ const GAMEPLAY_SCENES := [
 	"WesternRiver",
 ]
 
+## The health bar art (AftersteelHealthBar.png): one 128x128 frame per health
+## state, full first, the meter draining right to left. Not an animation -
+## exactly one frame shows, picked from Kiren's health.
+const HEALTH_FRAME_SIZE := 128
+## The drawn part of each frame (the rest is empty canvas).
+const HEALTH_FRAME_CROP := Rect2(7, 45, 119, 39)
+## How full each frame's meter is drawn, frame by frame (red pixels across
+## the 97 px meter, measured on the art: the steps are uneven, 4-6 px).
+const HEALTH_FRAME_FILL := [
+	1.0, 0.959, 0.897, 0.845, 0.784, 0.732, 0.670, 0.619, 0.557, 0.505,
+	0.443, 0.392, 0.330, 0.278, 0.216, 0.165, 0.113, 0.052, 0.0,
+]
+## Gap between the bar and the screen's top-left corner.
+const HEALTH_BAR_MARGIN := Vector2(24, 24)
+
+## Screen pixels per art pixel. Whole numbers keep the pixel art crisp:
+## 5 draws the bar 595x195 on the 1920x1080 view.
+@export_range(1, 8) var health_bar_scale := 5:
+	set(value):
+		health_bar_scale = value
+		if is_node_ready():
+			_layout()
+
 @onready var label: Label = $ObjectiveText
 @onready var tutorial: Label = $TutorialText
-@onready var hp_text: Label = $HealthBox/HealthText
-@onready var hp_bar: ProgressBar = $HealthBox/HealthBar
+@onready var hp_bar: TextureRect = $HealthBox/HealthBar
 
 ## Set false to force the HUD off regardless of scene (used by cutscenes).
 var allowed := true
@@ -34,6 +56,7 @@ func _ready() -> void:
 	GameState.tutorial_changed.connect(_on_tutorial_changed)
 	GameState.player_health_changed.connect(_on_health_changed)
 
+	_layout()
 	_on_objective_changed(GameState.objective)
 	_on_tutorial_changed(GameState.tutorial_hint)
 	_on_health_changed(GameState.get_player_hp(), GameState.get_player_max_hp())
@@ -78,6 +101,19 @@ func _refresh_visibility() -> void:
 	visible = allowed and GAMEPLAY_SCENES.has(scene.name)
 
 
+## The bar at its scale in the top-left corner, with the objective and the
+## hint stacked under it so a bigger bar never covers them.
+func _layout() -> void:
+	var drawn := HEALTH_FRAME_CROP.size * health_bar_scale
+	var box: Control = $HealthBox
+	box.position = HEALTH_BAR_MARGIN
+	box.size = drawn
+	hp_bar.position = Vector2.ZERO
+	hp_bar.size = drawn
+	label.position.y = box.position.y + drawn.y + 11.0
+	tutorial.position.y = label.position.y + 56.0
+
+
 func _on_objective_changed(text: String) -> void:
 	label.text = text
 	label.visible = text != ""
@@ -88,9 +124,33 @@ func _on_tutorial_changed(text: String) -> void:
 	tutorial.visible = text != ""
 
 
-## Small persistent health readout. Sits under the objective lines so it
-## never covers the dialogue box, which owns the bottom of the screen.
+## Kiren's health bar, top left, no numbers: shows the frame for his health.
+## Clear of the dialogue box, which owns the bottom of the screen.
 func _on_health_changed(current: int, maximum: int) -> void:
-	hp_text.text = "KIREN   %d / %d" % [current, maximum]
-	hp_bar.max_value = maximum
-	hp_bar.value = current
+	var frame := health_frame(current, maximum)
+	var region := HEALTH_FRAME_CROP
+	region.position.x += frame * HEALTH_FRAME_SIZE
+	(hp_bar.texture as AtlasTexture).region = region
+
+
+## The frame whose drawn fill is closest to current / maximum - except that
+## only full health shows the full bar and only zero shows the empty one, so
+## any hit visibly drains it and a living Kiren never looks dead. Always a
+## valid frame, even with no maximum yet.
+static func health_frame(current: int, maximum: int) -> int:
+	var empty := HEALTH_FRAME_FILL.size() - 1
+
+	if maximum <= 0 or current >= maximum:
+		return 0
+
+	if current <= 0:
+		return empty
+
+	var share := float(current) / float(maximum)
+	var best := 1
+
+	for i in range(1, empty):
+		if absf(HEALTH_FRAME_FILL[i] - share) < absf(HEALTH_FRAME_FILL[best] - share):
+			best = i
+
+	return best
