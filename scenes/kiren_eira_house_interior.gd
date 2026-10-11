@@ -1,6 +1,7 @@
 extends Node2D
 
 const OBJECTIVE_FIREWOOD := "Bring in some firewood."
+const OBJECTIVE_WELF := "Talk to Welf"
 
 const EIRA_INTRO_LINES := [
 	{ "speaker": "EIRA", "text": "There you are." },
@@ -92,4 +93,4 @@ func _on_fireplace_interacted() -> void:
 	Dialogue.start(EIRA_DONE_LINES)
 	await Dialogue.finished
 
-	GameState.set_objective("")
+	GameState.set_objective(OBJECTIVE_WELF, "welf")

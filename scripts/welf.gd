@@ -1,8 +1,9 @@
 extends "res://scripts/npc.gd"
 
 ## Welf: the sword (npc.gd's gift), then a small job - three slimes in the
-## west field. He only offers it while Kiren has no other errand on, since
-## the HUD carries one objective at a time; until then he is the usual Welf.
+## west field. He offers it when he is Kiren's objective (or nothing else is
+## on), since the HUD carries one objective at a time; until then he is the
+## usual Welf.
 ##
 ## Progress lives in GameState (slimes_defeated, counted as slimes die), so
 ## it survives the walk to the outskirts and back.
@@ -38,7 +39,7 @@ func _on_talk() -> void:
 		return
 
 	# Kiren is busy with something else: the sword and the usual line only.
-	if GameState.objective != "":
+	if GameState.objective != "" and GameState.objective_target != "welf":
 		super._on_talk()
 		return
 

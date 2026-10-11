@@ -23,6 +23,7 @@ ObjectiveHUD="*res://scenes/objective_label.tscn"
 Music="*res://scripts/music.gd"
 Sfx="*res://scripts/sfx.gd"
 InventoryUI="*res://scenes/inventory_ui.tscn"
+QuestMarker="*res://scenes/ui/quest_marker.tscn"
 
 [display]
 

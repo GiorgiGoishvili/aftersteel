@@ -95,6 +95,12 @@ script = ExtResource("4_chest")
 position = Vector2(739, 451)
 shape = SubResource("RectangleShape2D_chest")
 
+[node name="QuestMarkerSpot" type="Marker2D" parent="Chest" unique_id=887956368]
+editor_description = "Where the quest marker's hand sits for the chest objective (its centre), pointing right at the chest drawn in the room art (x 735-754, y 439-470). The bed is above it and walls are right and below, so the floor to its left is the clear side. Hidden while Kiren is in the chest's reach."
+position = Vector2(716, 451)
+metadata/point = "right"
+metadata/hide_in_reach = true
+
 [node name="BlockedExitReturn" type="Marker2D" parent="." unique_id=1551029526]
 position = Vector2(542, 426)
 
