@@ -1,0 +1,83 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://x3a1yhqvmvcd" path="res://scripts/pause_menu.gd" id="1_pm"]
+[ext_resource type="Texture2D" uid="uid://28x2ger7srgf" path="res://Assets/UI/PauseMenu/Exports/AftersteelPauseMenu.png" id="2_pm"]
+[ext_resource type="Script" uid="uid://p8iw7u43xt2d" path="res://scripts/pause_menu_button.gd" id="3_pm"]
+[ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="4_pm"]
+
+[sub_resource type="StyleBoxEmpty" id="NoFocusBox"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 110
+visible = false
+script = ExtResource("1_pm")
+
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="Menu" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 576.0
+offset_top = 156.0
+offset_right = 1344.0
+offset_bottom = 924.0
+mouse_filter = 0
+texture = ExtResource("2_pm")
+expand_mode = 1
+
+[node name="Resume" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 216.0
+offset_right = 576.0
+offset_bottom = 312.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("3_pm")
+region = Rect2i(32, 36, 64, 16)
+
+[node name="Settings" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 330.0
+offset_right = 570.0
+offset_bottom = 426.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("NoFocusBox")
+disabled = true
+flat = true
+script = ExtResource("3_pm")
+region = Rect2i(33, 55, 62, 16)
+
+[node name="MainMenu" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 444.0
+offset_right = 570.0
+offset_bottom = 540.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("3_pm")
+region = Rect2i(33, 74, 62, 16)
+
+[node name="Note" type="Label" parent="Menu"]
+visible = false
+layout_mode = 0
+offset_left = 144.0
+offset_top = 546.0
+offset_right = 624.0
+offset_bottom = 678.0
+theme_override_colors/font_color = Color(0.14, 0.08, 0.02, 1)
+theme_override_fonts/font = ExtResource("4_pm")
+theme_override_font_sizes/font_size = 26
+text = "Progress isn't saved.
+Press again to leave."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

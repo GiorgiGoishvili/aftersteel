@@ -189,8 +189,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _notification(what: int) -> void:
-	# Alt-tabbing away mid-hold: the release would never arrive.
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+	# Alt-tabbing away or pausing mid-hold: the release would never arrive.
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_WINDOW_FOCUS_OUT or what == NOTIFICATION_PAUSED:
 		_attack_held = false
 
 

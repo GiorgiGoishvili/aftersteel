@@ -71,6 +71,9 @@ var objective_target := ""
 const SLIME_QUEST_GOAL := 3
 var slimes_defeated := 0
 
+## How many of each kind of enemy Kiren has put down, for the monster index.
+var enemies_defeated := {}
+
 # Current one-time tutorial hint, shown under the objective.
 # Separate from the objective: it teaches a control, not a goal.
 var tutorial_hint := ""
@@ -140,6 +143,7 @@ func set_objective(text: String, target := "") -> void:
 
 ## Every enemy Kiren puts down reports here exactly once (on its death).
 func record_enemy_defeated(kind: String) -> void:
+	enemies_defeated[kind] = int(enemies_defeated.get(kind, 0)) + 1
 	enemy_defeated.emit(kind)
 
 	if kind != "red_slime" or not slime_quest_active() or slimes_defeated >= SLIME_QUEST_GOAL:
@@ -277,6 +281,7 @@ func reset_run() -> void:
 	story_flags["welf_slime_quest_started"] = false
 	story_flags["welf_slime_quest_completed"] = false
 	slimes_defeated = 0
+	enemies_defeated.clear()
 	completed_encounters.clear()
 	opened_containers.clear()
 	received_gifts.clear()

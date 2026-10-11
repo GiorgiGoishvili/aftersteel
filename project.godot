@@ -24,6 +24,7 @@ Music="*res://scripts/music.gd"
 Sfx="*res://scripts/sfx.gd"
 InventoryUI="*res://scenes/inventory_ui.tscn"
 QuestMarker="*res://scenes/ui/quest_marker.tscn"
+PauseMenu="*res://scenes/ui/pause_menu.tscn"
 
 [display]
 

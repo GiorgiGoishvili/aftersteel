@@ -45,6 +45,9 @@ var _tween: Tween
 
 
 func _ready() -> void:
+	# The track carries on under the pause menu.
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	_player = AudioStreamPlayer.new()
 	_player.name = "MusicPlayer"
 
