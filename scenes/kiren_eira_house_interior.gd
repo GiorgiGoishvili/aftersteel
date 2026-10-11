@@ -58,7 +58,7 @@ func _maybe_start_eira_intro() -> void:
 	await Dialogue.finished
 
 	GameState.set_flag("eira_firewood_quest_started", true)
-	GameState.set_objective(OBJECTIVE_FIREWOOD)
+	GameState.set_objective(OBJECTIVE_FIREWOOD, "woodpile")
 
 
 func _on_eira_interacted() -> void:

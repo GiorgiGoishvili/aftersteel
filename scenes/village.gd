@@ -58,4 +58,4 @@ func _on_woodpile_interacted() -> void:
 	await Dialogue.finished
 
 	if GameState.has_flag("eira_firewood_quest_started"):
-		GameState.set_objective(OBJECTIVE_FIREPLACE)
+		GameState.set_objective(OBJECTIVE_FIREPLACE, "fireplace")

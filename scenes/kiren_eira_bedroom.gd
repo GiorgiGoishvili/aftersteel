@@ -70,7 +70,7 @@ func _set_spawn():
 		# go_to_living_room.gd checks this flag.
 		GameState.grant_starting_kit()
 		GameState.set_flag("intro_chest_gate_active", true)
-		GameState.set_objective(OBJECTIVE_CHEST)
+		GameState.set_objective(OBJECTIVE_CHEST, "bedroom_chest")
 
 		# Player gets control for the first time here, so this is where the
 		# interaction hint belongs. Interactable clears it on first success.
@@ -118,4 +118,4 @@ func _on_chest_interacted() -> void:
 	Dialogue.start(AFTER_LETTER_LINES)
 	await Dialogue.finished
 
-	GameState.set_objective(OBJECTIVE_DOWNSTAIRS)
+	GameState.set_objective(OBJECTIVE_DOWNSTAIRS, "eira")

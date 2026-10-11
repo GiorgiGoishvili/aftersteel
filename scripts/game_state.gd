@@ -4,6 +4,7 @@ extends Node
 ## Autoloaded as "GameState", so any script can read it directly.
 
 signal objective_changed(text: String)
+signal enemy_defeated(kind: String)
 signal tutorial_changed(text: String)
 signal inventory_changed
 signal equipment_changed
@@ -46,6 +47,11 @@ var story_flags := {
 	"eira_firewood_quest_started": false,
 	"eira_firewood_quest_completed": false,
 
+	# Welf's job after the sword: put down three slimes in the west field.
+	# Progress is slimes_defeated below.
+	"welf_slime_quest_started": false,
+	"welf_slime_quest_completed": false,
+
 	# DEVELOPER KNOWLEDGE: the decoy amulet is still sitting in the bedroom
 	# chest. Kiren has no idea there is anything unusual about it.
 	"decoy_amulet_in_bedroom_chest": true,
@@ -56,6 +62,14 @@ var story_flags := {
 
 # Current one-line objective. Empty string means "nothing active".
 var objective := ""
+
+# Where that objective is, as a key from quest_targets.gd. The quest pointer
+# beside Kiren points there (or at the exit toward it). Empty = no pointer.
+var objective_target := ""
+
+## Welf's slime job: how many slimes Kiren has put down since taking it.
+const SLIME_QUEST_GOAL := 3
+var slimes_defeated := 0
 
 # Current one-time tutorial hint, shown under the objective.
 # Separate from the objective: it teaches a control, not a goal.
@@ -118,9 +132,33 @@ func has_flag(flag: String) -> bool:
 	return story_flags.get(flag, false)
 
 
-func set_objective(text: String) -> void:
+func set_objective(text: String, target := "") -> void:
 	objective = text
+	objective_target = target
 	objective_changed.emit(text)
+
+
+## Every enemy Kiren puts down reports here exactly once (on its death).
+func record_enemy_defeated(kind: String) -> void:
+	enemy_defeated.emit(kind)
+
+	if kind != "red_slime" or not slime_quest_active() or slimes_defeated >= SLIME_QUEST_GOAL:
+		return
+
+	slimes_defeated += 1
+
+	if slimes_defeated >= SLIME_QUEST_GOAL:
+		set_objective("Return to Welf", "welf")
+	else:
+		set_objective(slime_quest_objective(), "slime_clearing")
+
+
+func slime_quest_active() -> bool:
+	return has_flag("welf_slime_quest_started") and not has_flag("welf_slime_quest_completed")
+
+
+func slime_quest_objective() -> String:
+	return "Defeat Slimes: %d/%d" % [slimes_defeated, SLIME_QUEST_GOAL]
 
 
 func set_tutorial(text: String) -> void:
@@ -236,6 +274,9 @@ func reset_run() -> void:
 	story_flags["interaction_tutorial_completed"] = false
 	story_flags["eira_firewood_quest_started"] = false
 	story_flags["eira_firewood_quest_completed"] = false
+	story_flags["welf_slime_quest_started"] = false
+	story_flags["welf_slime_quest_completed"] = false
+	slimes_defeated = 0
 	completed_encounters.clear()
 	opened_containers.clear()
 	received_gifts.clear()
@@ -244,6 +285,7 @@ func reset_run() -> void:
 		equipment[slot] = ""
 	_starting_kit_given = false
 	objective = ""
+	objective_target = ""
 	tutorial_hint = ""
 	next_spawn = ""
 	input_locked = false

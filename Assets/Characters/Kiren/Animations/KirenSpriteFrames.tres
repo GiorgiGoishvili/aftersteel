@@ -1,9 +1,12 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bid56ppnohhb0"]
 
-[ext_resource type="Texture2D" uid="uid://cd131tnk6h6bq" path="res://Assets/Characters/Kiren/Animations/Exports/KirenSwordAttacks.png" id="attacks"]
-[ext_resource type="Texture2D" uid="uid://c8j11g6ehmpkt" path="res://Assets/Characters/Kiren/Animations/Exports/KirenHurt.png" id="hurt"]
 [ext_resource type="Texture2D" uid="uid://iftihrjfmhtp" path="res://Assets/Characters/Kiren/Animations/Exports/KirenIdles.png" id="idles"]
+[ext_resource type="Texture2D" uid="uid://c3euy1f2aqa75" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenSwordAttacks.png" id="sword_attacks"]
+[ext_resource type="Texture2D" uid="uid://cjm6egnfuutlr" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenIdle.png" id="sword_idle"]
+[ext_resource type="Texture2D" uid="uid://cri8ky8hidemi" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenRunning.png" id="sword_running"]
 [ext_resource type="Texture2D" uid="uid://d0m17hlivabk4" path="res://Assets/Characters/Kiren/Animations/Exports/KirenWalking.png" id="walking"]
+[ext_resource type="Texture2D" uid="uid://c5injuc05v3w0" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/Kiren2ndAttack.png" id="sword_attack2"]
+[ext_resource type="Texture2D" uid="uid://djynrcsqcd4co" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/Kiren3rdAttack.png" id="sword_attack3"]
 
 [sub_resource type="AtlasTexture" id="BIdle_0"]
 atlas = ExtResource("idles")
@@ -20,66 +23,6 @@ region = Rect2(192, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="BIdle_3"]
 atlas = ExtResource("idles")
 region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSAttack_0"]
-atlas = ExtResource("attacks")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSAttack_1"]
-atlas = ExtResource("attacks")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSAttack_2"]
-atlas = ExtResource("attacks")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSAttack_3"]
-atlas = ExtResource("attacks")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSAttack_4"]
-atlas = ExtResource("attacks")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSHurt_0"]
-atlas = ExtResource("hurt")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSHurt_1"]
-atlas = ExtResource("hurt")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSIdle_0"]
-atlas = ExtResource("idles")
-region = Rect2(640, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSIdle_1"]
-atlas = ExtResource("idles")
-region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSIdle_2"]
-atlas = ExtResource("idles")
-region = Rect2(704, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSIdle_3"]
-atlas = ExtResource("idles")
-region = Rect2(736, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSWalk_0"]
-atlas = ExtResource("walking")
-region = Rect2(640, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSWalk_1"]
-atlas = ExtResource("walking")
-region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSWalk_2"]
-atlas = ExtResource("walking")
-region = Rect2(704, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="BSWalk_3"]
-atlas = ExtResource("walking")
-region = Rect2(736, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="BWalk_0"]
 atlas = ExtResource("walking")
@@ -112,66 +55,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="FIdle_3"]
 atlas = ExtResource("idles")
 region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSAttack_0"]
-atlas = ExtResource("attacks")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSAttack_1"]
-atlas = ExtResource("attacks")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSAttack_2"]
-atlas = ExtResource("attacks")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSAttack_3"]
-atlas = ExtResource("attacks")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSAttack_4"]
-atlas = ExtResource("attacks")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSHurt_0"]
-atlas = ExtResource("hurt")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSHurt_1"]
-atlas = ExtResource("hurt")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSIdle_0"]
-atlas = ExtResource("idles")
-region = Rect2(512, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSIdle_1"]
-atlas = ExtResource("idles")
-region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSIdle_2"]
-atlas = ExtResource("idles")
-region = Rect2(576, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSIdle_3"]
-atlas = ExtResource("idles")
-region = Rect2(608, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSWalk_0"]
-atlas = ExtResource("walking")
-region = Rect2(512, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSWalk_1"]
-atlas = ExtResource("walking")
-region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSWalk_2"]
-atlas = ExtResource("walking")
-region = Rect2(576, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="FSWalk_3"]
-atlas = ExtResource("walking")
-region = Rect2(608, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="FWalk_0"]
 atlas = ExtResource("walking")
@@ -206,64 +89,104 @@ atlas = ExtResource("idles")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LSAttack_0"]
-atlas = ExtResource("attacks")
-region = Rect2(320, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="LSAttack_1"]
-atlas = ExtResource("attacks")
-region = Rect2(352, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="LSAttack_2"]
-atlas = ExtResource("attacks")
-region = Rect2(384, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(640, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="LSAttack_3"]
-atlas = ExtResource("attacks")
-region = Rect2(416, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(704, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="LSAttack_4"]
-atlas = ExtResource("attacks")
-region = Rect2(448, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(768, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="LSHurt_0"]
-atlas = ExtResource("hurt")
+[sub_resource type="AtlasTexture" id="LSAttack_5"]
+atlas = ExtResource("sword_attacks")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack_6"]
+atlas = ExtResource("sword_attacks")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack_7"]
+atlas = ExtResource("sword_attacks")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSIdle_0"]
+atlas = ExtResource("sword_idle")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSIdle_1"]
+atlas = ExtResource("sword_idle")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSIdle_2"]
+atlas = ExtResource("sword_idle")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSIdle_3"]
+atlas = ExtResource("sword_idle")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSIdle_4"]
+atlas = ExtResource("sword_idle")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="LSHurt_1"]
-atlas = ExtResource("hurt")
+[sub_resource type="AtlasTexture" id="RSIdle_5"]
+atlas = ExtResource("sword_idle")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="LSIdle_0"]
-atlas = ExtResource("idles")
-region = Rect2(768, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="RSIdle_6"]
+atlas = ExtResource("sword_idle")
+region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="LSIdle_1"]
-atlas = ExtResource("idles")
-region = Rect2(800, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="LSIdle_2"]
-atlas = ExtResource("idles")
-region = Rect2(832, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="LSIdle_3"]
-atlas = ExtResource("idles")
-region = Rect2(864, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="RSIdle_7"]
+atlas = ExtResource("sword_idle")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LSWalk_0"]
-atlas = ExtResource("walking")
-region = Rect2(768, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LSWalk_1"]
-atlas = ExtResource("walking")
-region = Rect2(800, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LSWalk_2"]
-atlas = ExtResource("walking")
-region = Rect2(832, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LSWalk_3"]
-atlas = ExtResource("walking")
-region = Rect2(864, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LSWalk_4"]
+atlas = ExtResource("sword_running")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LSWalk_5"]
+atlas = ExtResource("sword_running")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LSWalk_6"]
+atlas = ExtResource("sword_running")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LSWalk_7"]
+atlas = ExtResource("sword_running")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LSWalk_8"]
+atlas = ExtResource("sword_running")
+region = Rect2(544, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="LWalk_0"]
 atlas = ExtResource("walking")
@@ -298,64 +221,72 @@ atlas = ExtResource("idles")
 region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="RSAttack_0"]
-atlas = ExtResource("attacks")
-region = Rect2(480, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="RSAttack_1"]
-atlas = ExtResource("attacks")
-region = Rect2(512, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="RSAttack_2"]
-atlas = ExtResource("attacks")
-region = Rect2(544, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="RSAttack_3"]
-atlas = ExtResource("attacks")
-region = Rect2(576, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="RSAttack_4"]
-atlas = ExtResource("attacks")
-region = Rect2(608, 0, 32, 32)
+atlas = ExtResource("sword_attacks")
+region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="RSHurt_0"]
-atlas = ExtResource("hurt")
-region = Rect2(192, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="RSAttack_5"]
+atlas = ExtResource("sword_attacks")
+region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="RSHurt_1"]
-atlas = ExtResource("hurt")
-region = Rect2(224, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="RSAttack_6"]
+atlas = ExtResource("sword_attacks")
+region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="RSIdle_0"]
-atlas = ExtResource("idles")
-region = Rect2(896, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="RSIdle_1"]
-atlas = ExtResource("idles")
-region = Rect2(928, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="RSIdle_2"]
-atlas = ExtResource("idles")
-region = Rect2(960, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="RSIdle_3"]
-atlas = ExtResource("idles")
-region = Rect2(992, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="RSAttack_7"]
+atlas = ExtResource("sword_attacks")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="RSWalk_0"]
-atlas = ExtResource("walking")
-region = Rect2(896, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="RSWalk_1"]
-atlas = ExtResource("walking")
-region = Rect2(928, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="RSWalk_2"]
-atlas = ExtResource("walking")
-region = Rect2(960, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="RSWalk_3"]
-atlas = ExtResource("walking")
-region = Rect2(992, 0, 32, 32)
+atlas = ExtResource("sword_running")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSWalk_4"]
+atlas = ExtResource("sword_running")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSWalk_5"]
+atlas = ExtResource("sword_running")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSWalk_6"]
+atlas = ExtResource("sword_running")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSWalk_7"]
+atlas = ExtResource("sword_running")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSWalk_8"]
+atlas = ExtResource("sword_running")
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="RWalk_0"]
 atlas = ExtResource("walking")
@@ -372,6 +303,150 @@ region = Rect2(448, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="RWalk_3"]
 atlas = ExtResource("walking")
 region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_0"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_1"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_2"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_3"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_4"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_5"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_6"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_7"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack2_8"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(1088, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_0"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_1"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_2"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_3"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_4"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_5"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_6"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_7"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack2_8"]
+atlas = ExtResource("sword_attack2")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_0"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_1"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_2"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_3"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_4"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_5"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_6"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_7"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RSAttack3_8"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_0"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_1"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_2"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_3"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_4"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_5"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_6"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_7"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="LSAttack3_8"]
+atlas = ExtResource("sword_attack3")
+region = Rect2(1088, 0, 64, 64)
 
 [resource]
 animations = [{
@@ -390,71 +465,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"BIdle",
-"speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("BSAttack_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSAttack_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSAttack_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSAttack_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSAttack_4")
-}],
-"loop": false,
-"name": &"BSAttack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("BSHurt_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSHurt_1")
-}],
-"loop": false,
-"name": &"BSHurt",
-"speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("BSIdle_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSIdle_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSIdle_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSIdle_3")
-}],
-"loop": true,
-"name": &"BSIdle",
-"speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("BSWalk_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSWalk_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSWalk_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("BSWalk_3")
-}],
-"loop": true,
-"name": &"BSWalk",
 "speed": 3.3333333333333335
 }, {
 "frames": [{
@@ -489,71 +499,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"FIdle",
-"speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("FSAttack_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSAttack_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSAttack_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSAttack_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSAttack_4")
-}],
-"loop": false,
-"name": &"FSAttack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("FSHurt_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSHurt_1")
-}],
-"loop": false,
-"name": &"FSHurt",
-"speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("FSIdle_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSIdle_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSIdle_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSIdle_3")
-}],
-"loop": true,
-"name": &"FSIdle",
-"speed": 3.3333333333333335
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("FSWalk_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSWalk_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSWalk_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("FSWalk_3")
-}],
-"loop": true,
-"name": &"FSWalk",
 "speed": 3.3333333333333335
 }, {
 "frames": [{
@@ -605,55 +550,88 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("LSAttack_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack_7")
 }],
 "loop": false,
 "name": &"LSAttack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("LSHurt_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("LSHurt_1")
+"duration": 6.0,
+"texture": SubResource("LSAttack_0")
 }],
 "loop": false,
 "name": &"LSHurt",
-"speed": 3.3333333333333335
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("LSIdle_0")
+"texture": SubResource("RSIdle_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("LSIdle_1")
+"texture": SubResource("RSIdle_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("LSIdle_2")
+"texture": SubResource("RSIdle_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("LSIdle_3")
+"texture": SubResource("RSIdle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_7")
 }],
 "loop": true,
 "name": &"LSIdle",
-"speed": 3.3333333333333335
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("LSWalk_0")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("LSWalk_1")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("LSWalk_2")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("LSWalk_3")
+}, {
+"duration": 1.5,
+"texture": SubResource("LSWalk_4")
+}, {
+"duration": 1.5,
+"texture": SubResource("LSWalk_5")
+}, {
+"duration": 1.5,
+"texture": SubResource("LSWalk_6")
+}, {
+"duration": 1.5,
+"texture": SubResource("LSWalk_7")
+}, {
+"duration": 1.5,
+"texture": SubResource("LSWalk_8")
 }],
 "loop": true,
 "name": &"LSWalk",
-"speed": 3.3333333333333335
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -704,21 +682,27 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("RSAttack_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack_7")
 }],
 "loop": false,
 "name": &"RSAttack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("RSHurt_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("RSHurt_1")
+"duration": 6.0,
+"texture": SubResource("RSAttack_0")
 }],
 "loop": false,
 "name": &"RSHurt",
-"speed": 3.3333333333333335
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -732,27 +716,54 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("RSIdle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSIdle_7")
 }],
 "loop": true,
 "name": &"RSIdle",
-"speed": 3.3333333333333335
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("RSWalk_0")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("RSWalk_1")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("RSWalk_2")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("RSWalk_3")
+}, {
+"duration": 1.5,
+"texture": SubResource("RSWalk_4")
+}, {
+"duration": 1.5,
+"texture": SubResource("RSWalk_5")
+}, {
+"duration": 1.5,
+"texture": SubResource("RSWalk_6")
+}, {
+"duration": 1.5,
+"texture": SubResource("RSWalk_7")
+}, {
+"duration": 1.5,
+"texture": SubResource("RSWalk_8")
 }],
 "loop": true,
 "name": &"RSWalk",
-"speed": 3.3333333333333335
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -770,4 +781,132 @@ animations = [{
 "loop": true,
 "name": &"RWalk",
 "speed": 3.3333333333333335
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("RSAttack2_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack2_8")
+}],
+"loop": false,
+"name": &"RSAttack2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("LSAttack2_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack2_8")
+}],
+"loop": false,
+"name": &"LSAttack2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("RSAttack3_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("RSAttack3_8")
+}],
+"loop": false,
+"name": &"RSAttack3",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("LSAttack3_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("LSAttack3_8")
+}],
+"loop": false,
+"name": &"LSAttack3",
+"speed": 10.0
 }]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bhxc715tntkjm" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="SpriteFrames" path="res://Assets/Characters/Kiren/Animations/KirenSpriteFrames.tres" id="2_frames"]
+[ext_resource type="Script" uid="uid://d0whvkh3rkf2b" path="res://scripts/quest_pointer.gd" id="qp_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hand_pointer.tscn" id="qp_hand"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ke2ow"]
 size = Vector2(10, 4)
@@ -15,8 +17,15 @@ size = Vector2(24, 20)
 [sub_resource type="RectangleShape2D" id="SwordReachSide"]
 size = Vector2(20, 22)
 
+[sub_resource type="RectangleShape2D" id="ThrustReachVertical"]
+size = Vector2(12, 28)
+
+[sub_resource type="RectangleShape2D" id="ThrustReachSide"]
+size = Vector2(26, 12)
+
 [node name="Player" type="CharacterBody2D" groups=["player"] unique_id=1129717900]
 script = ExtResource("1_qlg0r")
+platform_floor_layers = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=262994257]
 sprite_frames = ExtResource("2_frames")
@@ -63,3 +72,30 @@ disabled = true
 position = Vector2(16, 8)
 shape = SubResource("SwordReachSide")
 disabled = true
+
+[node name="TF" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(0, 24)
+shape = SubResource("ThrustReachVertical")
+disabled = true
+
+[node name="TB" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(0, -10)
+shape = SubResource("ThrustReachVertical")
+disabled = true
+
+[node name="TL" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(-19, 6)
+shape = SubResource("ThrustReachSide")
+disabled = true
+
+[node name="TR" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(19, 6)
+shape = SubResource("ThrustReachSide")
+disabled = true
+
+[node name="QuestPointer" type="Node2D" parent="."]
+z_index = 20
+script = ExtResource("qp_script")
+
+[node name="HandPointer" parent="QuestPointer" instance=ExtResource("qp_hand")]
+scale = Vector2(0.5, 0.5)

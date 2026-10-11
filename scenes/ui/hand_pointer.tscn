@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://dljla211p3kfs" path="res://scripts/hand_pointer.gd" id="1_ptr"]
+[ext_resource type="SpriteFrames" path="res://Assets/UI/HandPointer/HandPointerSpriteFrames.tres" id="2_ptr"]
+
+[node name="HandPointer" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("2_ptr")
+animation = &"BPoint"
+script = ExtResource("1_ptr")

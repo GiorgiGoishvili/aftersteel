@@ -1,0 +1,306 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" uid="uid://b2bqujwjrqpgy" path="res://Assets/UI/HandPointer/Exports/Fingerpointingdirectionsanimation.png" id="pointer"]
+
+[sub_resource type="AtlasTexture" id="FPoint_0"]
+atlas = ExtResource("pointer")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_1"]
+atlas = ExtResource("pointer")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_2"]
+atlas = ExtResource("pointer")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_3"]
+atlas = ExtResource("pointer")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_4"]
+atlas = ExtResource("pointer")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_5"]
+atlas = ExtResource("pointer")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_6"]
+atlas = ExtResource("pointer")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_7"]
+atlas = ExtResource("pointer")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_8"]
+atlas = ExtResource("pointer")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FPoint_9"]
+atlas = ExtResource("pointer")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_0"]
+atlas = ExtResource("pointer")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_1"]
+atlas = ExtResource("pointer")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_2"]
+atlas = ExtResource("pointer")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_3"]
+atlas = ExtResource("pointer")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_4"]
+atlas = ExtResource("pointer")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_5"]
+atlas = ExtResource("pointer")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_6"]
+atlas = ExtResource("pointer")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_7"]
+atlas = ExtResource("pointer")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_8"]
+atlas = ExtResource("pointer")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="BPoint_9"]
+atlas = ExtResource("pointer")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_0"]
+atlas = ExtResource("pointer")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_1"]
+atlas = ExtResource("pointer")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_2"]
+atlas = ExtResource("pointer")
+region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_3"]
+atlas = ExtResource("pointer")
+region = Rect2(736, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_4"]
+atlas = ExtResource("pointer")
+region = Rect2(768, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_5"]
+atlas = ExtResource("pointer")
+region = Rect2(800, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_6"]
+atlas = ExtResource("pointer")
+region = Rect2(832, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_7"]
+atlas = ExtResource("pointer")
+region = Rect2(864, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_8"]
+atlas = ExtResource("pointer")
+region = Rect2(896, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="LPoint_9"]
+atlas = ExtResource("pointer")
+region = Rect2(928, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_0"]
+atlas = ExtResource("pointer")
+region = Rect2(960, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_1"]
+atlas = ExtResource("pointer")
+region = Rect2(992, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_2"]
+atlas = ExtResource("pointer")
+region = Rect2(1024, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_3"]
+atlas = ExtResource("pointer")
+region = Rect2(1056, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_4"]
+atlas = ExtResource("pointer")
+region = Rect2(1088, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_5"]
+atlas = ExtResource("pointer")
+region = Rect2(1120, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_6"]
+atlas = ExtResource("pointer")
+region = Rect2(1152, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_7"]
+atlas = ExtResource("pointer")
+region = Rect2(1184, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_8"]
+atlas = ExtResource("pointer")
+region = Rect2(1216, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RPoint_9"]
+atlas = ExtResource("pointer")
+region = Rect2(1248, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("FPoint_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("FPoint_9")
+}],
+"loop": true,
+"name": &"FPoint",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("BPoint_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("BPoint_9")
+}],
+"loop": true,
+"name": &"BPoint",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("LPoint_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("LPoint_9")
+}],
+"loop": true,
+"name": &"LPoint",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("RPoint_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("RPoint_9")
+}],
+"loop": true,
+"name": &"RPoint",
+"speed": 10.0
+}]

@@ -34,12 +34,18 @@ func _ready() -> void:
 
 
 func _on_talk() -> void:
-	var giving := gift_item_id != "" and gift_id != "" and not GameState.has_received_gift(gift_id)
-	var source := first_lines if giving or repeat_lines.is_empty() else repeat_lines
-	var lines: Array = []
+	var lines := _greeting()
 
-	for text in source:
-		lines.append({ "speaker": speaker, "text": text })
+	if not lines.is_empty():
+		Dialogue.start(lines)
+
+
+## The usual conversation: first_lines with the gift the first time,
+## repeat_lines after. Hands the gift over as it builds the lines.
+func _greeting() -> Array:
+	var giving := _gift_due()
+	var source := first_lines if giving or repeat_lines.is_empty() else repeat_lines
+	var lines := _spoken(source)
 
 	if giving:
 		var item := Items.by_id(gift_item_id)
@@ -53,5 +59,18 @@ func _on_talk() -> void:
 			var count := " x%d" % gift_count if gift_count > 1 else ""
 			lines.append({ "text": "Received: %s%s" % [item["name"], count] })
 
-	if not lines.is_empty():
-		Dialogue.start(lines)
+	return lines
+
+
+func _gift_due() -> bool:
+	return gift_item_id != "" and gift_id != "" and not GameState.has_received_gift(gift_id)
+
+
+## Dialogue lines spoken by this NPC.
+func _spoken(texts: Array) -> Array:
+	var lines: Array = []
+
+	for text in texts:
+		lines.append({ "speaker": speaker, "text": text })
+
+	return lines

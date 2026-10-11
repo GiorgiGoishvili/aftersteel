@@ -20,6 +20,13 @@ signal died
 @export var strike_frame := 2
 ## Seconds after a hit during which it can't be hurt again.
 @export var hurt_protection := 0.35
+## A sword hit flashes it this colour (values above 1 brighten towards white).
+@export var hit_flash_color := Color(2.5, 2.5, 2.5)
+@export var hit_flash_time := 0.1
+## ...and shoves it away from Kiren at this speed (px/s), falling to nothing
+## over knockback_time, while its hurt animation plays.
+@export var knockback_speed := 140.0
+@export var knockback_time := 0.15
 
 ## Centre of the body collision shape, i.e. where the slime "stands".
 const FEET := Vector2(0, 12)
@@ -45,6 +52,9 @@ var _struck := false
 var _path := PackedVector2Array()
 var _repath := 0.0
 var _player: Node2D
+var _knockback := Vector2.ZERO
+var _knockback_fade := 0.0
+var _flash_tween: Tween
 
 
 func _ready() -> void:
@@ -62,6 +72,7 @@ func _physics_process(delta: float) -> void:
 
 	_cooldown = maxf(_cooldown - delta, 0.0)
 	_protected = maxf(_protected - delta, 0.0)
+	_knockback = _knockback.move_toward(Vector2.ZERO, _knockback_fade * delta)
 
 	var player := _find_player()
 
@@ -75,6 +86,10 @@ func _physics_process(delta: float) -> void:
 			_chase(player, delta)
 		State.ATTACK:
 			_strike(player)
+		State.HURT:
+			# Slides back from the blow instead of standing frozen.
+			velocity = _knockback
+			move_and_slide()
 
 
 func _chase(player: Node2D, delta: float) -> void:
@@ -134,13 +149,15 @@ func _strike(player: Node2D) -> void:
 			return
 
 
-## Called by Kiren's sword. Returns false if the hit didn't count.
-func take_damage(amount: int, _from: Vector2) -> bool:
+## Called by Kiren's sword with where the blow came from (and how much harder
+## than usual it shoves). Returns false if the hit didn't count.
+func take_damage(amount: int, from: Vector2, knockback_scale := 1.0) -> bool:
 	if state == State.DEAD or _protected > 0.0:
 		return false
 
 	health = maxi(health - amount, 0)
 	_protected = hurt_protection
+	_flash()
 
 	if health == 0:
 		_die()
@@ -148,10 +165,24 @@ func take_damage(amount: int, _from: Vector2) -> bool:
 
 	# A hit cuts its own attack short.
 	state = State.HURT
+	var away := global_position - from
+	_knockback = away.normalized() * knockback_speed * knockback_scale if away.length() > 0.5 else Vector2.ZERO
+	# Every shove, strong or weak, dies away over the same knockback_time.
+	_knockback_fade = _knockback.length() / knockback_time
 	velocity = Vector2.ZERO
 	_aim_attack("")
 	_play(facing + "Hurt", true)
 	return true
+
+
+## On the sprite, so it never fights the body's fade-out on death.
+func _flash() -> void:
+	if _flash_tween != null:
+		_flash_tween.kill()
+
+	sprite.modulate = hit_flash_color
+	_flash_tween = create_tween()
+	_flash_tween.tween_property(sprite, "modulate", Color.WHITE, hit_flash_time)
 
 
 ## Stops attacking and colliding at once, flashes through its hurt
@@ -164,6 +195,8 @@ func _die() -> void:
 	attack_hitbox.set_deferred("monitoring", false)
 	_aim_attack("")
 	died.emit()
+	# Only Kiren's sword reaches take_damage, so every death here is his.
+	GameState.record_enemy_defeated("red_slime")
 
 	_play(facing + "Hurt", true)
 	var fade := create_tween()
