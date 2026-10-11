@@ -4,10 +4,16 @@
 [ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="ft"]
 [ext_resource type="Texture2D" uid="uid://yrp1cwwcokmj" path="res://Assets/UI/InventoryMenu/Exports/AftersteelInsideGameMenu.png" id="art"]
 [ext_resource type="Script" uid="uid://p8iw7u43xt2d" path="res://scripts/pause_menu_button.gd" id="btn"]
+[ext_resource type="Texture2D" uid="uid://dil8jvqeq85jb" path="res://Assets/UI/EquipmentMenu/Exports/AftersteelEquipmentMenu.png" id="equip_art"]
+[ext_resource type="SpriteFrames" path="res://Assets/Characters/Kiren/Animations/KirenSpriteFrames.tres" id="kiren_frames"]
 
 [sub_resource type="AtlasTexture" id="MenuArt"]
 atlas = ExtResource("art")
 region = Rect2(24, 44, 209, 160)
+
+[sub_resource type="AtlasTexture" id="EquipArt"]
+atlas = ExtResource("equip_art")
+region = Rect2(2, 15, 252, 215)
 
 [sub_resource type="StyleBoxEmpty" id="NoFocusBox"]
 
@@ -171,4 +177,99 @@ offset_bottom = 652.0
 theme_override_colors/font_color = Color(0.4, 0.28, 0.16, 1)
 theme_override_fonts/font = ExtResource("ft")
 theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="Equip" type="TextureRect" parent="Root"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 456.0
+offset_top = 110.0
+offset_right = 1464.0
+offset_bottom = 970.0
+mouse_filter = 0
+texture = SubResource("EquipArt")
+expand_mode = 1
+
+[node name="Weapon" type="Button" parent="Root/Equip"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 240.0
+offset_right = 172.0
+offset_bottom = 352.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("btn")
+region = Rect2i(18, 75, 27, 28)
+fade_unavailable = false
+
+[node name="Armor" type="Button" parent="Root/Equip"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 240.0
+offset_right = 468.0
+offset_bottom = 352.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("btn")
+region = Rect2i(92, 75, 27, 28)
+fade_unavailable = false
+
+[node name="Boots" type="Button" parent="Root/Equip"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 600.0
+offset_right = 172.0
+offset_bottom = 712.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("btn")
+region = Rect2i(18, 165, 27, 28)
+fade_unavailable = false
+
+[node name="Accessory" type="Button" parent="Root/Equip"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 600.0
+offset_right = 468.0
+offset_bottom = 712.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("btn")
+region = Rect2i(92, 165, 27, 28)
+fade_unavailable = false
+
+[node name="Close" type="Button" parent="Root/Equip"]
+layout_mode = 0
+offset_left = 908.0
+offset_top = 12.0
+offset_right = 1004.0
+offset_bottom = 112.0
+theme_override_styles/focus = SubResource("NoFocusBox")
+flat = true
+script = ExtResource("btn")
+region = Rect2i(229, 18, 24, 25)
+
+[node name="Grid" type="Control" parent="Root/Equip"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Kiren" type="AnimatedSprite2D" parent="Root/Equip"]
+position = Vector2(136, 312)
+scale = Vector2(8, 8)
+sprite_frames = ExtResource("kiren_frames")
+animation = &"FIdle"
+centered = false
+
+[node name="Note" type="Label" parent="Root/Equip"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 724.0
+offset_right = 488.0
+offset_bottom = 812.0
+theme_override_colors/font_color = Color(0.14, 0.08, 0.02, 1)
+theme_override_fonts/font = ExtResource("ft")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3

@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cjm6egnfuutlr" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenIdle.png" id="sword_idle"]
 [ext_resource type="Texture2D" uid="uid://cri8ky8hidemi" path="res://Assets/Characters/Kiren/Animations/Sword/Exports/KirenRunning.png" id="sword_running"]
 [ext_resource type="Texture2D" uid="uid://d0m17hlivabk4" path="res://Assets/Characters/Kiren/Animations/Exports/KirenWalking.png" id="walking"]
+[ext_resource type="Texture2D" uid="uid://c4rjei76xt2yr" path="res://Assets/Characters/Kiren/Animations/Fishing/Exports/KirenIdleFishing.png" id="fish_idle"]
+[ext_resource type="Texture2D" uid="uid://dq15ipcgls54r" path="res://Assets/Characters/Kiren/Animations/Fishing/Exports/KirenFishing.png" id="fish_cast"]
 
 [sub_resource type="AtlasTexture" id="BIdle_0"]
 atlas = ExtResource("idles")
@@ -447,6 +449,74 @@ region = Rect2(448, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="RWalk_3"]
 atlas = ExtResource("walking")
 region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_0"]
+atlas = ExtResource("fish_idle")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_1"]
+atlas = ExtResource("fish_idle")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_2"]
+atlas = ExtResource("fish_idle")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_3"]
+atlas = ExtResource("fish_idle")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_4"]
+atlas = ExtResource("fish_idle")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_5"]
+atlas = ExtResource("fish_idle")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_6"]
+atlas = ExtResource("fish_idle")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_7"]
+atlas = ExtResource("fish_idle")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishIdle_8"]
+atlas = ExtResource("fish_idle")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_0"]
+atlas = ExtResource("fish_cast")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_1"]
+atlas = ExtResource("fish_cast")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_2"]
+atlas = ExtResource("fish_cast")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_3"]
+atlas = ExtResource("fish_cast")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_4"]
+atlas = ExtResource("fish_cast")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_5"]
+atlas = ExtResource("fish_cast")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_6"]
+atlas = ExtResource("fish_cast")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="RFishCast_7"]
+atlas = ExtResource("fish_cast")
+region = Rect2(448, 0, 64, 64)
 
 [resource]
 animations = [{
@@ -909,4 +979,65 @@ animations = [{
 "loop": true,
 "name": &"RWalk",
 "speed": 3.3333333333333335
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("RFishCast_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishCast_7")
+}],
+"loop": false,
+"name": &"RFishCast",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("RFishIdle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("RFishIdle_8")
+}],
+"loop": true,
+"name": &"RFishIdle",
+"speed": 5.0
 }]

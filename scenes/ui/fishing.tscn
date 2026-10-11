@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/fishing.gd" id="1_fish"]
+
+[node name="Fishing" type="CanvasLayer"]
+process_mode = 3
+layer = 98
+script = ExtResource("1_fish")

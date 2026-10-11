@@ -4,8 +4,10 @@ extends CanvasLayer
 ## I, Esc or the X.
 ##
 ## The menu art (AftersteelInsideGameMenu.png) has four section buttons on
-## the wood and INDEX on the paper. A section, or the monster index, covers
-## the paper with its own page and a Back link; Back returns to INDEX.
+## the wood and INDEX on the paper. EQUIPMENT opens its own screen
+## (AftersteelEquipmentMenu.png); the others, and the monster index, cover
+## the paper with a page and a Back link. Esc steps back one screen at a
+## time, then closes.
 ##
 ## The game pauses while it is open. Dialogue outranks it - the screen
 ## refuses to open while someone is talking - and it never opens over the
@@ -20,12 +22,33 @@ const ART_CROP := Rect2i(24, 44, 209, 160)
 const PAGE := Rect2i(119, 66, 103, 132)
 ## The empty green bar above the paper, for the page's title.
 const HEADER := Rect2i(114, 46, 100, 17)
-## Equipment.png: the plain square from its equipment grid.
-const SLOT_CELL := Rect2i(97, 321, 14, 14)
-const EQUIPMENT_SHEET := preload("res://Assets/UI/InventoryMenu/Exports/Equipment.png")
 
-const SLOTS := [["weapon", "Weapon"], ["head", "Head"], ["body", "Body"], ["legs", "Legs"], ["feet", "Feet"]]
-const TITLES := {"equipment": "Equipment", "craft": "Craft", "character": "Character", "quests": "Quests", "index": "Monster Index"}
+const TITLES := {"craft": "Craft", "character": "Character", "quests": "Quests", "index": "Monster Index"}
+
+## The equipment screen's drawn part and its inventory grid, in art pixels.
+const EQUIP_CROP := Rect2i(2, 15, 252, 215)
+const GRID_COLUMNS := [Vector2i(138, 25), Vector2i(165, 24), Vector2i(191, 25), Vector2i(217, 25)]
+const GRID_ROWS := [Vector2i(75, 26), Vector2i(103, 26), Vector2i(131, 26), Vector2i(159, 25), Vector2i(186, 26)]
+## The empty space under BOOTS and ACCESSORY, for item names and messages.
+const NOTE_AREA := Rect2i(14, 196, 110, 22)
+## The screen's slots as the game's equipment slots (the art has no head
+## or legs slot). WEAPON also takes the fishing rod.
+const SHOWN_SLOTS := {"weapon": "Weapon", "body": "Armor", "feet": "Boots", "accessory": "Accessory"}
+
+## Kiren's preview is the gameplay Player's own sprite (same SpriteFrames,
+## set in the scene), idling the way he does in the world: front idle
+## unarmed, right-facing sword idle armed. Twice the menu's pixel size -
+## three times would not fit between the slots - which is also exactly his
+## size on screen in the game (camera zoom 8).
+const KIREN_AT := Vector2i(36, 93)
+const KIREN_SCALE := 2
+const KIREN_UNARMED := "FIdle"
+const KIREN_ARMED := "RSIdle"
+## With the rod: the same rod idle as in the world. Its frames are 64 px,
+## centred on the same Kiren as the 32 px ones.
+const KIREN_ROD := "RFishIdle"
+
+const ART_BUTTON := preload("res://scripts/pause_menu_button.gd")
 
 ## The monsters Kiren can actually meet.
 const MONSTERS := [
@@ -38,13 +61,23 @@ const FIREPLACE_STEP: String = preload("res://scenes/village.gd").OBJECTIVE_FIRE
 
 const INK := Color(0.14, 0.08, 0.02)
 const INK_SOFT := Color(0.4, 0.28, 0.16)
-const INK_HOVER := Color(0.6, 0.32, 0.04)
+## Text inside the dark grid squares.
+const INK_LIGHT := Color(0.93, 0.85, 0.7)
+## The selected tint for the equipment screen's dark slots and squares.
+const DARK_GLOW := Color(1.5, 1.32, 1.0)
 
 ## Screen pixels per art pixel. Whole numbers keep the pixel art crisp:
 ## 5 draws the menu 1045x800 on the 1920x1080 view.
 @export_range(1, 8) var menu_scale := 5:
 	set(value):
 		menu_scale = value
+		if is_node_ready():
+			_layout()
+
+## The same for the equipment screen: 4 draws it 1008x860.
+@export_range(1, 8) var equip_scale := 4:
+	set(value):
+		equip_scale = value
 		if is_node_ready():
 			_layout()
 
@@ -55,27 +88,33 @@ const INK_HOVER := Color(0.6, 0.32, 0.04)
 @onready var back_button: Button = $Root/Panel/Page/Back
 @onready var scroll: ScrollContainer = $Root/Panel/Page/Scroll
 @onready var body: VBoxContainer = $Root/Panel/Page/Scroll/Body
-@onready var hint: Label = $Root/Panel/Page/Hint
+@onready var page_hint: Label = $Root/Panel/Page/Hint
 @onready var index_button: Button = $Root/Panel/Index
 @onready var close_button: Button = $Root/Panel/Close
+@onready var equip: TextureRect = $Root/Equip
+@onready var equip_close: Button = $Root/Equip/Close
+@onready var grid: Control = $Root/Equip/Grid
+@onready var kiren: AnimatedSprite2D = $Root/Equip/Kiren
+@onready var note: Label = $Root/Equip/Note
 
 var is_open := false
-## "" (the menu as drawn, INDEX showing) or the open page: "equipment",
+## "" (the menu as drawn, INDEX showing) or the open screen: "equipment",
 ## "craft", "character", "quests" or "index".
 var view := ""
-## The pack's rows, while the equipment page is up.
-var list: VBoxContainer
+## Where messages go: the page's line, or the equipment screen's.
+var hint: Label
 
 var _selected := 0
+## What the equipment grid shows: the pack minus whatever is worn.
 var _rows: Array = []
+var _cells: Array[Button] = []
 var _font: Font
 var _monster_stats := {}
-# Stands in for a missing icon so every name lines up.
-var _no_icon := ImageTexture.create_from_image(Image.create(32, 32, false, Image.FORMAT_RGBA8))
 
 
 func _ready() -> void:
 	_font = title.get_theme_font("font")
+	hint = page_hint
 
 	var art := (panel.texture as AtlasTexture).atlas.get_image()
 	art.decompress()
@@ -93,6 +132,7 @@ func _ready() -> void:
 	index_button.pressed.connect(show_view.bind("index"))
 	back_button.pressed.connect(show_view.bind(""))
 	close_button.pressed.connect(close)
+	_build_equipment_screen()
 	GameState.inventory_changed.connect(_refresh, CONNECT_DEFERRED)
 	GameState.equipment_changed.connect(_refresh, CONNECT_DEFERRED)
 
@@ -132,26 +172,26 @@ func close() -> void:
 		return
 
 	is_open = false
-
-	var focused := get_viewport().gui_get_focus_owner()
-
-	if focused != null:
-		focused.release_focus()
-
+	_release_focus()
 	root.hide()
 	GameState.input_locked = false
 	get_tree().paused = false
 	Sfx.play("inventory_close")
 
 
-## "" shows the menu as drawn, INDEX and all; anything else covers the
-## paper with that page.
+## "" shows the menu as drawn, INDEX and all; "equipment" swaps in the
+## equipment screen; anything else covers the paper with that page.
 func show_view(which: String) -> void:
 	view = which
-	page.visible = which != ""
+	var equipping := which == "equipment"
+	panel.visible = not equipping
+	equip.visible = equipping
+	page.visible = which != "" and not equipping
 	index_button.visible = which == ""
 	title.text = TITLES.get(which, "")
+	hint = note if equipping else page_hint
 	hint.text = ""
+	_release_focus()
 	_refresh()
 
 
@@ -168,8 +208,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 	match event.keycode:
-		KEY_I, KEY_ESCAPE:
+		KEY_I:
 			close()
+		KEY_ESCAPE:
+			# One step back: out of a screen first, then out of the menu.
+			if view == "":
+				close()
+			else:
+				show_view("")
 		KEY_W, KEY_UP:
 			_move(-1)
 		KEY_S, KEY_DOWN:
@@ -182,15 +228,15 @@ func _refresh() -> void:
 	if not is_open or view == "":
 		return
 
+	if view == "equipment":
+		_equipment_screen()
+		return
+
 	for c in body.get_children():
 		body.remove_child(c)
 		c.queue_free()
 
-	list = null
-
 	match view:
-		"equipment":
-			_equipment_page()
 		"craft":
 			body.add_child(_label("Nothing to craft yet."))
 		"character":
@@ -203,121 +249,140 @@ func _refresh() -> void:
 
 # --- Equipment ---------------------------------------------------------
 
-func _equipment_page() -> void:
-	var slots := HBoxContainer.new()
-	slots.add_theme_constant_override("separation", 14)
+## Buttons over the screen's slots, its X and every grid square, each cut
+## to its own drawing like the menu's.
+func _build_equipment_screen() -> void:
+	var art := (equip.texture as AtlasTexture).atlas.get_image()
+	art.decompress()
+	art.convert(Image.FORMAT_RGBA8)
 
-	for s in SLOTS:
-		slots.add_child(_slot(s[0], s[1]))
+	for slot in SHOWN_SLOTS:
+		var b: Button = equip.get_node(SHOWN_SLOTS[slot])
+		b.cut_from(art, Color.TRANSPARENT, true)
+		b.set("selected_tint", DARK_GLOW)
+		_add_item_parts(b)
+		b.pressed.connect(_take_off.bind(slot))
 
-	body.add_child(slots)
-	body.add_child(_label("Pack", 26, INK_SOFT))
+	equip_close.cut_from(art, Color.TRANSPARENT, true)
+	equip_close.pressed.connect(show_view.bind(""))
 
-	list = VBoxContainer.new()
-	list.add_theme_constant_override("separation", 0)
-	body.add_child(list)
+	for row in GRID_ROWS:
+		for column in GRID_COLUMNS:
+			var cell := Button.new()
+			cell.set_script(ART_BUTTON)
+			cell.flat = true
+			cell.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+			cell.set("region", Rect2i(column.x, row.x, column.y, row.y))
+			cell.set("fade_unavailable", false)
+			cell.set("selected_tint", DARK_GLOW)
+			grid.add_child(cell)
+			cell.cut_from(art, Color.TRANSPARENT, true)
+			_add_item_parts(cell)
 
-	_rows = GameState.inventory.duplicate()
+			var i := _cells.size()
+			cell.mouse_entered.connect(_show_name.bind(i))
+			cell.pressed.connect(func() -> void:
+				_selected = i
+				_use())
+			_cells.append(cell)
+
+
+## An icon, a name for items with no icon, and a count, laid over a slot
+## or square.
+func _add_item_parts(b: Button) -> void:
+	var icon := TextureRect.new()
+	icon.name = "Icon"
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	b.add_child(icon)
+
+	var tag := _label("", 16, INK_LIGHT, HORIZONTAL_ALIGNMENT_CENTER)
+	tag.name = "Tag"
+	tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	tag.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	b.add_child(tag)
+	tag.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+	var count := _label("", 16, INK_LIGHT, HORIZONTAL_ALIGNMENT_RIGHT)
+	count.name = "Count"
+	count.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	count.autowrap_mode = TextServer.AUTOWRAP_OFF
+	count.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	b.add_child(count)
+	count.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	count.offset_right = -10
+	count.offset_bottom = -6
+
+
+func _equipment_screen() -> void:
+	for slot in SHOWN_SLOTS:
+		_fill(equip.get_node(SHOWN_SLOTS[slot]), Items.by_id(str(GameState.equipment.get(slot, ""))))
+
+	# A worn item stays in GameState's inventory; here it shows in its slot
+	# instead of the grid, so nothing is ever in two places.
+	_rows = []
+
+	for entry in GameState.inventory:
+		var count := int(entry.get("count", 1)) - (1 if GameState.is_equipped(str(entry.get("id", ""))) else 0)
+
+		if count > 0:
+			var shown: Dictionary = entry.duplicate()
+			shown["count"] = count
+			_rows.append(shown)
+
 	_selected = clampi(_selected, 0, maxi(0, _rows.size() - 1))
 
-	if _rows.is_empty():
-		list.add_child(_label("Nothing yet."))
-		return
+	for i in _cells.size():
+		var item: Dictionary = _rows[i] if i < _rows.size() else {}
+		_fill(_cells[i], item, int(item.get("count", 1)))
 
-	for i in _rows.size():
-		list.add_child(_row(i))
+	var idle := KIREN_ARMED if GameState.has_weapon_equipped() else (KIREN_ROD if GameState.has_rod_equipped() else KIREN_UNARMED)
+	kiren.offset = Vector2(-16, -16) if idle == KIREN_ROD else Vector2.ZERO
+
+	if kiren.animation != idle or not kiren.is_playing():
+		kiren.play(idle)
 
 
-## One equipment slot: Equipment.png's square, the worn item's icon, and
-## a click takes it off.
-func _slot(slot: String, label: String) -> Control:
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+## Shows `item` (or nothing) in a slot or square. Empty ones can't be
+## picked, so they never light up.
+func _fill(b: Button, item: Dictionary, count := 1) -> void:
+	var icon: TextureRect = b.get_node("Icon")
+	var has_icon := item.has("icon") and ResourceLoader.exists(item["icon"])
+	icon.texture = load(item["icon"]) if has_icon else null
+	icon.size = Vector2(64, 64)
+	icon.position = ((b.size - icon.size) / 2.0).round()
 
-	var cell := Button.new()
-	cell.flat = true
-	cell.focus_mode = Control.FOCUS_NONE
-	cell.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	cell.custom_minimum_size = Vector2(SLOT_CELL.size) * menu_scale
+	var item_name := str(item.get("name", ""))
+	(b.get_node("Tag") as Label).text = "" if has_icon else item_name.get_slice(" ", item_name.get_slice_count(" ") - 1)
+	(b.get_node("Count") as Label).text = "x%d" % count if count > 1 else ""
+	b.disabled = item.is_empty()
 
-	var tile := AtlasTexture.new()
-	tile.atlas = EQUIPMENT_SHEET
-	tile.region = SLOT_CELL
-	cell.add_child(_picture(tile, cell.custom_minimum_size))
 
+func _take_off(slot: String) -> void:
 	var item := Items.by_id(str(GameState.equipment.get(slot, "")))
 
-	if item.has("icon") and ResourceLoader.exists(item["icon"]):
-		var icon := _picture(load(item["icon"]), Vector2(64, 64))
-		icon.position = (cell.custom_minimum_size - icon.size) / 2.0
-		cell.add_child(icon)
-		cell.mouse_entered.connect(func() -> void: hint.text = str(item["name"]))
-		cell.pressed.connect(func() -> void:
-			GameState.unequip(slot)
-			hint.text = "Unequipped: %s" % item["name"])
+	if item.is_empty():
+		return
 
-	var name_label := _label(label, 18, INK_SOFT, HORIZONTAL_ALIGNMENT_CENTER)
-	name_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-	box.add_child(cell)
-	box.add_child(name_label)
-	return box
+	GameState.unequip(slot)
+	hint.text = "Unequipped: %s" % item["name"]
 
 
-func _row(i: int) -> Button:
-	var item: Dictionary = _rows[i]
-	var row := Button.new()
-	row.flat = true
-	row.focus_mode = Control.FOCUS_NONE
-	row.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	row.clip_text = true
-	var count := int(item.get("count", 1))
-	row.text = str(item.get("name", "?")) + ("  x%d" % count if count > 1 else "")
-	row.icon = load(item["icon"]) if item.has("icon") and ResourceLoader.exists(item["icon"]) else _no_icon
-
-	# Worn items say so at the row's right end.
-	if GameState.is_equipped(str(item.get("id", ""))):
-		var tag := _label("EQUIPPED", 18, INK_SOFT, HORIZONTAL_ALIGNMENT_RIGHT)
-		tag.name = "Tag"
-		tag.autowrap_mode = TextServer.AUTOWRAP_OFF
-		tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		tag.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		tag.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-		row.add_child(tag)
-		tag.set_anchors_and_offsets_preset(Control.PRESET_RIGHT_WIDE)
-
-	row.add_theme_font_override("font", _font)
-	row.add_theme_font_size_override("font_size", 22)
-	row.add_theme_color_override("font_hover_color", INK_HOVER)
-	row.add_theme_color_override("font_pressed_color", INK_SOFT)
-	row.add_theme_color_override("font_hover_pressed_color", INK_SOFT)
-	row.mouse_entered.connect(_pick.bind(i))
-	row.pressed.connect(func() -> void:
+func _show_name(i: int) -> void:
+	if i < _rows.size():
 		_selected = i
-		_use())
-	_paint(row, i == _selected)
-	return row
+		hint.text = str(_rows[i].get("name", ""))
 
 
-func _paint(row: Button, chosen: bool) -> void:
-	row.add_theme_color_override("font_color", INK_HOVER if chosen else INK)
-	row.add_theme_color_override("font_focus_color", INK_HOVER if chosen else INK)
-
-
-func _pick(i: int) -> void:
-	_selected = i
-	hint.text = str(_rows[i].get("description", ""))
-
-	if list != null:
-		for j in list.get_child_count():
-			if list.get_child(j) is Button:
-				_paint(list.get_child(j), j == i)
-
-
+## W and S step through the grid's items, the same as hovering them.
 func _move(step: int) -> void:
 	if view != "equipment" or _rows.is_empty():
 		return
 
-	_pick(wrapi(_selected + step, 0, _rows.size()))
+	_selected = wrapi(_selected + step, 0, _rows.size())
+	_cells[mini(_selected, _cells.size() - 1)].grab_focus()
+	hint.text = str(_rows[_selected].get("name", ""))
 
 
 func _use() -> void:
@@ -328,14 +393,13 @@ func _use() -> void:
 	var id := str(item["id"])
 	var kind := str(item.get("type", ""))
 
-	# Weapons and armour go in and out of their slot; the item stays here.
-	if kind == "weapon" or kind == "armor":
-		if GameState.is_equipped(id):
-			GameState.unequip("weapon" if kind == "weapon" else str(item.get("slot", "")))
-			hint.text = "Unequipped: %s" % item["name"]
-		else:
-			GameState.equip(id)
-			hint.text = "Equipped: %s" % item["name"]
+	# Into its slot, when the screen has one for it. GameState keeps the
+	# item in the pack underneath; the slot's button takes it off again.
+	var slot := "weapon" if kind == "weapon" else str(item.get("slot", ""))
+
+	if slot != "" and SHOWN_SLOTS.has(slot):
+		GameState.equip(id)
+		hint.text = "Equipped: %s" % item["name"]
 		return
 
 	if item.get("use", "") != "heal":
@@ -479,17 +543,35 @@ func _picture(texture: Texture2D, at_size: Vector2) -> TextureRect:
 	return pic
 
 
+func _release_focus() -> void:
+	var focused := get_viewport().gui_get_focus_owner()
+
+	if focused != null:
+		focused.release_focus()
+
+
 func _art_buttons() -> Array:
 	return [panel.get_node("Equipment"), panel.get_node("Craft"), panel.get_node("Character"),
 		panel.get_node("Quests"), index_button]
 
 
-## The art centred at its scale, each button over its own drawing, the
-## title in the green bar and pages on the paper.
+func _equipment_buttons() -> Array:
+	var buttons: Array = [equip_close]
+
+	for slot in SHOWN_SLOTS:
+		buttons.append(equip.get_node(SHOWN_SLOTS[slot]))
+
+	return buttons + _cells
+
+
+## Both screens centred at their scale, each button over its own drawing,
+## the title in the green bar, pages on the paper and Kiren between the
+## slots.
 func _layout() -> void:
+	var view_size := get_viewport().get_visible_rect().size
 	var k := menu_scale
 	panel.size = Vector2(ART_CROP.size) * k
-	panel.position = ((get_viewport().get_visible_rect().size - panel.size) / 2.0).round()
+	panel.position = ((view_size - panel.size) / 2.0).round()
 
 	for b in _art_buttons() + [close_button]:
 		b.position = Vector2(b.region.position - ART_CROP.position) * k
@@ -503,7 +585,20 @@ func _layout() -> void:
 	back_button.position = Vector2(14, 8)
 	scroll.position = Vector2(24, 60)
 	scroll.size = Vector2(page.size.x - 40, page.size.y - 60 - 84)
-	hint.position = Vector2(24, page.size.y - 80)
-	hint.size = Vector2(page.size.x - 48, 72)
+	page_hint.position = Vector2(24, page.size.y - 80)
+	page_hint.size = Vector2(page.size.x - 48, 72)
+
+	var e := equip_scale
+	equip.size = Vector2(EQUIP_CROP.size) * e
+	equip.position = ((view_size - equip.size) / 2.0).round()
+
+	for b in _equipment_buttons():
+		b.position = Vector2(b.region.position - EQUIP_CROP.position) * e
+		b.size = Vector2(b.region.size) * e
+
+	kiren.position = Vector2(KIREN_AT - EQUIP_CROP.position) * e
+	kiren.scale = Vector2.ONE * KIREN_SCALE * e
+	note.position = Vector2(NOTE_AREA.position - EQUIP_CROP.position) * e
+	note.size = Vector2(NOTE_AREA.size) * e
 
 	_refresh()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2gl844uxuyb8"
-path="res://.godot/imported/GoldenLeggings.png-8be61fef74aca4b3a8353c7918d3c0fa.ctex"
+uid="uid://c4rjei76xt2yr"
+path="res://.godot/imported/KirenIdleFishing.png-3a561d6b52b6a30704deca14220955fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Armour/GoldenLeggings.png"
-dest_files=["res://.godot/imported/GoldenLeggings.png-8be61fef74aca4b3a8353c7918d3c0fa.ctex"]
+source_file="res://Assets/Characters/Kiren/Animations/Fishing/Exports/KirenIdleFishing.png"
+dest_files=["res://.godot/imported/KirenIdleFishing.png-3a561d6b52b6a30704deca14220955fb.ctex"]
 
 [params]
 

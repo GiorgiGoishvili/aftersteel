@@ -20,6 +20,11 @@ const FLASH_TIME := 0.1
 
 ## Where the button is drawn in the menu art, in art pixels.
 @export var region := Rect2i()
+## Off for buttons that are only sometimes in use (an empty slot): then
+## an unavailable button just shows the art as drawn.
+@export var fade_unavailable := true
+## The selected tint; dark buttons need a stronger lift to read as warm.
+@export var selected_tint := SELECTED
 
 var _art: Texture2D      # this button's pixels, the paper around it clear
 var _shape: Texture2D    # the same outline in plain white
@@ -108,11 +113,12 @@ func _draw() -> void:
 
 	match look():
 		"unavailable":
-			draw_texture_rect(_shape, box, false, Color(_paper, FADE))
+			if fade_unavailable:
+				draw_texture_rect(_shape, box, false, Color(_paper, FADE))
 		"pressed":
 			draw_texture_rect(_art, box, false, PRESSED)
 		"selected":
-			draw_texture_rect(_art, box, false, SELECTED)
+			draw_texture_rect(_art, box, false, selected_tint)
 
 
 ## Only the button's own pixels take the mouse, not the paper around its

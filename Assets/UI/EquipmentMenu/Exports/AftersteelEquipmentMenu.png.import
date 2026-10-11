@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuik3bvv3sn0a"
-path="res://.godot/imported/SteelLeggings.png-a36aa4645547b8b5102be317c11e9228.ctex"
+uid="uid://dil8jvqeq85jb"
+path="res://.godot/imported/AftersteelEquipmentMenu.png-b348be76edc12ed41e592ce107435251.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Armour/SteelLeggings.png"
-dest_files=["res://.godot/imported/SteelLeggings.png-a36aa4645547b8b5102be317c11e9228.ctex"]
+source_file="res://Assets/UI/EquipmentMenu/Exports/AftersteelEquipmentMenu.png"
+dest_files=["res://.godot/imported/AftersteelEquipmentMenu.png-b348be76edc12ed41e592ce107435251.ctex"]
 
 [params]
 

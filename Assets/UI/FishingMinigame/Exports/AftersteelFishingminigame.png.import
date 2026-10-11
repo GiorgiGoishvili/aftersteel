@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1cuegvck32ka"
-path="res://.godot/imported/GoldenChestplate.png-23c9e4a929a871619b14d1adb2ce5a9a.ctex"
+uid="uid://fa3emk6ad86f"
+path="res://.godot/imported/AftersteelFishingminigame.png-9a5c6dcb3a426588e1693bdc157b47ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Armour/GoldenChestplate.png"
-dest_files=["res://.godot/imported/GoldenChestplate.png-23c9e4a929a871619b14d1adb2ce5a9a.ctex"]
+source_file="res://Assets/UI/FishingMinigame/Exports/AftersteelFishingminigame.png"
+dest_files=["res://.godot/imported/AftersteelFishingminigame.png-9a5c6dcb3a426588e1693bdc157b47ba.ctex"]
 
 [params]
 

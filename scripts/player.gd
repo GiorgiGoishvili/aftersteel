@@ -65,6 +65,9 @@ extends CharacterBody2D
 
 ## Sword animations drawn by flipping the right-facing frames.
 const MIRRORED := ["LSIdle"]
+## The fishing art faces right; facing left it is flipped.
+const FISH_IDLE := "RFishIdle"
+const FISH_CAST := "RFishCast"
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword_hitbox: Area2D = $SwordHitbox
@@ -107,6 +110,10 @@ var _defeated := false
 var _swing_hits := {}
 
 var _flash_tween: Tween
+
+## True from the cast until fishing.gd is done: the cast plays once and he
+## stays on its last frame (line in the water), whatever else happens.
+var fishing := false
 
 
 func _ready() -> void:
@@ -155,7 +162,7 @@ func _physics_process(delta: float) -> void:
 		if direction.x != 0.0:
 			side = "R" if direction.x > 0.0 else "L"
 
-	if _one_shot == "" and not _defeated:
+	if _one_shot == "" and not _defeated and not fishing:
 		_play_loop(_loop_animation(direction != Vector2.ZERO))
 
 	move_and_slide()
@@ -378,6 +385,10 @@ func _loop_animation(moving: bool) -> String:
 	if GameState.has_weapon_equipped():
 		return side + "S" + gait
 
+	# Standing with the rod he holds it; there's no walking-with-rod art.
+	if GameState.has_rod_equipped() and not moving:
+		return FISH_IDLE
+
 	return facing + gait
 
 
@@ -387,8 +398,21 @@ func _play_loop(anim: String) -> void:
 
 
 func _play(anim: String) -> void:
-	sprite.flip_h = MIRRORED.has(anim)
+	sprite.flip_h = MIRRORED.has(anim) or (anim.begins_with("RFish") and side == "L")
 	sprite.play(anim)
+
+
+## The cast: Kiren pulls back and throws, then holds the last frame until
+## stop_fishing(). Returns how long the throw takes.
+func start_fishing() -> float:
+	fishing = true
+	velocity = Vector2.ZERO
+	_play(FISH_CAST)
+	return sprite.sprite_frames.get_frame_count(FISH_CAST) / sprite.sprite_frames.get_animation_speed(FISH_CAST)
+
+
+func stop_fishing() -> void:
+	fishing = false
 
 
 ## A brief tint on the sprite, so a hit reads even without a hurt pose.

@@ -73,7 +73,7 @@ border_color = Color(0.3, 0.7, 1, 1)
 border_width = 2.0
 
 [node name="FishingSpot" type="Marker2D" parent="." unique_id=1199219347]
-editor_description = "Future fishing spot (fishing system pending). Editor-only marker."
+editor_description = "Fishing spot: with the rod equipped, J / left click within 48 px of this marker casts (scripts/fishing.gd finds markers named FishingSpot*). Add more FishingSpot markers to fish elsewhere."
 position = Vector2(432, 272)
 gizmo_extents = 16.0
 

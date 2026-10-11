@@ -7,8 +7,10 @@ extends RefCounted
 ## "name"        shown to the player
 ## "description" shown to the player, written from KIREN'S point of view
 ## "key_item"    story item, should never be droppable/sellable
-## "type"        optional: "weapon" / "armor" - absent means a plain item
-## "slot"        armor only: head / body / legs / feet
+## "type"        optional: "weapon" / "armor" / "tool" / "accessory" -
+##               absent means a plain item
+## "slot"        armour: head / body / legs / feet; the rod: weapon;
+##               accessories: accessory
 ## "icon"        optional res:// path for a future inventory UI
 ##
 ## RULE: player-facing "name" and "description" must never reveal story
@@ -103,10 +105,11 @@ const LONG_SWORD := {
 	"description": "Longer than it looks. Heavier, too.", "key_item": false,
 	"icon": "res://Assets/Weapons/NormalLongSword.png",
 }
+# Welf's sword, the starter. Its icon is the AftersteelSwords export.
 const GRAY_SHORT_SWORD := {
 	"id": "gray_short_sword", "name": "Grey Short Sword", "type": "weapon",
 	"description": "Dull grey steel, well used.", "key_item": false,
-	"icon": "res://Assets/Weapons/GrayShortSword.png",
+	"icon": "res://Assets/Weapons/AftersteelSwords.png",
 }
 const GRAY_LONG_SWORD := {
 	"id": "gray_long_sword", "name": "Grey Long Sword", "type": "weapon",
@@ -122,6 +125,39 @@ const RED_LONG_SWORD := {
 	"id": "red_long_sword", "name": "Red Long Sword", "type": "weapon",
 	"description": "The blade has been stained red.", "key_item": false,
 	"icon": "res://Assets/Weapons/RedLongSword.png",
+}
+
+
+# --- Tools ------------------------------------------------------------
+# Goes in the weapon slot in place of the sword; with it out, J and left
+# click fish instead of swinging. No rod art yet, so no icon.
+
+const FISHING_ROD := {
+	"id": "fishing_rod", "name": "Fishing Rod", "type": "tool", "slot": "weapon",
+	"description": "A plain rod and line.", "key_item": false,
+}
+
+
+# --- Catches -----------------------------------------------------------
+# What the river gives up (chances live in fishing.gd).
+
+const RIVER_FISH := {
+	"id": "river_fish", "name": "River Fish",
+	"description": "Small, but it'll do.", "key_item": false,
+}
+
+# Junk: what comes up when it isn't a fish.
+const DRIFTWOOD := {
+	"id": "driftwood", "name": "Driftwood",
+	"description": "A branch the river has had for a while.", "key_item": false,
+	"icon": "res://Assets/Materials/Log2.png",
+}
+
+# The rare catch. Worn in the accessory slot; it does nothing yet.
+const OLD_RING := {
+	"id": "old_ring", "name": "Old Ring", "type": "accessory", "slot": "accessory",
+	"description": "Someone lost this in the river a long time ago.", "key_item": false,
+	"icon": "res://Assets/Accessories/OldRing.tres",
 }
 
 
@@ -195,6 +231,10 @@ const ALL := {
 	"golden_chestplate": GOLDEN_CHESTPLATE,
 	"golden_leggings": GOLDEN_LEGGINGS,
 	"golden_boots": GOLDEN_BOOTS,
+	"fishing_rod": FISHING_ROD,
+	"river_fish": RIVER_FISH,
+	"driftwood": DRIFTWOOD,
+	"old_ring": OLD_RING,
 }
 
 

@@ -94,6 +94,7 @@ var equipment := {
 	"body": "",
 	"legs": "",
 	"feet": "",
+	"accessory": "",
 }
 
 ## Kiren's combat stats. Survives leaving the battle scene so damage
@@ -195,6 +196,7 @@ func grant_starting_kit() -> void:
 
 	_starting_kit_given = true
 	add_item(Items.HEALING_HERB, 2)
+	add_item(Items.FISHING_ROD)
 
 
 ## Equips an item Kiren is carrying into its slot ("weapon" for weapons,
@@ -226,9 +228,15 @@ func is_equipped(id: String) -> bool:
 	return id != "" and equipment.values().has(id)
 
 
-## Every weapon in the game is a sword, so this is "is the sword out".
+## Every weapon in the game is a sword, so this is "is the sword out". The
+## fishing rod shares the slot but is a tool, not a weapon.
 func has_weapon_equipped() -> bool:
-	return equipment.get("weapon", "") != ""
+	return Items.by_id(str(equipment.get("weapon", ""))).get("type", "") == "weapon"
+
+
+## With the rod out, J and left click fish instead of swinging.
+func has_rod_equipped() -> bool:
+	return equipment.get("weapon", "") == Items.FISHING_ROD["id"]
 
 
 func reset_player_hp() -> void:

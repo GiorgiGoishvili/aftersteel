@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwapoqjyiveg7"
-path="res://.godot/imported/GoldenHelmet.png-a317be115c954b225f83fa3e380eae0d.ctex"
+uid="uid://dq15ipcgls54r"
+path="res://.godot/imported/KirenFishing.png-aa096c4f25347f2568ab6328460f19a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Armour/GoldenHelmet.png"
-dest_files=["res://.godot/imported/GoldenHelmet.png-a317be115c954b225f83fa3e380eae0d.ctex"]
+source_file="res://Assets/Characters/Kiren/Animations/Fishing/Exports/KirenFishing.png"
+dest_files=["res://.godot/imported/KirenFishing.png-aa096c4f25347f2568ab6328460f19a6.ctex"]
 
 [params]
 

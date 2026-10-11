@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4gdro7umk5jg"
-path="res://.godot/imported/GoldenBoots.png-4587835b319af09fb0768a02afe29665.ctex"
+uid="uid://bl8jpqtk7jirk"
+path="res://.godot/imported/AftersteelSwords.png-24674da028896b67ebbab70476b0e981.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Armour/GoldenBoots.png"
-dest_files=["res://.godot/imported/GoldenBoots.png-4587835b319af09fb0768a02afe29665.ctex"]
+source_file="res://Assets/Weapons/AftersteelSwords.png"
+dest_files=["res://.godot/imported/AftersteelSwords.png-24674da028896b67ebbab70476b0e981.ctex"]
 
 [params]
 
