@@ -64,6 +64,18 @@ size = Vector2(24, 80)
 [sub_resource type="RectangleShape2D" id="X_ToWesternRiver"]
 size = Vector2(80, 24)
 
+[sub_resource type="RectangleShape2D" id="W_LeftUpper"]
+size = Vector2(24, 216)
+
+[sub_resource type="RectangleShape2D" id="W_LeftLower"]
+size = Vector2(24, 128)
+
+[sub_resource type="RectangleShape2D" id="W_WestBackstop"]
+size = Vector2(16, 112)
+
+[sub_resource type="RectangleShape2D" id="X_ToAutumnForest"]
+size = Vector2(24, 80)
+
 [node name="WesternOutskirts" type="Node2D" unique_id=1638907786]
 y_sort_enabled = true
 script = ExtResource("ms")
@@ -78,7 +90,7 @@ tile_set = ExtResource("ts")
 
 [node name="Paths" type="TileMapLayer" parent="." unique_id=237955514]
 z_index = -5
-tile_map_data = PackedByteArray("AAANAAcAAQAAAAAAAAAOAAcAAQAAAAAAAAAPAAcAAQAAAAAAAAAQAAcAAQAAAAAAAAARAAcAAQAAAAAAAAASAAcAAQAAAAAAAAATAAcAAQAAAAAAAAAUAAcAAQAAAAAAAAAVAAcAAQAAAAAAAAAWAAcAAQAAAAAAAAAXAAcAAQAAAAAAAAAYAAcAAQAAAAAAAAAZAAcAAQAAAAAAAAAaAAcAAQAAAAAAAAAbAAcAAQAAAAAAAAAcAAcAAQAAAAAAAAAdAAcAAQAAAAAAAAAeAAcAAQAAAAAAAAAfAAcAAQAAAAAAAAAMAAgAAQACAAAAAAANAAgAAAABAAEAAAAOAAgAAAAAAAEAAAAPAAgAAAAAAAEAAAAQAAgAAAAAAAEAAAARAAgAAAACAAEAAAASAAgAAAABAAEAAAATAAgAAAAAAAEAAAAUAAgAAAAAAAEAAAAVAAgAAAACAAEAAAAWAAgAAAABAAEAAAAXAAgAAAAAAAEAAAAYAAgAAAAAAAEAAAAZAAgAAAAAAAEAAAAaAAgAAAACAAEAAAAbAAgAAAABAAEAAAAcAAgAAAAAAAEAAAAdAAgAAAAAAAEAAAAeAAgAAAACAAEAAAAfAAgAAAABAAEAAAAMAAkAAQACAAAAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAQADAAAAAAAQAAkAAQADAAAAAAARAAkAAQADAAAAAAASAAkAAQADAAAAAAATAAkAAQADAAAAAAAUAAkAAQADAAAAAAAVAAkAAQADAAAAAAAWAAkAAQADAAAAAAAXAAkAAQADAAAAAAAYAAkAAQADAAAAAAAZAAkAAQADAAAAAAAaAAkAAQADAAAAAAAbAAkAAQADAAAAAAAcAAkAAQADAAAAAAAdAAkAAQADAAAAAAAeAAkAAQADAAAAAAAfAAkAAQADAAAAAAAMAAoAAQACAAAAAAANAAoAAAABAAEAAAAOAAoAAQABAAAAAAAMAAsAAQACAAAAAAANAAsAAAAAAAEAAAAOAAsAAQABAAAAAAAMAAwAAQACAAAAAAANAAwAAAAAAAEAAAAOAAwAAQABAAAAAAAMAA0AAQACAAAAAAANAA0AAAACAAEAAAAOAA0AAQABAAAAAAAMAA4AAQACAAAAAAANAA4AAAAAAAEAAAAOAA4AAQABAAAAAAAMAA8AAQACAAAAAAANAA8AAAACAAEAAAAOAA8AAQABAAAAAAAMABAAAQACAAAAAAANABAAAAAAAAEAAAAOABAAAQABAAAAAAA=")
+tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("ts")
 
 [node name="Vegetation" type="Node2D" parent="." unique_id=208376822]
@@ -468,12 +480,6 @@ offset = Vector2(-32, -37)
 position = Vector2(0, 10)
 shape = SubResource("Trunk15")
 
-[node name="Bush34_Bush_simple1_1" type="Sprite2D" parent="Vegetation" unique_id=2083558518]
-position = Vector2(120, 286)
-texture = ExtResource("t_Bush_simple1_1")
-centered = false
-offset = Vector2(-15, -14)
-
 [node name="Bush35_Bush_pink_flowers1" type="Sprite2D" parent="Vegetation" unique_id=1671468391]
 position = Vector2(520, 200)
 texture = ExtResource("t_Bush_pink_flowers1")
@@ -575,18 +581,6 @@ offset = Vector2(-33, -36)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree35_Moss_tree3/Body" unique_id=1910572795]
 position = Vector2(0, 10)
 shape = SubResource("Trunk16")
-
-[node name="Tree36_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1956766746]
-position = Vector2(40, 256)
-texture = ExtResource("t_Tree3")
-centered = false
-offset = Vector2(-32, -37)
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree36_Tree3" unique_id=964432976]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree36_Tree3/Body" unique_id=1343597627]
-position = Vector2(0, 10)
-shape = SubResource("Trunk15")
 
 [node name="Tree37_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1470181201]
 position = Vector2(-110, 28)
@@ -1386,18 +1380,6 @@ texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
 
-[node name="Tree170_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1977066847]
-position = Vector2(-16, 246)
-texture = ExtResource("t_Tree2")
-centered = false
-offset = Vector2(-29, -48)
-
-[node name="Tree171_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=538608795]
-position = Vector2(-16, 290)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-32, -46)
-
 [node name="Tree172_Tree3" type="Sprite2D" parent="Vegetation" unique_id=993900430]
 position = Vector2(-16, 334)
 texture = ExtResource("t_Tree3")
@@ -1434,18 +1416,6 @@ texture = ExtResource("t_Tree3")
 centered = false
 offset = Vector2(-32, -37)
 
-[node name="Tree178_Tree2" type="Sprite2D" parent="Vegetation" unique_id=2051774617]
-position = Vector2(-62, 220)
-texture = ExtResource("t_Tree2")
-centered = false
-offset = Vector2(-29, -48)
-
-[node name="Tree179_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=751984045]
-position = Vector2(-62, 264)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-32, -46)
-
 [node name="Tree180_Tree3" type="Sprite2D" parent="Vegetation" unique_id=32829391]
 position = Vector2(-62, 308)
 texture = ExtResource("t_Tree3")
@@ -1481,18 +1451,6 @@ position = Vector2(-108, 194)
 texture = ExtResource("t_Tree2")
 centered = false
 offset = Vector2(-29, -48)
-
-[node name="Tree186_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1275491601]
-position = Vector2(-108, 238)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-32, -46)
-
-[node name="Tree187_Tree3" type="Sprite2D" parent="Vegetation" unique_id=1588283]
-position = Vector2(-108, 282)
-texture = ExtResource("t_Tree3")
-centered = false
-offset = Vector2(-32, -37)
 
 [node name="Tree188_Tree2" type="Sprite2D" parent="Vegetation" unique_id=1070736094]
 position = Vector2(-108, 326)
@@ -1650,12 +1608,6 @@ texture = ExtResource("t_Bush_simple1_3")
 centered = false
 offset = Vector2(-8, 1)
 
-[node name="Bush54_Bush_simple2_3" type="Sprite2D" parent="Vegetation" unique_id=1188574508]
-position = Vector2(80, 240)
-texture = ExtResource("t_Bush_simple2_3")
-centered = false
-offset = Vector2(-9, 0)
-
 [node name="Bush55_Fern1_2" type="Sprite2D" parent="Vegetation" unique_id=1967454582]
 position = Vector2(760, 230)
 texture = ExtResource("t_Fern1_2")
@@ -1688,8 +1640,16 @@ position = Vector2(448, 16)
 shape = SubResource("W_Top")
 
 [node name="LeftUp" type="CollisionShape2D" parent="Boundaries" unique_id=34976249]
-position = Vector2(4, 228)
-shape = SubResource("W_LeftUp")
+position = Vector2(4, 124)
+shape = SubResource("W_LeftUpper")
+
+[node name="LeftDown" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(4, 376)
+shape = SubResource("W_LeftLower")
+
+[node name="WestBackstop" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-16, 272)
+shape = SubResource("W_WestBackstop")
 
 [node name="RightUp" type="CollisionShape2D" parent="Boundaries" unique_id=730277584]
 position = Vector2(892, 128)
@@ -1735,11 +1695,23 @@ spawn_name = "SpawnFromNorth"
 position = Vector2(432, 436)
 shape = SubResource("X_ToWesternRiver")
 
+[node name="ToAutumnForest" type="Area2D" parent="Triggers"]
+script = ExtResource("mx")
+target_scene = "res://scenes/autumn_forest.tscn"
+spawn_name = "SpawnFromEast"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToAutumnForest"]
+position = Vector2(6, 272)
+shape = SubResource("X_ToAutumnForest")
+
 [node name="SpawnFromEast" type="Marker2D" parent="." unique_id=1502038935]
 position = Vector2(852, 272)
 
 [node name="SpawnFromSouth" type="Marker2D" parent="." unique_id=1783185207]
 position = Vector2(432, 392)
+
+[node name="SpawnFromWest" type="Marker2D" parent="."]
+position = Vector2(44, 272)
 
 [node name="GrassTufts" type="Node2D" parent="." unique_id=704543530]
 z_index = -1

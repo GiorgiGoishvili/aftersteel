@@ -22,6 +22,11 @@ const GAMEPLAY_SCENES := [
 	"Village",
 	"WesternOutskirts",
 	"WesternRiver",
+	"AutumnForest",
+	"RockyHighlands",
+	"SnowyRegion",
+	"Beach",
+	"DeadForest",
 ]
 
 ## The health bar art (AftersteelHealthBar.png): one 128x128 frame per health

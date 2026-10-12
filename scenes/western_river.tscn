@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bhfxelrunr5xk" path="res://Assets/Materials/Log2.png" id="t_Log2"]
 [ext_resource type="Texture2D" uid="uid://c6prd1o3nj2ck" path="res://Assets/Trees/Moss_tree2.png" id="t_Moss_tree2"]
 [ext_resource type="TileSet" uid="uid://b5apy16sdyy3r" path="res://Assets/Maps/river_water_tileset.tres" id="water_ts"]
+[ext_resource type="TileSet" path="res://Assets/Maps/Biomes/biome_tileset.tres" id="biome_ts"]
 
 [sub_resource type="RectangleShape2D" id="Trunk18"]
 size = Vector2(18, 8)
@@ -42,6 +43,18 @@ size = Vector2(1024, 16)
 [sub_resource type="RectangleShape2D" id="X_ToWesternOutskirts"]
 size = Vector2(80, 24)
 
+[sub_resource type="RectangleShape2D" id="B_LeftUpper"]
+size = Vector2(16, 176)
+
+[sub_resource type="RectangleShape2D" id="B_LeftLower"]
+size = Vector2(16, 44)
+
+[sub_resource type="RectangleShape2D" id="B_WestBackstop"]
+size = Vector2(16, 112)
+
+[sub_resource type="RectangleShape2D" id="X_ToBeach"]
+size = Vector2(24, 80)
+
 [node name="WesternRiver" type="Node2D" unique_id=414878079]
 y_sort_enabled = true
 script = ExtResource("ms")
@@ -61,8 +74,30 @@ tile_set = ExtResource("ts")
 
 [node name="Water" type="TileMapLayer" parent="." unique_id=651290465]
 z_index = -10
-tile_map_data = PackedByteArray("AAD8/wkAAAAAAAEAAAD9/wkAAAAAAAEAAAD+/wkAAAAAAAEAAAD//wkAAAAAAAEAAAAAAAkAAAAAAAEAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAAQAAkAAAAAAAEAAAARAAkAAAAAAAEAAAASAAkAAAAAAAEAAAATAAkAAAAAAAEAAAAUAAkAAAAAAAEAAAAVAAkAAAAAAAEAAAAWAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAYAAkAAAAAAAEAAAAZAAkAAAAAAAEAAAAaAAkAAAAAAAEAAAAbAAkAAAAAAAEAAAD8/woAAAAAAAEAAAD9/woAAAAAAAEAAAD+/woAAAAAAAEAAAD//woAAAAAAAEAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAASAAoAAAAAAAEAAAATAAoAAAAAAAEAAAAUAAoAAAAAAAEAAAAVAAoAAAAAAAEAAAAWAAoAAAAAAAEAAAAXAAoAAAAAAAEAAAAYAAoAAAAAAAEAAAAZAAoAAAAAAAEAAAAaAAoAAAAAAAEAAAAbAAoAAAAAAAEAAAD8/wsAAAAAAAEAAAD9/wsAAAAAAAEAAAD+/wsAAAAAAAEAAAD//wsAAAAAAAEAAAAAAAsAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAASAAsAAAAAAAEAAAATAAsAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAWAAsAAAAAAAEAAAAXAAsAAAAAAAEAAAAYAAsAAAAAAAEAAAAZAAsAAAAAAAEAAAAaAAsAAAAAAAEAAAAbAAsAAAAAAAEAAAD8/wwAAAAAAAIAAAD9/wwAAAAAAAIAAAD+/wwAAAAAAAIAAAD//wwAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAwAAAAAAAIAAAACAAwAAAAAAAIAAAADAAwAAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAwAAAAAAAIAAAAGAAwAAAAAAAIAAAAHAAwAAAAAAAIAAAAIAAwAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAwAAAAAAAIAAAALAAwAAAAAAAIAAAAMAAwAAAAAAAIAAAANAAwAAAAAAAIAAAAOAAwAAAAAAAIAAAAPAAwAAAAAAAIAAAAQAAwAAAAAAAIAAAARAAwAAAAAAAIAAAASAAwAAAAAAAIAAAATAAwAAAAAAAIAAAAUAAwAAAAAAAIAAAAVAAwAAAAAAAIAAAAWAAwAAAAAAAIAAAAXAAwAAAAAAAIAAAAYAAwAAAAAAAIAAAAZAAwAAAAAAAIAAAAaAAwAAAAAAAIAAAAbAAwAAAAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAALAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAD8/woAAAAAAAEAAAD9/woAAAAAAAEAAAD+/woAAAAAAAEAAAD//woAAAAAAAEAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAASAAoAAAAAAAEAAAATAAoAAAAAAAEAAAAUAAoAAAAAAAEAAAAVAAoAAAAAAAEAAAAWAAoAAAAAAAEAAAAXAAoAAAAAAAEAAAAYAAoAAAAAAAEAAAAZAAoAAAAAAAEAAAAaAAoAAAAAAAEAAAAbAAoAAAAAAAEAAAD8/wsAAAAAAAEAAAD9/wsAAAAAAAEAAAD+/wsAAAAAAAEAAAD//wsAAAAAAAEAAAAAAAsAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAASAAsAAAAAAAEAAAATAAsAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAWAAsAAAAAAAEAAAAXAAsAAAAAAAEAAAAYAAsAAAAAAAEAAAAZAAsAAAAAAAEAAAAaAAsAAAAAAAEAAAAbAAsAAAAAAAEAAAD8/wwAAAAAAAIAAAD9/wwAAAAAAAIAAAD+/wwAAAAAAAIAAAD//wwAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAwAAAAAAAIAAAACAAwAAAAAAAIAAAADAAwAAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAwAAAAAAAIAAAAGAAwAAAAAAAIAAAAHAAwAAAAAAAIAAAAIAAwAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAwAAAAAAAIAAAALAAwAAAAAAAIAAAAMAAwAAAAAAAIAAAANAAwAAAAAAAIAAAAOAAwAAAAAAAIAAAAPAAwAAAAAAAIAAAAQAAwAAAAAAAIAAAARAAwAAAAAAAIAAAASAAwAAAAAAAIAAAATAAwAAAAAAAIAAAAUAAwAAAAAAAIAAAAVAAwAAAAAAAIAAAAWAAwAAAAAAAIAAAAXAAwAAAAAAAIAAAAYAAwAAAAAAAIAAAAZAAwAAAAAAAIAAAAaAAwAAAAAAAIAAAAbAAwAAAAAAAIAAAA=")
 tile_set = ExtResource("water_ts")
+
+[node name="BankWater" type="TileMapLayer" parent="."]
+z_index = -10
+tile_map_data = PackedByteArray("AAD8/wkAAAAAAAEAAAD9/wkAAAAAAAEAAAD+/wkAAAAAAAEAAAD//wkAAAAAAAEAAAAAAAkAAAAAAAEAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAAQAAkAAAAAAAEAAAARAAkAAAAAAAEAAAASAAkAAAAAAAEAAAATAAkAAAAAAAEAAAAUAAkAAAAAAAEAAAAVAAkAAAAAAAEAAAAWAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAYAAkAAAAAAAEAAAAZAAkAAAAAAAEAAAAaAAkAAAAAAAEAAAAbAAkAAAAAAAEAAAA=")
+tile_set = ExtResource("water_ts")
+
+[node name="BankCliffsWest" type="TileMapLayer" parent="."]
+z_index = -6
+position = Vector2(-128, 288)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQACAAAAAAADAAAAAQAAAAAAAAAEAAAAAQABAAAAAAAFAAAAAQACAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQABAAAAAAAIAAAAAQACAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQABAAAAAAALAAAAAQACAAAAAAAMAAAAAQAAAAAAAAANAAAAAQABAAAAAAAOAAAAAQACAAAAAAAPAAAAAQAIAAAAAAA=")
+tile_set = ExtResource("biome_ts")
+
+[node name="BankCliffsEast" type="TileMapLayer" parent="."]
+z_index = -6
+position = Vector2(512, 288)
+tile_map_data = PackedByteArray("AAAAAAAAAQAJAAAAAAABAAAAAQABAAAAAAACAAAAAQACAAAAAAADAAAAAQAAAAAAAAAEAAAAAQABAAAAAAAFAAAAAQACAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQABAAAAAAAIAAAAAQACAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQABAAAAAAALAAAAAQACAAAAAAAMAAAAAQAAAAAAAAA=")
+tile_set = ExtResource("biome_ts")
+
+[node name="BankShade" type="Polygon2D" parent="."]
+z_index = -9
+color = Color(0.04, 0.09, 0.16, 0.35)
+polygon = PackedVector2Array(352, 288, 512, 288, 512, 294, 352, 294)
 
 [node name="WaterSlot" type="Marker2D" parent="." unique_id=2010033676]
 editor_description = "The river channel. The Water layer fills it with temporary animated tiles (ocean-autotiles-anim.png, river_water_tileset.tres). Boundaries/BankEdge is where the walkable bank stops. Editor-only."
@@ -251,30 +286,6 @@ offset = Vector2(-33, -46)
 [node name="Body" type="StaticBody2D" parent="Vegetation/Tree12_Moss_tree2" unique_id=50486342]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree12_Moss_tree2/Body" unique_id=1089914248]
-position = Vector2(0, 10)
-shape = SubResource("Trunk18")
-
-[node name="Tree13_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1947640204]
-position = Vector2(40, 196)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-30, -46)
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree13_Moss_tree2" unique_id=1409725043]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree13_Moss_tree2/Body" unique_id=1041938555]
-position = Vector2(0, 10)
-shape = SubResource("Trunk18")
-
-[node name="Tree14_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1692896895]
-position = Vector2(30, 254)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-33, -46)
-
-[node name="Body" type="StaticBody2D" parent="Vegetation/Tree14_Moss_tree2" unique_id=1548902141]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetation/Tree14_Moss_tree2/Body" unique_id=964313730]
 position = Vector2(0, 10)
 shape = SubResource("Trunk18")
 
@@ -1214,12 +1225,6 @@ texture = ExtResource("t_Moss_tree2")
 centered = false
 offset = Vector2(-32, -46)
 
-[node name="Tree165_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1621449168]
-position = Vector2(-20, 218)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-33, -46)
-
 [node name="Tree166_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=129726612]
 position = Vector2(-20, 264)
 texture = ExtResource("t_Moss_tree2")
@@ -1238,18 +1243,6 @@ texture = ExtResource("t_Moss_tree2")
 centered = false
 offset = Vector2(-32, -46)
 
-[node name="Tree169_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=300927705]
-position = Vector2(-66, 192)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-33, -46)
-
-[node name="Tree170_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1973851033]
-position = Vector2(-66, 238)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-30, -46)
-
 [node name="Tree171_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=1822385011]
 position = Vector2(-66, 284)
 texture = ExtResource("t_Moss_tree2")
@@ -1267,12 +1260,6 @@ position = Vector2(-110, 166)
 texture = ExtResource("t_Moss_tree2")
 centered = false
 offset = Vector2(-33, -46)
-
-[node name="Tree174_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=198679233]
-position = Vector2(-110, 212)
-texture = ExtResource("t_Moss_tree2")
-centered = false
-offset = Vector2(-30, -46)
 
 [node name="Tree175_Moss_tree2" type="Sprite2D" parent="Vegetation" unique_id=315080275]
 position = Vector2(-110, 258)
@@ -1674,8 +1661,16 @@ position = Vector2(632, 12)
 shape = SubResource("R_TopEast")
 
 [node name="Left" type="CollisionShape2D" parent="Boundaries" unique_id=204471480]
-position = Vector2(8, 150)
-shape = SubResource("R_Left")
+position = Vector2(8, 88)
+shape = SubResource("B_LeftUpper")
+
+[node name="LeftLower" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(8, 278)
+shape = SubResource("B_LeftLower")
+
+[node name="WestBackstop" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-16, 216)
+shape = SubResource("B_WestBackstop")
 
 [node name="Right" type="CollisionShape2D" parent="Boundaries" unique_id=1043496372]
 position = Vector2(760, 150)
@@ -1700,5 +1695,17 @@ spawn_name = "SpawnFromSouth"
 position = Vector2(432, 12)
 shape = SubResource("X_ToWesternOutskirts")
 
+[node name="ToBeach" type="Area2D" parent="Triggers"]
+script = ExtResource("mx")
+target_scene = "res://scenes/beach.tscn"
+spawn_name = "SpawnFromEast"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToBeach"]
+position = Vector2(6, 216)
+shape = SubResource("X_ToBeach")
+
 [node name="SpawnFromNorth" type="Marker2D" parent="." unique_id=598459340]
 position = Vector2(432, 52)
+
+[node name="SpawnFromWest" type="Marker2D" parent="."]
+position = Vector2(44, 216)

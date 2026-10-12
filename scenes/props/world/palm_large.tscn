@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://pu3jyi0aido0" path="res://Assets/Trees/Palm_tree1_1.png" id="1_tex"]
+
+[sub_resource type="RectangleShape2D" id="Trunk"]
+size = Vector2(10, 8)
+
+[node name="PalmLarge" type="Sprite2D"]
+texture = ExtResource("1_tex")
+centered = false
+offset = Vector2(-64, -82)
+
+[node name="Body" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk")

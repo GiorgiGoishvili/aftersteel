@@ -1,0 +1,475 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="p"]
+[ext_resource type="Script" uid="uid://cp68hee8bf6vx" path="res://scripts/world_map.gd" id="ms"]
+[ext_resource type="Script" uid="uid://b272ep0ve02nq" path="res://scripts/map_exit.gd" id="mx"]
+[ext_resource type="TileSet" uid="uid://dud4t23018448" path="res://Assets/Maps/village_tileset.tres" id="ts"]
+[ext_resource type="TileSet" path="res://Assets/Maps/Biomes/biome_tileset.tres" id="bt"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/log.tscn" id="pr_log"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/log_short.tscn" id="pr_log_short"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm.tscn" id="pr_palm"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm_bent.tscn" id="pr_palm_bent"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm_bent_deco.tscn" id="pr_palm_bent_deco"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm_bent_large.tscn" id="pr_palm_bent_large"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm_deco.tscn" id="pr_palm_deco"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm_large.tscn" id="pr_palm_large"]
+[ext_resource type="PackedScene" path="res://scenes/props/world/palm_large_deco.tscn" id="pr_palm_large_deco"]
+
+[sub_resource type="RectangleShape2D" id="Wall0"]
+size = Vector2(32, 600)
+
+[sub_resource type="RectangleShape2D" id="Wall1"]
+size = Vector2(32, 150)
+
+[sub_resource type="RectangleShape2D" id="Wall2"]
+size = Vector2(32, 360)
+
+[sub_resource type="RectangleShape2D" id="Wall3"]
+size = Vector2(1020, 32)
+
+[sub_resource type="RectangleShape2D" id="Wall4"]
+size = Vector2(1020, 32)
+
+[sub_resource type="RectangleShape2D" id="Wall5"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="Wall6"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="Wall7"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="Wall8"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="Wall9"]
+size = Vector2(24, 154)
+
+[sub_resource type="RectangleShape2D" id="Exit0"]
+size = Vector2(24, 90)
+
+[node name="Beach" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("ms")
+
+[node name="Player" parent="." instance=ExtResource("p")]
+position = Vector2(980, 195)
+
+[node name="SandBase" type="Polygon2D" parent="."]
+z_index = -10
+color = Color(0.988, 0.808, 0.475, 1)
+polygon = PackedVector2Array(-180, -180, 1200, -180, 1200, 390, -180, 390)
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = -9
+tile_map_data = PackedByteArray("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ABAFAA4AAwAFAAUAAAAGAA4AAwAEAAUAABAHAA4AAwAFAAUAAAAIAA4AAwAEAAUAAAAJAA4AAwAFAAUAABAKAA4AAwAEAAUAAAALAA4AAwAFAAUAAAAMAA4AAwAEAAUAABANAA4AAwAFAAUAAAAOAA4AAwAEAAUAABAPAA4AAwAFAAUAABAQAA4AAwAEAAUAAAARAA4AAwAFAAUAABASAA4AAwAEAAUAAAATAA4AAwAFAAUAAAAUAA4AAwAEAAUAABAVAA4AAwAFAAUAAAAWAA4AAwAEAAUAAAAXAA4AAwAFAAUAABAYAA4AAwAEAAUAAAAZAA4AAwAFAAUAABAaAA4AAwAEAAUAABAbAA4AAwAFAAUAAAAcAA4AAwAEAAUAABAdAA4AAwAFAAUAAAAeAA4AAwAEAAUAAAAfAA4AAwAFAAUAABAgAA4AAwAEAAUAAAAhAA4AAwAFAAUAAAAiAA4AAwAEAAUAABAjAA4AAwAFAAUAAAAkAA4AAwAEAAUAABAlAA4AAwAFAAUAABAmAA4AAwAEAAUAAAAnAA4AAwAFAAUAABD6/w8AAwAFAAUAABD7/w8AAwAEAAUAAAD8/w8AAwAFAAUAABD9/w8AAwAEAAUAABD+/w8AAwAFAAUAAAD//w8AAwAEAAUAABAAAA8AAwAFAAUAAAABAA8AAwAEAAUAAAACAA8AAwAFAAUAABADAA8AAwAEAAUAAAAEAA8AAwAFAAUAAAAFAA8AAwAEAAUAABAGAA8AAwAFAAUAAAAHAA8AAwAEAAUAABAIAA8AAwAFAAUAABAJAA8AAwAEAAUAAAAKAA8AAwAFAAUAABALAA8AAwAEAAUAABAMAA8AAwAFAAUAAAANAA8AAwAEAAUAABAOAA8AAwAFAAUAAAAPAA8AAwAEAAUAAAAQAA8AAwAFAAUAABARAA8AAwAEAAUAAAASAA8AAwAFAAUAABATAA8AAwAEAAUAABAUAA8AAwAFAAUAAAAVAA8AAwAEAAUAABAWAA8AAwAFAAUAABAXAA8AAwAEAAUAAAAYAA8AAwAFAAUAABAZAA8AAwAEAAUAAAAaAA8AAwAFAAUAAAAbAA8AAwAEAAUAABAcAA8AAwAFAAUAAAAdAA8AAwAEAAUAABAeAA8AAwAFAAUAABAfAA8AAwAEAAUAAAAgAA8AAwAFAAUAABAhAA8AAwAEAAUAABAiAA8AAwAFAAUAAAAjAA8AAwAEAAUAABAkAA8AAwAFAAUAAAAlAA8AAwAEAAUAAAAmAA8AAwAFAAUAABAnAA8AAwAEAAUAAAD6/xAAAwAEAAUAAAD7/xAAAwAFAAUAABD8/xAAAwAEAAUAAAD9/xAAAwAFAAUAAAD+/xAAAwAEAAUAABD//xAAAwAFAAUAAAAAABAAAwAEAAUAABABABAAAwAFAAUAABACABAAAwAEAAUAAAADABAAAwAFAAUAABAEABAAAwAEAAUAABAFABAAAwAFAAUAAAAGABAAAwAEAAUAABAHABAAAwAFAAUAAAAIABAAAwAEAAUAAAAJABAAAwAFAAUAABAKABAAAwAEAAUAAAALABAAAwAFAAUAAAAMABAAAwAEAAUAABANABAAAwAFAAUAAAAOABAAAwAEAAUAABAPABAAAwAFAAUAABAQABAAAwAEAAUAAAARABAAAwAFAAUAABASABAAAwAEAAUAAAATABAAAwAFAAUAAAAUABAAAwAEAAUAABAVABAAAwAFAAUAAAAWABAAAwAEAAUAAAAXABAAAwAFAAUAABAYABAAAwAEAAUAAAAZABAAAwAFAAUAABAaABAAAwAEAAUAABAbABAAAwAFAAUAAAAcABAAAwAEAAUAABAdABAAAwAFAAUAAAAeABAAAwAEAAUAAAAfABAAAwAFAAUAABAgABAAAwAEAAUAAAAhABAAAwAFAAUAAAAiABAAAwAEAAUAABAjABAAAwAFAAUAAAAkABAAAwAEAAUAABAlABAAAwAFAAUAABAmABAAAwAEAAUAAAAnABAAAwAFAAUAABD6/xEAAwAFAAUAAAD7/xEAAwAEAAUAABD8/xEAAwAFAAUAAAD9/xEAAwAEAAUAAAD+/xEAAwAFAAUAABD//xEAAwAEAAUAAAAAABEAAwAFAAUAABABABEAAwAEAAUAABACABEAAwAFAAUAAAADABEAAwAEAAUAABAEABEAAwAFAAUAABAFABEAAwAEAAUAAAAGABEAAwAFAAUAABAHABEAAwAEAAUAAAAIABEAAwAFAAUAAAAJABEAAwAEAAUAABAKABEAAwAFAAUAAAALABEAAwAEAAUAAAAMABEAAwAFAAUAABANABEAAwAEAAUAAAAOABEAAwAFAAUAABAPABEAAwAEAAUAABAQABEAAwAFAAUAAAARABEAAwAEAAUAABASABEAAwAFAAUAAAATABEAAwAEAAUAAAAUABEAAwAFAAUAABAVABEAAwAEAAUAAAAWABEAAwAFAAUAAAAXABEAAwAEAAUAABAYABEAAwAFAAUAAAAZABEAAwAEAAUAABAaABEAAwAFAAUAABAbABEAAwAEAAUAAAAcABEAAwAFAAUAABAdABEAAwAEAAUAAAAeABEAAwAFAAUAAAAfABEAAwAEAAUAABAgABEAAwAFAAUAAAAhABEAAwAEAAUAAAAiABEAAwAFAAUAABAjABEAAwAEAAUAAAAkABEAAwAFAAUAABAlABEAAwAEAAUAABAmABEAAwAFAAUAAAAnABEAAwAEAAUAABD6/xIAAwAEAAUAABD7/xIAAwAFAAUAAAD8/xIAAwAEAAUAABD9/xIAAwAFAAUAABD+/xIAAwAEAAUAAAD//xIAAwAFAAUAABAAABIAAwAEAAUAAAABABIAAwAFAAUAAAACABIAAwAEAAUAABADABIAAwAFAAUAAAAEABIAAwAEAAUAAAAFABIAAwAFAAUAABAGABIAAwAEAAUAAAAHABIAAwAFAAUAABAIABIAAwAEAAUAABAJABIAAwAFAAUAAAAKABIAAwAEAAUAABALABIAAwAFAAUAABAMABIAAwAEAAUAAAANABIAAwAFAAUAABAOABIAAwAEAAUAAAAPABIAAwAFAAUAAAAQABIAAwAEAAUAABARABIAAwAFAAUAAAASABIAAwAEAAUAABATABIAAwAFAAUAABAUABIAAwAEAAUAAAAVABIAAwAFAAUAABAWABIAAwAEAAUAABAXABIAAwAFAAUAAAAYABIAAwAEAAUAABAZABIAAwAFAAUAAAAaABIAAwAEAAUAAAAbABIAAwAFAAUAABAcABIAAwAEAAUAAAAdABIAAwAFAAUAABAeABIAAwAEAAUAABAfABIAAwAFAAUAAAAgABIAAwAEAAUAABAhABIAAwAFAAUAABAiABIAAwAEAAUAAAAjABIAAwAFAAUAABAkABIAAwAEAAUAAAAlABIAAwAFAAUAAAAmABIAAwAEAAUAABAnABIAAwAFAAUAAAD6/xMAAwAFAAUAAAD7/xMAAwAEAAUAABD8/xMAAwAFAAUAAAD9/xMAAwAEAAUAAAD+/xMAAwAFAAUAABD//xMAAwAEAAUAAAAAABMAAwAFAAUAABABABMAAwAEAAUAABACABMAAwAFAAUAAAADABMAAwAEAAUAABAEABMAAwAFAAUAABAFABMAAwAEAAUAAAAGABMAAwAFAAUAABAHABMAAwAEAAUAAAAIABMAAwAFAAUAAAAJABMAAwAEAAUAABAKABMAAwAFAAUAAAALABMAAwAEAAUAAAAMABMAAwAFAAUAABANABMAAwAEAAUAAAAOABMAAwAFAAUAABAPABMAAwAEAAUAABAQABMAAwAFAAUAAAARABMAAwAEAAUAABASABMAAwAFAAUAAAATABMAAwAEAAUAAAAUABMAAwAFAAUAABAVABMAAwAEAAUAAAAWABMAAwAFAAUAAAAXABMAAwAEAAUAABAYABMAAwAFAAUAAAAZABMAAwAEAAUAABAaABMAAwAFAAUAABAbABMAAwAEAAUAAAAcABMAAwAFAAUAABAdABMAAwAEAAUAAAAeABMAAwAFAAUAAAAfABMAAwAEAAUAABAgABMAAwAFAAUAAAAhABMAAwAEAAUAAAAiABMAAwAFAAUAABAjABMAAwAEAAUAAAAkABMAAwAFAAUAABAlABMAAwAEAAUAABAmABMAAwAFAAUAAAAnABMAAwAEAAUAABD6/xQAAwAEAAUAABD7/xQAAwAFAAUAAAD8/xQAAwAEAAUAABD9/xQAAwAFAAUAABD+/xQAAwAEAAUAAAD//xQAAwAFAAUAABAAABQAAwAEAAUAAAABABQAAwAFAAUAAAACABQAAwAEAAUAABADABQAAwAFAAUAAAAEABQAAwAEAAUAAAAFABQAAwAFAAUAABAGABQAAwAEAAUAAAAHABQAAwAFAAUAABAIABQAAwAEAAUAABAJABQAAwAFAAUAAAAKABQAAwAEAAUAABALABQAAwAFAAUAABAMABQAAwAEAAUAAAANABQAAwAFAAUAABAOABQAAwAEAAUAAAAPABQAAwAFAAUAAAAQABQAAwAEAAUAABARABQAAwAFAAUAAAASABQAAwAEAAUAABATABQAAwAFAAUAABAUABQAAwAEAAUAAAAVABQAAwAFAAUAABAWABQAAwAEAAUAABAXABQAAwAFAAUAAAAYABQAAwAEAAUAABAZABQAAwAFAAUAAAAaABQAAwAEAAUAAAAbABQAAwAFAAUAABAcABQAAwAEAAUAAAAdABQAAwAFAAUAABAeABQAAwAEAAUAABAfABQAAwAFAAUAAAAgABQAAwAEAAUAABAhABQAAwAFAAUAABAiABQAAwAEAAUAAAAjABQAAwAFAAUAABAkABQAAwAEAAUAAAAlABQAAwAFAAUAAAAmABQAAwAEAAUAABAnABQAAwAFAAUAAAD6/xUAAwAFAAUAABD7/xUAAwAEAAUAAAD8/xUAAwAFAAUAABD9/xUAAwAEAAUAABD+/xUAAwAFAAUAAAD//xUAAwAEAAUAABAAABUAAwAFAAUAAAABABUAAwAEAAUAAAACABUAAwAFAAUAABADABUAAwAEAAUAAAAEABUAAwAFAAUAAAAFABUAAwAEAAUAABAGABUAAwAFAAUAAAAHABUAAwAEAAUAABAIABUAAwAFAAUAABAJABUAAwAEAAUAAAAKABUAAwAFAAUAABALABUAAwAEAAUAABAMABUAAwAFAAUAAAANABUAAwAEAAUAABAOABUAAwAFAAUAAAAPABUAAwAEAAUAAAAQABUAAwAFAAUAABARABUAAwAEAAUAAAASABUAAwAFAAUAABATABUAAwAEAAUAABAUABUAAwAFAAUAAAAVABUAAwAEAAUAABAWABUAAwAFAAUAABAXABUAAwAEAAUAAAAYABUAAwAFAAUAABAZABUAAwAEAAUAAAAaABUAAwAFAAUAAAAbABUAAwAEAAUAABAcABUAAwAFAAUAAAAdABUAAwAEAAUAABAeABUAAwAFAAUAABAfABUAAwAEAAUAAAAgABUAAwAFAAUAABAhABUAAwAEAAUAABAiABUAAwAFAAUAAAAjABUAAwAEAAUAABAkABUAAwAFAAUAAAAlABUAAwAEAAUAAAAmABUAAwAFAAUAABAnABUAAwAEAAUAAAD6/xYAAwAEAAUAAAD7/xYAAwAFAAUAABD8/xYAAwAEAAUAAAD9/xYAAwAFAAUAAAD+/xYAAwAEAAUAABD//xYAAwAFAAUAAAAAABYAAwAEAAUAABABABYAAwAFAAUAABACABYAAwAEAAUAAAADABYAAwAFAAUAABAEABYAAwAEAAUAABAFABYAAwAFAAUAAAAGABYAAwAEAAUAABAHABYAAwAFAAUAAAAIABYAAwAEAAUAAAAJABYAAwAFAAUAABAKABYAAwAEAAUAAAALABYAAwAFAAUAAAAMABYAAwAEAAUAABANABYAAwAFAAUAAAAOABYAAwAEAAUAABAPABYAAwAFAAUAABAQABYAAwAEAAUAAAARABYAAwAFAAUAABASABYAAwAEAAUAAAATABYAAwAFAAUAAAAUABYAAwAEAAUAABAVABYAAwAFAAUAAAAWABYAAwAEAAUAAAAXABYAAwAFAAUAABAYABYAAwAEAAUAAAAZABYAAwAFAAUAABAaABYAAwAEAAUAABAbABYAAwAFAAUAAAAcABYAAwAEAAUAABAdABYAAwAFAAUAAAAeABYAAwAEAAUAAAAfABYAAwAFAAUAABAgABYAAwAEAAUAAAAhABYAAwAFAAUAAAAiABYAAwAEAAUAABAjABYAAwAFAAUAAAAkABYAAwAEAAUAABAlABYAAwAFAAUAABAmABYAAwAEAAUAAAAnABYAAwAFAAUAABD6/xcAAwAFAAUAABD7/xcAAwAEAAUAAAD8/xcAAwAFAAUAABD9/xcAAwAEAAUAABD+/xcAAwAFAAUAAAD//xcAAwAEAAUAABAAABcAAwAFAAUAAAABABcAAwAEAAUAAAACABcAAwAFAAUAABADABcAAwAEAAUAAAAEABcAAwAFAAUAAAAFABcAAwAEAAUAABAGABcAAwAFAAUAAAAHABcAAwAEAAUAABAIABcAAwAFAAUAABAJABcAAwAEAAUAAAAKABcAAwAFAAUAABALABcAAwAEAAUAABAMABcAAwAFAAUAAAANABcAAwAEAAUAABAOABcAAwAFAAUAAAAPABcAAwAEAAUAAAAQABcAAwAFAAUAABARABcAAwAEAAUAAAASABcAAwAFAAUAABATABcAAwAEAAUAABAUABcAAwAFAAUAAAAVABcAAwAEAAUAABAWABcAAwAFAAUAABAXABcAAwAEAAUAAAAYABcAAwAFAAUAABAZABcAAwAEAAUAAAAaABcAAwAFAAUAAAAbABcAAwAEAAUAABAcABcAAwAFAAUAAAAdABcAAwAEAAUAABAeABcAAwAFAAUAABAfABcAAwAEAAUAAAAgABcAAwAFAAUAABAhABcAAwAEAAUAABAiABcAAwAFAAUAAAAjABcAAwAEAAUAABAkABcAAwAFAAUAAAAlABcAAwAEAAUAAAAmABcAAwAFAAUAABAnABcAAwAEAAUAAAD6/xgAAwAEAAUAAAD7/xgAAwAFAAUAABD8/xgAAwAEAAUAAAD9/xgAAwAFAAUAAAD+/xgAAwAEAAUAABD//xgAAwAFAAUAAAAAABgAAwAEAAUAABABABgAAwAFAAUAABACABgAAwAEAAUAAAADABgAAwAFAAUAABAEABgAAwAEAAUAABAFABgAAwAFAAUAAAAGABgAAwAEAAUAABAHABgAAwAFAAUAAAAIABgAAwAEAAUAAAAJABgAAwAFAAUAABAKABgAAwAEAAUAAAALABgAAwAFAAUAAAAMABgAAwAEAAUAABANABgAAwAFAAUAAAAOABgAAwAEAAUAABAPABgAAwAFAAUAABAQABgAAwAEAAUAAAARABgAAwAFAAUAABASABgAAwAEAAUAAAATABgAAwAFAAUAAAAUABgAAwAEAAUAABAVABgAAwAFAAUAAAAWABgAAwAEAAUAAAAXABgAAwAFAAUAABAYABgAAwAEAAUAAAAZABgAAwAFAAUAABAaABgAAwAEAAUAABAbABgAAwAFAAUAAAAcABgAAwAEAAUAABAdABgAAwAFAAUAAAAeABgAAwAEAAUAAAAfABgAAwAFAAUAABAgABgAAwAEAAUAAAAhABgAAwAFAAUAAAAiABgAAwAEAAUAABAjABgAAwAFAAUAAAAkABgAAwAEAAUAABAlABgAAwAFAAUAABAmABgAAwAEAAUAAAAnABgAAwAFAAUAABD6/xkAAwAFAAUAAAD7/xkAAwAEAAUAABD8/xkAAwAFAAUAAAD9/xkAAwAEAAUAAAD+/xkAAwAFAAUAABD//xkAAwAEAAUAAAAAABkAAwAFAAUAABABABkAAwAEAAUAABACABkAAwAFAAUAAAADABkAAwAEAAUAABAEABkAAwAFAAUAABAFABkAAwAEAAUAAAAGABkAAwAFAAUAABAHABkAAwAEAAUAAAAIABkAAwAFAAUAAAAJABkAAwAEAAUAABAKABkAAwAFAAUAAAALABkAAwAEAAUAAAAMABkAAwAFAAUAABANABkAAwAEAAUAAAAOABkAAwAFAAUAABAPABkAAwAEAAUAABAQABkAAwAFAAUAAAARABkAAwAEAAUAABASABkAAwAFAAUAAAATABkAAwAEAAUAAAAUABkAAwAFAAUAABAVABkAAwAEAAUAAAAWABkAAwAFAAUAAAAXABkAAwAEAAUAABAYABkAAwAFAAUAAAAZABkAAwAEAAUAABAaABkAAwAFAAUAABAbABkAAwAEAAUAAAAcABkAAwAFAAUAABAdABkAAwAEAAUAAAAeABkAAwAFAAUAAAAfABkAAwAEAAUAABAgABkAAwAFAAUAAAAhABkAAwAEAAUAAAAiABkAAwAFAAUAABAjABkAAwAEAAUAAAAkABkAAwAFAAUAABAlABkAAwAEAAUAABAmABkAAwAFAAUAAAAnABkAAwAEAAUAABA=")
+tile_set = ExtResource("bt")
+
+[node name="Cliffs" type="TileMapLayer" parent="."]
+z_index = -7
+tile_map_data = PackedByteArray("AAA=")
+tile_set = ExtResource("bt")
+
+[node name="Decor" type="TileMapLayer" parent="."]
+z_index = -6
+tile_map_data = PackedByteArray("AAA=")
+tile_set = ExtResource("bt")
+
+[node name="Vegetation" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Log000" parent="Vegetation" instance=ExtResource("pr_log")]
+position = Vector2(420, 330)
+flip_h = true
+
+[node name="LogShort001" parent="Vegetation" instance=ExtResource("pr_log_short")]
+position = Vector2(760, 300)
+flip_h = true
+
+[node name="Log002" parent="Vegetation" instance=ExtResource("pr_log")]
+position = Vector2(140, 250)
+flip_h = true
+
+[node name="PalmBentLarge003" parent="Vegetation" instance=ExtResource("pr_palm_bent_large")]
+position = Vector2(696, 175)
+
+[node name="PalmBent004" parent="Vegetation" instance=ExtResource("pr_palm_bent")]
+position = Vector2(768, 23)
+
+[node name="PalmLarge005" parent="Vegetation" instance=ExtResource("pr_palm_large")]
+position = Vector2(172, 62)
+flip_h = true
+
+[node name="PalmBent006" parent="Vegetation" instance=ExtResource("pr_palm_bent")]
+position = Vector2(52, 263)
+flip_h = true
+
+[node name="Palm007" parent="Vegetation" instance=ExtResource("pr_palm")]
+position = Vector2(373, 153)
+flip_h = true
+
+[node name="PalmLarge008" parent="Vegetation" instance=ExtResource("pr_palm_large")]
+position = Vector2(980, 35)
+flip_h = true
+
+[node name="PalmBentLarge009" parent="Vegetation" instance=ExtResource("pr_palm_bent_large")]
+position = Vector2(46, 182)
+
+[node name="PalmBent010" parent="Vegetation" instance=ExtResource("pr_palm_bent")]
+position = Vector2(850, 104)
+flip_h = true
+
+[node name="PalmBent011" parent="Vegetation" instance=ExtResource("pr_palm_bent")]
+position = Vector2(663, 261)
+flip_h = true
+
+[node name="Palm012" parent="Vegetation" instance=ExtResource("pr_palm")]
+position = Vector2(335, 59)
+
+[node name="PalmLargeDeco013" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(783, -62)
+flip_h = true
+
+[node name="PalmDeco014" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(1118, 111)
+
+[node name="PalmLargeDeco015" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1144, 358)
+flip_h = true
+
+[node name="PalmBentDeco016" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(739, -32)
+
+[node name="PalmLargeDeco017" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(879, -75)
+
+[node name="PalmLargeDeco018" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(160, -28)
+flip_h = true
+
+[node name="PalmLargeDeco019" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(-46, 311)
+
+[node name="PalmLargeDeco020" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(212, -118)
+
+[node name="PalmDeco021" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(67, -59)
+flip_h = true
+
+[node name="PalmLargeDeco022" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1030, 290)
+
+[node name="PalmLargeDeco023" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(-52, 101)
+flip_h = true
+
+[node name="PalmLargeDeco024" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(839, -129)
+
+[node name="PalmLargeDeco025" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(935, -84)
+flip_h = true
+
+[node name="PalmLargeDeco026" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(455, -65)
+
+[node name="PalmLargeDeco027" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(663, -61)
+flip_h = true
+
+[node name="PalmLargeDeco028" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(151, -116)
+flip_h = true
+
+[node name="PalmBentDeco029" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1102, 19)
+flip_h = true
+
+[node name="PalmBentDeco030" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(317, -133)
+flip_h = true
+
+[node name="PalmDeco031" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(-32, 7)
+flip_h = true
+
+[node name="PalmBentDeco032" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1057, 70)
+flip_h = true
+
+[node name="PalmDeco033" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(516, -121)
+flip_h = true
+
+[node name="PalmBentDeco034" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-108, 254)
+flip_h = true
+
+[node name="PalmLargeDeco035" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(719, -95)
+flip_h = true
+
+[node name="PalmBentDeco036" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-98, -125)
+flip_h = true
+
+[node name="PalmLargeDeco037" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(-52, 258)
+
+[node name="PalmBentDeco038" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1097, 320)
+flip_h = true
+
+[node name="PalmBentDeco039" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(995, -94)
+
+[node name="PalmBentDeco040" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-123, 179)
+flip_h = true
+
+[node name="PalmDeco041" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(-35, 183)
+flip_h = true
+
+[node name="PalmBentDeco042" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1089, -64)
+flip_h = true
+
+[node name="PalmLargeDeco043" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(400, -138)
+
+[node name="PalmLargeDeco044" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1136, -96)
+
+[node name="PalmDeco045" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(574, -9)
+
+[node name="PalmLargeDeco046" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(338, -59)
+flip_h = true
+
+[node name="PalmLargeDeco047" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(915, -20)
+
+[node name="PalmBentDeco048" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1149, 272)
+
+[node name="PalmDeco049" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(-122, 63)
+flip_h = true
+
+[node name="PalmBentDeco050" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-129, -52)
+
+[node name="PalmLargeDeco051" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(-113, 326)
+
+[node name="PalmBentDeco052" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(100, -102)
+
+[node name="PalmLargeDeco053" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(-106, 12)
+
+[node name="PalmLargeDeco054" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1090, 255)
+
+[node name="PalmDeco055" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(-19, -137)
+
+[node name="PalmLargeDeco056" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(613, -45)
+flip_h = true
+
+[node name="PalmBentDeco057" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(252, -41)
+flip_h = true
+
+[node name="PalmLargeDeco058" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(439, -10)
+
+[node name="PalmLargeDeco059" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(511, -8)
+flip_h = true
+
+[node name="PalmDeco060" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(928, -137)
+flip_h = true
+
+[node name="PalmLargeDeco061" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1042, 355)
+flip_h = true
+
+[node name="PalmBentDeco062" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1139, -33)
+flip_h = true
+
+[node name="PalmBentDeco063" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(556, -82)
+
+[node name="PalmBentDeco064" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(372, -16)
+flip_h = true
+
+[node name="PalmDeco065" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(-137, 123)
+
+[node name="PalmDeco066" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(1030, -47)
+
+[node name="PalmBentDeco067" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(626, -111)
+
+[node name="PalmLargeDeco068" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(-52, -67)
+
+[node name="PalmLargeDeco069" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1061, -129)
+flip_h = true
+
+[node name="PalmLargeDeco070" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(690, -10)
+flip_h = true
+
+[node name="PalmBentDeco071" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1044, 19)
+flip_h = true
+
+[node name="PalmDeco072" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(272, -100)
+
+[node name="PalmDeco073" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(451, -117)
+
+[node name="PalmBentDeco074" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1153, 72)
+flip_h = true
+
+[node name="PalmDeco075" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(305, -8)
+flip_h = true
+
+[node name="PalmLargeDeco076" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(1037, 139)
+
+[node name="PalmDeco077" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(833, -39)
+
+[node name="PalmBentDeco078" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(6, -70)
+flip_h = true
+
+[node name="PalmLargeDeco079" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(36, -121)
+
+[node name="PalmBentDeco080" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(972, -29)
+
+[node name="PalmBentDeco081" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-8, 70)
+flip_h = true
+
+[node name="PalmBentDeco082" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(1155, 19)
+flip_h = true
+
+[node name="PalmBentDeco083" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(576, -133)
+flip_h = true
+
+[node name="PalmDeco084" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(776, -130)
+flip_h = true
+
+[node name="PalmBentDeco085" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(107, -18)
+
+[node name="PalmDeco086" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(404, -81)
+
+[node name="PalmDeco087" parent="Vegetation" instance=ExtResource("pr_palm_deco")]
+position = Vector2(199, -64)
+flip_h = true
+
+[node name="PalmLargeDeco088" parent="Vegetation" instance=ExtResource("pr_palm_large_deco")]
+position = Vector2(679, -133)
+
+[node name="PalmBentDeco089" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(34, -8)
+
+[node name="PalmBentDeco090" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-77, 148)
+flip_h = true
+
+[node name="PalmBentDeco091" parent="Vegetation" instance=ExtResource("pr_palm_bent_deco")]
+position = Vector2(-9, 351)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Wall0" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-16, 300)
+shape = SubResource("Wall0")
+
+[node name="Wall1" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1036, 75)
+shape = SubResource("Wall1")
+
+[node name="Wall2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1036, 420)
+shape = SubResource("Wall2")
+
+[node name="Wall3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(510, -16)
+shape = SubResource("Wall3")
+
+[node name="Wall4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(510, 616)
+shape = SubResource("Wall4")
+
+[node name="Wall5" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-16, -16)
+shape = SubResource("Wall5")
+
+[node name="Wall6" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1036, -16)
+shape = SubResource("Wall6")
+
+[node name="Wall7" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-16, 616)
+shape = SubResource("Wall7")
+
+[node name="Wall8" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1036, 616)
+shape = SubResource("Wall8")
+
+[node name="Wall9" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1060, 195)
+shape = SubResource("Wall9")
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="ToWesternRiver" type="Area2D" parent="Triggers"]
+script = ExtResource("mx")
+target_scene = "res://scenes/western_river.tscn"
+spawn_name = "SpawnFromWest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToWesternRiver"]
+position = Vector2(1024, 195)
+shape = SubResource("Exit0")
+
+[node name="SpawnFromEast" type="Marker2D" parent="."]
+position = Vector2(980, 195)
+
+[node name="Encounters" type="Node2D" parent="."]
+
+[node name="FutureEncounter01" type="Marker2D" parent="Encounters"]
+editor_description = "Reserved for future beach enemies (open sand)."
+position = Vector2(300, 260)
+
+[node name="FutureEncounter02" type="Marker2D" parent="Encounters"]
+editor_description = "Reserved for future beach enemies (near the waterline)."
+position = Vector2(640, 330)
+
+[node name="FutureEncounter03" type="Marker2D" parent="Encounters"]
+editor_description = "Reserved for future beach enemies (upper beach)."
+position = Vector2(180, 120)

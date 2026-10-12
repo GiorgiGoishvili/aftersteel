@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://c2mg3cqedqc85" path="res://Assets/Materials/Log1.png" id="1_tex"]
+
+[node name="LogDeco" type="Sprite2D"]
+texture = ExtResource("1_tex")
+centered = false
+offset = Vector2(-20, -12)

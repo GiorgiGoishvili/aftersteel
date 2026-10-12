@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://bn52mif2b0wpt" path="res://Assets/Trees/Burned_tree2.png" id="1_tex"]
+
+[sub_resource type="RectangleShape2D" id="Trunk"]
+size = Vector2(12, 8)
+
+[node name="BurnedTree" type="Sprite2D"]
+texture = ExtResource("1_tex")
+centered = false
+offset = Vector2(-31, -45)
+
+[node name="Body" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 10)
+shape = SubResource("Trunk")

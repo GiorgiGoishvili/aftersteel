@@ -39,9 +39,29 @@ const EXITS := {
 	"WesternOutskirts": {
 		"Village": ["Triggers/ToVillage", "right"],
 		"WesternRiver": ["Triggers/ToWesternRiver", "down"],
+		"AutumnForest": ["Triggers/ToAutumnForest", "left"],
 	},
 	"WesternRiver": {
 		"WesternOutskirts": ["Triggers/ToWesternOutskirts", "up"],
+		"Beach": ["Triggers/ToBeach", "left"],
+	},
+	"AutumnForest": {
+		"WesternOutskirts": ["Triggers/ToWesternOutskirts", "right"],
+		"RockyHighlands": ["Triggers/ToRockyHighlands", "up"],
+		"DeadForest": ["Triggers/ToDeadForest", "left"],
+	},
+	"RockyHighlands": {
+		"AutumnForest": ["Triggers/ToAutumnForest", "down"],
+		"SnowyRegion": ["Triggers/ToSnowyRegion", "up"],
+	},
+	"SnowyRegion": {
+		"RockyHighlands": ["Triggers/ToRockyHighlands", "down"],
+	},
+	"DeadForest": {
+		"AutumnForest": ["Triggers/ToAutumnForest", "right"],
+	},
+	"Beach": {
+		"WesternRiver": ["Triggers/ToWesternRiver", "right"],
 	},
 }
 
