@@ -1,7 +1,6 @@
 extends Node2D
 
-const OBJECTIVE_FIREWOOD := "Bring in some firewood."
-const OBJECTIVE_WELF := "Talk to Welf"
+const OBJECTIVE_FIREWOOD := "Bring in firewood"
 
 const EIRA_INTRO_LINES := [
 	{ "speaker": "EIRA", "text": "There you are." },
@@ -11,10 +10,12 @@ const EIRA_INTRO_LINES := [
 	{ "speaker": "KIREN", "text": "Alright." }
 ]
 
+# Then she sends him round the village (GameState.VILLAGERS).
 const EIRA_DONE_LINES := [
 	{ "speaker": "EIRA", "text": "Thanks." },
 	{ "speaker": "KIREN", "text": "Anything else?" },
-	{ "speaker": "EIRA", "text": "No. That's all." }
+	{ "speaker": "EIRA", "text": "Kiren, everyone's been asking for you today." },
+	{ "speaker": "EIRA", "text": "Why don't you go see them?" }
 ]
 
 
@@ -64,8 +65,10 @@ func _maybe_start_eira_intro() -> void:
 
 func _on_eira_interacted() -> void:
 	if GameState.has_flag("eira_firewood_quest_completed"):
+		# Still people to see: a nudge rather than the thanks.
+		var text := "Go on. They've been asking all morning." if GameState.next_villager() != "" else "Thanks again."
 		Dialogue.start([
-			{ "speaker": "EIRA", "text": "Thanks again." }
+			{ "speaker": "EIRA", "text": text }
 		])
 		return
 
@@ -93,4 +96,5 @@ func _on_fireplace_interacted() -> void:
 	Dialogue.start(EIRA_DONE_LINES)
 	await Dialogue.finished
 
-	GameState.set_objective(OBJECTIVE_WELF, "welf")
+	GameState.set_flag("village_intro_started", true)
+	GameState.refresh_objective()

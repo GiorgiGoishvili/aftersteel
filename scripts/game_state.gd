@@ -38,19 +38,29 @@ var story_flags := {
 	"bedroom_chest_checked": false,
 	"mom_letter_read": false,
 
-	# One-time hints. Cleared the first time the player actually
-	# succeeds at the thing being taught, never shown again after.
+	# One-time control hints (tutorials.gd). Each is set the first time
+	# the player actually does the thing being taught, and that hint is
+	# never shown again after.
+	"move_tutorial_completed": false,
 	"interaction_tutorial_completed": false,
+	"equip_tutorial_completed": false,
+	"attack_tutorial_completed": false,
+	"cast_tutorial_completed": false,
+	"reel_tutorial_completed": false,
 
 	# Eira's firewood errand. Whether Kiren is carrying the wood is
 	# read from the inventory instead of a duplicate flag.
 	"eira_firewood_quest_started": false,
 	"eira_firewood_quest_completed": false,
 
-	# Welf's job after the sword: put down three slimes in the west field.
+	# Eira sends Kiren round the village once the firewood is in. Who he
+	# has met so far is villagers_met below.
+	"village_intro_started": false,
+
+	# The Blue Slime's job: put down ten red slimes in the west field.
 	# Progress is slimes_defeated below.
-	"welf_slime_quest_started": false,
-	"welf_slime_quest_completed": false,
+	"slime_quest_started": false,
+	"slime_quest_completed": false,
 
 	# DEVELOPER KNOWLEDGE: the decoy amulet is still sitting in the bedroom
 	# chest. Kiren has no idea there is anything unusual about it.
@@ -67,9 +77,24 @@ var objective := ""
 # beside Kiren points there (or at the exit toward it). Empty = no pointer.
 var objective_target := ""
 
-## Welf's slime job: how many slimes Kiren has put down since taking it.
-const SLIME_QUEST_GOAL := 3
+# A smaller second line under the objective (the next step of it), or "".
+var objective_detail := ""
+
+## The Blue Slime's job: how many red slimes Kiren has put down since taking it.
+const SLIME_QUEST_GOAL := 10
 var slimes_defeated := 0
+
+## Everyone Eira means by "go see them", in the order the objective suggests
+## them: Welf first, since the Blue Slime's job needs his sword. Any order
+## works and each counts once.
+const VILLAGERS := {
+	"welf": "Welf",
+	"iroh": "Iroh",
+	"blue_slime": "Blue Slime",
+}
+
+## Ids from VILLAGERS that Kiren has had his first talk with, used as a set.
+var villagers_met := {}
 
 ## How many of each kind of enemy Kiren has put down, for the monster index.
 var enemies_defeated := {}
@@ -136,13 +161,56 @@ func has_flag(flag: String) -> bool:
 	return story_flags.get(flag, false)
 
 
-func set_objective(text: String, target := "") -> void:
+func set_objective(text: String, target := "", detail := "") -> void:
 	objective = text
 	objective_target = target
+	objective_detail = detail
 	objective_changed.emit(text)
 
 
+## The objective once Eira has sent Kiren round the village, worked out from
+## the quest state: the Blue Slime's job while it is on, then whoever is
+## still to meet, then nothing. Called after each conversation and each
+## counted kill. Before Eira's request the rooms set the objective themselves.
+func refresh_objective() -> void:
+	if slime_quest_active():
+		if slimes_defeated >= SLIME_QUEST_GOAL:
+			set_objective("Return to Blue Slime", "blue_slime")
+		else:
+			set_objective(slime_quest_objective(), "slime_clearing")
+		return
+
+	if not has_flag("village_intro_started"):
+		return
+
+	var next := next_villager()
+
+	if next != "":
+		set_objective("Talk to the villagers", next, "Visit %s" % VILLAGERS[next])
+	elif VILLAGERS.has(objective_target) or objective_target == "slime_clearing":
+		# That was the last of it. Anything else set since is left alone.
+		set_objective("")
+
+
+func meet_villager(id: String) -> void:
+	if VILLAGERS.has(id):
+		villagers_met[id] = true
+
+
+func has_met_villager(id: String) -> bool:
+	return villagers_met.has(id)
+
+
+## The first villager Kiren hasn't talked to yet, or "" once he has met them all.
+func next_villager() -> String:
+	for id in VILLAGERS:
+		if not has_met_villager(id):
+			return id
+	return ""
+
+
 ## Every enemy Kiren puts down reports here exactly once (on its death).
+## Friendly creatures never do, so only real kills count.
 func record_enemy_defeated(kind: String) -> void:
 	enemies_defeated[kind] = int(enemies_defeated.get(kind, 0)) + 1
 	enemy_defeated.emit(kind)
@@ -151,19 +219,15 @@ func record_enemy_defeated(kind: String) -> void:
 		return
 
 	slimes_defeated += 1
-
-	if slimes_defeated >= SLIME_QUEST_GOAL:
-		set_objective("Return to Welf", "welf")
-	else:
-		set_objective(slime_quest_objective(), "slime_clearing")
+	refresh_objective()
 
 
 func slime_quest_active() -> bool:
-	return has_flag("welf_slime_quest_started") and not has_flag("welf_slime_quest_completed")
+	return has_flag("slime_quest_started") and not has_flag("slime_quest_completed")
 
 
 func slime_quest_objective() -> String:
-	return "Defeat Slimes: %d/%d" % [slimes_defeated, SLIME_QUEST_GOAL]
+	return "Defeat Red Slimes: %d/%d" % [slimes_defeated, SLIME_QUEST_GOAL]
 
 
 func set_tutorial(text: String) -> void:
@@ -196,7 +260,6 @@ func grant_starting_kit() -> void:
 
 	_starting_kit_given = true
 	add_item(Items.HEALING_HERB, 2)
-	add_item(Items.FISHING_ROD)
 
 
 ## Equips an item Kiren is carrying into its slot ("weapon" for weapons,
@@ -283,12 +346,19 @@ func reset_run() -> void:
 	story_flags["intro_chest_gate_active"] = false
 	story_flags["bedroom_chest_checked"] = false
 	story_flags["mom_letter_read"] = false
+	story_flags["move_tutorial_completed"] = false
 	story_flags["interaction_tutorial_completed"] = false
+	story_flags["equip_tutorial_completed"] = false
+	story_flags["attack_tutorial_completed"] = false
+	story_flags["cast_tutorial_completed"] = false
+	story_flags["reel_tutorial_completed"] = false
 	story_flags["eira_firewood_quest_started"] = false
 	story_flags["eira_firewood_quest_completed"] = false
-	story_flags["welf_slime_quest_started"] = false
-	story_flags["welf_slime_quest_completed"] = false
+	story_flags["village_intro_started"] = false
+	story_flags["slime_quest_started"] = false
+	story_flags["slime_quest_completed"] = false
 	slimes_defeated = 0
+	villagers_met.clear()
 	enemies_defeated.clear()
 	completed_encounters.clear()
 	opened_containers.clear()
@@ -299,6 +369,7 @@ func reset_run() -> void:
 	_starting_kit_given = false
 	objective = ""
 	objective_target = ""
+	objective_detail = ""
 	tutorial_hint = ""
 	next_spawn = ""
 	input_locked = false

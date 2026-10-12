@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://b272ep0ve02nq" path="res://scripts/map_exit.gd" id="mx_west"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/iroh.tscn" id="npc_iroh"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/welf.tscn" id="npc_welf"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/blue_slime.tscn" id="npc_blue_slime"]
 [ext_resource type="Texture2D" uid="uid://dlk0dtxkqatgl" path="res://Assets/Bushes/Bush_orange_flowers1.png" id="v_Bush_orange_flowers1"]
 [ext_resource type="Texture2D" uid="uid://bh8hlcjfgu0u0" path="res://Assets/Bushes/Bush_pink_flowers1.png" id="v_Bush_pink_flowers1"]
 [ext_resource type="Texture2D" uid="uid://dqiqklocybd3t" path="res://Assets/Bushes/Bush_simple1_1.png" id="v_Bush_simple1_1"]
@@ -195,6 +196,9 @@ position = Vector2(0, 276)
 
 [node name="Welf" parent="NPCs" unique_id=1171486446 instance=ExtResource("npc_welf")]
 position = Vector2(-156, 596)
+
+[node name="BlueSlime" parent="NPCs" instance=ExtResource("npc_blue_slime")]
+position = Vector2(-200, 596)
 
 [node name="Triggers" type="Node2D" parent="." unique_id=1709033585]
 

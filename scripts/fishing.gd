@@ -1,11 +1,18 @@
 extends CanvasLayer
 
 ## Fishing (autoload). With the fishing rod in the weapon slot, J or left
-## click at a fishing spot casts: Kiren throws the line (his cast animation)
-## and stays on its last frame. After a short wait a fish bites and the
-## minigame opens: hold J or the mouse button to lift the green zone, let go
-## and it sinks. Keep the fish inside it to fill the meter - full, it's
-## caught; empty, it gets away. Esc reels in at any point, catching nothing.
+## click at the river's edge casts: Kiren throws the line (his cast
+## animation) and stays on its last frame. After a short wait a fish bites
+## and the minigame opens: hold J or the mouse button to lift the green
+## zone, let go and it sinks. Keep the fish inside it to fill the meter -
+## full, it's caught; empty, it gets away. Esc reels in at any point.
+##
+## The line has to land in water: the cast's last frame drops the line and
+## its ripple a fixed way from Kiren, so he can only cast where every pixel
+## of that ripple is over a Water tile - right at the bank.
+##
+## What's on the line is rolled before the minigame opens, and its rarity
+## sets how hard the fish fights (DIFFICULTY).
 ##
 ## The art (AftersteelFishingminigame.png) has the zone, the fish and a
 ## part-filled meter drawn in. They are cut out at start-up: the zone and
@@ -27,8 +34,33 @@ const CATCHES := [
 	{"item": "old_ring", "weight": 5},
 ]
 
-## Fishing works this close to a node named FishingSpot (map pixels).
-const SPOT_RANGE := 48.0
+## How hard each rarity is to land (anything without a rarity, like junk,
+## fishes as Common). Speeds are art pixels a second.
+##   fish_speed   the fish's usual top speed
+##   fish_accel   how quickly it speeds up, slows and turns
+##   turn_every   seconds between new places to swim to (min, max)
+##   dash         chance a move is a dash (DASH times the speed)
+##   zone         height of the green zone in art pixels (the art's is 23)
+##   gain, loss   meter per second with the fish inside / outside the zone
+const DIFFICULTY := {
+	"common":    {"fish_speed": 12.0, "fish_accel": 24.0, "turn_every": Vector2(1.8, 3.2), "dash": 0.0, "zone": 32, "gain": 0.42, "loss": 0.09},
+	"uncommon":  {"fish_speed": 30.0, "fish_accel": 80.0, "turn_every": Vector2(0.8, 1.8), "dash": 0.15, "zone": 24, "gain": 0.32, "loss": 0.17},
+	"rare":      {"fish_speed": 40.0, "fish_accel": 130.0, "turn_every": Vector2(0.6, 1.3), "dash": 0.20, "zone": 20, "gain": 0.28, "loss": 0.20},
+	"epic":      {"fish_speed": 47.0, "fish_accel": 180.0, "turn_every": Vector2(0.45, 1.0), "dash": 0.26, "zone": 17, "gain": 0.25, "loss": 0.21},
+	"legendary": {"fish_speed": 52.0, "fish_accel": 220.0, "turn_every": Vector2(0.4, 0.85), "dash": 0.30, "zone": 15, "gain": 0.23, "loss": 0.21},
+	"divine":    {"fish_speed": 55.0, "fish_accel": 250.0, "turn_every": Vector2(0.35, 0.75), "dash": 0.32, "zone": 14, "gain": 0.22, "loss": 0.21},
+}
+
+## How much faster a dash is than the fish's usual top speed.
+const DASH := 1.7
+
+## Where the line lands in the cast's last frame (KirenFishing.png, frame 8),
+## measured from Kiren's centre facing right: its ripple covers x 8-30,
+## y 21-27. Mirrored when he faces left.
+const RIPPLE := Rect2i(8, 21, 23, 7)
+## Looking this far below and beside Kiren for water, to tell him to step
+## closer rather than that there's none.
+const NEAR_WATER := 72.0
 ## Screen pixels between Kiren and the minigame on the side his line goes
 ## (the cast's last frame reaches about 230 px out).
 const LINE_GAP := 260.0
@@ -38,11 +70,12 @@ const ART := preload("res://Assets/UI/FishingMinigame/Exports/AftersteelFishingm
 # Where things are in the 128 px art.
 const DRAWN := Rect2i(32, 9, 68, 110)        # the art's drawn part
 const ZONE_ART := Rect2i(50, 57, 25, 23)     # the zone as drawn, fish and all
+const ZONE_CAP := 3                          # its top and bottom rows that shape it
 const FISH_ART := Rect2i(55, 62, 15, 14)
 const PLAIN_TRACK_ROW := 50                  # a row of bare track
 const PLAIN_ZONE_ROW := 60                   # a row of zone the fish misses
-const ZONE_MIN := 31                         # the zone's top, highest...
-const ZONE_MAX := 84                         # ...and lowest (track ends at 106)
+const TRACK_TOP := 31                        # where the zone can go: rows 31-106
+const TRACK_BOTTOM := 107
 const FISH_MIN := 38.0                       # the fish's centre, highest...
 const FISH_MAX := 99.0                       # ...and lowest
 const METER_X := 87                          # meter inside: 5 px wide,
@@ -54,15 +87,6 @@ const FILL_TOP_AS_DRAWN := 63
 ## red, then orange, then yellow on top - the same split as the art).
 const FILL_ROWS := [85, 75, 66]
 
-# How it feels. Art pixels and seconds.
-const GRAVITY := 380.0
-const LIFT := 760.0
-const MAX_SPEED := 170.0
-const BOUNCE := 0.35          # share of its speed the zone keeps off the bottom
-const GAIN := 0.30            # meter per second with the fish in the zone
-const LOSS := 0.20            # meter per second without
-const START := 0.35
-
 enum State { IDLE, WAITING, PLAYING }
 
 ## Seconds before a bite, picked at random in this range.
@@ -71,18 +95,17 @@ enum State { IDLE, WAITING, PLAYING }
 @export_range(1, 8) var art_scale := 6
 
 var state := State.IDLE
-var progress := 0.0
-var zone_y := 0.0          # the zone's top row, art pixels
-var zone_speed := 0.0      # down is positive
-var fish_y := 0.0          # the fish's centre, art pixels
+## The minigame in progress (or null).
+var challenge: Challenge
+## What's on the line, rolled when the fish bites.
+var catch_id := ""
 
-var _fish_target := 0.0
-var _fish_speed := 0.0
-var _fish_timer := 0.0
 var _bite_timer := 0.0
 var _note_timer := 0.0
 var _last_hp := 0
 var _fill_colours: Array = []
+var _zone_art: Image
+var _zone_textures := {}
 var _rng := RandomNumberGenerator.new()
 
 var _root: Control
@@ -91,6 +114,95 @@ var _zone: TextureRect
 var _fish: TextureRect
 var _meter: Control
 var _note: Label
+
+
+## One go at the minigame: the zone, the fish and the meter, moved one step
+## at a time. Separate from the screen so it can be tried out in tests.
+class Challenge:
+	# The zone. Held, it accelerates up; let go, gravity takes it; drag bleeds
+	# off momentum so short taps and feathering settle instead of overshooting.
+	# It climbs more slowly than it falls, so a held button stays controllable.
+	const LIFT := 150.0
+	const GRAVITY := 160.0
+	const DRAG := 1.6
+	const MAX_UP_SPEED := 62.0
+	const MAX_DOWN_SPEED := 90.0
+	const BOUNCE := 0.3          # share of its speed it keeps off the bottom
+	const BOUNCE_MIN := 22.0     # any slower and it just settles there
+	const START := 0.35
+
+	var settings: Dictionary
+	var progress := START
+	var zone_h := 23
+	var zone_y := 0.0            # the zone's top, art pixels
+	var zone_speed := 0.0        # down is positive
+	var fish_y := 0.0            # the fish's centre, art pixels
+	var fish_speed := 0.0
+	var fish_target := 0.0
+	var fish_top_speed := 0.0
+	var fish_timer := 0.0
+	var inside := false
+	var _rng: RandomNumberGenerator
+
+	func _init(rarity: String, rng: RandomNumberGenerator) -> void:
+		settings = DIFFICULTY.get(rarity, DIFFICULTY["common"])
+		_rng = rng
+		zone_h = int(settings["zone"])
+		zone_y = zone_max()
+		fish_y = (FISH_MIN + FISH_MAX) / 2.0
+		fish_target = fish_y
+
+	func zone_max() -> float:
+		return float(TRACK_BOTTOM - zone_h)
+
+	## Advances by `delta` seconds with the button held or not. Returns
+	## "caught" or "escaped" when it ends, otherwise "".
+	func step(delta: float, held: bool) -> String:
+		_move_fish(delta)
+		_move_zone(delta, held)
+		inside = fish_y >= zone_y + 1.0 and fish_y <= zone_y + zone_h - 1.0
+		var rate: float = settings["gain"] if inside else -float(settings["loss"])
+		progress = clampf(progress + rate * delta, 0.0, 1.0)
+
+		if progress >= 1.0:
+			return "caught"
+		if progress <= 0.0:
+			return "escaped"
+		return ""
+
+	## The fish keeps picking somewhere new to swim to, easing up to speed
+	## and slowing as it arrives; now and then a move is a dash.
+	func _move_fish(delta: float) -> void:
+		fish_timer -= delta
+
+		if fish_timer <= 0.0:
+			var turn: Vector2 = settings["turn_every"]
+			fish_timer = _rng.randf_range(turn.x, turn.y)
+			fish_target = _rng.randf_range(FISH_MIN, FISH_MAX)
+			var dash := _rng.randf() < float(settings["dash"])
+			fish_top_speed = float(settings["fish_speed"]) * (DASH if dash else _rng.randf_range(0.6, 1.0))
+
+		var wanted := clampf((fish_target - fish_y) * 2.5, -fish_top_speed, fish_top_speed)
+		var accel := float(settings["fish_accel"]) * (2.0 if fish_top_speed > float(settings["fish_speed"]) else 1.0)
+		fish_speed = move_toward(fish_speed, wanted, accel * delta)
+		fish_y += fish_speed * delta
+
+		if fish_y < FISH_MIN or fish_y > FISH_MAX:
+			fish_y = clampf(fish_y, FISH_MIN, FISH_MAX)
+			fish_speed = 0.0
+
+	func _move_zone(delta: float, held: bool) -> void:
+		zone_speed += (-LIFT if held else GRAVITY) * delta
+		zone_speed -= zone_speed * DRAG * delta
+		zone_speed = clampf(zone_speed, -MAX_UP_SPEED, MAX_DOWN_SPEED)
+		zone_y += zone_speed * delta
+
+		if zone_y < TRACK_TOP:
+			zone_y = TRACK_TOP
+			zone_speed = maxf(zone_speed, 0.0)
+		elif zone_y > zone_max():
+			zone_y = zone_max()
+			zone_speed = -zone_speed * BOUNCE if zone_speed > BOUNCE_MIN else 0.0
 
 
 func _ready() -> void:
@@ -107,13 +219,28 @@ func can_fish() -> bool:
 		and not Dialogue.is_active() and _player() != null
 
 
-## Casts at the nearest fishing spot, if Kiren is at one.
+## True when the line would land in water from where Kiren stands now.
+func line_lands_in_water() -> bool:
+	var player := _player()
+
+	if player == null:
+		return false
+
+	for corner in [RIPPLE.position, RIPPLE.end - Vector2i.ONE, Vector2i(RIPPLE.position.x, RIPPLE.end.y - 1),
+			Vector2i(RIPPLE.end.x - 1, RIPPLE.position.y), RIPPLE.get_center()]:
+		if not _is_water(player.global_position + _facing(Vector2(corner))):
+			return false
+
+	return true
+
+
+## Casts, if the line would land in the water.
 func cast() -> void:
 	if state != State.IDLE:
 		return
 
-	if _spot_near() == null:
-		_say("No water to fish here.", 1.4)
+	if not line_lands_in_water():
+		_say("Get closer to the water." if _water_nearby() else "No water to fish here.", 1.4)
 		return
 
 	state = State.WAITING
@@ -157,6 +284,12 @@ static func pick_catch(roll: float, fish_roll := 0.0) -> String:
 	return pool[mini(int(fish_roll * pool.size()), pool.size() - 1)]
 
 
+## How hard a catch fights: its item's rarity, or Common for anything without.
+static func rarity_of(id: String) -> String:
+	var rarity := str(Items.by_id(id).get("rarity", "common"))
+	return rarity if DIFFICULTY.has(rarity) else "common"
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if state == State.IDLE:
 		if event.is_action_pressed("attack") and GameState.has_rod_equipped() and can_fish():
@@ -189,11 +322,9 @@ func _process(delta: float) -> void:
 
 func _start_minigame() -> void:
 	state = State.PLAYING
-	progress = START
-	zone_y = ZONE_MAX
-	zone_speed = 0.0
-	fish_y = (FISH_MIN + FISH_MAX) / 2.0
-	_fish_timer = 0.0
+	catch_id = pick_catch(_rng.randf(), _rng.randf())
+	challenge = Challenge.new(rarity_of(catch_id), _rng)
+	_zone.texture = _zone_texture(challenge.zone_h)
 	_note.hide()
 	_layout()
 	_place()
@@ -202,46 +333,12 @@ func _start_minigame() -> void:
 
 
 func _play(delta: float) -> void:
-	_move_fish(delta)
-	_move_zone(delta)
-
-	var inside := fish_y >= zone_y + 2.0 and fish_y <= zone_y + ZONE_ART.size.y - 2.0
-	progress = clampf(progress + (GAIN if inside else -LOSS) * delta, 0.0, 1.0)
-	_zone.modulate = Color.WHITE if inside else Color(0.78, 0.78, 0.78)
+	var result := challenge.step(delta, Input.is_action_pressed("attack"))
+	_zone.modulate = Color.WHITE if challenge.inside else Color(0.78, 0.78, 0.78)
 	_place()
 
-	if progress >= 1.0:
-		_finish(true)
-	elif progress <= 0.0:
-		_finish(false)
-
-
-## The fish keeps picking somewhere new to swim to, mostly at an easy pace,
-## now and then in a dash.
-func _move_fish(delta: float) -> void:
-	_fish_timer -= delta
-
-	if _fish_timer <= 0.0:
-		_fish_timer = _rng.randf_range(0.5, 1.6)
-		_fish_target = _rng.randf_range(FISH_MIN, FISH_MAX)
-		_fish_speed = _rng.randf_range(20.0, 60.0) if _rng.randf() > 0.25 else _rng.randf_range(80.0, 110.0)
-
-	fish_y = move_toward(fish_y, _fish_target, _fish_speed * delta)
-
-
-## Held, the zone climbs; let go, it falls, and it bounces a little off
-## the bottom. Short taps hold it in place.
-func _move_zone(delta: float) -> void:
-	var held := Input.is_action_pressed("attack")
-	zone_speed = clampf(zone_speed + (GRAVITY - (LIFT if held else 0.0)) * delta, -MAX_SPEED, MAX_SPEED)
-	zone_y += zone_speed * delta
-
-	if zone_y < ZONE_MIN:
-		zone_y = ZONE_MIN
-		zone_speed = maxf(zone_speed, 0.0)
-	elif zone_y > ZONE_MAX:
-		zone_y = ZONE_MAX
-		zone_speed = -zone_speed * BOUNCE if zone_speed > 30.0 else 0.0
+	if result != "":
+		_finish(result == "caught")
 
 
 func _finish(caught: bool) -> void:
@@ -251,7 +348,7 @@ func _finish(caught: bool) -> void:
 		finished.emit("escaped")
 		return
 
-	var id := pick_catch(_rng.randf(), _rng.randf())
+	var id := catch_id
 	var item := Items.by_id(id)
 	GameState.add_item(item)
 	_end()
@@ -286,17 +383,38 @@ func _player() -> Node2D:
 	return null if scene == null else scene.find_child("Player", true, false) as Node2D
 
 
-func _spot_near() -> Node2D:
+## A point measured facing right, turned the way Kiren faces.
+func _facing(point: Vector2) -> Vector2:
+	var player := _player()
+	return Vector2(-point.x, point.y) if player != null and player.side == "L" else point
+
+
+func _water_layers() -> Array:
+	var scene := get_tree().current_scene
+	return [] if scene == null else scene.find_children("Water*", "TileMapLayer", true, false)
+
+
+func _is_water(world: Vector2) -> bool:
+	for found in _water_layers():
+		var water := found as TileMapLayer
+		if water.get_cell_source_id(water.local_to_map(water.to_local(world))) != -1:
+			return true
+
+	return false
+
+
+func _water_nearby() -> bool:
 	var player := _player()
 
 	if player == null:
-		return null
+		return false
 
-	for spot in get_tree().current_scene.find_children("FishingSpot*", "Node2D", true, false):
-		if (spot as Node2D).global_position.distance_to(player.global_position) <= SPOT_RANGE:
-			return spot
+	for dx in [-NEAR_WATER / 2.0, 0.0, NEAR_WATER / 2.0]:
+		for dy in range(8, int(NEAR_WATER) + 1, 8):
+			if _is_water(player.global_position + Vector2(dx, dy)):
+				return true
 
-	return null
+	return false
 
 
 ## A line above Kiren's head. `secs` INF keeps it up until replaced.
@@ -351,6 +469,8 @@ func _build() -> void:
 	for corner in [Vector2i(0, 0), Vector2i(w, 0), Vector2i(0, h), Vector2i(w, h)]:
 		zone.set_pixelv(corner, Color(0, 0, 0, 0))
 
+	_zone_art = zone
+
 	for row in FILL_ROWS:
 		var colours := []
 		for x in range(METER_X, METER_X + 5):
@@ -365,7 +485,7 @@ func _build() -> void:
 
 	_panel = _texture_rect(ImageTexture.create_from_image(back))
 	_root.add_child(_panel)
-	_zone = _texture_rect(ImageTexture.create_from_image(zone))
+	_zone = _texture_rect(_zone_texture(ZONE_ART.size.y))
 	_panel.add_child(_zone)
 	_fish = _texture_rect(ImageTexture.create_from_image(fish))
 	_panel.add_child(_fish)
@@ -385,6 +505,22 @@ func _build() -> void:
 	_note.add_theme_constant_override("outline_size", 8)
 	_note.hide()
 	add_child(_note)
+
+
+## The zone at any height: the art's own top and bottom rows, its plain
+## middle row repeated between them - taller or shorter, never stretched.
+func _zone_texture(h: int) -> Texture2D:
+	if not _zone_textures.has(h):
+		var img := Image.create(ZONE_ART.size.x, h, false, Image.FORMAT_RGBA8)
+		var src_h := _zone_art.get_height()
+
+		for y in h:
+			var from := y if y < ZONE_CAP else (src_h - (h - y) if y >= h - ZONE_CAP else ZONE_CAP)
+			img.blit_rect(_zone_art, Rect2i(0, from, ZONE_ART.size.x, 1), Vector2i(0, y))
+
+		_zone_textures[h] = ImageTexture.create_from_image(img)
+
+	return _zone_textures[h]
 
 
 func _texture_rect(texture: Texture2D) -> TextureRect:
@@ -412,26 +548,30 @@ func _layout() -> void:
 	var top := clampf(at.y - (DRAWN.position.y + DRAWN.size.y / 2.0) * k, 16.0 - DRAWN.position.y * k, view.y - 16.0 - DRAWN.end.y * k)
 	_panel.position = Vector2(left, top).round()
 	_panel.size = Vector2(128, 128) * k
-	_zone.size = Vector2(ZONE_ART.size) * k
+	_zone.size = Vector2(ZONE_ART.size.x, challenge.zone_h if challenge != null else ZONE_ART.size.y) * k
 	_fish.size = Vector2(FISH_ART.size) * k
 	_meter.position = Vector2(METER_X, METER_TOP) * k
 	_meter.size = Vector2(5, METER_BOTTOM - METER_TOP + 1) * k
 
 
-## The moving pieces at their places, snapped to whole art pixels.
+## The moving pieces at their places. They move by whole screen pixels (a
+## sixth of an art pixel), so slow drifts glide instead of stepping.
 func _place() -> void:
 	var k := art_scale
-	_zone.position = Vector2(ZONE_ART.position.x, roundf(zone_y)) * k
-	_fish.position = Vector2(FISH_ART.position.x, roundf(fish_y) - FISH_ART.size.y / 2.0) * k
+	_zone.position = Vector2(ZONE_ART.position.x * k, roundf(challenge.zone_y * k))
+	_fish.position = Vector2(FISH_ART.position.x * k, roundf((challenge.fish_y - FISH_ART.size.y / 2.0) * k))
 	_meter.queue_redraw()
 
 
 ## The live fill, from the bottom up: red, then orange, then yellow on top,
 ## in the art's own colours.
 func _draw_meter() -> void:
+	if challenge == null:
+		return
+
 	var k := art_scale
 	var rows := METER_BOTTOM - METER_TOP + 1
-	var filled := roundi(progress * rows)
+	var filled := roundi(challenge.progress * rows)
 
 	for i in filled:
 		var y := METER_BOTTOM - i

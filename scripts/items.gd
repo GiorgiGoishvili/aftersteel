@@ -145,7 +145,7 @@ const FISHING_ROD := {
 # Lowest first. Only common and uncommon are used so far; the rest are here
 # so a new item can simply name one.
 
-const RARITIES := ["common", "uncommon", "rare", "epic", "divine"]
+const RARITIES := ["common", "uncommon", "rare", "epic", "legendary", "divine"]
 
 
 # --- Fish -------------------------------------------------------------
@@ -211,7 +211,7 @@ const DRIFTWOOD := {
 
 # The rare catch. Worn in the accessory slot; it does nothing yet.
 const OLD_RING := {
-	"id": "old_ring", "name": "Old Ring", "type": "accessory", "slot": "accessory",
+	"id": "old_ring", "name": "Old Ring", "type": "accessory", "slot": "accessory", "rarity": "rare",
 	"description": "Someone lost this in the river a long time ago.", "key_item": false,
 	"icon": "res://Assets/Accessories/OldRing.tres",
 }

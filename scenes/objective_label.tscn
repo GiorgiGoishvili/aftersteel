@@ -3,34 +3,100 @@
 [ext_resource type="Script" path="res://scripts/objective_hud.gd" id="1_obj"]
 [ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="2_obj"]
 [ext_resource type="Texture2D" uid="uid://48xy2dyvjh01" path="res://Assets/UI/HealthBar/Exports/AftersteelHealthBar.png" id="3_hp"]
+[ext_resource type="Texture2D" uid="uid://cxj52yv1tleuh" path="res://Assets/UI/InventoryMenu/Exports/Equipment.png" id="4_plate"]
 
 [sub_resource type="AtlasTexture" id="HealthFrame"]
 atlas = ExtResource("3_hp")
 region = Rect2(7, 45, 119, 39)
 
+[sub_resource type="Theme" id="PlateText"]
+default_font = ExtResource("2_obj")
+Label/colors/font_color = Color(0.925, 0.835, 0.576, 1)
+Label/colors/font_shadow_color = Color(0.243, 0.122, 0.114, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/font_sizes/font_size = 30
+
 [node name="ObjectiveHUD" type="CanvasLayer"]
 layer = 90
 script = ExtResource("1_obj")
 
-[node name="ObjectiveText" type="Label" parent="."]
+[node name="ObjectiveBox" type="Control" parent="."]
 visible = false
-offset_left = 48.0
-offset_top = 230.0
-offset_right = 1100.0
-offset_bottom = 282.0
-theme_override_colors/font_color = Color(0.85, 0.85, 0.8, 0.75)
-theme_override_fonts/font = ExtResource("2_obj")
-theme_override_font_sizes/font_size = 28
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 231.0
+offset_right = 400.0
+offset_bottom = 301.0
+mouse_filter = 2
+theme = SubResource("PlateText")
 
-[node name="TutorialText" type="Label" parent="."]
+[node name="Plate" type="NinePatchRect" parent="ObjectiveBox"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 14.0
+scale = Vector2(5, 5)
+mouse_filter = 2
+texture = ExtResource("4_plate")
+region_rect = Rect2(7, 347, 34, 26)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="ObjectiveText" type="Label" parent="ObjectiveBox"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 10.0
+offset_right = 330.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 30
+
+[node name="ObjectiveStep" type="Label" parent="ObjectiveBox"]
 visible = false
-offset_left = 48.0
-offset_top = 286.0
-offset_right = 1100.0
-offset_bottom = 330.0
-theme_override_colors/font_color = Color(0.75, 0.75, 0.72, 0.6)
-theme_override_fonts/font = ExtResource("2_obj")
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 330.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.86, 0.74, 0.52, 1)
 theme_override_font_sizes/font_size = 24
+
+[node name="TutorialBox" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 760.0
+offset_top = 900.0
+offset_right = 1160.0
+offset_bottom = 970.0
+mouse_filter = 2
+theme = SubResource("PlateText")
+
+[node name="Plate" type="NinePatchRect" parent="TutorialBox"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 14.0
+scale = Vector2(5, 5)
+mouse_filter = 2
+texture = ExtResource("4_plate")
+region_rect = Rect2(7, 347, 34, 26)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="TutorialText" type="HBoxContainer" parent="TutorialBox"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 10.0
+offset_right = 370.0
+offset_bottom = 54.0
+mouse_filter = 2
+theme_override_constants/separation = 12
 
 [node name="HealthBox" type="Control" parent="."]
 layout_mode = 3

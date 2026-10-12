@@ -2,14 +2,17 @@
 
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="1_base"]
 [ext_resource type="SpriteFrames" path="res://Assets/Characters/Iroh/Animations/IrohSpriteFrames.tres" id="2_frames"]
+[ext_resource type="Script" uid="uid://x7o15lyw3rg5" path="res://scripts/iroh.gd" id="3_iroh"]
 
 [node name="Iroh" instance=ExtResource("1_base")]
+script = ExtResource("3_iroh")
 speaker = "IROH"
 first_lines = Array[String](["Kiren.", "Take these. Better to have them and not need them."])
 repeat_lines = Array[String](["Go carefully."])
 gift_item_id = "health_potion"
 gift_count = 2
 gift_id = "iroh_potions"
+villager_id = "iroh"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_frames")

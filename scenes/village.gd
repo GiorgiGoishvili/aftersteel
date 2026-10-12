@@ -1,6 +1,6 @@
 extends Node2D
 
-const OBJECTIVE_FIREPLACE := "Put the firewood by the fireplace."
+const OBJECTIVE_FIREPLACE := "Put the firewood by the fire"
 
 @onready var woodpile: Node2D = $Props/Woodpile
 

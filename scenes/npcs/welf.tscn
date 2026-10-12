@@ -7,10 +7,11 @@
 [node name="Welf" instance=ExtResource("1_base")]
 script = ExtResource("3_welf")
 speaker = "WELF"
-first_lines = Array[String](["Here. It's yours now.", "Keep the edge clean."])
+first_lines = Array[String](["Kiren. Finished it last night.", "Here. It's yours now.", "Keep the edge clean."])
 repeat_lines = Array[String](["Bring it back if it chips."])
 gift_item_id = "gray_short_sword"
 gift_id = "welf_sword"
+villager_id = "welf"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_frames")

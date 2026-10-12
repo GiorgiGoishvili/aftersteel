@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cdihuwks0dqh1"]
+
+[ext_resource type="Texture2D" uid="uid://cv0t3e35a8265" path="res://Assets/UI/QuestionMark/Exports/QuestionMark.png" id="mark"]
+
+[sub_resource type="AtlasTexture" id="Float_0"]
+atlas = ExtResource("mark")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_1"]
+atlas = ExtResource("mark")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_2"]
+atlas = ExtResource("mark")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_3"]
+atlas = ExtResource("mark")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_4"]
+atlas = ExtResource("mark")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_5"]
+atlas = ExtResource("mark")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_6"]
+atlas = ExtResource("mark")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Float_7"]
+atlas = ExtResource("mark")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Float_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Float_7")
+}],
+"loop": true,
+"name": &"Float",
+"speed": 10.0
+}]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_npc"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_inter"]
+[ext_resource type="PackedScene" path="res://scenes/ui/quest_indicator.tscn" id="3_mark"]
 
 [sub_resource type="RectangleShape2D" id="Feet"]
 size = Vector2(14, 6)
@@ -26,3 +27,5 @@ script = ExtResource("2_inter")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Talk"]
 position = Vector2(0, 22)
 shape = SubResource("TalkReach")
+
+[node name="QuestIndicator" parent="." instance=ExtResource("3_mark")]

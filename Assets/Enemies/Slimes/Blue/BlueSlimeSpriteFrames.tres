@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://0pv8b5fna2n3"]
+
+[ext_resource type="Texture2D" uid="uid://bi3bvwa200cbe" path="res://Assets/Enemies/Slimes/Blue/Exports/BlueSlimeIdle.png" id="idle"]
+
+[sub_resource type="AtlasTexture" id="FIdle_0"]
+atlas = ExtResource("idle")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FIdle_1"]
+atlas = ExtResource("idle")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FIdle_2"]
+atlas = ExtResource("idle")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FIdle_3"]
+atlas = ExtResource("idle")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="FIdle_4"]
+atlas = ExtResource("idle")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("FIdle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("FIdle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("FIdle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("FIdle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("FIdle_4")
+}],
+"loop": true,
+"name": &"FIdle",
+"speed": 6.666666666666667
+}]

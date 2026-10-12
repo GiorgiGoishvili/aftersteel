@@ -24,6 +24,7 @@ var _player_in_range := false
 func _ready() -> void:
 	# Connected here rather than in the editor so that dropping this script
 	# onto any Area2D just works, with nothing else to wire up.
+	add_to_group("interactables")
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 

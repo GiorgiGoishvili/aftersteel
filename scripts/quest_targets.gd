@@ -17,6 +17,8 @@ const TARGETS := {
 	"woodpile": ["Village", "Props/Woodpile"],
 	"fireplace": ["KirenEiraHouseInterior", "Fireplace"],
 	"welf": ["Village", "NPCs/Welf"],
+	"iroh": ["Village", "NPCs/Iroh"],
+	"blue_slime": ["Village", "NPCs/BlueSlime"],
 	"slime_clearing": ["WesternOutskirts", ""],
 }
 
@@ -70,6 +72,10 @@ const HEAD_CLEARANCE := 6.0
 ## way the finger points; "hide_in_reach" hides it while Kiren can use the
 ## target, so it never sits on him or the prompt.
 const SPOT_NAME := "QuestMarkerSpot"
+
+## An NPC's question mark (quest_indicator.tscn). Not part of what the NPC
+## looks like, so it never moves the hand.
+const INDICATOR_NAME := "QuestIndicator"
 
 
 ## The node the marker is about in this map: the target, or the exit toward
@@ -180,7 +186,7 @@ static func _sprites(node: Node2D) -> Array:
 
 
 static func _is_sprite(node: Node) -> bool:
-	return node is Sprite2D or node is AnimatedSprite2D
+	return (node is Sprite2D or node is AnimatedSprite2D) and node.name != INDICATOR_NAME
 
 
 ## The sprite's visible (non-transparent) pixels, in the world.

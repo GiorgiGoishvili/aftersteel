@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="1_base"]
+[ext_resource type="SpriteFrames" path="res://Assets/Enemies/Slimes/Blue/BlueSlimeSpriteFrames.tres" id="2_frames"]
+[ext_resource type="Script" path="res://scripts/blue_slime.gd" id="3_slime"]
+
+[sub_resource type="RectangleShape2D" id="SlimeReach"]
+size = Vector2(40, 40)
+
+[node name="BlueSlime" instance=ExtResource("1_base")]
+script = ExtResource("3_slime")
+speaker = "BLUE SLIME"
+villager_id = "blue_slime"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_frames")
+animation = &"FIdle"
+autoplay = "FIdle"
+
+[node name="CollisionShape2D" parent="Talk" index="0"]
+position = Vector2(0, 10)
+shape = SubResource("SlimeReach")

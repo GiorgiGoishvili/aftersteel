@@ -542,7 +542,7 @@ func _quests_page() -> void:
 			body.add_child(_label("None."))
 
 
-## The game's two errands, read from the story flags that run them.
+## The game's errands, read from the story flags that run them.
 func _quests() -> Array:
 	var out := []
 
@@ -551,10 +551,17 @@ func _quests() -> Array:
 		var step := FIREPLACE_STEP if GameState.has_item("firewood_bundle") else FIREWOOD_STEP
 		out.append({"from": "Eira", "text": FIREWOOD_STEP if done else step, "done": done})
 
-	if GameState.has_flag("welf_slime_quest_started"):
-		var done := GameState.has_flag("welf_slime_quest_completed")
+	if GameState.has_flag("village_intro_started"):
+		var next := GameState.next_villager()
+		var text := "Talk to the villagers"
+		if next != "":
+			text += " (visit %s)" % GameState.VILLAGERS[next]
+		out.append({"from": "Eira", "text": text, "done": next == ""})
+
+	if GameState.has_flag("slime_quest_started"):
+		var done := GameState.has_flag("slime_quest_completed")
 		var back := GameState.slimes_defeated >= GameState.SLIME_QUEST_GOAL and not done
-		out.append({"from": "Welf", "text": "Return to Welf" if back else GameState.slime_quest_objective(), "done": done})
+		out.append({"from": "Blue Slime", "text": "Return to Blue Slime" if back else GameState.slime_quest_objective(), "done": done})
 
 	return out
 

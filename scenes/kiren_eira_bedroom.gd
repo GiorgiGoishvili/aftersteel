@@ -3,10 +3,8 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var chest: Interactable = $Chest
 
-const OBJECTIVE_CHEST := "Check the chest."
-const OBJECTIVE_DOWNSTAIRS := "Go downstairs and help Eira."
-
-const TUTORIAL_INTERACT := "Press E to interact"
+const OBJECTIVE_CHEST := "Open the chest"
+const OBJECTIVE_DOWNSTAIRS := "Speak with Eira"
 
 # How gently ordinary-morning music arrives after the intro.
 const CASUAL_FADE_IN_TIME := 3.0
@@ -72,10 +70,8 @@ func _set_spawn():
 		GameState.set_flag("intro_chest_gate_active", true)
 		GameState.set_objective(OBJECTIVE_CHEST, "bedroom_chest")
 
-		# Player gets control for the first time here, so this is where the
-		# interaction hint belongs. Interactable clears it on first success.
-		if not GameState.has_flag("interaction_tutorial_completed"):
-			GameState.set_tutorial(TUTORIAL_INTERACT)
+		# Kiren gets control for the first time here. The move hint, then the
+		# interact hint by the chest, come from tutorials.gd.
 		return
 
 

@@ -5,6 +5,10 @@ extends Node2D
 ##
 ## This script never moves the NPC: place it wherever you like in the
 ## scene. Its look comes from the AnimatedSprite2D's SpriteFrames.
+##
+## A villager Eira sends Kiren to (villager_id set) shows the golden
+## question mark (QuestIndicator) until their first talk, and counts as met
+## from then on.
 
 @export var speaker := ""
 @export var idle_animation := &"FIdle"
@@ -23,6 +27,10 @@ extends Node2D
 ## back to the map never gives it twice.
 @export var gift_id := ""
 
+## Key in GameState.VILLAGERS for the villagers Eira sends Kiren to; empty
+## for anyone else.
+@export var villager_id := ""
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var talk: Interactable = $Talk
 
@@ -38,6 +46,22 @@ func _on_talk() -> void:
 
 	if not lines.is_empty():
 		Dialogue.start(lines)
+		await Dialogue.finished
+
+	# After the talk, so the objective changes once the box has closed.
+	GameState.refresh_objective()
+
+
+## True while Kiren has something to find here, which shows the question
+## mark: a villager Eira mentioned whom he hasn't talked to yet.
+func wants_attention() -> bool:
+	return villager_id != "" and GameState.has_flag("village_intro_started") \
+		and not GameState.has_met_villager(villager_id)
+
+
+func _meet() -> void:
+	if villager_id != "":
+		GameState.meet_villager(villager_id)
 
 
 ## The usual conversation: first_lines with the gift the first time,
@@ -59,6 +83,7 @@ func _greeting() -> Array:
 			var count := " x%d" % gift_count if gift_count > 1 else ""
 			lines.append({ "text": "Received: %s%s" % [item["name"], count] })
 
+	_meet()
 	return lines
 
 
