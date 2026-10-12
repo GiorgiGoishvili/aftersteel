@@ -282,6 +282,8 @@ func _on_wallet_line() -> void:
 				_info.text = DivineExchange.NEEDS_PHANTOM
 			elif r.get("error", "") == "cancelled":
 				_info.text = "Cancelled in Phantom."
+			elif DivineExchange.ERRORS.has(r.get("error", "")):
+				_info.text = DivineExchange.ERRORS[r["error"]]
 			else:
 				# Phantom's own words, so a failure can be told apart.
 				_info.text = "Couldn't connect (%s): %s" % [r.get("step", r.get("error", "")), str(r.get("detail", r.get("error", ""))).left(70)])

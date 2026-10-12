@@ -37,7 +37,8 @@
     }
     let data = null;
     try { data = await res.json(); } catch (e) { data = null; }
-    if (!data) data = { ok: false, error: "http_" + res.status };
+    // No JSON back (e.g. a static host with no exchange server): say so.
+    if (!data) data = { ok: false, error: res.status === 404 || res.status === 405 ? "server_unreachable" : "http_" + res.status };
     if (res.status === 401 && data.error === "not_signed_in") { token = null; }
     return data;
   }
