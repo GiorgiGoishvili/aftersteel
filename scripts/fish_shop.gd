@@ -11,9 +11,12 @@ extends CanvasLayer
 ## and the four buttons along the bottom - SELL, SELL ALL, EXCHANGE and
 ## CLOSE. The DIVINE EXCHANGE badge on the left does the same as EXCHANGE.
 ##
-## Selling and prices are FishMarket's; Divine fish are DivineExchange's,
-## which isn't connected yet and so never takes one. The game pauses while
-## the shop is open.
+## Selling and prices are FishMarket's. Divine fish go to DivineExchange:
+## in the browser build, the strip above the fish connects Phantom (Solana
+## Devnet) and shows its address and balance, and EXCHANGE asks the exchange
+## server to pay the fish's claim. The fish leaves the pack only once the
+## server reports the transfer confirmed; its signature then links to the
+## Solana Explorer. The game pauses while the shop is open.
 
 ## The drawn part of the 256 px canvas.
 const SHOP_CROP := Rect2i(2, 15, 252, 238)
@@ -28,6 +31,10 @@ const NAME_AREA := Rect2i(48, 76, 73, 27)
 const TEXT_PANEL := Rect2i(17, 120, 104, 48)
 ## Bare paper beside the coin.
 const GOLD_AREA := Rect2i(38, 171, 82, 13)
+## Bare paper above the icon square, for the wallet.
+const WALLET_AREA := Rect2i(14, 57, 108, 15)
+## Explorer links are drawn in this ink.
+const INK_LINK := Color(0.1, 0.22, 0.5)
 const DIVINE_BADGE := Rect2i(18, 187, 26, 26)
 const BUTTONS := {
 	"Sell": Rect2i(12, 232, 53, 18),
@@ -91,6 +98,11 @@ var _prev: TextureButton
 var _next: TextureButton
 var _page_label: Label
 var _opened_frame := -1
+var _wallet_line: Button
+var _tx_link: Button
+var _tx_url := ""
+## An exchange waiting on the server: buttons hold still until it answers.
+var _exchanging := false
 
 
 func _ready() -> void:
@@ -125,6 +137,7 @@ func close() -> void:
 		return
 
 	is_open = false
+	_show_link("", "")
 	var focused := get_viewport().gui_get_focus_owner()
 
 	if focused != null:
@@ -211,12 +224,87 @@ func exchange_selected() -> void:
 		_info.text = "Pick a Divine fish to exchange."
 		return
 
-	var answer := DivineExchange.request(id)
-	_info.text = str(answer["message"])
+	if _exchanging:
+		return
 
-	# The test-currency note stays beside the refusal.
-	if answer["reason"] == "unavailable":
-		_info.text += " " + DivineExchange.TEST_NOTE
+	var ready := DivineExchange.check(id)
+
+	if not ready["ok"]:
+		_info.text = str(ready["message"])
+		return
+
+	var claim := str(ready["claim"])
+	_exchanging = true
+	_info.text = "Sending %s Devnet SOL..." % _sol(DivineExchange.price_of(id))
+	_show_selected()
+	Wallet.redeem(claim, func(result: Dictionary) -> void: _on_redeemed(id, claim, result))
+
+
+func _on_redeemed(id: String, claim: String, result: Dictionary) -> void:
+	_exchanging = false
+	var sig := str(result.get("signature", ""))
+
+	if result.get("ok", false) and result.get("status", "") == "paid" and sig != "":
+		# Paid and confirmed on Devnet: only now does the fish change hands.
+		GameState.remove_divine_claim(id, claim)
+		GameState.remove_item(id, 1)
+		Wallet.refresh_balance()
+		refresh()
+		_info.text = "Paid %s Devnet SOL." % _sol(float(result.get("amountSol", 0.0)))
+		_show_link(str(result.get("explorer", "")), sig)
+	elif result.get("ok", false) and result.get("status", "") == "pending":
+		refresh()
+		_info.text = "Still confirming on Devnet. Press EXCHANGE to check again."
+		_show_link(str(result.get("explorer", "")), sig)
+	else:
+		refresh()
+		_info.text = DivineExchange.error_text(result)
+
+
+## The last transaction's Explorer link, on the panel's bottom line until the
+## shop closes ("" hides it). Messages above it get two lines.
+func _show_link(url: String, sig: String) -> void:
+	_tx_url = url
+	_tx_link.text = "Tx %s...%s  (Solana Explorer)" % [sig.left(6), sig.right(6)]
+	_tx_link.visible = url != ""
+	_info.size.y = (11 if _tx_link.visible else 24) * shop_scale
+
+
+func _on_wallet_line() -> void:
+	if Wallet.connected:
+		Wallet.refresh_balance()
+	elif Wallet.available and not Wallet.connecting:
+		_info.text = "Approve the connection in Phantom..."
+		Wallet.connect_wallet(func(r: Dictionary) -> void:
+			if r.get("ok", false):
+				_info.text = "Wallet connected (Devnet)."
+			elif r.get("error", "") == "no_phantom":
+				_info.text = DivineExchange.NEEDS_PHANTOM
+			elif r.get("error", "") == "cancelled":
+				_info.text = "Cancelled in Phantom."
+			else:
+				# Phantom's own words, so a failure can be told apart.
+				_info.text = "Couldn't connect (%s): %s" % [r.get("step", r.get("error", "")), str(r.get("detail", r.get("error", ""))).left(70)])
+
+
+func _show_wallet() -> void:
+	Wallet.refresh_flags()
+
+	if not Wallet.available:
+		_wallet_line.text = "Wallet: browser build only"
+	elif Wallet.connecting:
+		_wallet_line.text = "Waiting for Phantom..."
+	elif Wallet.connected:
+		_wallet_line.text = "%s (Devnet)" % Wallet.describe()
+	elif Wallet.phantom:
+		_wallet_line.text = "> Connect Phantom (Devnet)"
+	else:
+		_wallet_line.text = "Phantom not found"
+	_wallet_line.disabled = not Wallet.available
+
+
+static func _sol(amount: float) -> String:
+	return ("%.4f" % amount).rstrip("0").rstrip(".")
 
 
 func flip(step: int) -> void:
@@ -292,14 +380,20 @@ func _show_selected() -> void:
 		_price.text = ""
 	else:
 		_quantity.text = "Quantity  x%d" % GameState.get_item_count(id)
-		_price.text = DivineExchange.OFFER if divine else "Price  %d gold each" % FishMarket.price_of(id)
+		_price.text = DivineExchange.offer(id) if divine else "Price  %d gold each" % FishMarket.price_of(id)
 
 	if divine and _info.text == "":
 		_info.text = DivineExchange.TEST_NOTE
 
 	_set_available("Sell", id != "" and FishMarket.can_sell(id))
 	_set_available("SellAll", rows.any(func(e: Dictionary) -> bool: return FishMarket.can_sell(str(e.get("id", "")))))
-	_set_available("Exchange", true)
+	_set_available("Exchange", not _exchanging)
+
+	if _exchanging:
+		_set_available("Sell", false)
+		_set_available("SellAll", false)
+
+	_show_wallet()
 
 
 func _set_available(which: String, on: bool) -> void:
@@ -404,9 +498,21 @@ func _build() -> void:
 
 	var inner := TEXT_PANEL.grow(-3)
 	_quantity = _place(_label("", 20, INK), Rect2i(inner.position, Vector2i(inner.size.x, 9)))
-	_price = _place(_label("", 20, INK), Rect2i(inner.position + Vector2i(0, 9), Vector2i(inner.size.x, 9)))
+	_price = _place(_label("", 18, INK), Rect2i(inner.position + Vector2i(0, 9), Vector2i(inner.size.x, 9)))
+	_price.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_price.clip_text = true
 	_info = _place(_label("", 18, INK_SOFT), Rect2i(inner.position + Vector2i(0, 18), Vector2i(inner.size.x, 24)))
+	_info.clip_text = true
 	_gold = _place(_label("", 24, INK), GOLD_AREA)
+
+	_wallet_line = _text_button(WALLET_AREA, 20, INK)
+	_wallet_line.pressed.connect(_on_wallet_line)
+	Wallet.changed.connect(func() -> void:
+		if is_open:
+			_show_wallet())
+	_tx_link = _text_button(Rect2i(20, 153, 98, 12), 18, INK_LINK)
+	_tx_link.pressed.connect(func() -> void: Wallet.open_explorer(_tx_url))
+	_tx_link.hide()
 	_gold.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 	_prev = _arrow(ARROW_LEFT, PREV_AT, -1)
@@ -414,6 +520,26 @@ func _build() -> void:
 	_page_label = _place(_label("", 20, INK, HORIZONTAL_ALIGNMENT_CENTER), PAGE_LABEL_AREA)
 	_page_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_page_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+
+
+## A plain text button on the paper (no art of its own).
+func _text_button(area: Rect2i, size: int, colour: Color) -> Button:
+	var b := Button.new()
+	b.flat = true
+	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	b.focus_mode = Control.FOCUS_NONE
+	b.add_theme_font_override("font", FONT)
+	b.add_theme_font_size_override("font_size", size)
+	for state in ["font_color", "font_focus_color", "font_pressed_color"]:
+		b.add_theme_color_override(state, colour)
+	b.add_theme_color_override("font_hover_color", Color(0.6, 0.32, 0.04))
+	b.add_theme_color_override("font_disabled_color", INK_SOFT)
+	for box in ["normal", "hover", "pressed", "focus", "disabled"]:
+		b.add_theme_stylebox_override(box, StyleBoxEmpty.new())
+	b.position = _art_to_panel(area.position)
+	b.size = Vector2(area.size) * shop_scale
+	_panel.add_child(b)
+	return b
 
 
 ## A button over its own drawing in the art, cut out so only its pixels

@@ -34,6 +34,16 @@ const CATCHES := [
 	{"rarity": "divine", "weight": 2},
 ]
 
+## DEVNET DEMO MODE: while true, every catch is a Divine fish - Voidfin or
+## Celestail, 50/50 - so the Solana Devnet exchange can be shown without
+## waiting on a 2% roll. Set it to false to go back to CATCHES (60/28/10/2).
+## Difficulty is untouched: these still fight as Divine.
+const DEVNET_DEMO_MODE := true
+const DEVNET_DEMO_CATCHES := [
+	{"item": "voidfin", "weight": 50},
+	{"item": "celestail", "weight": 50},
+]
+
 ## How hard each rarity is to land (anything without a rarity fishes as
 ## Common). Speeds are art pixels a second. Simulated players (suite 22):
 ## Common is landed by everyone in about 2 s; Uncommon takes a beginner
@@ -67,6 +77,9 @@ const NEAR_WATER := 72.0
 ## Screen pixels between Kiren and the minigame on the side his line goes
 ## (the cast's last frame reaches about 230 px out).
 const LINE_GAP := 260.0
+## Longest a bite waits for the exchange server's roll before the game rolls
+## the catch itself (that catch then has no claim).
+const ROLL_WAIT := 3.0
 
 const ART := preload("res://Assets/UI/FishingMinigame/Exports/AftersteelFishingminigame.png")
 
@@ -102,8 +115,16 @@ var state := State.IDLE
 var challenge: Challenge
 ## What's on the line, rolled when the fish bites.
 var catch_id := ""
+## The exchange server's claim for a Divine catch made with a wallet
+## connected ("" otherwise). Registered with the server once it's landed.
+var claim_id := ""
 
 var _bite_timer := 0.0
+## The server's answer for this cast (empty until it comes), and whether one
+## is still on its way. The bite waits up to ROLL_WAIT for it.
+var _server_roll := {}
+var _roll_pending := false
+var _roll_wait := 0.0
 var _note_timer := 0.0
 var _last_hp := 0
 var _fill_colours: Array = []
@@ -248,6 +269,7 @@ func cast() -> void:
 
 	state = State.WAITING
 	GameState.input_locked = true
+	_ask_server_for_catch()
 	# The bite can't come before the line is in the water.
 	var throw: float = _player().start_fishing()
 	_bite_timer = throw + _rng.randf_range(bite_delay.x, bite_delay.y)
@@ -258,23 +280,32 @@ func cancel() -> void:
 	if state == State.IDLE:
 		return
 
+	_release_claim()
 	_end()
 	_say("Reeled in.", 1.0)
 	finished.emit("cancelled")
 
 
-## The catch for a roll in [0, 1) by the CATCHES weights; a second roll
-## picks the fish when the row is a rarity pool.
-static func pick_catch(roll: float, fish_roll := 0.0) -> String:
+## The table catches are rolled on: the Devnet demo's while it is on,
+## otherwise CATCHES.
+static func active_catches() -> Array:
+	return DEVNET_DEMO_CATCHES if DEVNET_DEMO_MODE else CATCHES
+
+
+## The catch for a roll in [0, 1) by a table's weights (the active one
+## unless another is given); a second roll picks the fish when the row is
+## a rarity pool.
+static func pick_catch(roll: float, fish_roll := 0.0, table: Array = []) -> String:
+	var rows: Array = table if not table.is_empty() else active_catches()
 	var total := 0
 
-	for c in CATCHES:
+	for c in rows:
 		total += int(c["weight"])
 
 	var left := roll * total
-	var row: Dictionary = CATCHES[-1]
+	var row: Dictionary = rows[-1]
 
-	for c in CATCHES:
+	for c in rows:
 		left -= int(c["weight"])
 		if left < 0.0:
 			row = c
@@ -285,6 +316,43 @@ static func pick_catch(roll: float, fish_roll := 0.0) -> String:
 
 	var pool := Items.fish_of(row["rarity"])
 	return pool[mini(int(fish_roll * pool.size()), pool.size() - 1)]
+
+
+## CATCHES without its Divine row: what the game rolls itself when the
+## exchange server has already decided this cast brings no Divine fish.
+static func ordinary_catches() -> Array:
+	return CATCHES.filter(func(c: Dictionary) -> bool: return c.get("rarity", "") != "divine")
+
+
+## With a wallet connected, the exchange server rolls the cast; its answer
+## has to come before the bite (or within ROLL_WAIT after it).
+func _ask_server_for_catch() -> void:
+	_server_roll = {}
+	_roll_wait = 0.0
+	_roll_pending = Wallet.connected
+
+	if not _roll_pending:
+		return
+
+	Wallet.roll_catch(func(r: Dictionary) -> void:
+		if state == State.WAITING and _roll_pending:
+			_server_roll = r
+			_roll_pending = false
+		elif r.get("claimId", "") != "":
+			# Too late, or the cast was called off: the server can close it.
+			Wallet.escape_catch(str(r["claimId"])))
+
+
+## The cast ended without a catch - in the minigame or still waiting for the
+## bite: the server's claim for it is closed.
+func _release_claim() -> void:
+	_roll_pending = false
+	var open := claim_id if claim_id != "" else str(_server_roll.get("claimId", ""))
+	claim_id = ""
+	_server_roll = {}
+
+	if open != "":
+		Wallet.escape_catch(open)
 
 
 ## How hard a catch fights: its item's rarity, or Common for anything without.
@@ -318,14 +386,28 @@ func _process(delta: float) -> void:
 		State.WAITING:
 			_bite_timer -= delta
 			if _bite_timer <= 0.0:
-				_start_minigame()
+				_roll_wait += delta
+				if not _roll_pending or _roll_wait >= ROLL_WAIT:
+					_start_minigame()
 		State.PLAYING:
 			_play(delta)
 
 
 func _start_minigame() -> void:
 	state = State.PLAYING
-	catch_id = pick_catch(_rng.randf(), _rng.randf())
+	_roll_pending = false
+	catch_id = ""
+	claim_id = ""
+
+	if _server_roll.get("ok", false) and _server_roll.get("divine", false) and Items.by_id(str(_server_roll.get("fish", ""))).get("fish", false):
+		catch_id = str(_server_roll["fish"])
+		claim_id = str(_server_roll.get("claimId", ""))
+	elif _server_roll.get("ok", false):
+		# The server rolled no Divine fish; the game picks an ordinary one.
+		catch_id = pick_catch(_rng.randf(), _rng.randf(), ordinary_catches())
+	else:
+		catch_id = pick_catch(_rng.randf(), _rng.randf())
+
 	challenge = Challenge.new(rarity_of(catch_id), _rng)
 	_zone.texture = _zone_texture(challenge.zone_h)
 	_note.hide()
@@ -346,6 +428,7 @@ func _play(delta: float) -> void:
 
 func _finish(caught: bool) -> void:
 	if not caught:
+		_release_claim()
 		_end()
 		_say("It got away.", 1.6)
 		finished.emit("escaped")
@@ -354,6 +437,16 @@ func _finish(caught: bool) -> void:
 	var id := catch_id
 	var item := Items.by_id(id)
 	GameState.add_item(item)
+
+	# The fish is Kiren's either way; the server's claim makes it exchangeable.
+	if claim_id != "":
+		var claim := claim_id
+		claim_id = ""
+		Wallet.land_catch(claim, func(r: Dictionary) -> void:
+			if r.get("ok", false):
+				GameState.add_divine_claim(id, claim)
+			else:
+				push_warning("Fishing: the exchange server didn't take claim %s (%s)" % [claim, r.get("error", "")]))
 	_end()
 	_say("Caught: %s" % Items.label_of(item), 2.0)
 	finished.emit("caught:" + id)

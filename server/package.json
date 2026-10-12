@@ -1,0 +1,20 @@
+{
+  "name": "aftersteel-devnet-server",
+  "private": true,
+  "type": "module",
+  "description": "Toma's Divine Exchange backend: serves the web build and pays Solana Devnet SOL for server-recorded Divine catches.",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "treasury:new": "node scripts/new-treasury.js",
+    "treasury:fund": "node --env-file-if-exists=.env scripts/fund-treasury.js",
+    "test": "node --env-file-if-exists=.env --test --test-concurrency=1 test/*.test.js"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "bs58": "^6.0.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.0.0"
+  }
+}

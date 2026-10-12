@@ -21,3 +21,10 @@ Desktop.ini
 # Editors
 .vscode/
 .idea/
+# Divine Exchange server: secrets, claim records and dependencies stay local
+server/.env
+server/data/
+server/node_modules/
+
+# Local web export served by the exchange server (public/ is the tracked build)
+build/

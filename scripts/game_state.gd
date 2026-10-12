@@ -118,6 +118,11 @@ var inventory: Array[Dictionary] = []
 ## upwards, so it can never go negative.
 var gold := 0
 
+## Divine fish the exchange server recorded, by fish id: the server's claim
+## ids, one per fish caught with a wallet connected. Toma's Divine Exchange
+## redeems these; a Divine fish without one can't be exchanged.
+var divine_claims := {}
+
 ## What Kiren currently has equipped, as item ids. An item stays in the
 ## inventory while equipped. Only "weapon" changes anything so far: with a
 ## sword equipped the overworld Kiren uses his sword animations.
@@ -270,6 +275,25 @@ func add_gold(amount: int) -> void:
 	gold_changed.emit(gold)
 
 
+func add_divine_claim(fish_id: String, claim_id: String) -> void:
+	var ids: Array = divine_claims.get(fish_id, [])
+	if not ids.has(claim_id):
+		ids.append(claim_id)
+	divine_claims[fish_id] = ids
+
+
+## The claim the exchange should redeem next for this fish, or "".
+func next_divine_claim(fish_id: String) -> String:
+	var ids: Array = divine_claims.get(fish_id, [])
+	return str(ids[0]) if not ids.is_empty() and get_item_count(fish_id) > 0 else ""
+
+
+func remove_divine_claim(fish_id: String, claim_id: String) -> void:
+	var ids: Array = divine_claims.get(fish_id, [])
+	ids.erase(claim_id)
+	divine_claims[fish_id] = ids
+
+
 func grant_starting_kit() -> void:
 	if _starting_kit_given:
 		return
@@ -382,6 +406,7 @@ func reset_run() -> void:
 	received_gifts.clear()
 	inventory.clear()
 	gold = 0
+	divine_claims.clear()
 	for slot in equipment:
 		equipment[slot] = ""
 	_starting_kit_given = false
