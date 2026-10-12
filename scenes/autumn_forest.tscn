@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://scenes/props/world/broken_tree.tscn" id="pr_broken_tree"]
 [ext_resource type="PackedScene" path="res://scenes/props/world/green_tree_deco.tscn" id="pr_green_tree_deco"]
 [ext_resource type="PackedScene" path="res://scenes/props/world/log.tscn" id="pr_log"]
+[ext_resource type="Script" uid="uid://b274a076vabub" path="res://scripts/enemies/red_slime_spawner.gd" id="enemy_spawner"]
 
 [sub_resource type="RectangleShape2D" id="Wall0"]
 size = Vector2(32, 290)
@@ -1163,17 +1164,25 @@ position = Vector2(560, 44)
 [node name="Encounters" type="Node2D" parent="."]
 
 [node name="FutureEncounter01" type="Marker2D" parent="Encounters"]
-editor_description = "Reserved for future autumn-forest enemies (open ground west of the north path)."
-position = Vector2(210, 230)
+editor_description = "Red slime spawn point. EnemySpawner keeps one here (they wait for Kiren to come close), back 15 s after it dies."
+position = Vector2(280, 230)
 
 [node name="FutureEncounter02" type="Marker2D" parent="Encounters"]
-editor_description = "Reserved for future autumn-forest enemies (south-east glade)."
+editor_description = "Red slime spawn point. EnemySpawner keeps one here (they wait for Kiren to come close), back 15 s after it dies."
 position = Vector2(820, 480)
 
 [node name="FutureEncounter03" type="Marker2D" parent="Encounters"]
-editor_description = "Reserved for future autumn-forest enemies (southern glade)."
+editor_description = "Red slime spawn point. EnemySpawner keeps one here (they wait for Kiren to come close), back 15 s after it dies."
 position = Vector2(330, 540)
 
 [node name="FutureEncounter04" type="Marker2D" parent="Encounters"]
 editor_description = "Reserved for future autumn-forest enemies (north-east glade)."
 position = Vector2(840, 150)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("enemy_spawner")
+spawn_points = Array[NodePath]([NodePath("../Encounters/FutureEncounter01"), NodePath("../Encounters/FutureEncounter02"), NodePath("../Encounters/FutureEncounter03")])
+overrides = {"detect_radius": 110.0, "lose_radius": 200.0}
+respawn_delay = 15.0
+path_area = Rect2(0, 0, 1080, 660)

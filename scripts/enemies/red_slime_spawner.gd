@@ -14,6 +14,12 @@ const SLIME := preload("res://scenes/enemies/red_slime.tscn")
 
 ## Markers (the old Map1Slime01-03 positions) a slime spawns on.
 @export var spawn_points: Array[NodePath] = []
+## What it keeps alive: the red slime unless another enemy scene is set.
+@export var enemy_scene: PackedScene
+## Property values set on every enemy it spawns (e.g. {"detect_radius": 110.0}).
+@export var overrides: Dictionary = {}
+## Area the path grid covers. Empty: the map's Ground layer.
+@export var path_area := Rect2()
 @export var respawn_delay := 5.0
 ## Grid resolution for path-finding, in pixels.
 @export var path_cell := 8
@@ -85,8 +91,10 @@ func _spawn(slot: int, check_geometry := true) -> void:
 		s["timer"].start(RETRY)
 		return
 
-	var slime := SLIME.instantiate()
-	slime.name = "RedSlime%d" % (slot + 1)
+	var slime := (enemy_scene if enemy_scene != null else SLIME).instantiate()
+	for key in overrides:
+		slime.set(key, overrides[key])
+	slime.name = "%s%d" % [slime.name, slot + 1]
 	slime.spawner = self
 	slime.position = to_local(s["point"])
 	slime.died.connect(_on_slime_died.bind(slot))
@@ -130,16 +138,20 @@ func _hits_at(feet: Vector2, static_only: bool) -> Array:
 # --- path-finding ------------------------------------------------------
 
 func _build_grid() -> void:
-	var ground := get_parent().get_node_or_null("Ground") as TileMapLayer
+	var top_left := path_area.position
+	var size := path_area.size
 
-	if ground == null:
-		push_warning("RedSlimeSpawner: no Ground layer to size the path grid")
-		return
+	if not path_area.has_area():
+		var ground := get_parent().get_node_or_null("Ground") as TileMapLayer
 
-	var used := ground.get_used_rect()
-	var tile := Vector2(ground.tile_set.tile_size)
-	var top_left := ground.to_global(Vector2(used.position) * tile)
-	var size := Vector2(used.size) * tile
+		if ground == null:
+			push_warning("RedSlimeSpawner: no Ground layer or path_area to size the path grid")
+			return
+
+		var used := ground.get_used_rect()
+		var tile := Vector2(ground.tile_set.tile_size)
+		top_left = ground.to_global(Vector2(used.position) * tile)
+		size = Vector2(used.size) * tile
 
 	_grid = AStarGrid2D.new()
 	_grid.region = Rect2i(Vector2i.ZERO, Vector2i(size / path_cell))

@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" path="res://scenes/props/world/burned_tree_large_deco.tscn" id="pr_burned_tree_large_deco"]
 [ext_resource type="PackedScene" path="res://scenes/props/world/burned_tree_small.tscn" id="pr_burned_tree_small"]
 [ext_resource type="PackedScene" path="res://scenes/props/world/burned_tree_small_deco.tscn" id="pr_burned_tree_small_deco"]
+[ext_resource type="Script" uid="uid://b274a076vabub" path="res://scripts/enemies/red_slime_spawner.gd" id="enemy_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/witch_doctor.tscn" id="witch_doctor"]
 
 [sub_resource type="RectangleShape2D" id="Wall0"]
 size = Vector2(32, 660)
@@ -912,20 +914,28 @@ position = Vector2(920, 345)
 [node name="Encounters" type="Node2D" parent="."]
 
 [node name="FutureEncounter01" type="Marker2D" parent="Encounters"]
-editor_description = "Reserved for future dead-forest enemies (graveyard)."
+editor_description = "Witch Doctor spawn point (graveyard). EnemySpawner keeps one here, back 45 s after it dies."
 position = Vector2(200, 140)
 
 [node name="FutureEncounter02" type="Marker2D" parent="Encounters"]
-editor_description = "Reserved for future dead-forest enemies (north clearing)."
+editor_description = "Witch Doctor spawn point. EnemySpawner keeps one here, back 45 s after it dies."
 position = Vector2(600, 200)
 
 [node name="FutureEncounter03" type="Marker2D" parent="Encounters"]
-editor_description = "Reserved for future dead-forest enemies (southern hollow)."
+editor_description = "Witch Doctor spawn point. EnemySpawner keeps one here, back 45 s after it dies."
 position = Vector2(420, 520)
 
 [node name="FutureEncounter04" type="Marker2D" parent="Encounters"]
 editor_description = "Reserved for a future dead-forest special encounter."
 position = Vector2(780, 520)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("enemy_spawner")
+spawn_points = Array[NodePath]([NodePath("../Encounters/FutureEncounter01"), NodePath("../Encounters/FutureEncounter02"), NodePath("../Encounters/FutureEncounter03")])
+enemy_scene = ExtResource("witch_doctor")
+respawn_delay = 45.0
+path_area = Rect2(0, 0, 960, 660)
 
 [node name="Gloom" type="CanvasModulate" parent="."]
 color = Color(0.86, 0.84, 0.9, 1)

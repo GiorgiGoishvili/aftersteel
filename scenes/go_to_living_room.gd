@@ -14,7 +14,7 @@ func _on_go_to_living_room_body_entered(body):
 		return
 
 	# Opening sequence only. Kiren stops himself rather than the game
-	# showing an error. Cleared for good once the chest has been checked.
+	# showing an error. Cleared for good once the chestssa has been checked.
 	if GameState.has_flag("intro_chest_gate_active"):
 		# Step him back into the room BEFORE the thought appears, so the
 		# box closes onto him already standing somewhere safe.
