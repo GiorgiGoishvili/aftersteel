@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cxt163o0eloj7" path="res://scenes/main_menu.gd" id="1_wu84c"]
 [ext_resource type="Texture2D" uid="uid://cb5lg7at76qll" path="res://Assets/UI/AftersteelGameMenuSheet.png" id="2_8ln24"]
-[ext_resource type="Texture2D" uid="uid://u5ife3pbwnr3" path="res://Assets/UI/RainLoop.png" id="3_rtw2f"]
-[ext_resource type="Texture2D" uid="uid://bievyxn8jr2by" path="res://Assets/UI/Rain.png" id="4_oa1go"]
 [ext_resource type="FontFile" uid="uid://ch6iuxtfipmlj" path="res://Assets/UI/Fabled_Font.ttf" id="5_8ln24"]
+[ext_resource type="SpriteFrames" path="res://Assets/UI/Rain/RainSpriteFrames.tres" id="6_rain"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
 atlas = ExtResource("2_8ln24")
@@ -112,89 +111,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_svtp6"]
-atlas = ExtResource("3_rtw2f")
-region = Rect2(0, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dfpl"]
-atlas = ExtResource("3_rtw2f")
-region = Rect2(640, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qywvv"]
-atlas = ExtResource("3_rtw2f")
-region = Rect2(1280, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wgol"]
-atlas = ExtResource("3_rtw2f")
-region = Rect2(1920, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1acrt"]
-atlas = ExtResource("3_rtw2f")
-region = Rect2(2560, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vr8o3"]
-atlas = ExtResource("4_oa1go")
-region = Rect2(0, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1a85y"]
-atlas = ExtResource("4_oa1go")
-region = Rect2(640, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hl5e0"]
-atlas = ExtResource("4_oa1go")
-region = Rect2(1280, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_engjn"]
-atlas = ExtResource("4_oa1go")
-region = Rect2(1920, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6h3lr"]
-atlas = ExtResource("4_oa1go")
-region = Rect2(2560, 0, 640, 360)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dj67d"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_svtp6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1dfpl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qywvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wgol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1acrt")
-}],
-"loop": true,
-"name": &"rain_loop",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vr8o3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1a85y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hl5e0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_engjn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6h3lr")
-}],
-"loop": false,
-"name": &"rain_start",
-"speed": 5.0
-}]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu84c"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
@@ -216,8 +132,8 @@ animation = &"menu_intro"
 [node name="Rain" type="AnimatedSprite2D" parent="." unique_id=349954842]
 z_index = 5
 position = Vector2(960, 540)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_dj67d")
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("6_rain")
 animation = &"rain_loop"
 frame_progress = 0.5953917
 

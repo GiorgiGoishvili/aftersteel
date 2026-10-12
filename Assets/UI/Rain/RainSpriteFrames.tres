@@ -1,0 +1,616 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" uid="uid://cmpj6ws7qh2jv" path="res://Assets/UI/Rain/Exports/env_rain_320x180.png" id="sheet"]
+
+[sub_resource type="AtlasTexture" id="Rain_0"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_1"]
+atlas = ExtResource("sheet")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_2"]
+atlas = ExtResource("sheet")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_3"]
+atlas = ExtResource("sheet")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_4"]
+atlas = ExtResource("sheet")
+region = Rect2(1280, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_5"]
+atlas = ExtResource("sheet")
+region = Rect2(1600, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_6"]
+atlas = ExtResource("sheet")
+region = Rect2(1920, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_7"]
+atlas = ExtResource("sheet")
+region = Rect2(2240, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_8"]
+atlas = ExtResource("sheet")
+region = Rect2(2560, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_9"]
+atlas = ExtResource("sheet")
+region = Rect2(2880, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_10"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_11"]
+atlas = ExtResource("sheet")
+region = Rect2(320, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_12"]
+atlas = ExtResource("sheet")
+region = Rect2(640, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_13"]
+atlas = ExtResource("sheet")
+region = Rect2(960, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_14"]
+atlas = ExtResource("sheet")
+region = Rect2(1280, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_15"]
+atlas = ExtResource("sheet")
+region = Rect2(1600, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_16"]
+atlas = ExtResource("sheet")
+region = Rect2(1920, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_17"]
+atlas = ExtResource("sheet")
+region = Rect2(2240, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_18"]
+atlas = ExtResource("sheet")
+region = Rect2(2560, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_19"]
+atlas = ExtResource("sheet")
+region = Rect2(2880, 180, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_20"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_21"]
+atlas = ExtResource("sheet")
+region = Rect2(320, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_22"]
+atlas = ExtResource("sheet")
+region = Rect2(640, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_23"]
+atlas = ExtResource("sheet")
+region = Rect2(960, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_24"]
+atlas = ExtResource("sheet")
+region = Rect2(1280, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_25"]
+atlas = ExtResource("sheet")
+region = Rect2(1600, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_26"]
+atlas = ExtResource("sheet")
+region = Rect2(1920, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_27"]
+atlas = ExtResource("sheet")
+region = Rect2(2240, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_28"]
+atlas = ExtResource("sheet")
+region = Rect2(2560, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_29"]
+atlas = ExtResource("sheet")
+region = Rect2(2880, 360, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_30"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_31"]
+atlas = ExtResource("sheet")
+region = Rect2(320, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_32"]
+atlas = ExtResource("sheet")
+region = Rect2(640, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_33"]
+atlas = ExtResource("sheet")
+region = Rect2(960, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_34"]
+atlas = ExtResource("sheet")
+region = Rect2(1280, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_35"]
+atlas = ExtResource("sheet")
+region = Rect2(1600, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_36"]
+atlas = ExtResource("sheet")
+region = Rect2(1920, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_37"]
+atlas = ExtResource("sheet")
+region = Rect2(2240, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_38"]
+atlas = ExtResource("sheet")
+region = Rect2(2560, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_39"]
+atlas = ExtResource("sheet")
+region = Rect2(2880, 540, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_40"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_41"]
+atlas = ExtResource("sheet")
+region = Rect2(320, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_42"]
+atlas = ExtResource("sheet")
+region = Rect2(640, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_43"]
+atlas = ExtResource("sheet")
+region = Rect2(960, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_44"]
+atlas = ExtResource("sheet")
+region = Rect2(1280, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_45"]
+atlas = ExtResource("sheet")
+region = Rect2(1600, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_46"]
+atlas = ExtResource("sheet")
+region = Rect2(1920, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_47"]
+atlas = ExtResource("sheet")
+region = Rect2(2240, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_48"]
+atlas = ExtResource("sheet")
+region = Rect2(2560, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_49"]
+atlas = ExtResource("sheet")
+region = Rect2(2880, 720, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_50"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_51"]
+atlas = ExtResource("sheet")
+region = Rect2(320, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_52"]
+atlas = ExtResource("sheet")
+region = Rect2(640, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_53"]
+atlas = ExtResource("sheet")
+region = Rect2(960, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_54"]
+atlas = ExtResource("sheet")
+region = Rect2(1280, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_55"]
+atlas = ExtResource("sheet")
+region = Rect2(1600, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_56"]
+atlas = ExtResource("sheet")
+region = Rect2(1920, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_57"]
+atlas = ExtResource("sheet")
+region = Rect2(2240, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_58"]
+atlas = ExtResource("sheet")
+region = Rect2(2560, 900, 320, 180)
+
+[sub_resource type="AtlasTexture" id="Rain_59"]
+atlas = ExtResource("sheet")
+region = Rect2(2880, 900, 320, 180)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 7.0,
+"texture": SubResource("Rain_0")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_1")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_2")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_3")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_4")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_5")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_6")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_7")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_8")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_9")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_10")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_11")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_12")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_13")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_14")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_15")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_16")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_17")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_18")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_19")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_20")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_21")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_22")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_23")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_24")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_25")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_26")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_27")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_28")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_29")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_30")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_31")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_32")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_33")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_34")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_35")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_36")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_37")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_38")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_39")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_40")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_41")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_42")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_43")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_44")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_45")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_46")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_47")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_48")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_49")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_50")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_51")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_52")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_53")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_54")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_55")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_56")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_57")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_58")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_59")
+}],
+"loop": true,
+"name": &"rain_loop",
+"speed": 100.0
+}, {
+"frames": [{
+"duration": 7.0,
+"texture": SubResource("Rain_0")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_1")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_2")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_3")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_4")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_5")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_6")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_7")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_8")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_9")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_10")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_11")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_12")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_13")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_14")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_15")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_16")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_17")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_18")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_19")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_20")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_21")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_22")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_23")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_24")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_25")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_26")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_27")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_28")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_29")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_30")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_31")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_32")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_33")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_34")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_35")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_36")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_37")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_38")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_39")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_40")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_41")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_42")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_43")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_44")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_45")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_46")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_47")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_48")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_49")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_50")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_51")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_52")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_53")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_54")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_55")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_56")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_57")
+}, {
+"duration": 6.0,
+"texture": SubResource("Rain_58")
+}, {
+"duration": 7.0,
+"texture": SubResource("Rain_59")
+}],
+"loop": false,
+"name": &"rain_start",
+"speed": 100.0
+}]
