@@ -142,8 +142,8 @@ const FISHING_ROD := {
 
 
 # --- Rarity -----------------------------------------------------------
-# Lowest first. Only common and uncommon are used so far; the rest are here
-# so a new item can simply name one.
+# Lowest first. Fish exist for common, uncommon, rare and divine; epic and
+# legendary are here so a new item can simply name one.
 
 const RARITIES := ["common", "uncommon", "rare", "epic", "legendary", "divine"]
 
@@ -197,10 +197,35 @@ const RIVER_CATFISH := {
 	"description": "Whiskers and a sour look.", "key_item": false,
 	"icon": "res://Assets/Fish/Uncommon/Duskgill.png",
 }
+const DUSKSCALE_PUFFER := {
+	"id": "duskscale_puffer", "name": "Duskscale Puffer", "fish": true, "rarity": "rare",
+	"description": "It puffed up the moment it left the water.", "key_item": false,
+	"icon": "res://Assets/Fish/Rare/Duskscale Puffer.png",
+}
+# The rare Emberfin: its own art (Fish/Rare/Emberfin.png), so its own id next
+# to the uncommon one.
+const EMBERFIN_RARE := {
+	"id": "emberfin_rare", "name": "Emberfin", "fish": true, "rarity": "rare",
+	"description": "Brighter than the usual kind. Warm to hold.", "key_item": false,
+	"icon": "res://Assets/Fish/Rare/Emberfin.png",
+}
+# Divine fish aren't sold for gold; Toma's Divine Exchange takes them
+# (scripts/divine_exchange.gd).
+const VOIDFIN := {
+	"id": "voidfin", "name": "Voidfin", "fish": true, "rarity": "divine",
+	"description": "Darker than the water it came out of.", "key_item": false,
+	"icon": "res://Assets/Fish/Divine/Voidfin.png",
+}
+const CELESTAIL := {
+	"id": "celestail", "name": "Celestail", "fish": true, "rarity": "divine",
+	"description": "Its tail glitters, even in the shade.", "key_item": false,
+	"icon": "res://Assets/Fish/Divine/Celestail.png",
+}
 
 
 # --- Other catches -------------------------------------------------------
-# What the river gives up besides fish (chances live in fishing.gd).
+# What the river used to give up besides fish. fishing.gd's CATCHES is fish
+# only for now; an {"item": id} row puts one of these back.
 
 # Junk: what comes up when it isn't a fish.
 const DRIFTWOOD := {
@@ -297,6 +322,10 @@ const ALL := {
 	"emberfin": EMBERFIN,
 	"sunscale_fish": SUNSCALE_FISH,
 	"river_catfish": RIVER_CATFISH,
+	"duskscale_puffer": DUSKSCALE_PUFFER,
+	"emberfin_rare": EMBERFIN_RARE,
+	"voidfin": VOIDFIN,
+	"celestail": CELESTAIL,
 	"driftwood": DRIFTWOOD,
 	"old_ring": OLD_RING,
 }

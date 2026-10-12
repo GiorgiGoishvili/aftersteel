@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bhfxelrunr5xk" path="res://Assets/Materials/Log2.png" id="t_Log2"]
 [ext_resource type="Texture2D" uid="uid://c6prd1o3nj2ck" path="res://Assets/Trees/Moss_tree2.png" id="t_Moss_tree2"]
 [ext_resource type="TileSet" uid="uid://b5apy16sdyy3r" path="res://Assets/Maps/river_water_tileset.tres" id="water_ts"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/toma.tscn" id="toma"]
 
 [sub_resource type="RectangleShape2D" id="Trunk18"]
 size = Vector2(18, 8)
@@ -126,6 +127,9 @@ texture = ExtResource("t_Log2")
 [node name="LogB" type="Sprite2D" parent="FishingLogs" unique_id=6029381]
 position = Vector2(10, 8)
 texture = ExtResource("t_Log1")
+
+[node name="Toma" parent="." instance=ExtResource("toma")]
+position = Vector2(548, 236)
 
 [node name="Vegetation" type="Node2D" parent="." unique_id=715630739]
 y_sort_enabled = true

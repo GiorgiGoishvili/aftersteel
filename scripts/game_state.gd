@@ -8,6 +8,7 @@ signal enemy_defeated(kind: String)
 signal tutorial_changed(text: String)
 signal inventory_changed
 signal equipment_changed
+signal gold_changed(amount: int)
 signal player_health_changed(current: int, maximum: int)
 
 
@@ -62,6 +63,9 @@ var story_flags := {
 	"slime_quest_started": false,
 	"slime_quest_completed": false,
 
+	# Toma, the fisherman at the river: his introduction plays once.
+	"toma_met": false,
+
 	# DEVELOPER KNOWLEDGE: the decoy amulet is still sitting in the bedroom
 	# chest. Kiren has no idea there is anything unusual about it.
 	"decoy_amulet_in_bedroom_chest": true,
@@ -109,6 +113,10 @@ var tutorial_hint := ""
 ## Items the player is carrying, as plain Dictionaries (see items.gd).
 ## A future inventory menu just reads this array.
 var inventory: Array[Dictionary] = []
+
+## Coin, from selling fish to Toma. Only add_gold changes it, and only
+## upwards, so it can never go negative.
+var gold := 0
 
 ## What Kiren currently has equipped, as item ids. An item stays in the
 ## inventory while equipped. Only "weapon" changes anything so far: with a
@@ -254,6 +262,14 @@ func add_item(item: Dictionary, amount := 1) -> void:
 	inventory_changed.emit()
 
 
+func add_gold(amount: int) -> void:
+	if amount <= 0:
+		return
+
+	gold += amount
+	gold_changed.emit(gold)
+
+
 func grant_starting_kit() -> void:
 	if _starting_kit_given:
 		return
@@ -357,6 +373,7 @@ func reset_run() -> void:
 	story_flags["village_intro_started"] = false
 	story_flags["slime_quest_started"] = false
 	story_flags["slime_quest_completed"] = false
+	story_flags["toma_met"] = false
 	slimes_defeated = 0
 	villagers_met.clear()
 	enemies_defeated.clear()
@@ -364,6 +381,7 @@ func reset_run() -> void:
 	opened_containers.clear()
 	received_gifts.clear()
 	inventory.clear()
+	gold = 0
 	for slot in equipment:
 		equipment[slot] = ""
 	_starting_kit_given = false

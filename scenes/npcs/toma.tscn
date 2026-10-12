@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="1_base"]
+[ext_resource type="SpriteFrames" path="res://Assets/Characters/Toma/Animations/TomaSpriteFrames.tres" id="2_frames"]
+[ext_resource type="Script" path="res://scripts/toma.gd" id="3_toma"]
+
+[node name="Toma" instance=ExtResource("1_base")]
+script = ExtResource("3_toma")
+speaker = "TOMA"
+first_lines = Array[String](["Ah, another fisherman! Bring me your catches and I'll offer you a fair price.", "But if you ever catch something truly divine... well, that's a different kind of treasure."])
+repeat_lines = Array[String](["Got something for me?"])
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_frames")
+animation = &"FIdle"
+autoplay = "FIdle"
+
+[node name="Talk" parent="." index="2"]
+prompt = "Talk"

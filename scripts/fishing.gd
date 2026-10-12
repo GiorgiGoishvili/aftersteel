@@ -24,18 +24,21 @@ extends CanvasLayer
 signal finished(result: String)    # "caught:<item id>", "escaped" or "cancelled"
 
 ## What a catch can be, and how often: each row's chance is its weight over
-## the total (55 + 20 + 20 + 5 = 100 here, so they read as percentages). A
+## the total (60 + 28 + 10 + 2 = 100 here, so they read as percentages). A
 ## "rarity" row is a fish of that rarity - every fish of it (Items.fish_of)
-## equally likely - so a rarer pool is one more row once its fish exist.
+## equally likely. An {"item": id} row is a single catch. Demo balancing.
 const CATCHES := [
-	{"rarity": "common", "weight": 55},
-	{"rarity": "uncommon", "weight": 20},
-	{"item": "driftwood", "weight": 20},
-	{"item": "old_ring", "weight": 5},
+	{"rarity": "common", "weight": 60},
+	{"rarity": "uncommon", "weight": 28},
+	{"rarity": "rare", "weight": 10},
+	{"rarity": "divine", "weight": 2},
 ]
 
-## How hard each rarity is to land (anything without a rarity, like junk,
-## fishes as Common). Speeds are art pixels a second.
+## How hard each rarity is to land (anything without a rarity fishes as
+## Common). Speeds are art pixels a second. Simulated players (suite 22):
+## Common is landed by everyone in about 2 s; Uncommon takes a beginner
+## three times as long; Rare a beginner lands about 60%; Divine a beginner
+## rarely, a practised player about two times in three.
 ##   fish_speed   the fish's usual top speed
 ##   fish_accel   how quickly it speeds up, slows and turns
 ##   turn_every   seconds between new places to swim to (min, max)
@@ -44,11 +47,11 @@ const CATCHES := [
 ##   gain, loss   meter per second with the fish inside / outside the zone
 const DIFFICULTY := {
 	"common":    {"fish_speed": 12.0, "fish_accel": 24.0, "turn_every": Vector2(1.8, 3.2), "dash": 0.0, "zone": 32, "gain": 0.42, "loss": 0.09},
-	"uncommon":  {"fish_speed": 30.0, "fish_accel": 80.0, "turn_every": Vector2(0.8, 1.8), "dash": 0.15, "zone": 24, "gain": 0.32, "loss": 0.17},
-	"rare":      {"fish_speed": 40.0, "fish_accel": 130.0, "turn_every": Vector2(0.6, 1.3), "dash": 0.20, "zone": 20, "gain": 0.28, "loss": 0.20},
-	"epic":      {"fish_speed": 47.0, "fish_accel": 180.0, "turn_every": Vector2(0.45, 1.0), "dash": 0.26, "zone": 17, "gain": 0.25, "loss": 0.21},
-	"legendary": {"fish_speed": 52.0, "fish_accel": 220.0, "turn_every": Vector2(0.4, 0.85), "dash": 0.30, "zone": 15, "gain": 0.23, "loss": 0.21},
-	"divine":    {"fish_speed": 55.0, "fish_accel": 250.0, "turn_every": Vector2(0.35, 0.75), "dash": 0.32, "zone": 14, "gain": 0.22, "loss": 0.21},
+	"uncommon":  {"fish_speed": 35.0, "fish_accel": 110.0, "turn_every": Vector2(0.7, 1.5), "dash": 0.20, "zone": 23, "gain": 0.29, "loss": 0.19},
+	"rare":      {"fish_speed": 44.0, "fish_accel": 160.0, "turn_every": Vector2(0.5, 1.15), "dash": 0.23, "zone": 20, "gain": 0.26, "loss": 0.22},
+	"epic":      {"fish_speed": 46.0, "fish_accel": 172.0, "turn_every": Vector2(0.48, 1.05), "dash": 0.25, "zone": 19, "gain": 0.255, "loss": 0.22},
+	"legendary": {"fish_speed": 48.0, "fish_accel": 184.0, "turn_every": Vector2(0.45, 0.98), "dash": 0.27, "zone": 18, "gain": 0.25, "loss": 0.225},
+	"divine":    {"fish_speed": 50.0, "fish_accel": 196.0, "turn_every": Vector2(0.42, 0.9), "dash": 0.29, "zone": 17, "gain": 0.245, "loss": 0.23},
 }
 
 ## How much faster a dash is than the fish's usual top speed.

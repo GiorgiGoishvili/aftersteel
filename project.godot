@@ -26,6 +26,7 @@ InventoryUI="*res://scenes/inventory_ui.tscn"
 QuestMarker="*res://scenes/ui/quest_marker.tscn"
 PauseMenu="*res://scenes/ui/pause_menu.tscn"
 Fishing="*res://scenes/ui/fishing.tscn"
+FishShop="*res://scenes/ui/fish_shop.tscn"
 Tutorials="*res://scripts/tutorials.gd"
 
 [display]

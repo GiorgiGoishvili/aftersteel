@@ -523,6 +523,7 @@ func _character_page() -> void:
 	_pair("Attack", str(GameState.player_stats.get("attack_damage", 0)))
 	_pair("Weapon", str(weapon.get("name", "None")))
 	_pair("Defeated", str(down))
+	_pair("Gold", str(GameState.gold))
 
 
 func _quests_page() -> void:
