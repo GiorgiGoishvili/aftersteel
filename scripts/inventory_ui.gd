@@ -63,12 +63,9 @@ const PAGE_LABEL_AREA := Rect2i(175, 212, 30, 9)
 const GEAR := ["weapon", "armor", "tool", "accessory"]
 
 ## The monsters Kiren can actually meet.
-## "crop" picks the creature out of a frame drawn with room to spare.
 const MONSTERS := [
 	{"kind": "red_slime", "name": "Red Slime", "scene": "res://scenes/enemies/red_slime.tscn",
 		"frames": "res://Assets/Enemies/Slimes/Red/RedSlimeSpriteFrames.tres"},
-	{"kind": "witch_doctor", "name": "Witch Doctor", "scene": "res://scenes/enemies/witch_doctor.tscn",
-		"frames": "res://Assets/Enemies/WitchDoctor/WitchDoctorSpriteFrames.tres", "crop": Rect2(48, 48, 32, 32)},
 ]
 
 const FIREWOOD_STEP: String = preload("res://scenes/kiren_eira_house_interior.gd").OBJECTIVE_FIREWOOD
@@ -580,13 +577,7 @@ func _index_page() -> void:
 		entry.add_theme_constant_override("separation", 20)
 
 		var frames: SpriteFrames = load(m["frames"])
-		var tex: Texture2D = frames.get_frame_texture("FIdle", 0)
-		if m.has("crop") and tex is AtlasTexture:
-			var cropped := AtlasTexture.new()
-			cropped.atlas = (tex as AtlasTexture).atlas
-			cropped.region = Rect2((tex as AtlasTexture).region.position + m["crop"].position, m["crop"].size)
-			tex = cropped
-		var pic := _picture(tex, Vector2(128, 128))
+		var pic := _picture(frames.get_frame_texture("FIdle", 0), Vector2(128, 128))
 
 		if met == 0:
 			pic.modulate = Color(0, 0, 0, 0.5)

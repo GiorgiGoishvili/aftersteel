@@ -1,8 +1,8 @@
 extends Node2D
 
 ## One enemy controller for every enemy. All the differences between
-## Skeleton, Witch Doctor and Gollux live in CombatData.ENEMIES, not in
-## three copies of this script.
+## Skeleton and Gollux live in CombatData.ENEMIES, not in copies of this
+## script.
 ##
 ## Deliberately tiny AI: approach (or back off, if it prefers range),
 ## wind up, strike, recover, cool down. No behaviour tree, no pathfinding

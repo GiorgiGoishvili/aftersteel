@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dl4knvv2qedr1"]
 
+[ext_resource type="TileSet" path="res://Assets/Maps/Biomes/biome_tileset.tres" id="biome_ts"]
 [ext_resource type="PackedScene" path="res://scenes/props/grass_tuft.tscn" id="gt_tuft"]
 [ext_resource type="Script" uid="uid://cp68hee8bf6vx" path="res://scripts/world_map.gd" id="ms"]
 [ext_resource type="Script" uid="uid://b272ep0ve02nq" path="res://scripts/map_exit.gd" id="mx"]
@@ -17,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bhfxelrunr5xk" path="res://Assets/Materials/Log2.png" id="t_Log2"]
 [ext_resource type="Texture2D" uid="uid://c6prd1o3nj2ck" path="res://Assets/Trees/Moss_tree2.png" id="t_Moss_tree2"]
 [ext_resource type="TileSet" uid="uid://b5apy16sdyy3r" path="res://Assets/Maps/river_water_tileset.tres" id="water_ts"]
-[ext_resource type="TileSet" path="res://Assets/Maps/Biomes/biome_tileset.tres" id="biome_ts"]
 
 [sub_resource type="RectangleShape2D" id="Trunk18"]
 size = Vector2(18, 8)
@@ -28,8 +28,14 @@ size = Vector2(432, 24)
 [sub_resource type="RectangleShape2D" id="R_TopEast"]
 size = Vector2(336, 24)
 
-[sub_resource type="RectangleShape2D" id="R_Left"]
-size = Vector2(16, 300)
+[sub_resource type="RectangleShape2D" id="B_LeftUpper"]
+size = Vector2(16, 176)
+
+[sub_resource type="RectangleShape2D" id="B_LeftLower"]
+size = Vector2(16, 44)
+
+[sub_resource type="RectangleShape2D" id="B_WestBackstop"]
+size = Vector2(16, 112)
 
 [sub_resource type="RectangleShape2D" id="R_Right"]
 size = Vector2(16, 300)
@@ -42,15 +48,6 @@ size = Vector2(1024, 16)
 
 [sub_resource type="RectangleShape2D" id="X_ToWesternOutskirts"]
 size = Vector2(80, 24)
-
-[sub_resource type="RectangleShape2D" id="B_LeftUpper"]
-size = Vector2(16, 176)
-
-[sub_resource type="RectangleShape2D" id="B_LeftLower"]
-size = Vector2(16, 44)
-
-[sub_resource type="RectangleShape2D" id="B_WestBackstop"]
-size = Vector2(16, 112)
 
 [sub_resource type="RectangleShape2D" id="X_ToBeach"]
 size = Vector2(24, 80)
@@ -77,24 +74,24 @@ z_index = -10
 tile_map_data = PackedByteArray("AAALAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAD8/woAAAAAAAEAAAD9/woAAAAAAAEAAAD+/woAAAAAAAEAAAD//woAAAAAAAEAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAASAAoAAAAAAAEAAAATAAoAAAAAAAEAAAAUAAoAAAAAAAEAAAAVAAoAAAAAAAEAAAAWAAoAAAAAAAEAAAAXAAoAAAAAAAEAAAAYAAoAAAAAAAEAAAAZAAoAAAAAAAEAAAAaAAoAAAAAAAEAAAAbAAoAAAAAAAEAAAD8/wsAAAAAAAEAAAD9/wsAAAAAAAEAAAD+/wsAAAAAAAEAAAD//wsAAAAAAAEAAAAAAAsAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAASAAsAAAAAAAEAAAATAAsAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAWAAsAAAAAAAEAAAAXAAsAAAAAAAEAAAAYAAsAAAAAAAEAAAAZAAsAAAAAAAEAAAAaAAsAAAAAAAEAAAAbAAsAAAAAAAEAAAD8/wwAAAAAAAIAAAD9/wwAAAAAAAIAAAD+/wwAAAAAAAIAAAD//wwAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAwAAAAAAAIAAAACAAwAAAAAAAIAAAADAAwAAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAwAAAAAAAIAAAAGAAwAAAAAAAIAAAAHAAwAAAAAAAIAAAAIAAwAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAwAAAAAAAIAAAALAAwAAAAAAAIAAAAMAAwAAAAAAAIAAAANAAwAAAAAAAIAAAAOAAwAAAAAAAIAAAAPAAwAAAAAAAIAAAAQAAwAAAAAAAIAAAARAAwAAAAAAAIAAAASAAwAAAAAAAIAAAATAAwAAAAAAAIAAAAUAAwAAAAAAAIAAAAVAAwAAAAAAAIAAAAWAAwAAAAAAAIAAAAXAAwAAAAAAAIAAAAYAAwAAAAAAAIAAAAZAAwAAAAAAAIAAAAaAAwAAAAAAAIAAAAbAAwAAAAAAAIAAAA=")
 tile_set = ExtResource("water_ts")
 
-[node name="BankWater" type="TileMapLayer" parent="."]
+[node name="BankWater" type="TileMapLayer" parent="." unique_id=1576408566]
 z_index = -10
 tile_map_data = PackedByteArray("AAD8/wkAAAAAAAEAAAD9/wkAAAAAAAEAAAD+/wkAAAAAAAEAAAD//wkAAAAAAAEAAAAAAAkAAAAAAAEAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAAQAAkAAAAAAAEAAAARAAkAAAAAAAEAAAASAAkAAAAAAAEAAAATAAkAAAAAAAEAAAAUAAkAAAAAAAEAAAAVAAkAAAAAAAEAAAAWAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAYAAkAAAAAAAEAAAAZAAkAAAAAAAEAAAAaAAkAAAAAAAEAAAAbAAkAAAAAAAEAAAA=")
 tile_set = ExtResource("water_ts")
 
-[node name="BankCliffsWest" type="TileMapLayer" parent="."]
+[node name="BankCliffsWest" type="TileMapLayer" parent="." unique_id=319592511]
 z_index = -6
 position = Vector2(-128, 288)
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQACAAAAAAADAAAAAQAAAAAAAAAEAAAAAQABAAAAAAAFAAAAAQACAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQABAAAAAAAIAAAAAQACAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQABAAAAAAALAAAAAQACAAAAAAAMAAAAAQAAAAAAAAANAAAAAQABAAAAAAAOAAAAAQACAAAAAAAPAAAAAQAIAAAAAAA=")
 tile_set = ExtResource("biome_ts")
 
-[node name="BankCliffsEast" type="TileMapLayer" parent="."]
+[node name="BankCliffsEast" type="TileMapLayer" parent="." unique_id=623268588]
 z_index = -6
 position = Vector2(512, 288)
 tile_map_data = PackedByteArray("AAAAAAAAAQAJAAAAAAABAAAAAQABAAAAAAACAAAAAQACAAAAAAADAAAAAQAAAAAAAAAEAAAAAQABAAAAAAAFAAAAAQACAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQABAAAAAAAIAAAAAQACAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQABAAAAAAALAAAAAQACAAAAAAAMAAAAAQAAAAAAAAA=")
 tile_set = ExtResource("biome_ts")
 
-[node name="BankShade" type="Polygon2D" parent="."]
+[node name="BankShade" type="Polygon2D" parent="." unique_id=839407506]
 z_index = -9
 color = Color(0.04, 0.09, 0.16, 0.35)
 polygon = PackedVector2Array(352, 288, 512, 288, 512, 294, 352, 294)
@@ -1664,11 +1661,11 @@ shape = SubResource("R_TopEast")
 position = Vector2(8, 88)
 shape = SubResource("B_LeftUpper")
 
-[node name="LeftLower" type="CollisionShape2D" parent="Boundaries"]
+[node name="LeftLower" type="CollisionShape2D" parent="Boundaries" unique_id=1182923459]
 position = Vector2(8, 278)
 shape = SubResource("B_LeftLower")
 
-[node name="WestBackstop" type="CollisionShape2D" parent="Boundaries"]
+[node name="WestBackstop" type="CollisionShape2D" parent="Boundaries" unique_id=68998620]
 position = Vector2(-16, 216)
 shape = SubResource("B_WestBackstop")
 
@@ -1695,17 +1692,17 @@ spawn_name = "SpawnFromSouth"
 position = Vector2(432, 12)
 shape = SubResource("X_ToWesternOutskirts")
 
-[node name="ToBeach" type="Area2D" parent="Triggers"]
+[node name="ToBeach" type="Area2D" parent="Triggers" unique_id=1269637378]
 script = ExtResource("mx")
 target_scene = "res://scenes/beach.tscn"
 spawn_name = "SpawnFromEast"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToBeach"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ToBeach" unique_id=901854885]
 position = Vector2(6, 216)
 shape = SubResource("X_ToBeach")
 
 [node name="SpawnFromNorth" type="Marker2D" parent="." unique_id=598459340]
 position = Vector2(432, 52)
 
-[node name="SpawnFromWest" type="Marker2D" parent="."]
+[node name="SpawnFromWest" type="Marker2D" parent="." unique_id=532633573]
 position = Vector2(44, 216)

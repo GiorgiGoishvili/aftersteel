@@ -14,8 +14,6 @@ const SLIME := preload("res://scenes/enemies/red_slime.tscn")
 
 ## Markers (the old Map1Slime01-03 positions) a slime spawns on.
 @export var spawn_points: Array[NodePath] = []
-## What it keeps alive: the red slime unless another enemy scene is set.
-@export var enemy_scene: PackedScene
 ## Property values set on every enemy it spawns (e.g. {"detect_radius": 110.0}).
 @export var overrides: Dictionary = {}
 ## Area the path grid covers. Empty: the map's Ground layer.
@@ -91,10 +89,10 @@ func _spawn(slot: int, check_geometry := true) -> void:
 		s["timer"].start(RETRY)
 		return
 
-	var slime := (enemy_scene if enemy_scene != null else SLIME).instantiate()
+	var slime := SLIME.instantiate()
 	for key in overrides:
 		slime.set(key, overrides[key])
-	slime.name = "%s%d" % [slime.name, slot + 1]
+	slime.name = "RedSlime%d" % (slot + 1)
 	slime.spawner = self
 	slime.position = to_local(s["point"])
 	slime.died.connect(_on_slime_died.bind(slot))

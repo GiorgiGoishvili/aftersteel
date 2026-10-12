@@ -7,11 +7,8 @@ extends CharacterBody2D
 ## Animations are the Aseprite tags: F/B/L/R + Idle / Attack / Hurt.
 ## There is no walk sheet - the idle hop doubles as movement.
 ##
-## The other overworld enemies (witch_doctor.tscn) reuse this script with
-## their own stats and SpriteFrames: an F/B/L/R + Move animation is used for
-## walking when there is one, a missing Hurt animation is replaced by a short
-## stagger, and detect_radius makes an enemy wait for Kiren instead of
-## hunting him across the map. Defaults are the red slime's behaviour.
+## detect_radius (set by a spawner's overrides, e.g. in the Autumn Forest)
+## makes a slime wait for Kiren instead of hunting him across the map.
 
 signal died
 
@@ -33,16 +30,14 @@ signal died
 ## over knockback_time, while its hurt animation plays.
 @export var knockback_speed := 140.0
 @export var knockback_time := 0.15
-## What GameState counts this enemy as when it dies: the monster index, the
-## Blue Slime's job (red slimes only) and, later, loot tables key off it.
+## What GameState counts this enemy as when it dies: the monster index and
+## the Blue Slime's job key off it.
 @export var kind := "red_slime"
 ## 0: hunts Kiren anywhere on its map (the red slime). Otherwise it stands
 ## guard until he comes this close (px, with nothing solid between them) and
 ## gives up the chase once he is further than lose_radius.
 @export var detect_radius := 0.0
 @export var lose_radius := 0.0
-## Stagger after a hit when there is no Hurt animation to wait for.
-@export var hurt_time := 0.3
 
 ## Centre of the body collision shape, i.e. where the slime "stands".
 const FEET := Vector2(0, 12)
@@ -71,7 +66,6 @@ var _player: Node2D
 var _knockback := Vector2.ZERO
 var _knockback_fade := 0.0
 var _flash_tween: Tween
-var _hurt_left := 0.0
 
 
 func _ready() -> void:
@@ -111,10 +105,6 @@ func _physics_process(delta: float) -> void:
 			# Slides back from the blow instead of standing frozen.
 			velocity = _knockback
 			move_and_slide()
-			if _hurt_left > 0.0:
-				_hurt_left -= delta
-				if _hurt_left <= 0.0:
-					state = State.CHASE
 
 
 ## Standing guard: waits for Kiren to come close, in plain sight.
@@ -155,8 +145,7 @@ func _chase(player: Node2D, delta: float) -> void:
 		velocity = (_next_waypoint(feet, goal) - feet).normalized() * move_speed
 
 	move_and_slide()
-	var walk := facing + "Move"
-	_play(walk if velocity != Vector2.ZERO and sprite.sprite_frames.has_animation(walk) else facing + "Idle")
+	_play(facing + "Idle")
 
 
 ## Follows the grid path; falls back to heading straight for Kiren when
@@ -225,12 +214,7 @@ func take_damage(amount: int, from: Vector2, knockback_scale := 1.0) -> bool:
 	_knockback_fade = _knockback.length() / knockback_time
 	velocity = Vector2.ZERO
 	_aim_attack("")
-	if sprite.sprite_frames.has_animation(facing + "Hurt"):
-		_play(facing + "Hurt", true)
-	else:
-		# The swing visibly breaks off instead of playing out.
-		_hurt_left = hurt_time
-		_play(facing + "Idle", true)
+	_play(facing + "Hurt", true)
 	return true
 
 
@@ -257,8 +241,7 @@ func _die() -> void:
 	# Only Kiren's sword reaches take_damage, so every death here is his.
 	GameState.record_enemy_defeated(kind)
 
-	if sprite.sprite_frames.has_animation(facing + "Hurt"):
-		_play(facing + "Hurt", true)
+	_play(facing + "Hurt", true)
 	var fade := create_tween()
 	fade.tween_interval(0.3)
 	fade.tween_property(self, "modulate:a", 0.0, 0.25)

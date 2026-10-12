@@ -97,19 +97,6 @@ const ENEMIES := {
 		"windup": 0.35, "strike": 0.18, "recover": 0.30,
 		"rewards": [["healing_herb", 1]],
 	},
-	"witch_doctor": {
-		"display_name": "WITCH DOCTOR",
-		"max_hp": 48, "damage": 9, "move_speed": 32.0,
-		# Keeps its distance and throws instead of closing in.
-		"attack_range": 84.0, "attack_cooldown": 2.0,
-		"sheets": "res://Assets/Enemies/WitchDoctor/Witch_Doctor_%s.png",
-		"idle_frames": 4, "move_frames": 6,
-		"attack_anim": "Skill", "attack_frames": 6,
-		"directional": true, "foot_offset": -80.0, "scale": 1.0,
-		"ranged": true, "projectile_speed": 78.0, "keep_distance": 56.0,
-		"windup": 0.55, "strike": 0.12, "recover": 0.35,
-		"rewards": [["healing_herb", 2], ["steel_fragment", 1]],
-	},
 	"gollux": {
 		"display_name": "GOLLUX",
 		# Heavy archetype: slow, tanky, hits hard, long recovery.

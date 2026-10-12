@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" format=3]
+[gd_resource type="TileSet" format=3 uid="uid://cv0yrkbtx105k"]
 
 [ext_resource type="Texture2D" uid="uid://b6kj6jak0fmoc" path="res://Assets/Maps/Biomes/Autumn/autumn_atlas.png" id="0_autumn"]
 [ext_resource type="Texture2D" uid="uid://cykhbb40ce78l" path="res://Assets/Maps/Biomes/HillRocky/hillrocky_atlas.png" id="1_hillrocky"]
