@@ -16,11 +16,14 @@ extends CanvasLayer
 
 signal finished(result: String)    # "caught:<item id>", "escaped" or "cancelled"
 
-## What a catch can be, and how often: each one's chance is its weight over
-## the total (65 + 30 + 5 = 100 here: 65% fish, 30% junk, 5% the ring).
+## What a catch can be, and how often: each row's chance is its weight over
+## the total (55 + 20 + 20 + 5 = 100 here, so they read as percentages). A
+## "rarity" row is a fish of that rarity - every fish of it (Items.fish_of)
+## equally likely - so a rarer pool is one more row once its fish exist.
 const CATCHES := [
-	{"item": "river_fish", "weight": 65},
-	{"item": "driftwood", "weight": 30},
+	{"rarity": "common", "weight": 55},
+	{"rarity": "uncommon", "weight": 20},
+	{"item": "driftwood", "weight": 20},
 	{"item": "old_ring", "weight": 5},
 ]
 
@@ -130,21 +133,28 @@ func cancel() -> void:
 	finished.emit("cancelled")
 
 
-## The catch for a roll in [0, 1), by the CATCHES weights.
-static func pick_catch(roll: float) -> String:
+## The catch for a roll in [0, 1) by the CATCHES weights; a second roll
+## picks the fish when the row is a rarity pool.
+static func pick_catch(roll: float, fish_roll := 0.0) -> String:
 	var total := 0
 
 	for c in CATCHES:
 		total += int(c["weight"])
 
 	var left := roll * total
+	var row: Dictionary = CATCHES[-1]
 
 	for c in CATCHES:
 		left -= int(c["weight"])
 		if left < 0.0:
-			return c["item"]
+			row = c
+			break
 
-	return CATCHES[-1]["item"]
+	if row.has("item"):
+		return row["item"]
+
+	var pool := Items.fish_of(row["rarity"])
+	return pool[mini(int(fish_roll * pool.size()), pool.size() - 1)]
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -241,11 +251,11 @@ func _finish(caught: bool) -> void:
 		finished.emit("escaped")
 		return
 
-	var id := pick_catch(_rng.randf())
+	var id := pick_catch(_rng.randf(), _rng.randf())
 	var item := Items.by_id(id)
 	GameState.add_item(item)
 	_end()
-	_say("Caught: %s" % item["name"], 2.0)
+	_say("Caught: %s" % Items.label_of(item), 2.0)
 	finished.emit("caught:" + id)
 
 

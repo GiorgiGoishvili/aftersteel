@@ -12,6 +12,8 @@ extends RefCounted
 ## "slot"        armour: head / body / legs / feet; the rod: weapon;
 ##               accessories: accessory
 ## "icon"        optional res:// path for a future inventory UI
+## "fish"        true for fish: fishing.gd draws its catches from these
+## "rarity"      optional: one of RARITIES
 ##
 ## RULE: player-facing "name" and "description" must never reveal story
 ## secrets. Kiren does not know what this object really is, so neither
@@ -130,21 +132,75 @@ const RED_LONG_SWORD := {
 
 # --- Tools ------------------------------------------------------------
 # Goes in the weapon slot in place of the sword; with it out, J and left
-# click fish instead of swinging. No rod art yet, so no icon.
+# click fish instead of swinging.
 
 const FISHING_ROD := {
 	"id": "fishing_rod", "name": "Fishing Rod", "type": "tool", "slot": "weapon",
 	"description": "A plain rod and line.", "key_item": false,
+	"icon": "res://Assets/Tools/FishingrodIcon.png",
 }
 
 
-# --- Catches -----------------------------------------------------------
-# What the river gives up (chances live in fishing.gd).
+# --- Rarity -----------------------------------------------------------
+# Lowest first. Only common and uncommon are used so far; the rest are here
+# so a new item can simply name one.
 
-const RIVER_FISH := {
-	"id": "river_fish", "name": "River Fish",
-	"description": "Small, but it'll do.", "key_item": false,
+const RARITIES := ["common", "uncommon", "rare", "epic", "divine"]
+
+
+# --- Fish -------------------------------------------------------------
+# Every fish has a rarity. fishing.gd catches from all the fish of the
+# rarity it rolls, so a new fish only needs adding here (and to ALL).
+
+const SILVER_MINNOW := {
+	"id": "silver_minnow", "name": "Silver Minnow", "fish": true, "rarity": "common",
+	"description": "Small and quick. Barely a mouthful.", "key_item": false,
+	"icon": "res://Assets/Fish/Common/Silverfin_Common.png",
 }
+const MUD_CARP := {
+	"id": "mud_carp", "name": "Mud Carp", "fish": true, "rarity": "common",
+	"description": "Tastes a bit like the riverbed.", "key_item": false,
+	"icon": "res://Assets/Fish/Common/Mudfin_Common.png",
+}
+const CREEK_BREAM := {
+	"id": "creek_bream", "name": "Creek Bream", "fish": true, "rarity": "common",
+	"description": "Flat and bony, but it fries well.", "key_item": false,
+	"icon": "res://Assets/Fish/Common/Stonefin_Common.png",
+}
+const SPECKLED_RIVERFISH := {
+	"id": "speckled_riverfish", "name": "Speckled Riverfish", "fish": true, "rarity": "common",
+	"description": "Spotted all over. There are plenty of these.", "key_item": false,
+	"icon": "res://Assets/Fish/Common/Mossback_Common.png",
+}
+const COPPER_PERCH := {
+	"id": "copper_perch", "name": "Copper Perch", "fish": true, "rarity": "uncommon",
+	"description": "Its belly shines like an old coin.", "key_item": false,
+	"icon": "res://Assets/Fish/Uncommon/Copperbelly.png",
+}
+const BLUEGILL_PERCH := {
+	"id": "bluegill_perch", "name": "Bluegill Perch", "fish": true, "rarity": "uncommon",
+	"description": "Blue on top, orange underneath.", "key_item": false,
+	"icon": "res://Assets/Fish/Uncommon/Rustgill.png",
+}
+const EMBERFIN := {
+	"id": "emberfin", "name": "Emberfin", "fish": true, "rarity": "uncommon",
+	"description": "Red fins, as if it swam too near a fire.", "key_item": false,
+	"icon": "res://Assets/Fish/Uncommon/Emberfin.png",
+}
+const SUNSCALE_FISH := {
+	"id": "sunscale_fish", "name": "Sunscale Fish", "fish": true, "rarity": "uncommon",
+	"description": "Golden scales. It looks warm, somehow.", "key_item": false,
+	"icon": "res://Assets/Fish/Uncommon/Amberfin.png",
+}
+const RIVER_CATFISH := {
+	"id": "river_catfish", "name": "River Catfish", "fish": true, "rarity": "uncommon",
+	"description": "Whiskers and a sour look.", "key_item": false,
+	"icon": "res://Assets/Fish/Uncommon/Duskgill.png",
+}
+
+
+# --- Other catches -------------------------------------------------------
+# What the river gives up besides fish (chances live in fishing.gd).
 
 # Junk: what comes up when it isn't a fish.
 const DRIFTWOOD := {
@@ -232,7 +288,15 @@ const ALL := {
 	"golden_leggings": GOLDEN_LEGGINGS,
 	"golden_boots": GOLDEN_BOOTS,
 	"fishing_rod": FISHING_ROD,
-	"river_fish": RIVER_FISH,
+	"silver_minnow": SILVER_MINNOW,
+	"mud_carp": MUD_CARP,
+	"creek_bream": CREEK_BREAM,
+	"speckled_riverfish": SPECKLED_RIVERFISH,
+	"copper_perch": COPPER_PERCH,
+	"bluegill_perch": BLUEGILL_PERCH,
+	"emberfin": EMBERFIN,
+	"sunscale_fish": SUNSCALE_FISH,
+	"river_catfish": RIVER_CATFISH,
 	"driftwood": DRIFTWOOD,
 	"old_ring": OLD_RING,
 }
@@ -240,3 +304,20 @@ const ALL := {
 
 static func by_id(id: String) -> Dictionary:
 	return ALL.get(id, {})
+
+
+## Every fish of a rarity, by id, in the order above.
+static func fish_of(rarity: String) -> Array:
+	var ids := []
+
+	for id in ALL:
+		if ALL[id].get("fish", false) and ALL[id].get("rarity", "") == rarity:
+			ids.append(id)
+
+	return ids
+
+
+## The item's name, with its rarity when it has one: "Emberfin (Uncommon)".
+static func label_of(item: Dictionary) -> String:
+	var rarity := str(item.get("rarity", ""))
+	return str(item.get("name", "")) + (" (%s)" % rarity.capitalize() if rarity != "" else "")

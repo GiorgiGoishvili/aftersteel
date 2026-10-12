@@ -50,6 +50,18 @@ const KIREN_ROD := "RFishIdle"
 
 const ART_BUTTON := preload("res://scripts/pause_menu_button.gd")
 
+## Pages of the grid: the arrows are the little green ones from the UI pack
+## (Equipment.png), sat in the bare strip under the grid with the page
+## number between them.
+const UI_PACK := preload("res://Assets/UI/InventoryMenu/Exports/Equipment.png")
+const ARROW_LEFT := Rect2i(156, 316, 4, 7)
+const ARROW_RIGHT := Rect2i(128, 316, 4, 7)
+const PREV_AT := Vector2i(170, 213)
+const NEXT_AT := Vector2i(206, 213)
+const PAGE_LABEL_AREA := Rect2i(175, 212, 30, 9)
+## Kinds of item that show one square each rather than stacking.
+const GEAR := ["weapon", "armor", "tool", "accessory"]
+
 ## The monsters Kiren can actually meet.
 const MONSTERS := [
 	{"kind": "red_slime", "name": "Red Slime", "scene": "res://scenes/enemies/red_slime.tscn",
@@ -108,6 +120,11 @@ var _selected := 0
 ## What the equipment grid shows: the pack minus whatever is worn.
 var _rows: Array = []
 var _cells: Array[Button] = []
+## Which page of the grid is showing (0 = first).
+var _page := 0
+var _prev: TextureButton
+var _next: TextureButton
+var _page_label: Label
 var _font: Font
 var _monster_stats := {}
 
@@ -191,6 +208,10 @@ func show_view(which: String) -> void:
 	title.text = TITLES.get(which, "")
 	hint = note if equipping else page_hint
 	hint.text = ""
+
+	if equipping:
+		_page = 0
+
 	_release_focus()
 	_refresh()
 
@@ -282,9 +303,61 @@ func _build_equipment_screen() -> void:
 			var i := _cells.size()
 			cell.mouse_entered.connect(_show_name.bind(i))
 			cell.pressed.connect(func() -> void:
-				_selected = i
+				_selected = _page * _cells.size() + i
 				_use())
 			_cells.append(cell)
+
+	_prev = _arrow(ARROW_LEFT, -1)
+	_next = _arrow(ARROW_RIGHT, 1)
+	_page_label = _label("", 20, INK, HORIZONTAL_ALIGNMENT_CENTER)
+	_page_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_page_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_page_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	equip.add_child(_page_label)
+
+
+## A page arrow: lighter under the mouse, darker while pressed, faint when
+## there is no page that way.
+func _arrow(region: Rect2i, step: int) -> TextureButton:
+	var tex := AtlasTexture.new()
+	tex.atlas = UI_PACK
+	tex.region = region
+	var b := TextureButton.new()
+	b.texture_normal = tex
+	b.ignore_texture_size = true
+	b.stretch_mode = TextureButton.STRETCH_SCALE
+	b.focus_mode = Control.FOCUS_NONE
+	b.pressed.connect(_flip.bind(step))
+	for s in [b.mouse_entered, b.mouse_exited, b.button_down, b.button_up]:
+		s.connect(_tint_arrow.bind(b))
+	equip.add_child(b)
+	return b
+
+
+func _tint_arrow(b: TextureButton) -> void:
+	if b.disabled:
+		b.modulate = Color(1, 1, 1, 0.3)
+	elif b.is_pressed():
+		b.modulate = Color(0.75, 0.75, 0.75)
+	elif b.is_hovered():
+		b.modulate = Color(1.3, 1.25, 1.1)
+	else:
+		b.modulate = Color.WHITE
+
+
+func _page_count() -> int:
+	return maxi(1, ceili(_rows.size() / float(_cells.size())))
+
+
+func _flip(step: int) -> void:
+	var to := clampi(_page + step, 0, _page_count() - 1)
+
+	if to == _page:
+		return
+
+	_page = to
+	_selected = _page * _cells.size()
+	_equipment_screen()
 
 
 ## An icon, a name for items with no icon, and a count, laid over a slot
@@ -320,22 +393,33 @@ func _equipment_screen() -> void:
 		_fill(equip.get_node(SHOWN_SLOTS[slot]), Items.by_id(str(GameState.equipment.get(slot, ""))))
 
 	# A worn item stays in GameState's inventory; here it shows in its slot
-	# instead of the grid, so nothing is ever in two places.
+	# instead of the grid, so nothing is ever in two places. Gear shows one
+	# square per piece; everything else stacks into one square with a count.
 	_rows = []
 
 	for entry in GameState.inventory:
 		var count := int(entry.get("count", 1)) - (1 if GameState.is_equipped(str(entry.get("id", ""))) else 0)
+		var gear := GEAR.has(str(entry.get("type", "")))
 
-		if count > 0:
+		for n in (count if gear else mini(count, 1)):
 			var shown: Dictionary = entry.duplicate()
-			shown["count"] = count
+			shown["count"] = 1 if gear else count
 			_rows.append(shown)
 
+	# 20 squares a page; never past the last page, even after items go.
+	_page = clampi(_page, 0, _page_count() - 1)
 	_selected = clampi(_selected, 0, maxi(0, _rows.size() - 1))
+	var first := _page * _cells.size()
 
 	for i in _cells.size():
-		var item: Dictionary = _rows[i] if i < _rows.size() else {}
+		var item: Dictionary = _rows[first + i] if first + i < _rows.size() else {}
 		_fill(_cells[i], item, int(item.get("count", 1)))
+
+	_page_label.text = "%d / %d" % [_page + 1, _page_count()]
+	_prev.disabled = _page == 0
+	_next.disabled = _page >= _page_count() - 1
+	_tint_arrow(_prev)
+	_tint_arrow(_next)
 
 	var idle := KIREN_ARMED if GameState.has_weapon_equipped() else (KIREN_ROD if GameState.has_rod_equipped() else KIREN_UNARMED)
 	kiren.offset = Vector2(-16, -16) if idle == KIREN_ROD else Vector2.ZERO
@@ -370,9 +454,11 @@ func _take_off(slot: String) -> void:
 
 
 func _show_name(i: int) -> void:
-	if i < _rows.size():
-		_selected = i
-		hint.text = str(_rows[i].get("name", ""))
+	var at := _page * _cells.size() + i
+
+	if at < _rows.size():
+		_selected = at
+		hint.text = Items.label_of(_rows[at])
 
 
 ## W and S step through the grid's items, the same as hovering them.
@@ -381,8 +467,16 @@ func _move(step: int) -> void:
 		return
 
 	_selected = wrapi(_selected + step, 0, _rows.size())
-	_cells[mini(_selected, _cells.size() - 1)].grab_focus()
-	hint.text = str(_rows[_selected].get("name", ""))
+
+	# Stepping off a page turns to the page the item is on.
+	var on_page := floori(float(_selected) / _cells.size())
+
+	if on_page != _page:
+		_page = on_page
+		_equipment_screen()
+
+	_cells[_selected % _cells.size()].grab_focus()
+	hint.text = Items.label_of(_rows[_selected])
 
 
 func _use() -> void:
@@ -600,5 +694,11 @@ func _layout() -> void:
 	kiren.scale = Vector2.ONE * KIREN_SCALE * e
 	note.position = Vector2(NOTE_AREA.position - EQUIP_CROP.position) * e
 	note.size = Vector2(NOTE_AREA.size) * e
+	_prev.position = Vector2(PREV_AT - EQUIP_CROP.position) * e
+	_prev.size = Vector2(ARROW_LEFT.size) * e
+	_next.position = Vector2(NEXT_AT - EQUIP_CROP.position) * e
+	_next.size = Vector2(ARROW_RIGHT.size) * e
+	_page_label.position = Vector2(PAGE_LABEL_AREA.position - EQUIP_CROP.position) * e
+	_page_label.size = Vector2(PAGE_LABEL_AREA.size) * e
 
 	_refresh()
