@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b5h8vnri5fsk3"]
 
 [ext_resource type="Texture2D" uid="uid://cmpj6ws7qh2jv" path="res://Assets/UI/Rain/Exports/env_rain_320x180.png" id="sheet"]
 

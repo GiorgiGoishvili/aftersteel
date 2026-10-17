@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bqx0t3ly4mdcw"]
 
 [ext_resource type="Texture2D" uid="uid://c4gxy8v0xkfrg" path="res://Assets/Characters/Toma/Animations/Exports/TomaIdle.png" id="sheet"]
 

@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://dl4knvv2qedr1"]
 
-[ext_resource type="TileSet" path="res://Assets/Maps/Biomes/biome_tileset.tres" id="biome_ts"]
+[ext_resource type="TileSet" uid="uid://cv0yrkbtx105k" path="res://Assets/Maps/Biomes/biome_tileset.tres" id="biome_ts"]
 [ext_resource type="PackedScene" path="res://scenes/props/grass_tuft.tscn" id="gt_tuft"]
 [ext_resource type="Script" uid="uid://cp68hee8bf6vx" path="res://scripts/world_map.gd" id="ms"]
 [ext_resource type="Script" uid="uid://b272ep0ve02nq" path="res://scripts/map_exit.gd" id="mx"]
 [ext_resource type="PackedScene" uid="uid://b5qllpqolnnx3" path="res://scenes/player.tscn" id="p"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/toma.tscn" id="toma"]
 [ext_resource type="TileSet" uid="uid://dud4t23018448" path="res://Assets/Maps/village_tileset.tres" id="ts"]
 [ext_resource type="Texture2D" uid="uid://dewl40abr1atb" path="res://Assets/Bushes/Bush_blue_flowers2.png" id="t_Bush_blue_flowers2"]
 [ext_resource type="Texture2D" uid="uid://bsuk55l8ph6o5" path="res://Assets/Bushes/Bush_pink_flowers2.png" id="t_Bush_pink_flowers2"]
@@ -18,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bhfxelrunr5xk" path="res://Assets/Materials/Log2.png" id="t_Log2"]
 [ext_resource type="Texture2D" uid="uid://c6prd1o3nj2ck" path="res://Assets/Trees/Moss_tree2.png" id="t_Moss_tree2"]
 [ext_resource type="TileSet" uid="uid://b5apy16sdyy3r" path="res://Assets/Maps/river_water_tileset.tres" id="water_ts"]
-[ext_resource type="PackedScene" path="res://scenes/npcs/toma.tscn" id="toma"]
 
 [sub_resource type="RectangleShape2D" id="Trunk18"]
 size = Vector2(18, 8)
@@ -128,7 +128,7 @@ texture = ExtResource("t_Log2")
 position = Vector2(10, 8)
 texture = ExtResource("t_Log1")
 
-[node name="Toma" parent="." instance=ExtResource("toma")]
+[node name="Toma" parent="." unique_id=624279087 instance=ExtResource("toma")]
 position = Vector2(548, 236)
 
 [node name="Vegetation" type="Node2D" parent="." unique_id=715630739]
